@@ -1,3 +1,7 @@
 {
-   "php.suggest.basic": false
+   "php.suggest.basic": false,
+   "intelephense.diagnostics.undefinedProperties": false,
+   "files.associations": {
+      "\"*.module\"": "\"php\""
+   }
 }

@@ -1,3 +1,42 @@
+<?php
+// Array untuk menu sidebar
+$sidebarMenu = array(
+   array(
+      "text" => "Management",
+      "role" => array(1, 2),
+      "submenu" => array(
+         array(
+            "url" => "user",
+            "text" => "Users",
+            "icon" => "fas fa-user",
+            "role" => array(1, 2),
+         ),
+         array(
+            "url" => "produk",
+            "text" => "Produk",
+            "icon" => "fas fa-capsules",
+            "role" => array(1),
+         ),
+         array(
+            "url" => "produk",
+            "text" => "Produk",
+            "icon" => "fas fa-capsules",
+            "role" => array(1),
+         ),
+      )
+   )
+);
+
+$userRole = $_SESSION['role_id'];
+$filteredMenu = array();
+
+foreach ($sidebarMenu as $menu) {
+   if (in_array($userRole, $menu['role'])) {
+      $filteredMenu[] = $menu;
+   }
+}
+?>
+
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -11,31 +50,30 @@
 
    <!-- Divider -->
    <hr class="sidebar-divider">
-   <div class="sidebar-heading">
-      Admin
-   </div>
-   <!-- Nav Item - Dashboard -->
-   <li class="nav-item">
-      <a class="nav-link" href="index.html">
-         <i class="fas fa-fw fa-tachometer-alt"></i>
-         <span>Dashboard</span></a>
-   </li>
+
+   <!-- Loop through sidebar menu -->
+   <?php foreach ($filteredMenu as $menu) { ?>
+      <?php if (isset($menu['submenu'])) { ?>
+         <div class="sidebar-heading">
+            <?= $menu['text'] ?>
+         </div>
+         <?php foreach ($menu['submenu'] as $submenu) { ?>
+            <?php if (in_array($userRole, $submenu['role'])) {
+               $isActive = (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], $submenu['url']) !== false) ? 'active' : '';
+            ?>
+               <li class="nav-item <?= $isActive ?>">
+                  <a class="nav-link" href="<?= base_url($submenu['url']) ?>">
+                     <i class="<?= $submenu['icon'] ?>"></i>
+                     <span><?= $submenu['text'] ?></span>
+                  </a>
+               </li>
+            <?php } ?>
+         <?php } ?>
+      <?php } ?>
+   <?php } ?>
 
    <!-- Divider -->
    <hr class="sidebar-divider">
-
-   <!-- Heading -->
-   <div class="sidebar-heading">
-      User
-   </div>
-   <li class="nav-item">
-      <a class="nav-link" href="index.html">
-         <i class="fas fa-fw fa-user"></i>
-         <span>My Profile</span></a>
-   </li>
-
-   <!-- Divider -->
-   <hr class="sidebar-divider d-none d-md-block">
 
    <!-- Sidebar Toggler (Sidebar) -->
    <div class="text-center d-none d-md-inline">

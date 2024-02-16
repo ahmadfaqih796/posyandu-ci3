@@ -6,13 +6,13 @@ $sidebarMenu = array(
       "role" => array(1, 2),
       "submenu" => array(
          array(
-            "url" => "user",
+            "url" => "management/users",
             "text" => "Users",
             "icon" => "fas fa-user",
             "role" => array(1, 2),
          ),
          array(
-            "url" => "produk",
+            "url" => "admin",
             "text" => "Produk",
             "icon" => "fas fa-capsules",
             "role" => array(1),

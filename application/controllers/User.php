@@ -9,7 +9,7 @@ class User extends CI_Controller
       $this->load->library('session');
       $role = $this->session->userdata('role_id');
       if ($role != 2) {
-         redirect('badrequest/index/403');
+         redirect('badrequest/error/403');
       }
    }
 

@@ -11,7 +11,11 @@ class Users_model extends CI_Model
 
    public function get_users()
    {
-      return $this->db->get('users')->result_array();
+      $this->db->select('users.*, roles.role'); // Pilih kolom yang Anda butuhkan
+      $this->db->from('users');
+      $this->db->join('roles', 'users.role_id = roles.id', 'left'); // Lakukan left join dengan tabel roles
+      $query = $this->db->get();
+      return $query->result_array();
    }
 
    public function get_user_by_id($user_id)

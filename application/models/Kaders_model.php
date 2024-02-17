@@ -8,9 +8,12 @@ class Kaders_model extends CI_Model
       parent::__construct();
    }
 
-   public function get_all_kaders()
+   public function get_kaders()
    {
-      return $this->db->get('kaders')->result_array();
+      $this->db->select('k.*, u.name, u.email, u.is_active');
+      $this->db->from('kaders k');
+      $this->db->join('users u', 'k.user_id = u.id', 'left');
+      return $this->db->get()->result_array();
    }
 
    public function get_kader_by_id($kader_id)

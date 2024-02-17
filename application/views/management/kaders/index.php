@@ -9,9 +9,9 @@
                <h6 class="m-0 font-weight-bold text-primary"><?= $title ?></h6>
             </div>
             <div class="col-6">
-               <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">
-                  <i class="fas fa-plus"></i> Tambah
-               </button>
+               <a type="button" class="btn btn-success float-right" href="<?= base_url('management/kaders/print') ?>">
+                  <i class="fas fa-print"></i> Cetak
+               </a>
             </div>
          </div>
       </div>
@@ -23,9 +23,13 @@
                <thead>
                   <tr>
                      <th>No</th>
-                     <th>Nama</th>
+                     <th>NIK</th>
                      <th>Email</th>
-                     <th>Role</th>
+                     <th>Nama</th>
+                     <th>Tempat Tanggal Lahir</th>
+                     <th>Alamat</th>
+                     <th>Pendidikan Terakhir</th>
+                     <th>Telepon</th>
                      <th>Status</th>
                      <th>Aksi</th>
                   </tr>
@@ -34,9 +38,13 @@
                   <?php foreach ($users as $field) : ?>
                      <tr>
                         <td><?= $no++ ?></td>
+                        <td><?= $field['nik'] ?></td>
                         <td><?= $field['name'] ?></td>
                         <td><?= $field['email'] ?></td>
-                        <td><?= $field['role'] ?></td>
+                        <td><?= $field['tempat_lahir'] . ', ' . $field['tanggal_lahir'] ?></td>
+                        <td><?= $field['alamat'] ?></td>
+                        <td><?= $field['pendidikan_terakhir'] ?></td>
+                        <td><?= $field['telepon'] ?></td>
                         <td><?= $field['is_active'] == 1 ? 'Aktif' : 'Tidak Aktif' ?></td>
                         <td>
                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>

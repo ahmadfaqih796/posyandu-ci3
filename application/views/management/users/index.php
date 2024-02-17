@@ -20,6 +20,7 @@
          </div>
       </div>
       <div class="card-body">
+         <?= $this->session->flashdata('message'); ?>
          <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                <thead>

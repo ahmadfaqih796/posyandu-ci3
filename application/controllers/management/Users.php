@@ -42,11 +42,9 @@ class Users extends CI_Controller
       ];
       $result = $this->um->insert_user($payload);
       if ($result) {
-         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Berhasil menambahkan user </div>');
-         redirect('management/users');
+         $this->notification->notify_success('management/users', 'Berhasil menambahkan user');
       } else {
-         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Gagal menambahkan user </div>');
-         redirect('management/users');
+         $this->notification->notify_error('management/users', 'Gagal menambahkan user');
       }
    }
 

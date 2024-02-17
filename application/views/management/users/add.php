@@ -11,7 +11,7 @@
          <form action="<?= base_url('management/users') ?>" method="post">
             <div class="modal-body">
                <div class="form-group">
-                  <input type="hidden" name="addData" id="addData">
+                  <input type="hidden" name="addData" id="addData" value="true">
                   <label for="name">Nama</label>
                   <input type="text" class="form-control" name="name" id="name" value="<?= set_value('name'); ?>">
                   <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -28,7 +28,12 @@
                </div>
                <div class="form-group">
                   <label for="role_id">Role</label>
-                  <input type="text" class="form-control" name="role_id" id="role_id" value="<?= set_value('role_id'); ?>">
+                  <select name="role_id" id="role_id" class="form-control">
+                     <option value="">--Pilih Role--</option>
+                     <option value="1" <?= set_select('role_id', '1', (!empty($_POST['role_id']) && $_POST['role_id'] == "1")); ?>>Admin</option>
+                     <option value="2" <?= set_select('role_id', '2', (!empty($_POST['role_id']) && $_POST['role_id'] == "2")); ?>>Kader</option>
+                     <option value="3" <?= set_select('role_id', '3', (!empty($_POST['role_id']) && $_POST['role_id'] == "3")); ?>>User</option>
+                  </select>
                   <?= form_error('role_id', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
             </div>

@@ -22,14 +22,27 @@ class Users extends CI_Controller
          $this->load->view('templates/topbar', $data);
          $this->load->view('management/users/index', $data);
          $this->load->view('management/users/add');
+         $this->load->view('management/users/edit');
          $this->load->view('templates/footer', $data);
       } else {
-         $this->add();
+         $add = $this->input->post('addData');
+         $update = $this->input->post('updateData');
+         $delete = $this->input->post('deleteData');
+         if ($add) {
+            return $this->add();
+         } else if ($update) {
+            return $this->update();
+         } else if ($delete) {
+            return $this->delete();
+         } else {
+            $this->notification->notify_error('management/users', 'Method initidak ditemukan');
+         }
       }
    }
 
    private function add()
    {
+      // $this->_validation_user();
       $name = htmlspecialchars($this->input->post('name', true));
       $email = htmlspecialchars($this->input->post('email', true));
       $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
@@ -38,7 +51,8 @@ class Users extends CI_Controller
          'name' => $name,
          'email' => $email,
          'password' => $password,
-         'role_id' => $role_id
+         'role_id' => $role_id,
+         'image' => "default.jpg",
       ];
       $result = $this->um->insert_user($payload);
       if ($result) {
@@ -48,15 +62,42 @@ class Users extends CI_Controller
       }
    }
 
+   private function update()
+   {
+      $id = htmlspecialchars($this->input->post('id'));
+      $name = htmlspecialchars($this->input->post('name', true));
+      $email = htmlspecialchars($this->input->post('email', true));
+      $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+      $role_id = htmlspecialchars($this->input->post('role_id'));
+      $payload = [
+         'name' => $name,
+         'email' => $email,
+         // 'password' => $password,
+         'role_id' => $role_id,
+         'image' => "default.jpg"
+      ];
+      $result = $this->um->update_user($id, $payload);
+      if ($result) {
+         $this->notification->notify_success('management/users', 'Berhasil menambahkan user');
+      } else {
+         $this->notification->notify_error('management/users', 'Gagal menambahkan user');
+      }
+   }
+
+   private function delete()
+   {
+   }
+
    private function _validation_user()
    {
       $this->form_validation->set_rules('name', 'Name', 'required|trim');
       $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]', [
          'is_unique' => 'This email has already registered!'
       ]);
-      $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]', [
-         'matches' => 'Password dont match!',
-         'min_length' => 'Password too short!'
-      ]);
+      // $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]', [
+      //    'matches' => 'Password dont match!',
+      //    'min_length' => 'Password too short!'
+      // ]);
+      $this->form_validation->set_rules('role_id', 'Role', 'required|trim');
    }
 }

@@ -12,15 +12,21 @@ $sidebarMenu = array(
             "role" => array(1, 2),
          ),
          array(
-            "url" => "admin",
-            "text" => "Produk",
-            "icon" => "fas fa-capsules",
+            "url" => "management/kaders",
+            "text" => "Kader",
+            "icon" => "fas fa-user",
             "role" => array(1),
          ),
          array(
-            "url" => "produk",
-            "text" => "Produk",
-            "icon" => "fas fa-capsules",
+            "url" => "management/posyandu",
+            "text" => "Posyandu",
+            "icon" => "fas fa-hospital",
+            "role" => array(1),
+         ),
+         array(
+            "url" => "management/anak",
+            "text" => "Anak",
+            "icon" => "fas fa-user",
             "role" => array(1),
          ),
       )

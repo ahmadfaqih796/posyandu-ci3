@@ -56,7 +56,6 @@
       document.getElementById('edit_id').value = data['id'];
       document.getElementById('edit_name').value = data['name'];
       document.getElementById('edit_email').value = data['email'];
-      document.getElementById('edit_password').value = data['password'];
       document.getElementById('edit_role_id').value = data['role_id'];
       document.getElementById('edit_is_active').value = data['is_active'];
    }

@@ -16,6 +16,7 @@ class Users extends CI_Controller
       $data['title'] = 'Users';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['users'] = $this->um->get_users();
+      $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
          $this->load->view('templates/sidebar', $data);

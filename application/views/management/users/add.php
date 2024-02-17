@@ -3,15 +3,15 @@
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id="addModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="addModalLabel">Add User</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <?= validation_errors() ?>
          <form action="<?= base_url('management/users') ?>" method="post">
             <div class="modal-body">
                <div class="form-group">
+                  <input type="hidden" name="addData" id="addData">
                   <label for="name">Nama</label>
                   <input type="text" class="form-control" name="name" id="name" value="<?= set_value('name'); ?>">
                   <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>

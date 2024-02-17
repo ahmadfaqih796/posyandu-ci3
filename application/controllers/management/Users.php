@@ -24,31 +24,30 @@ class Users extends CI_Controller
          $this->load->view('management/users/add');
          $this->load->view('templates/footer', $data);
       } else {
-         $name = htmlspecialchars($this->input->post('name', true));
-         $email = htmlspecialchars($this->input->post('email', true));
-         $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
-         $role_id = htmlspecialchars($this->input->post('role_id'));
-
-         $payload = [
-            'name' => $name,
-            'email' => $email,
-            'password' => $password,
-            'role_id' => $role_id
-         ];
-
-         $result = $this->um->insert_user($payload);
-         if ($result) {
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Berhasil menambahkan user </div>');
-            redirect('management/users');
-         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Gagal menambahkan user </div>');
-            redirect('management/users');
-         }
+         $this->add();
       }
    }
 
-   public function add()
+   private function add()
    {
+      $name = htmlspecialchars($this->input->post('name', true));
+      $email = htmlspecialchars($this->input->post('email', true));
+      $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+      $role_id = htmlspecialchars($this->input->post('role_id'));
+      $payload = [
+         'name' => $name,
+         'email' => $email,
+         'password' => $password,
+         'role_id' => $role_id
+      ];
+      $result = $this->um->insert_user($payload);
+      if ($result) {
+         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Berhasil menambahkan user </div>');
+         redirect('management/users');
+      } else {
+         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Gagal menambahkan user </div>');
+         redirect('management/users');
+      }
    }
 
    private function _validation_user()
@@ -61,14 +60,5 @@ class Users extends CI_Controller
          'matches' => 'Password dont match!',
          'min_length' => 'Password too short!'
       ]);
-
-      if ($this->form_validation->run() == false) {
-         $this->session->set_flashdata('message', validation_errors('<div class="alert alert-danger" role="alert">', '</div>'));
-      }
-   }
-   public function redirect_response($url, $type, $message)
-   {
-      $this->session->set_flashdata('message', '<div class="alert alert-' . $type . '" role="alert"> ' . $message . ' </div>');
-      redirect($url);
    }
 }

@@ -20,6 +20,7 @@
          </div>
       </div>
       <div class="card-body">
+         <?= validation_errors('<div class="alert alert-danger" role="alert">', '</div>') ?>
          <?= $this->session->flashdata('message'); ?>
          <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

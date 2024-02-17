@@ -13,22 +13,22 @@
                <div class="form-group">
                   <input type="hidden" name="addData" id="addData" value="true">
                   <label for="name">Nama</label>
-                  <input type="text" class="form-control" name="name" id="name" value="<?= set_value('name'); ?>">
+                  <input type="text" class="form-control" name="name" id="name" value="<?= set_value('name'); ?>" required>
                   <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="text" class="form-control" name="email" id="email" value="<?= set_value('email'); ?>">
+                  <input type="text" class="form-control" name="email" id="email" value="<?= set_value('email'); ?>" required>
                   <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="text" class="form-control" name="password" id="password" value="<?= set_value('password'); ?>">
+                  <input type="text" class="form-control" name="password" id="password" value="<?= set_value('password'); ?>" required>
                   <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
                   <label for="role_id">Role</label>
-                  <select name="role_id" id="role_id" class="form-control">
+                  <select name="role_id" id="role_id" class="form-control" required>
                      <option value="">--Pilih Role--</option>
                      <option value="1" <?= set_select('role_id', '1', (!empty($_POST['role_id']) && $_POST['role_id'] == "1")); ?>>Admin</option>
                      <option value="2" <?= set_select('role_id', '2', (!empty($_POST['role_id']) && $_POST['role_id'] == "2")); ?>>Kader</option>

@@ -20,17 +20,18 @@
                </div>
                <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="text" class="form-control" name="email" id="edit_email" value="<?= set_value('email'); ?>">
+                  <input disabled type="text" class="form-control" id="edit_email" value="<?= set_value('email'); ?>">
                   <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
                   <label for="edit_role_id">Role</label>
-                  <select name="role_id" id="edit_role_id" class="form-control">
-                     <!-- <option value="" selected>--Pilih Role--</option> -->
+                  <input type="text" disabled class="form-control" id="edit_role_id" value="<?= set_value('email'); ?>">
+                  <!-- <select disabled id="edit_role_id" class="form-control">
+                     <option value="" selected>--Pilih Role--</option>
                      <option value="1" <?= set_select('role_id', '1', (!empty($_POST['role_id']) && $_POST['role_id'] == "1")); ?>>Admin</option>
                      <option value="2" <?= set_select('role_id', '2', (!empty($_POST['role_id']) && $_POST['role_id'] == "2")); ?>>Kader</option>
                      <option value="3" <?= set_select('role_id', '3', (!empty($_POST['role_id']) && $_POST['role_id'] == "3")); ?>>User</option>
-                  </select>
+                  </select> -->
                   <?= form_error('role_id', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
@@ -56,7 +57,7 @@
       document.getElementById('edit_id').value = data['id'];
       document.getElementById('edit_name').value = data['name'];
       document.getElementById('edit_email').value = data['email'];
-      document.getElementById('edit_role_id').value = data['role_id'];
+      document.getElementById('edit_role_id').value = data['role'];
       document.getElementById('edit_is_active').value = data['is_active'];
    }
 </script>

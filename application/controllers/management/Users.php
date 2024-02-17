@@ -43,7 +43,6 @@ class Users extends CI_Controller
 
    private function add()
    {
-      // $this->_validation_user();
       $name = htmlspecialchars($this->input->post('name', true));
       $email = htmlspecialchars($this->input->post('email', true));
       $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
@@ -55,6 +54,7 @@ class Users extends CI_Controller
          'role_id' => $role_id,
          'image' => "default.jpg",
       ];
+
       $result = $this->um->insert_user($payload);
       if ($result) {
          $this->notification->notify_success('management/users', 'Berhasil menambahkan user');
@@ -67,21 +67,17 @@ class Users extends CI_Controller
    {
       $id = htmlspecialchars($this->input->post('id'));
       $name = htmlspecialchars($this->input->post('name', true));
-      $email = htmlspecialchars($this->input->post('email', true));
-      $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
-      $role_id = htmlspecialchars($this->input->post('role_id'));
+      $is_active = htmlspecialchars($this->input->post('is_active'));
       $payload = [
          'name' => $name,
-         'email' => $email,
-         // 'password' => $password,
-         'role_id' => $role_id,
-         'image' => "default.jpg"
+         'image' => "default.jpg",
+         'is_active' => $is_active
       ];
       $result = $this->um->update_user($id, $payload);
       if ($result) {
-         $this->notification->notify_success('management/users', 'Berhasil menambahkan user');
+         $this->notification->notify_success('management/users', 'Berhasil memperbarui user');
       } else {
-         $this->notification->notify_error('management/users', 'Gagal menambahkan user');
+         $this->notification->notify_error('management/users', 'Gagal memperbarui user');
       }
    }
 
@@ -92,13 +88,13 @@ class Users extends CI_Controller
    private function _validation_user()
    {
       $this->form_validation->set_rules('name', 'Name', 'required|trim');
-      $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]', [
-         'is_unique' => 'This email has already registered!'
-      ]);
+      // $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]', [
+      //    'is_unique' => 'This email has already registered!'
+      // ]);
       // $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]', [
       //    'matches' => 'Password dont match!',
       //    'min_length' => 'Password too short!'
       // ]);
-      $this->form_validation->set_rules('role_id', 'Role', 'required|trim');
+      // $this->form_validation->set_rules('role_id', 'Role', 'required|trim');
    }
 }

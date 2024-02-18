@@ -13,6 +13,11 @@
                <input type="hidden" name="updateData" id="updateData" value="true">
                <input type="hidden" name="id" id="edit_id">
                <div class="form-group">
+                  <label for="edit_nik">NIK</label>
+                  <input type="text" class="form-control" name="nik" id="edit_nik" value="<?= set_value('nik'); ?>">
+                  <?= form_error('nik', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <div class="form-group">
                   <label for="edit_kms">KMS</label>
                   <input type="text" class="form-control" name="id_kms" id="edit_kms" value="<?= set_value('id_kms'); ?>">
                   <?= form_error('id_kms', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -72,6 +77,7 @@
 <script>
    function getData(data) {
       document.getElementById('edit_id').value = data['id'];
+      document.getElementById('edit_nik').value = data['nik'];
       document.getElementById('edit_kms').value = data['id_kms'];
       document.getElementById('edit_posyandu_id').value = data['posyandu_id'];
       document.getElementById('edit_tempat_lahir').value = data['tempat_lahir'];

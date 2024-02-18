@@ -23,6 +23,7 @@
                <thead>
                   <tr>
                      <th>No</th>
+                     <th>NIK</th>
                      <th>KMS</th>
                      <th>Nama</th>
                      <th>Posyandu</th>
@@ -39,6 +40,7 @@
                   <?php foreach ($users as $field) : ?>
                      <tr>
                         <td><?= $no++ ?></td>
+                        <td><?= $field['nik'] ?></td>
                         <td><?= $field['id_kms'] ?></td>
                         <td><?= $field['name'] ?></td>
                         <td><?= $field['n_posyandu'] ?></td>

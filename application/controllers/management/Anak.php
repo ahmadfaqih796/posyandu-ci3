@@ -39,6 +39,7 @@ class Anak extends CI_Controller
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
+      $nik = htmlspecialchars($this->input->post('nik'));
       $id_kms = htmlspecialchars($this->input->post('id_kms'));
       $posyandu_id = htmlspecialchars($this->input->post('posyandu_id'));
       $tempat_lahir = htmlspecialchars($this->input->post('tempat_lahir'));
@@ -50,6 +51,7 @@ class Anak extends CI_Controller
 
       $payload = [
          'id_kms' => $id_kms,
+         'nik' => $nik,
          'posyandu_id' => $posyandu_id,
          'tempat_lahir' => $tempat_lahir,
          'tanggal_lahir' => $tanggal_lahir,

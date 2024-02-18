@@ -8,25 +8,49 @@ $sidebarMenu = array(
          array(
             "url" => "management/users",
             "text" => "Users",
-            "icon" => "fas fa-user",
+            "icon" => "fas fa-fw fa-users",
             "role" => array(1, 2),
          ),
          array(
             "url" => "management/kaders",
             "text" => "Kader",
-            "icon" => "fas fa-user",
+            "icon" => "fas fa-fw fa-user",
             "role" => array(1),
          ),
          array(
             "url" => "management/posyandu",
             "text" => "Posyandu",
-            "icon" => "fas fa-hospital",
+            "icon" => "fas fa-fw fa-hospital",
             "role" => array(1),
+         ),
+         array(
+            "url" => "management/ibu",
+            "text" => "Ibu",
+            "icon" => "fas fa-fw fa-female",
+            "role" => array(1, 2),
          ),
          array(
             "url" => "management/anak",
             "text" => "Anak",
-            "icon" => "fas fa-user",
+            "icon" => "fas fa-fw fa-child",
+            "role" => array(1, 2),
+         ),
+      )
+   ),
+   array(
+      "text" => "Laporan",
+      "role" => array(1, 2),
+      "submenu" => array(
+         array(
+            "url" => "laporan/users",
+            "text" => "Perkembangan Anak",
+            "icon" => "fas fa-fw fa-clipboard",
+            "role" => array(1, 2),
+         ),
+         array(
+            "url" => "laporan/kaders",
+            "text" => "Data Posyandu",
+            "icon" => "fas fa-fw fa-book",
             "role" => array(1),
          ),
       )

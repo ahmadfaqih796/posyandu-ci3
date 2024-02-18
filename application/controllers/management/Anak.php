@@ -8,6 +8,7 @@ class Anak extends CI_Controller
       parent::__construct();
       $this->load->library('session');
       $this->load->model('Anak_model', 'am');
+      $this->load->model('Posyandu_model', 'pm');
    }
 
    public function index()
@@ -16,6 +17,7 @@ class Anak extends CI_Controller
       $data['title'] = 'Anak';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['users'] = $this->am->get_all_anak();
+      $data['posyandu'] = $this->pm->get_posyandu();
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
@@ -38,6 +40,7 @@ class Anak extends CI_Controller
    {
       $id = htmlspecialchars($this->input->post('id'));
       $id_kms = htmlspecialchars($this->input->post('id_kms'));
+      $posyandu_id = htmlspecialchars($this->input->post('posyandu_id'));
       $tempat_lahir = htmlspecialchars($this->input->post('tempat_lahir'));
       $tanggal_lahir = htmlspecialchars($this->input->post('tanggal_lahir'));
       $jk = htmlspecialchars($this->input->post('jk'));
@@ -47,6 +50,7 @@ class Anak extends CI_Controller
 
       $payload = [
          'id_kms' => $id_kms,
+         'posyandu_id' => $posyandu_id,
          'tempat_lahir' => $tempat_lahir,
          'tanggal_lahir' => $tanggal_lahir,
          'jk' => $jk,

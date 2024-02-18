@@ -25,7 +25,7 @@
                      <th>No</th>
                      <th>KMS</th>
                      <th>Nama</th>
-                     <th>Email</th>
+                     <th>Posyandu</th>
                      <th>Jenis Kelamin</th>
                      <th>Tempat Tanggal Lahir</th>
                      <th>Alamat</th>
@@ -41,7 +41,7 @@
                         <td><?= $no++ ?></td>
                         <td><?= $field['id_kms'] ?></td>
                         <td><?= $field['name'] ?></td>
-                        <td><?= $field['email'] ?></td>
+                        <td><?= $field['n_posyandu'] ?></td>
                         <td><?= $field['jk'] == 'L' ? 'Laki-laki' : 'Perempuan' ?></td>
                         <td><?= $field['tempat_lahir'] ? ($field['tempat_lahir'] . ', ' . $field['tanggal_lahir']) : '-' ?></td>
                         <td><?= $field['alamat'] ?></td>

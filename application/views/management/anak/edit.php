@@ -18,6 +18,15 @@
                   <?= form_error('id_kms', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
+                  <label for="edit_posyandu_id">Posyandu</label>
+                  <select name="posyandu_id" id="edit_posyandu_id" class="form-control">
+                     <?php foreach ($posyandu as $field) : ?>
+                        <option value="<?= $field['id'] ?>" <?= set_select('posyandu_id', $field['id'], (!empty($_POST['posyandu_id']) && $_POST['posyandu_id'] == $field['id'])); ?>><?= $field['n_posyandu'] ?></option>
+                     <?php endforeach; ?>
+                  </select>
+                  <?= form_error('jk', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <div class="form-group">
                   <label for="edit_jk">Status</label>
                   <select name="jk" id="edit_jk" class="form-control">
                      <option value="L" <?= set_select('jk', 'L', (!empty($_POST['jk']) && $_POST['jk'] == "L")); ?>>Laki - Laki</option>
@@ -64,6 +73,7 @@
    function getData(data) {
       document.getElementById('edit_id').value = data['id'];
       document.getElementById('edit_kms').value = data['id_kms'];
+      document.getElementById('edit_posyandu_id').value = data['posyandu_id'];
       document.getElementById('edit_tempat_lahir').value = data['tempat_lahir'];
       document.getElementById('edit_tanggal_lahir').value = data['tanggal_lahir'];
       document.getElementById('edit_golongan_darah').value = data['golongan_darah'];

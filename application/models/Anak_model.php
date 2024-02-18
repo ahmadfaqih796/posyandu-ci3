@@ -11,9 +11,10 @@ class Anak_model extends CI_Model
 
    public function get_all_anak()
    {
-      $this->db->select('a.*, u.name, u.email, u.is_active');
+      $this->db->select('a.*, u.name, u.email, u.is_active, p.n_posyandu');
       $this->db->from('anak a');
       $this->db->join('users u', 'a.user_id = u.id', 'left');
+      $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
       return $this->db->get()->result_array();
    }
 

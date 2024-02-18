@@ -19,14 +19,15 @@
          <?= validation_errors('<div class="alert alert-danger" role="alert">', '</div>') ?>
          <?= $this->session->flashdata('message'); ?>
          <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
                <thead>
                   <tr>
                      <th>No</th>
                      <th>NIK</th>
-                     <th>Email</th>
                      <th>Nama</th>
+                     <th>Email</th>
                      <th>Tempat Tanggal Lahir</th>
+                     <th>Jabatan</th>
                      <th>Alamat</th>
                      <th>Pendidikan Terakhir</th>
                      <th>Telepon</th>
@@ -42,6 +43,7 @@
                         <td><?= $field['name'] ?></td>
                         <td><?= $field['email'] ?></td>
                         <td><?= $field['tempat_lahir'] . ', ' . $field['tanggal_lahir'] ?></td>
+                        <td><?= $field['jabatan'] ?></td>
                         <td><?= $field['alamat'] ?></td>
                         <td><?= $field['pendidikan_terakhir'] ?></td>
                         <td><?= $field['telepon'] ?></td>

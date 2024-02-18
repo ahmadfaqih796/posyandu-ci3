@@ -19,7 +19,7 @@
          <?= validation_errors('<div class="alert alert-danger" role="alert">', '</div>') ?>
          <?= $this->session->flashdata('message'); ?>
          <div class="table-responsive">
-            <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered align-middle" id="dataTable" width="100%" cellspacing="0">
                <thead>
                   <tr>
                      <th>No</th>
@@ -52,7 +52,7 @@
                         <td><?= $field['is_active'] == 1 ? 'Aktif' : 'Tidak Aktif' ?></td>
                         <td>
                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
-                           <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button> -->
+                           <a type="button" class="btn btn-success" href="<?= base_url('management/anak/detail/' . $field['user_id']) ?>">Detail</a>
                         </td>
                      </tr>
                   <?php endforeach; ?>

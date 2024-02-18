@@ -36,6 +36,18 @@ class Anak extends CI_Controller
       }
    }
 
+   public function detail($user_id)
+   {
+      $data['title'] = 'Detail Anak';
+      $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+      $data['detail'] = $this->am->get_anak_by_id($user_id);
+      $this->load->view('templates/header', $data);
+      $this->load->view('templates/sidebar');
+      $this->load->view('templates/topbar', $data);
+      $this->load->view('management/anak/detail', $data);
+      $this->load->view('templates/footer');
+   }
+
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));

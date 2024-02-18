@@ -24,17 +24,15 @@ class Posyandu extends CI_Controller
          $this->load->view('management/posyandu/index', $data);
          $this->load->view('management/posyandu/add');
          $this->load->view('management/posyandu/edit');
+         $this->load->view('management/posyandu/delete');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
          $update = $this->input->post('updateData');
-         $delete = $this->input->post('deleteData');
          if ($add) {
             return $this->add();
          } else if ($update) {
             return $this->update();
-         } else if ($delete) {
-            return $this->delete();
          } else {
             $this->notification->notify_error('management/posyandu', 'Method initidak ditemukan');
          }
@@ -81,8 +79,15 @@ class Posyandu extends CI_Controller
       }
    }
 
-   private function delete()
+   public function delete()
    {
+      $id = $this->input->post('id');
+      $result = $this->pm->delete_posyandu($id);
+      if ($result) {
+         $this->notification->notify_success('management/posyandu', 'Berhasil menghapus posyandu');
+      } else {
+         $this->notification->notify_error('management/posyandu', 'Gagal menghapus posyandu');
+      }
    }
 
    private function _validation_posyandu()

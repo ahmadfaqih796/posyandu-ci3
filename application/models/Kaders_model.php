@@ -10,9 +10,10 @@ class Kaders_model extends CI_Model
 
    public function get_kaders()
    {
-      $this->db->select('k.*, u.name, u.email, u.is_active');
+      $this->db->select('k.*, u.name, u.email, u.is_active, p.n_posyandu');
       $this->db->from('kaders k');
       $this->db->join('users u', 'k.user_id = u.id', 'left');
+      $this->db->join('posyandu p', 'k.posyandu_id = p.id', 'left');
       return $this->db->get()->result_array();
    }
 

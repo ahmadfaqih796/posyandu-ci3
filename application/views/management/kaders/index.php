@@ -25,7 +25,7 @@
                      <th>No</th>
                      <th>NIK</th>
                      <th>Nama</th>
-                     <th>Email</th>
+                     <th>Posyandu</th>
                      <th>Tempat Tanggal Lahir</th>
                      <th>Jabatan</th>
                      <th>Alamat</th>
@@ -41,7 +41,7 @@
                         <td><?= $no++ ?></td>
                         <td><?= $field['nik'] ?></td>
                         <td><?= $field['name'] ?></td>
-                        <td><?= $field['email'] ?></td>
+                        <td><?= $field['n_posyandu'] ?></td>
                         <td><?= $field['tempat_lahir'] . ', ' . $field['tanggal_lahir'] ?></td>
                         <td><?= $field['jabatan'] ?></td>
                         <td><?= $field['alamat'] ?></td>

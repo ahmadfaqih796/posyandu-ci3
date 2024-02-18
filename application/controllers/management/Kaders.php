@@ -8,6 +8,7 @@ class Kaders extends CI_Controller
       parent::__construct();
       $this->load->library('session');
       $this->load->model('Kaders_model', 'km');
+      $this->load->model('Posyandu_model', 'pm');
    }
 
    public function index()
@@ -16,6 +17,7 @@ class Kaders extends CI_Controller
       $data['title'] = 'Kader';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['users'] = $this->km->get_kaders();
+      $data['posyandu'] = $this->pm->get_posyandu();
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
@@ -37,6 +39,7 @@ class Kaders extends CI_Controller
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
+      $posyandu_id = htmlspecialchars($this->input->post('posyandu_id'));
       $nik = htmlspecialchars($this->input->post('nik'));
       $tempat_lahir = htmlspecialchars($this->input->post('tempat_lahir'));
       $tanggal_lahir = htmlspecialchars($this->input->post('tanggal_lahir'));
@@ -47,6 +50,7 @@ class Kaders extends CI_Controller
 
       $payload = [
          'nik' => $nik,
+         'posyandu_id' => $posyandu_id,
          'tempat_lahir' => $tempat_lahir,
          'tanggal_lahir' => $tanggal_lahir,
          'jabatan' => $jabatan,

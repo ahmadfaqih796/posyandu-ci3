@@ -73,12 +73,12 @@ class Anak extends CI_Controller
 
       $data['title'] = 'Data Anak';
       $data['no'] = 1;
-      $data['users'] = $this->am->get_kaders();
+      $data['users'] = $this->am->get_all_anak();
 
       $html = $this->load->view('management/anak/print', $data, true);
 
       $mpdf->WriteHTML($html);
-      $mpdf->Output('data_kader.pdf', 'D');
+      $mpdf->Output('data_anak.pdf', 'D');
    }
 
    private function _validation_anak()

@@ -75,6 +75,28 @@
          <div class="card">
             <div class="card-body">
                <h1 class="h4 mb-4 text-gray-800 text-center">Data Imunisasi</h1>
+               <div class="table-responsive">
+                  <table class="table table-bordered align-middle" id="dataTable" width="100%" cellspacing="0">
+                     <thead>
+                        <tr>
+                           <th>No</th>
+                           <th>NIK</th>
+                           <th>Nama</th>
+                           <th>Tanggal Imunisasi</th>
+                           <th>Jenis Imunisasi</th>
+                           <th>Status</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <!-- <?php foreach ($users as $field) : ?>
+                           <tr>
+                              <td><?= $no++ ?></td>
+                              
+                           </tr>
+                        <?php endforeach; ?> -->
+                     </tbody>
+                  </table>
+               </div>
             </div>
          </div>
       </div>

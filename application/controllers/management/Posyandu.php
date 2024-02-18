@@ -65,18 +65,19 @@ class Posyandu extends CI_Controller
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
-      $name = htmlspecialchars($this->input->post('name', true));
-      $is_active = htmlspecialchars($this->input->post('is_active'));
+      $n_posyandu = htmlspecialchars($this->input->post('n_posyandu', true));
+      $alamat = htmlspecialchars($this->input->post('alamat', true));
+      $keterangan = htmlspecialchars($this->input->post('keterangan', true));
       $payload = [
-         'name' => $name,
-         'image' => "default.jpg",
-         'is_active' => $is_active
+         'n_posyandu' => $n_posyandu,
+         'alamat' => $alamat,
+         'keterangan' => $keterangan
       ];
-      $result = $this->pm->update_user($id, $payload);
+      $result = $this->pm->update_posyandu($id, $payload);
       if ($result) {
-         $this->notification->notify_success('management/posyandu', 'Berhasil memperbarui user');
+         $this->notification->notify_success('management/posyandu', 'Berhasil memperbarui posyandu');
       } else {
-         $this->notification->notify_error('management/posyandu', 'Gagal memperbarui user');
+         $this->notification->notify_error('management/posyandu', 'Gagal memperbarui posyandu');
       }
    }
 

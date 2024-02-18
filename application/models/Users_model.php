@@ -8,6 +8,7 @@ class Users_model extends CI_Model
       parent::__construct();
       date_default_timezone_set('Asia/Jakarta');
       $this->load->model('Kaders_model', 'km');
+      $this->load->model('Anak_model', 'am');
    }
 
    public function get_users()
@@ -40,10 +41,19 @@ class Users_model extends CI_Model
       if ($user['role_id'] == 2) {
          $existing_kader = $this->db->get_where('kaders', ['user_id' => $user_id])->row_array();
          if (!$existing_kader) {
-            $kader_data = [
+            $payload = [
                'user_id' => $user_id
             ];
-            $this->km->add_kader($kader_data);
+            $this->km->add_kader($payload);
+         }
+      }
+      if ($user['role_id'] == 3) {
+         $existing_anak = $this->db->get_where('anak', ['user_id' => $user_id])->row_array();
+         if (!$existing_anak) {
+            $payload = [
+               'user_id' => $user_id
+            ];
+            $this->am->add_anak($payload);
          }
       }
       $this->db->where('id', $user_id);

@@ -8,7 +8,7 @@ class Posyandu_model extends CI_Model
       parent::__construct();
    }
 
-   public function get_all_posyandu()
+   public function get_posyandu()
    {
       return $this->db->get('posyandu')->result_array();
    }

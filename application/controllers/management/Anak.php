@@ -22,7 +22,7 @@ class Anak extends CI_Controller
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
          $this->load->view('management/anak/index', $data);
-         // $this->load->view('management/anak/edit');
+         $this->load->view('management/anak/edit');
          $this->load->view('templates/footer', $data);
       } else {
          $update = $this->input->post('updateData');
@@ -37,28 +37,28 @@ class Anak extends CI_Controller
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
-      $nik = htmlspecialchars($this->input->post('nik'));
+      $id_kms = htmlspecialchars($this->input->post('id_kms'));
       $tempat_lahir = htmlspecialchars($this->input->post('tempat_lahir'));
       $tanggal_lahir = htmlspecialchars($this->input->post('tanggal_lahir'));
-      $jabatan = htmlspecialchars($this->input->post('jabatan'));
+      $jk = htmlspecialchars($this->input->post('jk'));
       $alamat = htmlspecialchars($this->input->post('alamat'));
-      $pendidikan_terakhir = htmlspecialchars($this->input->post('pendidikan_terakhir'));
-      $telepon = htmlspecialchars($this->input->post('telepon'));
+      $golongan_darah = htmlspecialchars($this->input->post('golongan_darah'));
+      $anak_ke = htmlspecialchars($this->input->post('anak_ke'));
 
       $payload = [
-         'nik' => $nik,
+         'id_kms' => $id_kms,
          'tempat_lahir' => $tempat_lahir,
          'tanggal_lahir' => $tanggal_lahir,
-         'jabatan' => $jabatan,
+         'jk' => $jk,
          'alamat' => $alamat,
-         'pendidikan_terakhir' => $pendidikan_terakhir,
-         'telepon' => $telepon
+         'golongan_darah' => $golongan_darah,
+         'anak_ke' => $anak_ke
       ];
-      $result = $this->am->update_kader($id, $payload);
+      $result = $this->am->update_anak($id, $payload);
       if ($result) {
-         $this->notification->notify_success('management/anak', 'Berhasil memperbarui kader');
+         $this->notification->notify_success('management/anak', 'Berhasil memperbarui anak');
       } else {
-         $this->notification->notify_error('management/anak', 'Gagal memperbarui kader');
+         $this->notification->notify_error('management/anak', 'Gagal memperbarui anak');
       }
    }
 
@@ -79,6 +79,12 @@ class Anak extends CI_Controller
 
    private function _validation_anak()
    {
-      $this->form_validation->set_rules('nik', 'NIK', 'required|trim');
+      $this->form_validation->set_rules('id_kms', 'KMS', 'required|trim');
+      $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|trim');
+      $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required|trim');
+      $this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required|trim');
+      $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+      $this->form_validation->set_rules('golongan_darah', 'Golongan Darah', 'required|trim');
+      $this->form_validation->set_rules('anak_ke', 'Anak ke', 'required|trim');
    }
 }

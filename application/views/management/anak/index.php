@@ -26,6 +26,7 @@
                      <th>KMS</th>
                      <th>Nama</th>
                      <th>Email</th>
+                     <th>Jenis Kelamin</th>
                      <th>Tempat Tanggal Lahir</th>
                      <th>Alamat</th>
                      <th>Golongan Darah</th>
@@ -41,7 +42,8 @@
                         <td><?= $field['id_kms'] ?></td>
                         <td><?= $field['name'] ?></td>
                         <td><?= $field['email'] ?></td>
-                        <td><?= $field['tempat_lahir'] . ', ' . $field['tanggal_lahir'] ?></td>
+                        <td><?= $field['jk'] == 'L' ? 'Laki-laki' : 'Perempuan' ?></td>
+                        <td><?= $field['tempat_lahir'] ? ($field['tempat_lahir'] . ', ' . $field['tanggal_lahir']) : '-' ?></td>
                         <td><?= $field['alamat'] ?></td>
                         <td><?= $field['golongan_darah'] ?></td>
                         <td><?= $field['anak_ke'] ?></td>

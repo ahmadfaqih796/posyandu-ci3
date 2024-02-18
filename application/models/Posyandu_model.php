@@ -10,7 +10,15 @@ class Posyandu_model extends CI_Model
 
    public function get_posyandu()
    {
-      return $this->db->get('posyandu')->result_array();
+      $this->db->select('p.*, 
+      (SELECT COUNT(posyandu_id) FROM kaders WHERE posyandu_id = p.id) AS total_kader,
+      (SELECT COUNT(posyandu_id) FROM anak WHERE posyandu_id = p.id) AS total_anak,
+      u.name,
+      u.email,
+      u.is_active');
+      $this->db->from('posyandu p');
+      $this->db->join('users u', 'p.user_id = u.id', 'left');
+      return $this->db->get()->result_array();
    }
 
    public function get_posyandu_by_id($posyandu_id)

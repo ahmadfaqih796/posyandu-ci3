@@ -82,6 +82,11 @@ class Posyandu extends CI_Controller
    public function delete()
    {
       $id = $this->input->post('id');
+      $t_kader = htmlspecialchars($this->input->post('t_kader', true));
+      $t_anak = htmlspecialchars($this->input->post('t_anak', true));
+      if ($t_kader > 0 || $t_anak > 0) {
+         return $this->notification->notify_error('management/posyandu', 'Posyandu ini tidak dapat di hapus karena terdapat anggota');
+      }
       $result = $this->pm->delete_posyandu($id);
       if ($result) {
          $this->notification->notify_success('management/posyandu', 'Berhasil menghapus posyandu');

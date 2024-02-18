@@ -10,6 +10,8 @@
          </div>
          <form action="<?= base_url('management/posyandu/delete') ?>" method="post">
             <input type="hidden" name="deleteData" id="deleteData" value="true">
+            <input type="hidden" name="t_kader" id="edit_t_kader">
+            <input type="hidden" name="t_anak" id="edit_t_anak">
             <div class="modal-body">
                <input type="hidden" name="id" id="delete_id">
                <p>Anda yakin ingin menghapus posyandu
@@ -29,5 +31,7 @@
    function deleteData(data) {
       document.getElementById('delete_id').value = data['id'];
       document.getElementById('delete_name').innerHTML = data['n_posyandu'];
+      document.getElementById("edit_t_kader").value = data['total_kader'];
+      document.getElementById("edit_t_anak").value = data['total_anak'];
    }
 </script>

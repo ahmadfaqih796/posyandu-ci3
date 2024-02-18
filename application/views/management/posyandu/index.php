@@ -24,6 +24,8 @@
                   <tr>
                      <th>No</th>
                      <th>Nama</th>
+                     <th>Total Kader</th>
+                     <th>Total Anak</th>
                      <th>Alamat</th>
                      <th>Keterangan</th>
                      <th>Aksi</th>
@@ -34,6 +36,8 @@
                      <tr>
                         <td><?= $no++ ?></td>
                         <td><?= $field['n_posyandu'] ?></td>
+                        <td><?= $field['total_kader'] ?></td>
+                        <td><?= $field['total_anak'] ?></td>
                         <td><?= $field['alamat'] ?></td>
                         <td><?= $field['keterangan'] ?></td>
                         <td>

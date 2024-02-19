@@ -22,11 +22,15 @@ class Ibu extends CI_Controller
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
          $this->load->view('management/ibu/index', $data);
+         $this->load->view('management/ibu/add');
          // $this->load->view('management/anak/edit');
          $this->load->view('templates/footer');
       } else {
+         $add = $this->input->post('addData');
          $update = $this->input->post('updateData');
-         if ($update) {
+         if ($add) {
+            return $this->add();
+         } else if ($update) {
             // return $this->update();
          } else {
             $this->notification->notify_error('management/anak', 'Method initidak ditemukan');
@@ -34,14 +38,43 @@ class Ibu extends CI_Controller
       }
    }
 
+   private function add()
+   {
+      $n_ibu = htmlspecialchars($this->input->post('n_ibu', true));
+      $nik = htmlspecialchars($this->input->post('nik', true));
+      $tempat_lahir = htmlspecialchars($this->input->post('tempat_lahir', true));
+      $tanggal_lahir = htmlspecialchars($this->input->post('tanggal_lahir', true));
+      $alamat = htmlspecialchars($this->input->post('alamat', true));
+      $golongan_darah = htmlspecialchars($this->input->post('golongan_darah', true));
+      $telepon = htmlspecialchars($this->input->post('telepon', true));
+
+
+      $payload = [
+         'n_ibu' => $n_ibu,
+         'nik' => $nik,
+         'tempat_lahir' => $tempat_lahir,
+         'tanggal_lahir' => $tanggal_lahir,
+         'alamat' => $alamat,
+         'golongan_darah' => $golongan_darah,
+         'telepon' => $telepon
+      ];
+
+      $result = $this->im->add_ibu($payload);
+      if ($result) {
+         $this->notification->notify_success('management/ibu', 'Berhasil menambahkan ibu');
+      } else {
+         $this->notification->notify_error('management/ibu', 'Gagal menambahkan ibu');
+      }
+   }
+
    private function _validation_ibu()
    {
-      $this->form_validation->set_rules('id_kms', 'KMS', 'required|trim');
+      $this->form_validation->set_rules('n_ibu', 'Nama', 'required|trim');
+      $this->form_validation->set_rules('nik', 'NIK', 'required|trim');
       $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|trim');
       $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required|trim');
-      $this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required|trim');
       $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
       $this->form_validation->set_rules('golongan_darah', 'Golongan Darah', 'required|trim');
-      $this->form_validation->set_rules('anak_ke', 'Anak ke', 'required|trim');
+      $this->form_validation->set_rules('telepon', 'Telepon', 'required|trim');
    }
 }

@@ -40,7 +40,6 @@
                      <tr>
                         <td><?= $no++ ?></td>
                         <td><?= $field['nik'] ?></td>
-                        <td><?= $field['id_kms'] ?></td>
                         <td><?= $field['n_ibu'] ?></td>
                         <td><?= $field['tempat_lahir'] ? ($field['tempat_lahir'] . ', ' . $field['tanggal_lahir']) : '-' ?></td>
                         <td><?= $field['alamat'] ?></td>
@@ -48,7 +47,7 @@
                         <td><?= $field['telepon'] ?></td>
                         <td>
                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
-                           <a type="button" class="btn btn-success" href="<?= base_url('management/ibu/detail/' . $field['user_id']) ?>">Detail</a>
+                           <!-- <a type="button" class="btn btn-success" href="<?= base_url('management/ibu/detail/' . $field['user_id']) ?>">Detail</a> -->
                         </td>
                      </tr>
                   <?php endforeach; ?>

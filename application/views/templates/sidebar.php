@@ -2,6 +2,18 @@
 // Array untuk menu sidebar
 $sidebarMenu = array(
    array(
+      "text" => "Home",
+      "role" => array(1, 2),
+      "submenu" => array(
+         array(
+            "url" => "dashboard",
+            "text" => "Dashboard",
+            "icon" => "fas fa-fw fa-clipboard",
+            "role" => array(1, 2),
+         ),
+      )
+   ),
+   array(
       "text" => "Management",
       "role" => array(1, 2),
       "submenu" => array(

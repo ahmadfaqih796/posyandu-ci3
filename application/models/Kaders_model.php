@@ -17,6 +17,11 @@ class Kaders_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
+   public function get_count_kaders()
+   {
+      return $this->db->get('kaders')->num_rows();
+   }
+
    public function get_kader_by_id($kader_id)
    {
       return $this->db->get_where('kaders', ['id' => $kader_id])->row_array();

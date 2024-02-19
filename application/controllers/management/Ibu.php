@@ -23,7 +23,7 @@ class Ibu extends CI_Controller
          $this->load->view('templates/topbar', $data);
          $this->load->view('management/ibu/index', $data);
          $this->load->view('management/ibu/add');
-         // $this->load->view('management/anak/edit');
+         $this->load->view('management/ibu/edit');
          $this->load->view('templates/footer');
       } else {
          $add = $this->input->post('addData');
@@ -31,7 +31,7 @@ class Ibu extends CI_Controller
          if ($add) {
             return $this->add();
          } else if ($update) {
-            // return $this->update();
+            return $this->update();
          } else {
             $this->notification->notify_error('management/anak', 'Method initidak ditemukan');
          }
@@ -40,6 +40,27 @@ class Ibu extends CI_Controller
 
    private function add()
    {
+      $result = $this->im->add_ibu($this->_payload());
+      if ($result) {
+         $this->notification->notify_success('management/ibu', 'Berhasil menambahkan ibu');
+      } else {
+         $this->notification->notify_error('management/ibu', 'Gagal menambahkan ibu');
+      }
+   }
+
+   private function update()
+   {
+      $id = htmlspecialchars($this->input->post('id'));
+      $result = $this->im->update_ibu($id, $this->_payload());
+      if ($result) {
+         $this->notification->notify_success('management/ibu', 'Berhasil memperbarui ibu');
+      } else {
+         $this->notification->notify_error('management/ibu', 'Gagal memperbarui ibu');
+      }
+   }
+
+   private function _payload()
+   {
       $n_ibu = htmlspecialchars($this->input->post('n_ibu', true));
       $nik = htmlspecialchars($this->input->post('nik', true));
       $tempat_lahir = htmlspecialchars($this->input->post('tempat_lahir', true));
@@ -47,7 +68,6 @@ class Ibu extends CI_Controller
       $alamat = htmlspecialchars($this->input->post('alamat', true));
       $golongan_darah = htmlspecialchars($this->input->post('golongan_darah', true));
       $telepon = htmlspecialchars($this->input->post('telepon', true));
-
 
       $payload = [
          'n_ibu' => $n_ibu,
@@ -59,12 +79,7 @@ class Ibu extends CI_Controller
          'telepon' => $telepon
       ];
 
-      $result = $this->im->add_ibu($payload);
-      if ($result) {
-         $this->notification->notify_success('management/ibu', 'Berhasil menambahkan ibu');
-      } else {
-         $this->notification->notify_error('management/ibu', 'Gagal menambahkan ibu');
-      }
+      return $payload;
    }
 
    private function _validation_ibu()

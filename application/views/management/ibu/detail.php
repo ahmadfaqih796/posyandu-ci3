@@ -61,19 +61,35 @@
                         <tr>
                            <th>No</th>
                            <th>NIK</th>
+                           <th>KMS</th>
                            <th>Nama</th>
-                           <th>Tanggal Imunisasi</th>
-                           <th>Jenis Imunisasi</th>
+                           <th>Nama Orang Tua</th>
+                           <th>Posyandu</th>
+                           <th>Jenis Kelamin</th>
+                           <th>Tempat Tanggal Lahir</th>
+                           <th>Alamat</th>
+                           <th>Golongan Darah</th>
+                           <th>Anak ke</th>
                            <th>Status</th>
                         </tr>
                      </thead>
                      <tbody>
-                        <!-- <?php foreach ($users as $field) : ?>
+                        <?php foreach ($d_anak as $field) : ?>
                            <tr>
                               <td><?= $no++ ?></td>
-                              
+                              <td><?= $field['nik'] ?></td>
+                              <td><?= $field['id_kms'] ?></td>
+                              <td><?= $field['name'] ?></td>
+                              <td><?= $field['n_ibu'] ?></td>
+                              <td><?= $field['n_posyandu'] ?></td>
+                              <td><?= $field['jk'] == 'L' ? 'Laki-laki' : 'Perempuan' ?></td>
+                              <td><?= $field['tempat_lahir'] ? ($field['tempat_lahir'] . ', ' . $field['tanggal_lahir']) : '-' ?></td>
+                              <td><?= $field['alamat'] ?></td>
+                              <td><?= $field['golongan_darah'] ?></td>
+                              <td><?= $field['anak_ke'] ?></td>
+                              <td><?= $field['is_active'] == 1 ? 'Aktif' : 'Tidak Aktif' ?></td>
                            </tr>
-                        <?php endforeach; ?> -->
+                        <?php endforeach; ?>
                      </tbody>
                   </table>
                </div>

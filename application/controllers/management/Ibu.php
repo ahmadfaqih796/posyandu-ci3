@@ -8,6 +8,7 @@ class Ibu extends CI_Controller
       parent::__construct();
       $this->load->library('session');
       $this->load->model('Ibu_model', 'im');
+      $this->load->model('Anak_model', 'am');
    }
 
    public function index()
@@ -41,8 +42,10 @@ class Ibu extends CI_Controller
    public function detail($user_id)
    {
       $data['title'] = 'Detail Ibu';
+      $data['no'] = 1;
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['detail'] = $this->im->get_ibu_by_id($user_id);
+      $data['d_anak'] = $this->am->get_all_anak_by_ibu($user_id);
       $this->load->view('templates/header', $data);
       $this->load->view('templates/sidebar');
       $this->load->view('templates/topbar', $data);

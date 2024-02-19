@@ -26,6 +26,7 @@
                      <th>NIK</th>
                      <th>KMS</th>
                      <th>Nama</th>
+                     <th>Nama Orang Tua</th>
                      <th>Posyandu</th>
                      <th>Jenis Kelamin</th>
                      <th>Tempat Tanggal Lahir</th>
@@ -43,6 +44,7 @@
                         <td><?= $field['nik'] ?></td>
                         <td><?= $field['id_kms'] ?></td>
                         <td><?= $field['name'] ?></td>
+                        <td><?= $field['n_ibu'] ?></td>
                         <td><?= $field['n_posyandu'] ?></td>
                         <td><?= $field['jk'] == 'L' ? 'Laki-laki' : 'Perempuan' ?></td>
                         <td><?= $field['tempat_lahir'] ? ($field['tempat_lahir'] . ', ' . $field['tanggal_lahir']) : '-' ?></td>

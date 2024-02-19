@@ -38,6 +38,18 @@ class Ibu extends CI_Controller
       }
    }
 
+   public function detail($user_id)
+   {
+      $data['title'] = 'Detail Ibu';
+      $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+      $data['detail'] = $this->im->get_ibu_by_id($user_id);
+      $this->load->view('templates/header', $data);
+      $this->load->view('templates/sidebar');
+      $this->load->view('templates/topbar', $data);
+      $this->load->view('management/ibu/detail', $data);
+      $this->load->view('templates/footer');
+   }
+
    private function add()
    {
       $result = $this->im->add_ibu($this->_payload());

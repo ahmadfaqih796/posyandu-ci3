@@ -14,6 +14,11 @@ class Ibu_model extends CI_Model
       return $this->db->get('ibu')->result_array();
    }
 
+   public function get_ibu_by_id($id)
+   {
+      return $this->db->get_where('ibu', ['id' => $id])->row_array();
+   }
+
    public function add_ibu($data)
    {
       return $this->db->insert('ibu', $data);

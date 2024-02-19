@@ -50,6 +50,21 @@ class Ibu extends CI_Controller
       $this->load->view('templates/footer');
    }
 
+   public function print()
+   {
+      require_once FCPATH . 'vendor/autoload.php';
+      $mpdf = new \Mpdf\Mpdf();
+
+      $data['title'] = 'Data Ibu';
+      $data['no'] = 1;
+      $data['users'] = $this->im->get_all_ibu();
+
+      $html = $this->load->view('management/ibu/print', $data, true);
+
+      $mpdf->WriteHTML($html);
+      $mpdf->Output('data_ibu.pdf', 'D');
+   }
+
    private function add()
    {
       $result = $this->im->add_ibu($this->_payload());

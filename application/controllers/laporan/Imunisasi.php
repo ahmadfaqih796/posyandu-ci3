@@ -8,6 +8,8 @@ class Imunisasi extends CI_Controller
       parent::__construct();
       $this->load->library('session');
       $this->load->model('Imunisasi_model', 'im');
+      $this->load->model('Anak_model', 'am');
+      $this->load->model('Base_model', 'bm');
    }
 
    public function index()
@@ -16,13 +18,15 @@ class Imunisasi extends CI_Controller
       $data['title'] = 'Imunisasi';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->im->get_all_imunisasi();
+      $data['anak'] = $this->am->get_all_anak();
+      $data['imunisasi'] = $this->bm->get_all('tipe_imunisasi');
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
          $this->load->view('laporan/imunisasi/index', $data);
-         // $this->load->view('laporan/imunisasi/add');
+         $this->load->view('laporan/imunisasi/add', $data);
          // $this->load->view('laporan/imunisasi/edit');
          // $this->load->view('laporan/imunisasi/delete');
          $this->load->view('templates/footer', $data);
@@ -34,29 +38,29 @@ class Imunisasi extends CI_Controller
          } else if ($update) {
             return $this->update();
          } else {
-            $this->notification->notify_error('management/imunisasi', 'Method initidak ditemukan');
+            $this->notification->notify_error('laporan/imunisasi', 'Method initidak ditemukan');
          }
       }
    }
 
    private function add()
    {
-      $result = $this->im->add($this->_payload());
+      $result = $this->im->add_imunisasi($this->_payload());
       if ($result) {
-         $this->notification->notify_success('management/imunisasi', 'Berhasil menambahkan imunisasi');
+         $this->notification->notify_success('laporan/imunisasi', 'Berhasil menambahkan imunisasi');
       } else {
-         $this->notification->notify_error('management/imunisasi', 'Gagal menambahkan imunisasi');
+         $this->notification->notify_error('laporan/imunisasi', 'Gagal menambahkan imunisasi');
       }
    }
 
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
-      $result = $this->im->update($id, $this->_payload());
+      $result = $this->im->update_imunisasi($id, $this->_payload());
       if ($result) {
-         $this->notification->notify_success('management/imunisasi', 'Berhasil memperbarui imunisasi');
+         $this->notification->notify_success('laporan/imunisasi', 'Berhasil memperbarui imunisasi');
       } else {
-         $this->notification->notify_error('management/imunisasi', 'Gagal memperbarui imunisasi');
+         $this->notification->notify_error('laporan/imunisasi', 'Gagal memperbarui imunisasi');
       }
    }
 
@@ -66,27 +70,36 @@ class Imunisasi extends CI_Controller
       $t_kader = htmlspecialchars($this->input->post('t_kader', true));
       $t_anak = htmlspecialchars($this->input->post('t_anak', true));
       if ($t_kader > 0 || $t_anak > 0) {
-         return $this->notification->notify_error('management/imunisasi', 'Imunisasi ini tidak dapat di hapus karena terdapat anggota');
+         return $this->notification->notify_error('laporan/imunisasi', 'Imunisasi ini tidak dapat di hapus karena terdapat anggota');
       }
       $result = $this->pm->delete_imunisasi($id);
       if ($result) {
-         $this->notification->notify_success('management/imunisasi', 'Berhasil menghapus imunisasi');
+         $this->notification->notify_success('laporan/imunisasi', 'Berhasil menghapus imunisasi');
       } else {
-         $this->notification->notify_error('management/imunisasi', 'Gagal menghapus imunisasi');
+         $this->notification->notify_error('laporan/imunisasi', 'Gagal menghapus imunisasi');
       }
    }
 
    private function _payload()
    {
-      $n_imunisasi = htmlspecialchars($this->input->post('n_imunisasi', true));
+      $anak_id = htmlspecialchars($this->input->post('anak_id', true));
+      $tipe_imunisasi_id = htmlspecialchars($this->input->post('tipe_imunisasi_id', true));
+      $tanggal_imunisasi = htmlspecialchars($this->input->post('tanggal_imunisasi', true));
+      $status = htmlspecialchars($this->input->post('status', true));
       $payload = [
-         'n_imunisasi' => $n_imunisasi
+         'anak_id' => $anak_id,
+         'tipe_imunisasi_id' => $tipe_imunisasi_id,
+         'tanggal_imunisasi' => $tanggal_imunisasi,
+         'status' => $status
       ];
       return $payload;
    }
 
    private function _validation_imunisasi()
    {
-      $this->form_validation->set_rules('n_imunisasi', 'Nama Imunisasi', 'required|trim');
+      $this->form_validation->set_rules('anak_id', 'Nama Anak', 'required|trim');
+      $this->form_validation->set_rules('tipe_imunisasi_id', 'Tipe Imunisasi', 'required|trim');
+      $this->form_validation->set_rules('tanggal_imunisasi', 'Tanggal Imunisasi', 'required|trim');
+      $this->form_validation->set_rules('status', 'Status', 'required|trim');
    }
 }

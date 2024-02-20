@@ -40,9 +40,9 @@ class Auth extends CI_Controller
                ];
                $this->session->set_userdata($data);
                if ($user['role_id'] == 1) {
-                  redirect('admin');
+                  redirect('dashboard');
                } elseif ($user['role_id'] == 2) {
-                  redirect('user');
+                  redirect('dashboard');
                } else {
                   $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> You are not allowed to access </div>');
                   redirect('auth');
@@ -86,8 +86,8 @@ class Auth extends CI_Controller
             'email' => htmlspecialchars($this->input->post('email', true)),
             'image' => 'default.jpg',
             'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-            'role_id' => 2,
-            'is_active' => 1,
+            'role_id' => 3,
+            'is_active' => 0,
          ];
          $this->db->insert('users', $data);
          $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Congratulation! your account has been created. Please Login </div>');

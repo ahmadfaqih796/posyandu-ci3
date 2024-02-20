@@ -28,7 +28,7 @@ class Imunisasi extends CI_Controller
          $this->load->view('laporan/imunisasi/index', $data);
          $this->load->view('laporan/imunisasi/add', $data);
          $this->load->view('laporan/imunisasi/edit', $data);
-         // $this->load->view('laporan/imunisasi/delete');
+         $this->load->view('laporan/imunisasi/delete');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
@@ -67,12 +67,7 @@ class Imunisasi extends CI_Controller
    public function delete()
    {
       $id = $this->input->post('id');
-      $t_kader = htmlspecialchars($this->input->post('t_kader', true));
-      $t_anak = htmlspecialchars($this->input->post('t_anak', true));
-      if ($t_kader > 0 || $t_anak > 0) {
-         return $this->notification->notify_error('laporan/imunisasi', 'Imunisasi ini tidak dapat di hapus karena terdapat anggota');
-      }
-      $result = $this->pm->delete_imunisasi($id);
+      $result = $this->im->delete_imunisasi($id);
       if ($result) {
          $this->notification->notify_success('laporan/imunisasi', 'Berhasil menghapus imunisasi');
       } else {

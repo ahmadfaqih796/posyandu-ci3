@@ -23,6 +23,7 @@
                <thead>
                   <tr>
                      <th>No</th>
+                     <th>NIK</th>
                      <th>Nama</th>
                      <th>Tanggal Imunisasi</th>
                      <th>Imunisasi</th>
@@ -34,6 +35,7 @@
                   <?php foreach ($data as $field) : ?>
                      <tr>
                         <td><?= $no++ ?></td>
+                        <td><?= $field['nik'] ?></td>
                         <td><?= $field['name'] ?></td>
                         <td><?= $field['tanggal_imunisasi'] ?></td>
                         <td><?= $field['n_imunisasi'] ?></td>

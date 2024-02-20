@@ -23,8 +23,8 @@ class Imunisasi extends CI_Controller
          $this->load->view('templates/topbar', $data);
          $this->load->view('management/imunisasi/index', $data);
          $this->load->view('management/imunisasi/add');
-         $this->load->view('management/imunisasi/edit');
-         $this->load->view('management/imunisasi/delete');
+         // $this->load->view('management/imunisasi/edit');
+         // $this->load->view('management/imunisasi/delete');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
@@ -41,7 +41,7 @@ class Imunisasi extends CI_Controller
 
    private function add()
    {
-      $result = $this->bm->add($this->_payload());
+      $result = $this->bm->add('tipe_imunisasi', $this->_payload());
       if ($result) {
          $this->notification->notify_success('management/imunisasi', 'Berhasil menambahkan imunisasi');
       } else {

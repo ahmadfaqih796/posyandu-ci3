@@ -3,29 +3,18 @@
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id="addModalLabel">Add Posyandu</h5>
+            <h5 class="modal-title" id="addModalLabel">Add Imunisasi</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <form action="<?= base_url('management/posyandu') ?>" method="post">
+         <form action="<?= base_url('management/imunisasi') ?>" method="post">
             <div class="modal-body">
-               <input type="hidden" name="user_id" id="user_id" value="<?= $this->session->userdata('user_id'); ?>">
                <input type="hidden" name="addData" id="addData" value="true">
                <div class="form-group">
-                  <label for="n_posyandu">Nama Posyandu</label>
-                  <input type="text" class="form-control" name="n_posyandu" id="n_posyandu" value="<?= set_value('n_posyandu'); ?>">
-                  <?= form_error('n_posyandu', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
-               <div class="form-group">
-                  <label for="alamat">Alamat</label>
-                  <input type="text" class="form-control" name="alamat" id="alamat" value="<?= set_value('alamat'); ?>">
-                  <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
-               <div class="form-group">
-                  <label for="keterangan">Keterangan</label>
-                  <input type="text" class="form-control" name="keterangan" id="keterangan" value="<?= set_value('keterangan'); ?>">
-                  <?= form_error('keterangan', '<small class="text-danger pl-3">', '</small>'); ?>
+                  <label for="n_imunisasi">Nama Imunisasi</label>
+                  <input type="text" class="form-control" name="n_imunisasi" id="n_imunisasi" value="<?= set_value('n_imunisasi'); ?>">
+                  <?= form_error('n_imunisasi', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
             </div>
             <div class="modal-footer">

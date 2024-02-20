@@ -23,7 +23,7 @@ class Imunisasi extends CI_Controller
          $this->load->view('templates/topbar', $data);
          $this->load->view('management/imunisasi/index', $data);
          $this->load->view('management/imunisasi/add');
-         // $this->load->view('management/imunisasi/edit');
+         $this->load->view('management/imunisasi/edit');
          // $this->load->view('management/imunisasi/delete');
          $this->load->view('templates/footer', $data);
       } else {
@@ -52,15 +52,7 @@ class Imunisasi extends CI_Controller
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
-      $n_imunisasi = htmlspecialchars($this->input->post('n_imunisasi', true));
-      $alamat = htmlspecialchars($this->input->post('alamat', true));
-      $keterangan = htmlspecialchars($this->input->post('keterangan', true));
-      $payload = [
-         'n_imunisasi' => $n_imunisasi,
-         'alamat' => $alamat,
-         'keterangan' => $keterangan
-      ];
-      $result = $this->pm->update_imunisasi($id, $payload);
+      $result = $this->bm->update('tipe_imunisasi', $id, $this->_payload());
       if ($result) {
          $this->notification->notify_success('management/imunisasi', 'Berhasil memperbarui imunisasi');
       } else {

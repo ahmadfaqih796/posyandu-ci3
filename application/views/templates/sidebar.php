@@ -77,6 +77,12 @@ $sidebarMenu = array(
             "icon" => "fas fa-fw fa-book",
             "role" => array(1),
          ),
+         array(
+            "url" => "laporan/imunisasi",
+            "text" => "Data Imunisasi",
+            "icon" => "fas fa-fw fa-book",
+            "role" => array(1, 2),
+         ),
       )
    )
 );

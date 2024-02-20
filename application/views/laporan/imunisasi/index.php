@@ -24,7 +24,9 @@
                   <tr>
                      <th>No</th>
                      <th>Nama</th>
-                     <th>Total Anak Imunisasi</th>
+                     <th>Tanggal Imunisasi</th>
+                     <th>Imunisasi</th>
+                     <th>Status</th>
                      <th>Aksi</th>
                   </tr>
                </thead>
@@ -32,8 +34,10 @@
                   <?php foreach ($data as $field) : ?>
                      <tr>
                         <td><?= $no++ ?></td>
+                        <td><?= $field['name'] ?></td>
+                        <td><?= $field['tanggal_imunisasi'] ?></td>
                         <td><?= $field['n_imunisasi'] ?></td>
-                        <td><?= $field['total_imunisasi'] ?></td>
+                        <td><?= $field['status'] ? 'Sudah' : 'Belum' ?></td>
                         <td>
                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>

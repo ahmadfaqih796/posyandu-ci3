@@ -7,7 +7,6 @@ class Imunisasi extends CI_Controller
    {
       parent::__construct();
       $this->load->library('session');
-      $this->load->model('Base_model', 'bm');
       $this->load->model('Imunisasi_model', 'im');
    }
 
@@ -16,17 +15,16 @@ class Imunisasi extends CI_Controller
       $this->_validation_imunisasi();
       $data['title'] = 'Imunisasi';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['data'] = $this->im->get_all_type_imunisasi();
-
+      $data['data'] = $this->im->get_all_imunisasi();
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
-         $this->load->view('management/imunisasi/index', $data);
-         $this->load->view('management/imunisasi/add');
-         $this->load->view('management/imunisasi/edit');
-         // $this->load->view('management/imunisasi/delete');
+         $this->load->view('laporan/imunisasi/index', $data);
+         // $this->load->view('laporan/imunisasi/add');
+         // $this->load->view('laporan/imunisasi/edit');
+         // $this->load->view('laporan/imunisasi/delete');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
@@ -43,7 +41,7 @@ class Imunisasi extends CI_Controller
 
    private function add()
    {
-      $result = $this->bm->add('tipe_imunisasi', $this->_payload());
+      $result = $this->im->add($this->_payload());
       if ($result) {
          $this->notification->notify_success('management/imunisasi', 'Berhasil menambahkan imunisasi');
       } else {
@@ -54,7 +52,7 @@ class Imunisasi extends CI_Controller
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
-      $result = $this->bm->update('tipe_imunisasi', $id, $this->_payload());
+      $result = $this->im->update($id, $this->_payload());
       if ($result) {
          $this->notification->notify_success('management/imunisasi', 'Berhasil memperbarui imunisasi');
       } else {

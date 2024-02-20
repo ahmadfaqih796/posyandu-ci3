@@ -1,13 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Posyandu extends CI_Controller
+class Imunisasi extends CI_Controller
 {
    public function __construct()
    {
       parent::__construct();
       $this->load->library('session');
-      $this->load->model('Posyandu_model', 'pm');
       $this->load->model('Base_model', 'bm');
    }
 
@@ -16,16 +15,16 @@ class Posyandu extends CI_Controller
       $this->_validation_imunisasi();
       $data['title'] = 'Imunisasi';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['data'] = $this->pm->get_posyandu();
+      $data['data'] = $this->bm->get_all('tipe_imunisasi');
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
-         $this->load->view('management/posyandu/index', $data);
-         $this->load->view('management/posyandu/add');
-         $this->load->view('management/posyandu/edit');
-         $this->load->view('management/posyandu/delete');
+         $this->load->view('management/imunisasi/index', $data);
+         $this->load->view('management/imunisasi/add');
+         $this->load->view('management/imunisasi/edit');
+         $this->load->view('management/imunisasi/delete');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
@@ -35,48 +34,37 @@ class Posyandu extends CI_Controller
          } else if ($update) {
             return $this->update();
          } else {
-            $this->notification->notify_error('management/posyandu', 'Method initidak ditemukan');
+            $this->notification->notify_error('management/imunisasi', 'Method initidak ditemukan');
          }
       }
    }
 
    private function add()
    {
-      $user_id = htmlspecialchars($this->input->post('user_id'));
-      $n_posyandu = htmlspecialchars($this->input->post('n_posyandu', true));
-      $alamat = htmlspecialchars($this->input->post('alamat', true));
-      $keterangan = htmlspecialchars($this->input->post('keterangan', true));
-      $payload = [
-         'user_id' => $user_id,
-         'n_posyandu' => $n_posyandu,
-         'alamat' => $alamat,
-         'keterangan' => $keterangan
-      ];
-
-      $result = $this->pm->add_posyandu($payload);
+      $result = $this->bm->add($this->_payload());
       if ($result) {
-         $this->notification->notify_success('management/posyandu', 'Berhasil menambahkan posyandu');
+         $this->notification->notify_success('management/imunisasi', 'Berhasil menambahkan imunisasi');
       } else {
-         $this->notification->notify_error('management/posyandu', 'Gagal menambahkan posyandu');
+         $this->notification->notify_error('management/imunisasi', 'Gagal menambahkan imunisasi');
       }
    }
 
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
-      $n_posyandu = htmlspecialchars($this->input->post('n_posyandu', true));
+      $n_imunisasi = htmlspecialchars($this->input->post('n_imunisasi', true));
       $alamat = htmlspecialchars($this->input->post('alamat', true));
       $keterangan = htmlspecialchars($this->input->post('keterangan', true));
       $payload = [
-         'n_posyandu' => $n_posyandu,
+         'n_imunisasi' => $n_imunisasi,
          'alamat' => $alamat,
          'keterangan' => $keterangan
       ];
-      $result = $this->pm->update_posyandu($id, $payload);
+      $result = $this->pm->update_imunisasi($id, $payload);
       if ($result) {
-         $this->notification->notify_success('management/posyandu', 'Berhasil memperbarui posyandu');
+         $this->notification->notify_success('management/imunisasi', 'Berhasil memperbarui imunisasi');
       } else {
-         $this->notification->notify_error('management/posyandu', 'Gagal memperbarui posyandu');
+         $this->notification->notify_error('management/imunisasi', 'Gagal memperbarui imunisasi');
       }
    }
 
@@ -86,20 +74,27 @@ class Posyandu extends CI_Controller
       $t_kader = htmlspecialchars($this->input->post('t_kader', true));
       $t_anak = htmlspecialchars($this->input->post('t_anak', true));
       if ($t_kader > 0 || $t_anak > 0) {
-         return $this->notification->notify_error('management/posyandu', 'Posyandu ini tidak dapat di hapus karena terdapat anggota');
+         return $this->notification->notify_error('management/imunisasi', 'Imunisasi ini tidak dapat di hapus karena terdapat anggota');
       }
-      $result = $this->pm->delete_posyandu($id);
+      $result = $this->pm->delete_imunisasi($id);
       if ($result) {
-         $this->notification->notify_success('management/posyandu', 'Berhasil menghapus posyandu');
+         $this->notification->notify_success('management/imunisasi', 'Berhasil menghapus imunisasi');
       } else {
-         $this->notification->notify_error('management/posyandu', 'Gagal menghapus posyandu');
+         $this->notification->notify_error('management/imunisasi', 'Gagal menghapus imunisasi');
       }
+   }
+
+   private function _payload()
+   {
+      $n_imunisasi = htmlspecialchars($this->input->post('n_imunisasi', true));
+      $payload = [
+         'n_imunisasi' => $n_imunisasi
+      ];
+      return $payload;
    }
 
    private function _validation_imunisasi()
    {
-      $this->form_validation->set_rules('n_posyandu', 'Nama Posyandu', 'required|trim');
-      $this->form_validation->set_rules('alamat', 'Alamat Posyandu', 'required|trim');
-      $this->form_validation->set_rules('keterangan', 'Keterangan', 'required|trim');
+      $this->form_validation->set_rules('n_imunisasi', 'Nama Imunisasi', 'required|trim');
    }
 }

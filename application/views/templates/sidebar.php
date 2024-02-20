@@ -47,6 +47,12 @@ $sidebarMenu = array(
             "icon" => "fas fa-fw fa-child",
             "role" => array(1, 2),
          ),
+         array(
+            "url" => "management/imunisasi",
+            "text" => "Imunisasi",
+            "icon" => "fas fa-fw fa-child",
+            "role" => array(1),
+         ),
          // array(
          //    "url" => "management/perkembangan_anak",
          //    "text" => "Perkembangan Anak",

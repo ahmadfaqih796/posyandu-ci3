@@ -27,7 +27,7 @@ class Imunisasi extends CI_Controller
          $this->load->view('templates/topbar', $data);
          $this->load->view('laporan/imunisasi/index', $data);
          $this->load->view('laporan/imunisasi/add', $data);
-         // $this->load->view('laporan/imunisasi/edit');
+         $this->load->view('laporan/imunisasi/edit', $data);
          // $this->load->view('laporan/imunisasi/delete');
          $this->load->view('templates/footer', $data);
       } else {

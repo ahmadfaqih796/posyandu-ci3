@@ -11,7 +11,10 @@ class Ibu_model extends CI_Model
 
    public function get_all_ibu()
    {
-      return $this->db->get('ibu')->result_array();
+      $this->db->select('i.*, 
+      (SELECT COUNT(orang_tua_id) FROM anak WHERE orang_tua_id = i.id) AS total_anak');
+      $this->db->from('ibu i');
+      return $this->db->get()->result_array();
    }
 
    public function get_ibu_by_id($id)

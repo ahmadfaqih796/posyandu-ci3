@@ -32,6 +32,7 @@
                      <th>Alamat</th>
                      <th>Golongan Darah</th>
                      <th>Telepon</th>
+                     <th>Total Anak</th>
                      <th>Aksi</th>
                   </tr>
                </thead>
@@ -45,6 +46,7 @@
                         <td><?= $field['alamat'] ?></td>
                         <td><?= $field['golongan_darah'] ?></td>
                         <td><?= $field['telepon'] ?></td>
+                        <td><?= $field['total_anak'] ?></td>
                         <td>
                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
                            <a type="button" class="btn btn-success btn-sm" href="<?= base_url('management/ibu/detail/' . $field['id']) ?>">Detail</a>

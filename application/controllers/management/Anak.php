@@ -10,6 +10,7 @@ class Anak extends CI_Controller
       $this->load->model('Anak_model', 'am');
       $this->load->model('Ibu_model', 'im');
       $this->load->model('Posyandu_model', 'pm');
+      $this->load->model('Imunisasi_model', 'imm');
    }
 
    public function index()
@@ -41,8 +42,10 @@ class Anak extends CI_Controller
    public function detail($user_id)
    {
       $data['title'] = 'Detail Anak';
+      $data['no'] = 1;
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['detail'] = $this->am->get_anak_by_id($user_id);
+      $data['imunisasi'] = $this->imm->get_all_imunisasi_by_id($user_id);
       $this->load->view('templates/header', $data);
       $this->load->view('templates/sidebar');
       $this->load->view('templates/topbar', $data);

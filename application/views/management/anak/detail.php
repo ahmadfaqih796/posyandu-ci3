@@ -88,12 +88,16 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <!-- <?php foreach ($users as $field) : ?>
+                        <?php foreach ($imunisasi as $field) : ?>
                            <tr>
                               <td><?= $no++ ?></td>
-                              
+                              <td><?= $field['nik'] ?></td>
+                              <td><?= $field['name'] ?></td>
+                              <td><?= $field['tanggal_imunisasi'] ?></td>
+                              <td><?= $field['n_imunisasi'] ?></td>
+                              <td><?= $field['status'] ? 'Sudah' : 'Belum' ?></td>
                            </tr>
-                        <?php endforeach; ?> -->
+                        <?php endforeach; ?>
                      </tbody>
                   </table>
                </div>

@@ -25,6 +25,7 @@ class Ibu extends CI_Controller
          $this->load->view('management/ibu/index', $data);
          $this->load->view('management/ibu/add');
          $this->load->view('management/ibu/edit');
+         $this->load->view('management/ibu/delete');
          $this->load->view('templates/footer');
       } else {
          $add = $this->input->post('addData');
@@ -86,6 +87,21 @@ class Ibu extends CI_Controller
          $this->notification->notify_success('management/ibu', 'Berhasil memperbarui ibu');
       } else {
          $this->notification->notify_error('management/ibu', 'Gagal memperbarui ibu');
+      }
+   }
+
+   public function delete()
+   {
+      $id = $this->input->post('id');
+      $t_anak = htmlspecialchars($this->input->post('t_anak', true));
+      if ($t_anak > 0) {
+         return $this->notification->notify_error('management/ibu', 'Data ini tidak dapat di hapus karena terdapat anggota');
+      }
+      $result = $this->im->delete_ibu($id);
+      if ($result) {
+         $this->notification->notify_success('management/ibu', 'Berhasil menghapus ibu');
+      } else {
+         $this->notification->notify_error('management/ibu', 'Gagal menghapus ibu');
       }
    }
 

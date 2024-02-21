@@ -20,12 +20,13 @@ class Dashboard extends CI_Controller
          'kader' => $this->bm->get_count('kaders'),
          'anak' => $this->bm->get_count('anak'),
          'ibu' => $this->bm->get_count('ibu'),
+         'imunisasi' => $this->bm->get_count('imunisasi'),
       );
 
       $this->load->view('templates/header', $data);
       $this->load->view('templates/sidebar', $data);
       $this->load->view('templates/topbar', $data);
       $this->load->view('home/dashboard', $data);
-      $this->load->view('templates/footer');
+      $this->load->view('templates/footer', $data);
    }
 }

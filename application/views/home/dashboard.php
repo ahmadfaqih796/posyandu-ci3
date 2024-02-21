@@ -21,7 +21,7 @@
          <div class="card">
             <div class="card-body text-center">
                <h1 class="h4 text-gray-800">Data Anak</h1>
-               <h1 class="h4 text-success"><?= $total['anak'] ?></h1>
+               <h1 class="h4 text-success" id="d_total_anak"><?= $total['anak'] ?></h1>
             </div>
          </div>
       </div>
@@ -29,7 +29,7 @@
          <div class="card">
             <div class="card-body text-center">
                <h1 class="h4 text-gray-800">Data Ibu</h1>
-               <h1 class="h4 text-success"><?= $total['ibu'] ?></h1>
+               <h1 class="h4 text-success" id="d_total_ibu"><?= $total['ibu'] ?></h1>
             </div>
          </div>
       </div>
@@ -41,13 +41,21 @@
             </div>
          </div>
       </div>
+      <div class="col-md-4 mb-3">
+         <div class="card">
+            <div class="card-body text-center">
+               <h1 class="h4 text-gray-800">Data Imunisasi</h1>
+               <h1 class="h4 text-success"><?= $total['imunisasi'] ?></h1>
+            </div>
+         </div>
+      </div>
 
       <div class="col-xl-8 col-lg-7">
 
          <!-- Bar Chart -->
          <div class="card shadow mb-4">
             <div class="card-header py-3">
-               <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+               <h6 class="m-0 font-weight-bold text-primary">Data Imunisasi</h6>
             </div>
             <div class="card-body">
                <div class="chart-bar">
@@ -63,11 +71,11 @@
          <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3">
-               <h6 class="m-0 font-weight-bold text-primary">Data Imunisasi</h6>
+               <h6 class="m-0 font-weight-bold text-primary">Data Customer</h6>
             </div>
             <!-- Card Body -->
-            <div class="card-body">
-               <div class="chart-pie pt-4">
+            <div class="card-body" style="height: 360px;">
+               <div class="chart-pie pt-4 ">
                   <canvas id="myPieChart"></canvas>
                </div>
             </div>

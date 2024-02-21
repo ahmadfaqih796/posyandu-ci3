@@ -24,7 +24,7 @@
                         <option value="<?= $field['id'] ?>" <?= set_select('posyandu_id', $field['id'], (!empty($_POST['posyandu_id']) && $_POST['posyandu_id'] == $field['id'])); ?>><?= $field['n_posyandu'] ?></option>
                      <?php endforeach; ?>
                   </select>
-                  <?= form_error('jk', '<small class="text-danger pl-3">', '</small>'); ?>
+                  <?= form_error('posyandu_id', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
                   <label for="edit_tempat_lahir">Tempat Lahir</label>

@@ -8,23 +8,25 @@ class Schedule extends CI_Controller
       parent::__construct();
       $this->load->library('session');
       $this->load->model('Schedule_model', 'sm');
+      $this->load->model('Posyandu_model', 'pm');
    }
 
    public function index()
    {
-      $this->_validation_imunisasi();
+      $this->_validation_schedule();
       $data['title'] = 'Jadwal Posyandu';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->sm->get_schedule();
+      $data['posyandu'] = $this->pm->get_posyandu();
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
          $this->load->view('management/schedule/index', $data);
-         // $this->load->view('management/schedule/add', $data);
-         // $this->load->view('management/schedule/edit', $data);
-         // $this->load->view('management/schedule/delete');
+         $this->load->view('management/schedule/add', $data);
+         $this->load->view('management/schedule/edit', $data);
+         $this->load->view('management/schedule/delete');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
@@ -41,56 +43,56 @@ class Schedule extends CI_Controller
 
    private function add()
    {
-      $result = $this->im->add_imunisasi($this->_payload());
+      $result = $this->sm->add_schedule($this->_payload());
       if ($result) {
-         $this->notification->notify_success('management/schedule', 'Berhasil menambahkan imunisasi');
+         $this->notification->notify_success('management/schedule', 'Berhasil menambahkan jadwal posyandu');
       } else {
-         $this->notification->notify_error('management/schedule', 'Gagal menambahkan imunisasi');
+         $this->notification->notify_error('management/schedule', 'Gagal menambahkan jadwal posyandu');
       }
    }
 
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
-      $result = $this->im->update_imunisasi($id, $this->_payload());
+      $result = $this->sm->update_schedule($id, $this->_payload());
       if ($result) {
-         $this->notification->notify_success('management/schedule', 'Berhasil memperbarui imunisasi');
+         $this->notification->notify_success('management/schedule', 'Berhasil memperbarui jadwal posyandu');
       } else {
-         $this->notification->notify_error('management/schedule', 'Gagal memperbarui imunisasi');
+         $this->notification->notify_error('management/schedule', 'Gagal memperbarui jadwal posyandu');
       }
    }
 
    public function delete()
    {
       $id = $this->input->post('id');
-      $result = $this->im->delete_imunisasi($id);
+      $result = $this->sm->delete_schedule($id);
       if ($result) {
-         $this->notification->notify_success('management/schedule', 'Berhasil menghapus imunisasi');
+         $this->notification->notify_success('management/schedule', 'Berhasil menghapus jadwal posyandu');
       } else {
-         $this->notification->notify_error('management/schedule', 'Gagal menghapus imunisasi');
+         $this->notification->notify_error('management/schedule', 'Gagal menghapus jadwal posyandu');
       }
    }
 
    private function _payload()
    {
-      $anak_id = htmlspecialchars($this->input->post('anak_id', true));
-      $tipe_imunisasi_id = htmlspecialchars($this->input->post('tipe_imunisasi_id', true));
-      $tanggal_imunisasi = htmlspecialchars($this->input->post('tanggal_imunisasi', true));
-      $status = htmlspecialchars($this->input->post('status', true));
+      $posyandu_id = htmlspecialchars($this->input->post('posyandu_id', true));
+      $tanggal = htmlspecialchars($this->input->post('tanggal', true));
+      $jam_buka = htmlspecialchars($this->input->post('jam_buka', true));
+      $jam_tutup = htmlspecialchars($this->input->post('jam_tutup', true));
       $payload = [
-         'anak_id' => $anak_id,
-         'tipe_imunisasi_id' => $tipe_imunisasi_id,
-         'tanggal_imunisasi' => $tanggal_imunisasi,
-         'status' => $status
+         'posyandu_id' => $posyandu_id,
+         'tanggal' => $tanggal,
+         'jam_buka' => $jam_buka,
+         'jam_tutup' => $jam_tutup
       ];
       return $payload;
    }
 
-   private function _validation_imunisasi()
+   private function _validation_schedule()
    {
-      $this->form_validation->set_rules('anak_id', 'Nama Anak', 'required|trim');
-      $this->form_validation->set_rules('tipe_imunisasi_id', 'Tipe Imunisasi', 'required|trim');
-      $this->form_validation->set_rules('tanggal_imunisasi', 'Tanggal Imunisasi', 'required|trim');
-      $this->form_validation->set_rules('status', 'Status', 'required|trim');
+      $this->form_validation->set_rules('posyandu_id', 'Nama Posyandu', 'required|trim');
+      $this->form_validation->set_rules('tanggal', 'Tanggal', 'required|trim');
+      $this->form_validation->set_rules('jam_buka', 'Jam Buka', 'required|trim');
+      $this->form_validation->set_rules('jam_tutup', 'Jam Tutup', 'required|trim');
    }
 }

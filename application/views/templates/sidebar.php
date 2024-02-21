@@ -36,6 +36,18 @@ $sidebarMenu = array(
             "role" => array(1),
          ),
          array(
+            "url" => "management/schedule",
+            "text" => "Jadwal Posyandu",
+            "icon" => "fas fa-fw fa-hospital",
+            "role" => array(1),
+         ),
+         array(
+            "url" => "management/artikel",
+            "text" => "Artikel",
+            "icon" => "fas fa-fw fa-book",
+            "role" => array(1),
+         ),
+         array(
             "url" => "management/ibu",
             "text" => "Ibu",
             "icon" => "fas fa-fw fa-female",

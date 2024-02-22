@@ -49,7 +49,7 @@ class Artikel extends CI_Controller
       }
    }
 
-   private function update()
+   public function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
       $result = $this->bm->update('artikel', $id, $this->_payload());

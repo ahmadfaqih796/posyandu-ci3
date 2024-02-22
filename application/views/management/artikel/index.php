@@ -19,7 +19,7 @@
          <?= validation_errors('<div class="alert alert-danger" role="alert">', '</div>') ?>
          <?= $this->session->flashdata('message'); ?>
          <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                <thead>
                   <tr>
                      <th>No</th>
@@ -37,7 +37,7 @@
                         <td><?= $field['judul'] ?></td>
                         <td><?= $field['deskripsi'] ?></td>
                         <td><?= $field['kategori'] ?></td>
-                        <td><?= $field['image'] ?></td>
+                        <td><img src="<?= base_url('assets/img/artikel/' . $field['image']) ?>" alt="<?= $field['image'] ?>" width="150"></td>
                         <td>
                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>

@@ -16,7 +16,6 @@ class Artikel extends CI_Controller
       $data['title'] = 'artikel';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->bm->get_all('artikel');
-
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
@@ -25,10 +24,12 @@ class Artikel extends CI_Controller
          $this->load->view('management/artikel/index', $data);
          $this->load->view('management/artikel/add');
          $this->load->view('management/artikel/edit');
+         $this->load->view('management/artikel/delete');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
          $update = $this->input->post('updateData');
+
          if ($add) {
             return $this->add();
          } else if ($update) {
@@ -49,7 +50,7 @@ class Artikel extends CI_Controller
       }
    }
 
-   public function update()
+   private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
       $result = $this->bm->update('artikel', $id, $this->_payload());
@@ -57,6 +58,23 @@ class Artikel extends CI_Controller
          $this->notification->notify_success('management/artikel', 'Berhasil memperbarui artikel');
       } else {
          $this->notification->notify_error('management/artikel', 'Gagal memperbarui artikel');
+      }
+   }
+
+   public function delete()
+   {
+      $id = $this->input->post('id');
+      $image = htmlspecialchars($this->input->post('image', true));
+      $path_to_file = './assets/img/artikel/' . $image;
+      // var_dump($image);
+      if (file_exists($path_to_file)) {
+         unlink($path_to_file);
+      }
+      $result = $this->bm->delete("artikel", $id);
+      if ($result) {
+         $this->notification->notify_success('management/artikel', 'Berhasil menghapus artikel');
+      } else {
+         $this->notification->notify_error('management/artikel', 'Gagal menghapus artikel');
       }
    }
 

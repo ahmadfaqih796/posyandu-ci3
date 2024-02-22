@@ -3,18 +3,17 @@
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id="deleteModalLabel">Hapus Posyandu</h5>
+            <h5 class="modal-title" id="deleteModalLabel">Hapus Artikel</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <form action="<?= base_url('management/posyandu/delete') ?>" method="post">
+         <form action="<?= base_url('management/artikel/delete') ?>" method="post">
             <input type="hidden" name="deleteData" id="deleteData" value="true">
-            <input type="hidden" name="t_kader" id="edit_t_kader">
-            <input type="hidden" name="t_anak" id="edit_t_anak">
+            <input type="hidden" name="image" id="delete_image">
             <div class="modal-body">
                <input type="hidden" name="id" id="delete_id">
-               <p>Anda yakin ingin menghapus posyandu
+               <p>Anda yakin ingin menghapus artikel
                   <span id="delete_name"></span> ini ?
                </p>
             </div>
@@ -30,8 +29,7 @@
 <script>
    function deleteData(data) {
       document.getElementById('delete_id').value = data['id'];
-      document.getElementById('delete_name').innerHTML = data['n_posyandu'];
-      document.getElementById("edit_t_kader").value = data['total_kader'];
-      document.getElementById("edit_t_anak").value = data['total_anak'];
+      document.getElementById('delete_name').innerHTML = data['judul'];
+      document.getElementById('delete_image').value = data['image'];
    }
 </script>

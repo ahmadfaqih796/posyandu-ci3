@@ -87,9 +87,13 @@ class Auth extends CI_Controller
             'image' => 'default.jpg',
             'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
             'role_id' => 3,
-            'is_active' => 0,
+            'is_active' => 1,
          ];
          $this->db->insert('users', $data);
+         $user_id = $this->db->insert_id();
+         $this->db->insert('anak', [
+            'user_id' => $user_id
+         ]);
          $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Congratulation! your account has been created. Please Login </div>');
          redirect('auth');
       }

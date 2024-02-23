@@ -65,12 +65,12 @@ $sidebarMenu = array(
             "icon" => "fas fa-fw fa-child",
             "role" => array(2),
          ),
-         // array(
-         //    "url" => "management/perkembangan_anak",
-         //    "text" => "Perkembangan Anak",
-         //    "icon" => "fas fa-fw fa-child",
-         //    "role" => array(1, 2),
-         // ),
+         array(
+            "url" => "management/perkembangan_anak",
+            "text" => "Perkembangan Anak",
+            "icon" => "fas fa-fw fa-child",
+            "role" => array(2),
+         ),
       )
    ),
    array(
@@ -120,12 +120,11 @@ foreach ($sidebarMenu as $menu) {
       <div class="sidebar-brand-text mx-3">Posyandu</div>
    </a>
 
-   <!-- Divider -->
-   <hr class="sidebar-divider">
-
    <!-- Loop through sidebar menu -->
    <?php foreach ($filteredMenu as $menu) { ?>
       <?php if (isset($menu['submenu'])) { ?>
+         <!-- Divider -->
+         <hr class="sidebar-divider">
          <div class="sidebar-heading">
             <?= $menu['text'] ?>
          </div>

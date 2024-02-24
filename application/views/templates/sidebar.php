@@ -15,7 +15,7 @@ $sidebarMenu = array(
    ),
    array(
       "text" => "Management",
-      "role" => array(1, 2),
+      "role" => array(1, 2, 6),
       "submenu" => array(
          array(
             "url" => "management/users",
@@ -63,7 +63,7 @@ $sidebarMenu = array(
             "url" => "management/imunisasi",
             "text" => "Imunisasi",
             "icon" => "fas fa-fw fa-child",
-            "role" => array(2),
+            "role" => array(6),
          ),
          array(
             "url" => "management/perkembangan_anak",
@@ -75,7 +75,7 @@ $sidebarMenu = array(
    ),
    array(
       "text" => "Laporan",
-      "role" => array(1, 2),
+      "role" => array(1, 2, 6),
       "submenu" => array(
          array(
             "url" => "laporan/users",
@@ -93,7 +93,7 @@ $sidebarMenu = array(
             "url" => "laporan/imunisasi",
             "text" => "Data Imunisasi",
             "icon" => "fas fa-fw fa-book",
-            "role" => array(1, 2),
+            "role" => array(6),
          ),
       )
    )

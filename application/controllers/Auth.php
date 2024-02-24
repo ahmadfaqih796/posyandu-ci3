@@ -43,6 +43,8 @@ class Auth extends CI_Controller
                   redirect('dashboard');
                } elseif ($user['role_id'] == 2) {
                   redirect('dashboard');
+               } elseif ($user['role_id'] == 6) {
+                  redirect('dashboard');
                } else {
                   $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> You are not allowed to access </div>');
                   redirect('auth');

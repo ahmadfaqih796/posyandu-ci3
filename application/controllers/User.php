@@ -28,6 +28,7 @@ class User extends CI_Controller
    {
       $data['title'] = 'My Profile';
       $this->load->view('templates/user/header', $data);
+      $this->load->view('templates/user/topbar', $data);
       $this->load->view('user/home', $data);
       $this->load->view('templates/user/footer', $data);
    }

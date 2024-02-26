@@ -43,7 +43,7 @@
                <a href="https://www.creative-tim.com/builder?ref=navbar-soft-design-system" class="btn btn-sm btn-outline-white btn-round mb-0 me-1 mt-2 mt-md-0">Online Builder</a>
             </li> -->
             <li class="nav-item my-auto ms-3 ms-lg-0">
-               <a href="https://www.creative-tim.com/product/soft-ui-design-system-pro" class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Logout</a>
+               <a href="<?= base_url("auth/logout") ?>" class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Logout</a>
             </li>
          </ul>
       </div>

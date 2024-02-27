@@ -5,7 +5,7 @@
       <div class="container">
          <div class="row justify-content-center">
             <div class="col-lg-8 text-center mx-auto my-auto">
-               <h1 class="text-white">Posyandu</h1>
+               <h1 class="text-white"><?= 'Posyandu ' . $user['n_posyandu'] ?></h1>
                <p class="lead mb-4 text-white opacity-8">Monitoring is Better then Curing</p>
                <!-- <button type="submit" class="btn bg-white text-dark">Create Account</button> -->
                <h6 class="text-white mb-2 mt-5">Find us on</h6>

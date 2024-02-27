@@ -7,6 +7,7 @@ class User extends CI_Controller
    {
       parent::__construct();
       $this->load->library('session');
+      $this->load->model('Anak_model', 'am');
       $role = $this->session->userdata('role_id');
       if ($role != 3) {
          redirect('badrequest/error/403');
@@ -26,7 +27,9 @@ class User extends CI_Controller
 
    public function home()
    {
-      $data['title'] = 'My Profile';
+      // $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+      $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
+      $data['title'] = 'Home';
       $this->load->view('templates/user/header', $data);
       $this->load->view('templates/user/topbar', $data);
       $this->load->view('user/home', $data);

@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent ">
    <div class="container">
       <a class="navbar-brand  text-white " href="https://demos.creative-tim.com/soft-ui-design-system/presentation.html" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
-         Posyandu
+         <?= 'Posyandu ' . $user['n_posyandu'] ?>
       </a>
       <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon mt-2">
@@ -17,25 +17,25 @@
                <li class="nav-item ms-lg-auto">
                   <a class="nav-link nav-link-icon me-2" href="<?= base_url("user/home") ?>" target="_blank">
                      <i class="fa fa-paste me-1"></i>
-                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Star us on Github">Home</p>
+                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home">Home</p>
                   </a>
                </li>
                <li class="nav-item ms-lg-auto">
                   <a class="nav-link nav-link-icon me-2" href="<?= base_url("user/home") ?>" target="_blank">
                      <i class="fa fa-notes-medical me-1"></i>
-                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Star us on Github">Perkembangan Anak</p>
+                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Perkembangan Anak">Perkembangan Anak</p>
                   </a>
                </li>
                <li class="nav-item ms-lg-auto">
                   <a class="nav-link nav-link-icon me-2" href="<?= base_url("user/home") ?>" target="_blank">
                      <i class="fa fa-clipboard me-1"></i>
-                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Star us on Github">Jadwal Posyandu</p>
+                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="jadwal Posyandu">Jadwal Posyandu</p>
                   </a>
                </li>
                <li class="nav-item ms-lg-auto">
                   <a class="nav-link nav-link-icon me-2" href="<?= base_url("user/home") ?>" target="_blank">
                      <i class="fa fa-clipboard-list me-1"></i>
-                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Star us on Github">Kegiatan</p>
+                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Kegiatan">Kegiatan</p>
                   </a>
                </li>
             </div>

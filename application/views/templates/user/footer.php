@@ -7,7 +7,7 @@
                <p class="text-sm">
                   All rights reserved. Copyright © <script>
                      document.write(new Date().getFullYear())
-                  </script> Soft UI Design System by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                  </script> <?= 'Posyandu ' . $user['n_posyandu'] ?> <a href="#" target="_blank"></a>.
                </p>
             </div>
          </div>

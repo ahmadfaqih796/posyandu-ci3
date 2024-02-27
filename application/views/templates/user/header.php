@@ -19,7 +19,7 @@
    <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url("assets/img/soft-ui/") ?>apple-icon.png">
    <link rel="icon" type="image/png" href="<?= base_url("assets/img/soft-ui/") ?>favicon.png">
    <title>
-      Soft UI Design System by Creative Tim
+      <?= $title ?>
    </title>
    <!--     Fonts and icons     -->
    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />

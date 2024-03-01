@@ -27,7 +27,7 @@
                   </a>
                </li>
                <li class="nav-item ms-lg-auto">
-                  <a class="nav-link nav-link-icon me-2" href="<?= base_url("user/home") ?>">
+                  <a class="nav-link nav-link-icon me-2" href="<?= base_url("user/jadwal_posyandu") ?>">
                      <i class="fa fa-clipboard me-1"></i>
                      <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="jadwal Posyandu">Jadwal Posyandu</p>
                   </a>

@@ -9,6 +9,7 @@ class User extends CI_Controller
       $this->load->library('session');
       $this->load->model('Anak_model', 'am');
       $this->load->model('Perkembangan_Anak_model', 'pm');
+      $this->load->model('Schedule_model', 'sm');
       $role = $this->session->userdata('role_id');
       if ($role != 3) {
          redirect('badrequest/error/403');
@@ -45,6 +46,18 @@ class User extends CI_Controller
       $this->load->view('templates/user/header', $data);
       $this->load->view('templates/user/topbar', $data);
       $this->load->view('user/perkembangan_anak', $data);
+      $this->load->view('templates/user/footer', $data);
+   }
+
+   public function jadwal_posyandu()
+   {
+      $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
+      $data['title'] = 'Jadwal Posyandu';
+      $data['no'] = 1;
+      $data['posyandu'] = $this->sm->get_schedule_by_id($data['user']['posyandu_id']);
+      $this->load->view('templates/user/header', $data);
+      $this->load->view('templates/user/topbar', $data);
+      $this->load->view('user/jadwal_posyandu', $data);
       $this->load->view('templates/user/footer', $data);
    }
 }

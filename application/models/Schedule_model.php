@@ -19,7 +19,11 @@ class Schedule_model extends CI_Model
 
    public function get_schedule_by_id($schedule_id)
    {
-      return $this->db->get_where('schedule', ['id' => $schedule_id])->row_array();
+      $this->db->select('s.*, p.n_posyandu');
+      $this->db->from('schedule s');
+      $this->db->join('posyandu p', 's.posyandu_id = p.id', 'left');
+      $this->db->where('p.id', $schedule_id);
+      return $this->db->get()->result_array();
    }
 
    public function add_schedule($data)

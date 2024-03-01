@@ -117,7 +117,8 @@ foreach ($sidebarMenu as $menu) {
       <div class="sidebar-brand-icon">
          <i class="fas fa-hospital"></i>
       </div>
-      <div class="sidebar-brand-text mx-3">Posyandu</div>
+      <div class="sidebar-brand-text mx-3">SIMPONI</div>
+      <!-- SIMPONI - UPT PUSKESMAS MEDAN DELI -->
    </a>
 
    <!-- Loop through sidebar menu -->

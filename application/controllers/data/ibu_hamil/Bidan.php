@@ -76,26 +76,35 @@ class Bidan extends CI_Controller
       $agama = htmlspecialchars($this->input->post('agama', true));
       $pendidikan_terakhir = htmlspecialchars($this->input->post('pendidikan_terakhir', true));
       $riwayat_penyakit = htmlspecialchars($this->input->post('riwayat_penyakit', true));
-      $photo = htmlspecialchars($this->input->post('photo', true));
 
-      $payload = [
-         'n_ibu' => $n_ibu,
-         'no_medis' => $no_medis,
-         'nik' => $nik,
-         'password' => $password,
-         'n_suami' => $n_suami,
-         'alamat' => $alamat,
-         'telepon' => $telepon,
-         'tgl_lahir' => $tgl_lahir,
-         'golongan_darah' => $golongan_darah,
-         'pekerjaan' => $pekerjaan,
-         'agama' => $agama,
-         'pendidikan_terakhir' => $pendidikan_terakhir,
-         'riwayat_penyakit' => $riwayat_penyakit,
-         'photo' => $photo
-      ];
+      $config['upload_path'] = './assets/img/bidan/';
+      $config['allowed_types'] = 'jpg|jpeg|png|gif';
+      $config['max_size'] = 1024;
 
-      return $payload;
+      $this->load->library('upload', $config);
+
+      if (!$this->upload->do_upload('photo')) {
+         return $this->notification->notify_error('data/ibu_hamil/bidan', 'Ukuran gambar terlalu besar atau gambar tidak valid');
+      } else {
+         $data = $this->upload->data();
+         $payload = [
+            'n_ibu' => $n_ibu,
+            'no_medis' => $no_medis,
+            'nik' => $nik,
+            'password' => $password,
+            'n_suami' => $n_suami,
+            'alamat' => $alamat,
+            'telepon' => $telepon,
+            'tgl_lahir' => $tgl_lahir,
+            'golongan_darah' => $golongan_darah,
+            'pekerjaan' => $pekerjaan,
+            'agama' => $agama,
+            'pendidikan_terakhir' => $pendidikan_terakhir,
+            'riwayat_penyakit' => $riwayat_penyakit,
+            'photo' => $data['file_name']
+         ];
+         return $payload;
+      }
    }
 
 

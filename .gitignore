@@ -1,6 +1,7 @@
 .DS_Store
 
 assets/img/artikel/*
+assets/img/bidan/*
 
 application/cache/*
 !application/cache/index.html

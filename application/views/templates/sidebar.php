@@ -84,16 +84,10 @@ $sidebarMenu = array(
             "role" => array(1, 2),
          ),
          array(
-            "url" => "data/ibu_hamil/kaders",
-            "text" => "Data Posyandu",
+            "url" => "data/ibu_hamil/kehamilan",
+            "text" => "Kehamilan",
             "icon" => "fas fa-fw fa-book",
-            "role" => array(1),
-         ),
-         array(
-            "url" => "data/ibu_hamil/imunisasi",
-            "text" => "Data Imunisasi",
-            "icon" => "fas fa-fw fa-book",
-            "role" => array(6),
+            "role" => array(1, 2),
          ),
       )
    ),

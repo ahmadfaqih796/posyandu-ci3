@@ -74,6 +74,30 @@ $sidebarMenu = array(
       )
    ),
    array(
+      "text" => "Data Ibu Hamil",
+      "role" => array(1, 2, 6),
+      "submenu" => array(
+         array(
+            "url" => "data/ibu_hamil/bidan",
+            "text" => "Bidan",
+            "icon" => "fas fa-fw fa-clipboard",
+            "role" => array(1, 2),
+         ),
+         array(
+            "url" => "data/ibu_hamil/kaders",
+            "text" => "Data Posyandu",
+            "icon" => "fas fa-fw fa-book",
+            "role" => array(1),
+         ),
+         array(
+            "url" => "data/ibu_hamil/imunisasi",
+            "text" => "Data Imunisasi",
+            "icon" => "fas fa-fw fa-book",
+            "role" => array(6),
+         ),
+      )
+   ),
+   array(
       "text" => "Laporan",
       "role" => array(1, 2, 6),
       "submenu" => array(

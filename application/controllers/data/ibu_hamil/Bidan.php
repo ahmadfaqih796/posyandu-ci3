@@ -24,7 +24,7 @@ class Bidan extends CI_Controller
          $this->load->view('templates/topbar', $data);
          $this->load->view('data/ibu_hamil/bidan/index', $data);
          $this->load->view('data/ibu_hamil/bidan/add');
-         // $this->load->view('data/ibu_hamil/bidan/edit');
+         $this->load->view('data/ibu_hamil/bidan/edit');
          // $this->load->view('data/ibu_hamil/bidan/delete');
          $this->load->view('templates/footer', $data);
       } else {
@@ -33,7 +33,7 @@ class Bidan extends CI_Controller
          if ($add) {
             return $this->add();
          } else if ($update) {
-            // return $this->update();
+            return $this->update();
          } else {
             $this->notification->notify_error('data/ibu_hamil/bidan', 'Method initidak ditemukan');
          }
@@ -47,6 +47,17 @@ class Bidan extends CI_Controller
          $this->notification->notify_success('data/ibu_hamil/bidan', 'Berhasil menambahkan bidan');
       } else {
          $this->notification->notify_error('data/ibu_hamil/bidan', 'Gagal menambahkan bidan');
+      }
+   }
+
+   private function update()
+   {
+      $id = htmlspecialchars($this->input->post('id'));
+      $result = $this->bm->update('bidan', $id, $this->_payload());
+      if ($result) {
+         $this->notification->notify_success('data/ibu_hamil/bidan', 'Berhasil memperbarui bidan');
+      } else {
+         $this->notification->notify_error('data/ibu_hamil/bidan', 'Gagal memperbarui bidan');
       }
    }
 

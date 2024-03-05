@@ -25,8 +25,8 @@ class Kehamilan extends CI_Controller
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
          $this->load->view('data/ibu_hamil/kehamilan/index', $data);
-         $this->load->view('data/ibu_hamil/kehamilan/add', $data);
-         // $this->load->view('data/ibu_hamil/kehamilan/edit');
+         $this->load->view('data/ibu_hamil/kehamilan/add');
+         $this->load->view('data/ibu_hamil/kehamilan/edit');
          // $this->load->view('data/ibu_hamil/kehamilan/delete');
          $this->load->view('templates/footer', $data);
       } else {
@@ -35,7 +35,7 @@ class Kehamilan extends CI_Controller
          if ($add) {
             return $this->add();
          } else if ($update) {
-            // return $this->update();
+            return $this->update();
          } else {
             $this->notification->notify_error('data/ibu_hamil/kehamilan', 'Method initidak ditemukan');
          }
@@ -49,6 +49,17 @@ class Kehamilan extends CI_Controller
          $this->notification->notify_success('data/ibu_hamil/kehamilan', 'Berhasil menambahkan kehamilan');
       } else {
          $this->notification->notify_error('data/ibu_hamil/kehamilan', 'Gagal menambahkan kehamilan');
+      }
+   }
+
+   private function update()
+   {
+      $id = htmlspecialchars($this->input->post('id'));
+      $result = $this->bm->update('kehamilan', $id, $this->_payload("update"));
+      if ($result) {
+         $this->notification->notify_success('data/ibu_hamil/kehamilan', 'Berhasil memperbarui kehamilan');
+      } else {
+         $this->notification->notify_error('data/ibu_hamil/kehamilan', 'Gagal memperbarui kehamilan');
       }
    }
 

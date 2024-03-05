@@ -76,11 +76,11 @@
                   <input type="text" class="form-control" name="riwayat_penyakit" id="riwayat_penyakit" value="<?= set_value('riwayat_penyakit'); ?>" required>
                   <?= form_error('riwayat_penyakit', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
-               <div class="form-group">
+               <!-- <div class="form-group">
                   <label for="photo">Photo</label>
-                  <input type="text" class="form-control" name="photo" id="photo" value="<?= set_value('photo'); ?>" required>
+                  <input type="file" class="form-control" name="photo" id="photo" value="<?= set_value('photo'); ?>" required>
                   <?= form_error('photo', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
+               </div> -->
             </div>
             <div class="modal-footer">
                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

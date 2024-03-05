@@ -25,7 +25,7 @@ class Bidan extends CI_Controller
          $this->load->view('data/ibu_hamil/bidan/index', $data);
          $this->load->view('data/ibu_hamil/bidan/add');
          $this->load->view('data/ibu_hamil/bidan/edit');
-         // $this->load->view('data/ibu_hamil/bidan/delete');
+         $this->load->view('data/ibu_hamil/bidan/delete');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
@@ -42,7 +42,7 @@ class Bidan extends CI_Controller
 
    private function add()
    {
-      $result = $this->bm->add('bidan', $this->_payload());
+      $result = $this->bm->add('bidan', $this->_payload("post"));
       if ($result) {
          $this->notification->notify_success('data/ibu_hamil/bidan', 'Berhasil menambahkan bidan');
       } else {
@@ -53,7 +53,7 @@ class Bidan extends CI_Controller
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
-      $result = $this->bm->update('bidan', $id, $this->_payload());
+      $result = $this->bm->update('bidan', $id, $this->_payload("update"));
       if ($result) {
          $this->notification->notify_success('data/ibu_hamil/bidan', 'Berhasil memperbarui bidan');
       } else {
@@ -61,7 +61,18 @@ class Bidan extends CI_Controller
       }
    }
 
-   private function _payload()
+   public function delete()
+   {
+      $id = $this->input->post('id');
+      $result = $this->bm->delete("bidan", $id);
+      if ($result) {
+         $this->notification->notify_success('data/ibu_hamil/bidan', 'Berhasil menghapus bidan');
+      } else {
+         $this->notification->notify_error('data/ibu_hamil/bidan', 'Gagal menghapus bidan');
+      }
+   }
+
+   private function _payload($type)
    {
       $n_ibu = htmlspecialchars($this->input->post('n_ibu', true));
       $no_medis = htmlspecialchars($this->input->post('no_medis', true));
@@ -76,6 +87,25 @@ class Bidan extends CI_Controller
       $agama = htmlspecialchars($this->input->post('agama', true));
       $pendidikan_terakhir = htmlspecialchars($this->input->post('pendidikan_terakhir', true));
       $riwayat_penyakit = htmlspecialchars($this->input->post('riwayat_penyakit', true));
+
+      if ($type == "post") {
+         $payload = [
+            'n_ibu' => $n_ibu,
+            'no_medis' => $no_medis,
+            'nik' => $nik,
+            'password' => $password,
+            'n_suami' => $n_suami,
+            'alamat' => $alamat,
+            'telepon' => $telepon,
+            'tgl_lahir' => $tgl_lahir,
+            'golongan_darah' => $golongan_darah,
+            'pekerjaan' => $pekerjaan,
+            'agama' => $agama,
+            'pendidikan_terakhir' => $pendidikan_terakhir,
+            'riwayat_penyakit' => $riwayat_penyakit
+         ];
+         return $payload;
+      }
 
       $config['upload_path'] = './assets/img/bidan/';
       $config['allowed_types'] = 'jpg|jpeg|png|gif';

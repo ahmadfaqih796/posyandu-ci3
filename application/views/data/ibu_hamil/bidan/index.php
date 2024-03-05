@@ -40,7 +40,6 @@
                         <td><?= $field['n_suami'] ?></td>
                         <td><?= $field['tgl_lahir'] ?></td>
                         <td><?= $field['n_suami'] ?></td>
-                        <td><?= $field['tgl_lahir'] ?></td>
                         <td><?= $field['golongan_darah'] ?></td>
                         <td><?= $field['agama'] ?></td>
                         <td>

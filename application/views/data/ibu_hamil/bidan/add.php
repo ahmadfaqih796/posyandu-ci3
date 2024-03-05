@@ -8,7 +8,7 @@
                <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <form action="<?= base_url('management/ibu_hamil/bidan') ?>" method="post">
+         <form action="<?= base_url('data/ibu_hamil/bidan') ?>" method="post">
             <div class="modal-body">
                <input type="hidden" name="addData" id="addData" value="true">
                <div class="form-group">
@@ -37,7 +37,7 @@
                   <?= form_error('n_suami', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
-                  <label for="alamat">Nama Bidan</label>
+                  <label for="alamat">Alamat</label>
                   <input type="text" class="form-control" name="alamat" id="alamat" value="<?= set_value('alamat'); ?>" required>
                   <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>

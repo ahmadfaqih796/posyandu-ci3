@@ -47,7 +47,7 @@
                         <td><?= $field['jml_keguguran'] ?></td>
                         <td><?= $field['jml_anak_hidup'] ?></td>
                         <td><?= $field['jml_lahir_mati'] ?></td>
-                        <td><?= $field['jml_persalinan_terakhir'] ?></td>
+                        <td><?= $field['jarak_persalinan_terakhir'] ?></td>
                         <td>
                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>

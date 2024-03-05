@@ -27,7 +27,7 @@ class Kehamilan extends CI_Controller
          $this->load->view('data/ibu_hamil/kehamilan/index', $data);
          $this->load->view('data/ibu_hamil/kehamilan/add');
          $this->load->view('data/ibu_hamil/kehamilan/edit');
-         // $this->load->view('data/ibu_hamil/kehamilan/delete');
+         $this->load->view('data/ibu_hamil/kehamilan/delete');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
@@ -60,6 +60,17 @@ class Kehamilan extends CI_Controller
          $this->notification->notify_success('data/ibu_hamil/kehamilan', 'Berhasil memperbarui kehamilan');
       } else {
          $this->notification->notify_error('data/ibu_hamil/kehamilan', 'Gagal memperbarui kehamilan');
+      }
+   }
+
+   public function delete()
+   {
+      $id = $this->input->post('id');
+      $result = $this->bm->delete("kehamilan", $id);
+      if ($result) {
+         $this->notification->notify_success('data/ibu_hamil/kehamilan', 'Berhasil menghapus kehamilan');
+      } else {
+         $this->notification->notify_error('data/ibu_hamil/kehamilan', 'Gagal menghapus kehamilan');
       }
    }
 

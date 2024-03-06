@@ -26,7 +26,7 @@ class Kematian extends CI_Controller
          $this->load->view('templates/topbar', $data);
          $this->load->view('data/ibu_hamil/kematian/index', $data);
          $this->load->view('data/ibu_hamil/kematian/add');
-         // $this->load->view('data/ibu_hamil/kematian/edit');
+         $this->load->view('data/ibu_hamil/kematian/edit');
          // $this->load->view('data/ibu_hamil/kematian/delete');
          $this->load->view('templates/footer', $data);
       } else {

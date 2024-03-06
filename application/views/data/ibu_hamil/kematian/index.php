@@ -39,7 +39,7 @@
                         <td><?= $no++ ?></td>
                         <td><?= $field['n_ibu'] ?></td>
                         <td><?= $field['tgl_kematian'] ?></td>
-                        <td><?= $field['usia'] ?></td>
+                        <td><?= $field['usia'] ?> bulan</td>
                         <td><?= $field['penyebab'] ?></td>
                         <td><?= $field['jenis'] ?></td>
                         <td><?= $field['meninggal_di'] ?></td>

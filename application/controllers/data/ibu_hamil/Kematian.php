@@ -17,7 +17,7 @@ class Kematian extends CI_Controller
       $data['title'] = 'Kematian Ibu Hamil';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->im->get_all_kematian();
-      $data['bidan'] = $this->bm->get_all("bidan");
+      $data['bidan'] = $this->im->get_all_bidan_no_dead();
 
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
@@ -27,7 +27,7 @@ class Kematian extends CI_Controller
          $this->load->view('data/ibu_hamil/kematian/index', $data);
          $this->load->view('data/ibu_hamil/kematian/add');
          $this->load->view('data/ibu_hamil/kematian/edit');
-         // $this->load->view('data/ibu_hamil/kematian/delete');
+         $this->load->view('data/ibu_hamil/kematian/delete');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
@@ -45,6 +45,7 @@ class Kematian extends CI_Controller
    private function add()
    {
       $result = $this->bm->add('kematian_ibu_hamil', $this->_payload());
+      $this->bm->update('bidan', $this->input->post('bidan_id'), ['is_death' => 1]);
       if ($result) {
          $this->notification->notify_success('data/ibu_hamil/kematian', 'Berhasil menambahkan kematian');
       } else {
@@ -66,7 +67,8 @@ class Kematian extends CI_Controller
    public function delete()
    {
       $id = $this->input->post('id');
-      $result = $this->bm->delete("kematian", $id);
+      $result = $this->bm->delete("kematian_ibu_hamil", $id);
+      $this->bm->update('bidan', $this->input->post('bidan_id'), ['is_death' => 0]);
       if ($result) {
          $this->notification->notify_success('data/ibu_hamil/kematian', 'Berhasil menghapus kematian');
       } else {

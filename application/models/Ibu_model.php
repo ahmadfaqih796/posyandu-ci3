@@ -33,6 +33,14 @@ class Ibu_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
+   public function get_all_bidan_no_dead()
+   {
+      $this->db->select('b.*');
+      $this->db->from('bidan b');
+      $this->db->where('b.is_death', 0);
+      return $this->db->get()->result_array();
+   }
+
    public function get_ibu_by_id($id)
    {
       return $this->db->get_where('ibu', ['id' => $id])->row_array();

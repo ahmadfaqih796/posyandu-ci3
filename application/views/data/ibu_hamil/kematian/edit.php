@@ -12,16 +12,7 @@
             <div class="modal-body">
                <input type="hidden" name="updateData" id="updateData" value="true">
                <input type="hidden" name="id" id="edit_id">
-               <div class="form-group">
-                  <label for="edit_bidan_id">Nama</label>
-                  <select name="bidan_id" id="edit_bidan_id" class="form-control" required>
-                     <option value="">-- Pilih Bidan --</option>
-                     <?php foreach ($bidan as $field) : ?>
-                        <option value="<?= $field['id'] ?>" <?= set_select('bidan_id', $field['id'], (!empty($_POST['bidan_id']) && $_POST['bidan_id'] == $field['id'])); ?>><?= $field['n_ibu'] ?></option>
-                     <?php endforeach; ?>
-                  </select>
-                  <?= form_error('bidan_id', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
+               <input type="hidden" name="bidan_id" id="edit_bidan_id">
                <div class="form-group">
                   <label for="edit_tgl_kematian">Tanggal kematian</label>
                   <input type="date" class="form-control" name="tgl_kematian" id="edit_tgl_kematian" value="<?= set_value('tgl_kematian'); ?>" required>

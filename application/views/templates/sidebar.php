@@ -89,6 +89,12 @@ $sidebarMenu = array(
             "icon" => "fas fa-fw fa-book",
             "role" => array(1, 2),
          ),
+         array(
+            "url" => "data/ibu_hamil/kematian",
+            "text" => "Kematian Ibu Hamil",
+            "icon" => "fas fa-fw fa-book",
+            "role" => array(1, 2),
+         ),
       )
    ),
    array(

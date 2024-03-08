@@ -25,17 +25,36 @@
                      <th>No</th>
                      <th>Nama Bidan</th>
                      <th>Tanggal Periksa</th>
+                     <th>Standar 7T</th>
                      <th>Aksi</th>
                   </tr>
                </thead>
                <tbody>
-                  <?php foreach ($data as $field) : ?>
-                     <tr style="color: <?= $field['is_death'] ? 'red' : 'black' ?>;">
+                  <?php foreach ($data as $field) :
+                     $standar7t = [
+                        $field['s_timbang_berat_badan'],
+                        $field['s_tekanan_darah'],
+                        $field['s_tinggi_puncak_rahim'],
+                        $field['s_vaksinasi_tetanus'],
+                        $field['s_tablet_zat_besi'],
+                        $field['s_tes_laboratorium'],
+                        $field['s_temu_wicara'],
+                     ];
+                     $result = 0;
+                     foreach ($standar7t as $value) {
+                        if (strpos($value, 'belum') !== false) {
+                           $result = 1;
+                           break;
+                        }
+                     }
+                  ?>
+                     <tr>
                         <td><?= $no++ ?></td>
                         <td><?= $field['n_ibu'] ?></td>
                         <td><?= $field['tanggal_periksa'] ?></td>
+                        <td><?= $result == 1 ? 'Belum' : 'Sudah' ?></td>
                         <td>
-                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
+                           <a type="button" class="btn btn-primary" href="<?= base_url('monitoring/ibu_hamil/edit/' . $field['id']) ?>">Edit</a>
                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
                         </td>
                      </tr>

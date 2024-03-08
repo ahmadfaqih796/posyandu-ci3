@@ -8,6 +8,7 @@ class Ibu_Hamil extends CI_Controller
       parent::__construct();
       $this->load->library('session');
       $this->load->model('Base_model', 'bm');
+      $this->load->model('Ibu_model', 'im');
    }
 
    public function index()
@@ -15,7 +16,7 @@ class Ibu_Hamil extends CI_Controller
       $this->_validation();
       $data['title'] = 'Ibu Hamil';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['data'] = $this->bm->get_all("monitoring_ibu_hamil");
+      $data['data'] = $this->im->get_all_bidan("monitoring_ibu_hamil");
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
@@ -24,18 +25,18 @@ class Ibu_Hamil extends CI_Controller
          $this->load->view('monitoring/ibu_hamil/index', $data);
          // $this->load->view('monitoring/ibu_hamil/add');
          // $this->load->view('monitoring/ibu_hamil/edit');
-         // $this->load->view('monitoring/ibu_hamil/delete');
+         $this->load->view('monitoring/ibu_hamil/delete');
          $this->load->view('templates/footer', $data);
       } else {
-         $add = $this->input->post('addData');
-         $update = $this->input->post('updateData');
-         if ($add) {
-            return $this->add();
-         } else if ($update) {
-            return $this->update();
-         } else {
-            $this->notification->notify_error('data/ibu_hamil/bidan', 'Method initidak ditemukan');
-         }
+         // $add = $this->input->post('addData');
+         // $update = $this->input->post('updateData');
+         // if ($add) {
+         //    return $this->add();
+         // } else if ($update) {
+         //    return $this->update();
+         // } else {
+         //    $this->notification->notify_error('data/ibu_hamil/bidan', 'Method initidak ditemukan');
+         // }
       }
    }
 
@@ -54,115 +55,87 @@ class Ibu_Hamil extends CI_Controller
          $this->load->view('monitoring/ibu_hamil/add', $data);
          $this->load->view('templates/footer', $data);
       } else {
-         $add = $this->input->post('addData');
-         $update = $this->input->post('updateData');
-         if ($add) {
-            return $this->add();
-         } else if ($update) {
-            return $this->update();
+         $result = $this->bm->add('monitoring_ibu_hamil', $this->_payload());
+         if ($result) {
+            $this->notification->notify_success('monitoring/ibu_hamil', 'Berhasil menambahkan data');
          } else {
-            $this->notification->notify_error('data/ibu_hamil/bidan', 'Method initidak ditemukan');
+            $this->notification->notify_error('monitoring/ibu_hamil', 'Gagal menambahkan data');
          }
       }
-      // $result = $this->bm->add('bidan', $this->_payload("post"));
-      // if ($result) {
-      //    $this->notification->notify_success('data/ibu_hamil/bidan', 'Berhasil menambahkan bidan');
-      // } else {
-      //    $this->notification->notify_error('data/ibu_hamil/bidan', 'Gagal menambahkan bidan');
-      // }
    }
 
-   private function update()
+   public function edit($id_data)
    {
-      $id = htmlspecialchars($this->input->post('id'));
-      $result = $this->bm->update('bidan', $id, $this->_payload("update"));
-      if ($result) {
-         $this->notification->notify_success('data/ibu_hamil/bidan', 'Berhasil memperbarui bidan');
+      $this->_validation();
+      $data['title'] = 'Ibu Hamil';
+      $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+      $data['data'] = $this->bm->get_all("monitoring_ibu_hamil");
+      $data['bidan'] = $this->bm->get_all("bidan");
+      $data['detail'] = $this->bm->get_by_id("monitoring_ibu_hamil", $id_data);
+      $data['no'] = 1;
+      if ($this->form_validation->run() == false) {
+         $this->load->view('templates/header', $data);
+         $this->load->view('templates/sidebar', $data);
+         $this->load->view('templates/topbar', $data);
+         $this->load->view('monitoring/ibu_hamil/edit', $data);
+         $this->load->view('templates/footer', $data);
       } else {
-         $this->notification->notify_error('data/ibu_hamil/bidan', 'Gagal memperbarui bidan');
+         $result = $this->bm->update('monitoring_ibu_hamil', $id_data, $this->_payload());
+         if ($result) {
+            $this->notification->notify_success('monitoring/ibu_hamil', 'Berhasil mengubah data');
+         } else {
+            $this->notification->notify_error('monitoring/ibu_hamil', 'Gagal mengubah data');
+         }
       }
    }
 
    public function delete()
    {
       $id = $this->input->post('id');
-      $result = $this->bm->delete("bidan", $id);
+      $result = $this->bm->delete("monitoring_ibu_hamil", $id);
       if ($result) {
-         $this->notification->notify_success('data/ibu_hamil/bidan', 'Berhasil menghapus bidan');
+         $this->notification->notify_success('monitoring/ibu_hamil', 'Berhasil menghapus bidan');
       } else {
-         $this->notification->notify_error('data/ibu_hamil/bidan', 'Gagal menghapus bidan');
+         $this->notification->notify_error('monitoring/ibu_hamil', 'Gagal menghapus bidan');
       }
    }
 
-   private function _payload($type)
+   private function _payload()
    {
-      $n_ibu = htmlspecialchars($this->input->post('n_ibu', true));
-      $no_medis = htmlspecialchars($this->input->post('no_medis', true));
-      $nik = htmlspecialchars($this->input->post('nik', true));
-      $password = htmlspecialchars($this->input->post('password', true));
-      $n_suami = htmlspecialchars($this->input->post('n_suami', true));
-      $alamat = htmlspecialchars($this->input->post('alamat', true));
-      $telepon = htmlspecialchars($this->input->post('telepon', true));
-      $tgl_lahir = htmlspecialchars($this->input->post('tgl_lahir', true));
-      $golongan_darah = htmlspecialchars($this->input->post('golongan_darah', true));
-      $pekerjaan = htmlspecialchars($this->input->post('pekerjaan', true));
-      $agama = htmlspecialchars($this->input->post('agama', true));
-      $pendidikan_terakhir = htmlspecialchars($this->input->post('pendidikan_terakhir', true));
-      $riwayat_penyakit = htmlspecialchars($this->input->post('riwayat_penyakit', true));
-
-      if ($type == "post") {
-         $payload = [
-            'n_ibu' => $n_ibu,
-            'no_medis' => $no_medis,
-            'nik' => $nik,
-            'password' => $password,
-            'n_suami' => $n_suami,
-            'alamat' => $alamat,
-            'telepon' => $telepon,
-            'tgl_lahir' => $tgl_lahir,
-            'golongan_darah' => $golongan_darah,
-            'pekerjaan' => $pekerjaan,
-            'agama' => $agama,
-            'pendidikan_terakhir' => $pendidikan_terakhir,
-            'riwayat_penyakit' => $riwayat_penyakit
-         ];
-         return $payload;
+      $payload = [];
+      $form_fields = array(
+         'bidan_id',
+         'tanggal_periksa',
+         'keluhan',
+         'kunjungan',
+         'sesi',
+         'tekanan_darah',
+         'berat_badan',
+         'umur_kehamilan',
+         'tinggi_fundus',
+         'umur_ibu',
+         'tinggi_badan',
+         'lila',
+         'kunjungan_berikutnya',
+         'keterangan',
+         's_timbang_berat_badan',
+         's_tekanan_darah',
+         's_tinggi_puncak_rahim',
+         's_vaksinasi_tetanus',
+         's_tablet_zat_besi',
+         's_tes_laboratorium',
+         's_temu_wicara'
+      );
+      foreach ($form_fields as $field) {
+         $value = htmlspecialchars($this->input->post($field, true));
+         $payload[$field] = $value;
       }
-
-      $config['upload_path'] = './assets/img/bidan/';
-      $config['allowed_types'] = 'jpg|jpeg|png|gif';
-      $config['max_size'] = 1024;
-
-      $this->load->library('upload', $config);
-
-      if (!$this->upload->do_upload('photo')) {
-         return $this->notification->notify_error('data/ibu_hamil/bidan', 'Ukuran gambar terlalu besar atau gambar tidak valid');
-      } else {
-         $data = $this->upload->data();
-         $payload = [
-            'n_ibu' => $n_ibu,
-            'no_medis' => $no_medis,
-            'nik' => $nik,
-            'password' => $password,
-            'n_suami' => $n_suami,
-            'alamat' => $alamat,
-            'telepon' => $telepon,
-            'tgl_lahir' => $tgl_lahir,
-            'golongan_darah' => $golongan_darah,
-            'pekerjaan' => $pekerjaan,
-            'agama' => $agama,
-            'pendidikan_terakhir' => $pendidikan_terakhir,
-            'riwayat_penyakit' => $riwayat_penyakit,
-            'photo' => $data['file_name']
-         ];
-         return $payload;
-      }
+      return $payload;
    }
 
 
    private function _validation()
    {
-      $this->form_validation->set_rules('n_ibu', 'Nama Ibu', 'required|trim');
-      $this->form_validation->set_rules('n_suami', 'Nama Suami', 'required|trim');
+      $this->form_validation->set_rules('bidan_id', 'Nama Ibu', 'required|trim');
    }
 }

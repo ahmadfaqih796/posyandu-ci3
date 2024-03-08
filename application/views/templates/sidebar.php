@@ -98,6 +98,18 @@ $sidebarMenu = array(
       )
    ),
    array(
+      "text" => "Monitoring",
+      "role" => array(1),
+      "submenu" => array(
+         array(
+            "url" => "monitoring/ibu_hamil",
+            "text" => "Ibu Hamil",
+            "icon" => "fas fa-fw fa-clipboard",
+            "role" => array(1),
+         ),
+      )
+   ),
+   array(
       "text" => "Laporan",
       "role" => array(1, 2, 6),
       "submenu" => array(

@@ -26,8 +26,8 @@ class Gizi_Ibu_Hamil extends CI_Controller
          $this->load->view('templates/topbar', $data);
          $this->load->view('monitoring/gizi_ibu_hamil/index', $data);
          $this->load->view('monitoring/gizi_ibu_hamil/add');
-         // $this->load->view('monitoring/gizi_ibu_hamil/edit');
-         // $this->load->view('monitoring/gizi_ibu_hamil/delete');
+         $this->load->view('monitoring/gizi_ibu_hamil/edit');
+         $this->load->view('monitoring/gizi_ibu_hamil/delete');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
@@ -47,44 +47,30 @@ class Gizi_Ibu_Hamil extends CI_Controller
 
       $result = $this->bm->add('gizi_ibu_hamil', $this->_payload());
       if ($result) {
-         $this->notification->notify_success('monitoring/gizi_ibu_hamil', 'Berhasil menambahkan posyandu');
+         $this->notification->notify_success('monitoring/gizi_ibu_hamil', 'Berhasil menambahkan status gizi ibu hamil');
       } else {
-         $this->notification->notify_error('monitoring/gizi_ibu_hamil', 'Gagal menambahkan posyandu');
+         $this->notification->notify_error('monitoring/gizi_ibu_hamil', 'Gagal menambahkan status gizi ibu hamil');
       }
    }
 
    private function update()
    {
-      $id = htmlspecialchars($this->input->post('id'));
-      $n_posyandu = htmlspecialchars($this->input->post('n_posyandu', true));
-      $alamat = htmlspecialchars($this->input->post('alamat', true));
-      $keterangan = htmlspecialchars($this->input->post('keterangan', true));
-      $payload = [
-         'n_posyandu' => $n_posyandu,
-         'alamat' => $alamat,
-         'keterangan' => $keterangan
-      ];
-      $result = $this->pm->update_posyandu($id, $payload);
+      $result = $this->bm->update('gizi_ibu_hamil', $this->input->post('id'), $this->_payload());
       if ($result) {
-         $this->notification->notify_success('monitoring/gizi_ibu_hamil', 'Berhasil memperbarui posyandu');
+         $this->notification->notify_success('monitoring/gizi_ibu_hamil', 'Berhasil memperbarui status gizi ibu hamil');
       } else {
-         $this->notification->notify_error('monitoring/gizi_ibu_hamil', 'Gagal memperbarui posyandu');
+         $this->notification->notify_error('monitoring/gizi_ibu_hamil', 'Gagal memperbarui status gizi ibu hamil');
       }
    }
 
    public function delete()
    {
       $id = $this->input->post('id');
-      $t_kader = htmlspecialchars($this->input->post('t_kader', true));
-      $t_anak = htmlspecialchars($this->input->post('t_anak', true));
-      if ($t_kader > 0 || $t_anak > 0) {
-         return $this->notification->notify_error('monitoring/gizi_ibu_hamil', 'Posyandu ini tidak dapat di hapus karena terdapat anggota');
-      }
-      $result = $this->pm->delete_posyandu($id);
+      $result = $this->bm->delete('gizi_ibu_hamil', $id);
       if ($result) {
-         $this->notification->notify_success('monitoring/gizi_ibu_hamil', 'Berhasil menghapus posyandu');
+         $this->notification->notify_success('monitoring/gizi_ibu_hamil', 'Berhasil menghapus status gizi ibu hamil');
       } else {
-         $this->notification->notify_error('monitoring/gizi_ibu_hamil', 'Gagal menghapus posyandu');
+         $this->notification->notify_error('monitoring/gizi_ibu_hamil', 'Gagal menghapus status gizi ibu hamil');
       }
    }
 

@@ -19,6 +19,23 @@ class Anak_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
+   public function get_all_anak_no_dead()
+   {
+      $this->db->select('a.*, u.name');
+      $this->db->from('anak a');
+      $this->db->join('users u', 'a.user_id = u.id', 'left');
+      $this->db->where('a.is_death', 0);
+      return $this->db->get()->result_array();
+   }
+
+   public function get_all_anak_table($table)
+   {
+      $this->db->select('t.*, u.name');
+      $this->db->from($table . ' t');
+      $this->db->join('users u', 't.anak_id = u.id', 'left');
+      return $this->db->get()->result_array();
+   }
+
    public function get_all_anak_by_ibu($id)
    {
       $this->db->select('a.*, u.name, u.email, u.is_active, p.n_posyandu, i.n_ibu');
@@ -48,6 +65,12 @@ class Anak_model extends CI_Model
    public function update_anak($id, $data)
    {
       $this->db->where('id', $id);
+      return $this->db->update('anak', $data);
+   }
+
+   public function update_anak_by_user_id($id, $data)
+   {
+      $this->db->where('user_id', $id);
       return $this->db->update('anak', $data);
    }
 

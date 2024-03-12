@@ -74,6 +74,24 @@ $sidebarMenu = array(
       )
    ),
    array(
+      "text" => "Data Anak",
+      "role" => array(1, 2, 6),
+      "submenu" => array(
+         array(
+            "url" => "data/anak/gizi_anak",
+            "text" => "Status Gizi",
+            "icon" => "fas fa-fw fa-book",
+            "role" => array(1, 2),
+         ),
+         array(
+            "url" => "data/anak/kematian",
+            "text" => "Kematian Anak",
+            "icon" => "fas fa-fw fa-book",
+            "role" => array(1, 2),
+         ),
+      )
+   ),
+   array(
       "text" => "Data Ibu Hamil",
       "role" => array(1, 2, 6),
       "submenu" => array(

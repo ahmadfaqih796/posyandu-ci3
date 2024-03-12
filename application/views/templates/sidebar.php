@@ -107,6 +107,12 @@ $sidebarMenu = array(
             "icon" => "fas fa-fw fa-clipboard",
             "role" => array(1),
          ),
+         array(
+            "url" => "monitoring/gizi_ibu_hamil",
+            "text" => "Status Gizi Ibu Hamil",
+            "icon" => "fas fa-fw fa-clipboard",
+            "role" => array(1),
+         ),
       )
    ),
    array(

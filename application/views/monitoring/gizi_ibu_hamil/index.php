@@ -28,12 +28,24 @@
                      <th>Tinggi Badan</th>
                      <th>Trimester</th>
                      <th>Sesi</th>
+                     <th>Nilai Gizi</th>
                      <th>Status Gizi</th>
                      <th>Aksi</th>
                   </tr>
                </thead>
                <tbody>
-                  <?php foreach ($data as $field) : ?>
+                  <?php foreach ($data as $field) :
+                     $status_gizi = '';
+                     if ($field['nilai_gizi'] <= 18.5) {
+                        $status_gizi = 'Kurus';
+                     } elseif ($field['nilai_gizi'] <= 24.9) {
+                        $status_gizi = 'Normal';
+                     } elseif ($field['nilai_gizi'] <= 29.9) {
+                        $status_gizi = 'Gemuk';
+                     } else {
+                        $status_gizi = 'Obesitas';
+                     }
+                  ?>
                      <tr>
                         <td><?= $no++ ?></td>
                         <td><?= $field['n_ibu'] ?></td>
@@ -42,6 +54,7 @@
                         <td><?= $field['trimester'] ?></td>
                         <td><?= $field['sesi'] ?></td>
                         <td><?= $field['nilai_gizi'] ?></td>
+                        <td><?= $status_gizi ?></td>
                         <td>
                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>

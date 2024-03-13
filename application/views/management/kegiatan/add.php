@@ -16,12 +16,17 @@
                   <input type="text" class="form-control" name="judul" id="judul" value="<?= set_value('judul'); ?>">
                   <?= form_error('judul', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
-               <div class="form-group">
+               <!-- <div class="form-group">
                   <label for="deskripsi">Deskripsi</label>
                   <input type="text" class="form-control" name="deskripsi" id="deskripsi" value="<?= set_value('deskripsi'); ?>">
                   <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
+               </div> -->
                <div class="form-group">
+                  <label for="deskripsi">Deskripsi</label>
+                  <input type="hidden" name="deskripsi" value="<?= set_value('deskripsi') ?>">
+                  <div id="editor" style="min-height: 160px;"><?= set_value('deskripsi') ?></div>
+               </div>
+               <div class=" form-group">
                   <label for="waktu">Waktu</label>
                   <input type="date" class="form-control" name="waktu" id="waktu" value="<?= set_value('waktu'); ?>">
                   <?= form_error('waktu', '<small class="text-danger pl-3">', '</small>'); ?>

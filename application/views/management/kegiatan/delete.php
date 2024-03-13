@@ -13,7 +13,7 @@
             <input type="hidden" name="image" id="delete_image">
             <div class="modal-body">
                <input type="hidden" name="id" id="delete_id">
-               <p>Anda yakin ingin menghapus artikel
+               <p>Anda yakin ingin menghapus <?= $title ?>
                   <span id="delete_name"></span> ini ?
                </p>
             </div>

@@ -22,6 +22,9 @@
    <!-- Custom styles for this page -->
    <link href="<?= base_url("assets/") ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+   <!-- Quill for editor content -->
+   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">

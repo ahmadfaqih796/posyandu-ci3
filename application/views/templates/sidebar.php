@@ -78,6 +78,12 @@ $sidebarMenu = array(
       "role" => array(1, 2, 6),
       "submenu" => array(
          array(
+            "url" => "data/anak/timbangan",
+            "text" => "Timbangan",
+            "icon" => "fas fa-fw fa-book",
+            "role" => array(1, 2),
+         ),
+         array(
             "url" => "data/anak/gizi_anak",
             "text" => "Status Gizi",
             "icon" => "fas fa-fw fa-book",

@@ -48,6 +48,12 @@ $sidebarMenu = array(
             "role" => array(1),
          ),
          array(
+            "url" => "management/kegiatan",
+            "text" => "Kegiatan",
+            "icon" => "fas fa-fw fa-book",
+            "role" => array(1),
+         ),
+         array(
             "url" => "management/ibu",
             "text" => "Ibu",
             "icon" => "fas fa-fw fa-female",

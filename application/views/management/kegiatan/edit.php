@@ -8,7 +8,7 @@
                <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <form action="<?= base_url('management/artikel') ?>" method="post" enctype="multipart/form-data">
+         <form action="<?= base_url('management/kegiatan') ?>" method="post" enctype="multipart/form-data">
             <div class="modal-body">
                <!-- Hidden input for storing user ID -->
                <input type="hidden" name="updateData" id="updateData" value="true">

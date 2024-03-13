@@ -77,11 +77,12 @@ class Kegiatan extends CI_Controller
       }
    }
 
-   private function _payload()
+   private function _payload($method = null)
    {
       $judul = htmlspecialchars($this->input->post('judul', true));
       $deskripsi = htmlspecialchars($this->input->post('deskripsi', true));
       $waktu = htmlspecialchars($this->input->post('waktu', true));
+      $old_image = htmlspecialchars($this->input->post('old_image', true));
 
       $config['upload_path'] = './assets/img/kegiatan/';
       $config['allowed_types'] = 'jpg|jpeg|png|gif';

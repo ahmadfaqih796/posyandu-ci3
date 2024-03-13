@@ -3,12 +3,12 @@
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id="deleteModalLabel">Hapus Artikel</h5>
+            <h5 class="modal-title" id="deleteModalLabel">Hapus <?= $title ?></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <form action="<?= base_url('management/artikel/delete') ?>" method="post">
+         <form action="<?= base_url('management/kegiatan/delete') ?>" method="post">
             <input type="hidden" name="deleteData" id="deleteData" value="true">
             <input type="hidden" name="image" id="delete_image">
             <div class="modal-body">

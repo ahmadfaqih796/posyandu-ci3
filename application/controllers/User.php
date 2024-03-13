@@ -61,6 +61,18 @@ class User extends CI_Controller
       $this->load->view('templates/user/footer', $data);
    }
 
+   public function timbangan()
+   {
+      $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
+      $data['title'] = 'Timbangan & Perkembangan';
+      $data['no'] = 1;
+      $data['users'] = $this->am->get_all_anak_table_by_id("timbangan_anak", $this->session->userdata('user_id'));
+      $this->load->view('templates/user/header', $data);
+      $this->load->view('templates/user/topbar', $data);
+      $this->load->view('user/timbangan', $data);
+      $this->load->view('templates/user/footer', $data);
+   }
+
    public function jadwal_posyandu()
    {
       $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));

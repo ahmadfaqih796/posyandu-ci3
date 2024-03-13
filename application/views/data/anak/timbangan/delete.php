@@ -8,11 +8,10 @@
                <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <form action="<?= base_url('data/anak/kematian/delete') ?>" method="post">
+         <form action="<?= base_url('data/anak/timbangan/delete') ?>" method="post">
             <input type="hidden" name="deleteData" id="deleteData" value="true">
+            <input type="hidden" name="id" id="delete_id">
             <div class="modal-body">
-               <input type="hidden" name="id" id="delete_id">
-               <input type="hidden" name="anak_id" id="delete_anak_id">
                <p>Anda yakin ingin menghapus <?= $title ?>
                   <span id="delete_name"></span> ini ?
                </p>
@@ -29,7 +28,6 @@
 <script>
    function deleteData(data) {
       document.getElementById('delete_id').value = data['id'];
-      document.getElementById('delete_anak_id').value = data['anak_id'];
       document.getElementById('delete_name').innerHTML = data['name'];
    }
 </script>

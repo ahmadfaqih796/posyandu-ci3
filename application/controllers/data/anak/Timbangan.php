@@ -44,35 +44,33 @@ class Timbangan extends CI_Controller
 
    private function add()
    {
-      $result = $this->bm->add('kematian_anak', $this->_payload());
-      $this->am->update_anak_by_user_id($this->input->post('anak_id'), ['is_death' => 1]);
+      $result = $this->bm->add('timbangan_anak', $this->_payload());
       if ($result) {
-         $this->notification->notify_success('data/anak/timbangan', 'Berhasil menambahkan kematian');
+         $this->notification->notify_success('data/anak/timbangan', 'Berhasil menambahkan timbangan');
       } else {
-         $this->notification->notify_error('data/anak/timbangan', 'Gagal menambahkan kematian');
+         $this->notification->notify_error('data/anak/timbangan', 'Gagal menambahkan timbangan');
       }
    }
 
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
-      $result = $this->bm->update('kematian_anak', $id, $this->_payload("update"));
+      $result = $this->bm->update('timbangan_anak', $id, $this->_payload());
       if ($result) {
-         $this->notification->notify_success('data/anak/timbangan', 'Berhasil memperbarui kematian');
+         $this->notification->notify_success('data/anak/timbangan', 'Berhasil memperbarui timbangan');
       } else {
-         $this->notification->notify_error('data/anak/timbangan', 'Gagal memperbarui kematian');
+         $this->notification->notify_error('data/anak/timbangan', 'Gagal memperbarui timbangan');
       }
    }
 
    public function delete()
    {
       $id = $this->input->post('id');
-      $result = $this->bm->delete("kematian_anak", $id);
-      $this->am->update_anak_by_user_id($this->input->post('anak_id'), ['is_death' => 0]);
+      $result = $this->bm->delete("timbangan_anak", $id - 1);
       if ($result) {
-         $this->notification->notify_success('data/anak/timbangan', 'Berhasil menghapus kematian');
+         $this->notification->notify_success('data/anak/timbangan', 'Berhasil menghapus timbangan');
       } else {
-         $this->notification->notify_error('data/anak/timbangan', 'Gagal menghapus kematian');
+         $this->notification->notify_error('data/anak/timbangan', 'Gagal menghapus timbangan');
       }
    }
 

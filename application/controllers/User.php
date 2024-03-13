@@ -49,6 +49,18 @@ class User extends CI_Controller
       $this->load->view('templates/user/footer', $data);
    }
 
+   public function imunisasi()
+   {
+      $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
+      $data['title'] = 'Imunisasi';
+      $data['no'] = 1;
+      $data['users'] = $this->pm->get_pa_by_id($this->session->userdata('user_id'));
+      $this->load->view('templates/user/header', $data);
+      $this->load->view('templates/user/topbar', $data);
+      $this->load->view('user/imunisasi', $data);
+      $this->load->view('templates/user/footer', $data);
+   }
+
    public function jadwal_posyandu()
    {
       $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));

@@ -12,7 +12,7 @@ class Kegiatan extends CI_Controller
 
    public function index()
    {
-      $this->_validation_artikel();
+      $this->_validation();
       $data['title'] = 'kegiatan';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->bm->get_all('kegiatan');
@@ -24,6 +24,7 @@ class Kegiatan extends CI_Controller
          $this->load->view('management/kegiatan/index', $data);
          $this->load->view('management/kegiatan/add');
          $this->load->view('management/kegiatan/edit');
+         $this->load->view('management/kegiatan/view');
          $this->load->view('management/kegiatan/delete');
          $this->load->view('templates/footer', $data);
       } else {
@@ -104,7 +105,7 @@ class Kegiatan extends CI_Controller
       }
    }
 
-   private function _validation_artikel()
+   private function _validation()
    {
       $this->form_validation->set_rules('judul', 'Judul', 'required|trim');
       $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');

@@ -24,7 +24,6 @@
                   <tr>
                      <th>No</th>
                      <th>Judul</th>
-                     <th>Deskripsi</th>
                      <th>Waktu</th>
                      <th>Image</th>
                      <th>Aksi</th>
@@ -35,12 +34,12 @@
                      <tr>
                         <td><?= $no++ ?></td>
                         <td><?= $field['judul'] ?></td>
-                        <td><?= $field['deskripsi'] ?></td>
                         <td><?= $field['waktu'] ?></td>
                         <td><img src="<?= base_url('assets/img/kegiatan/' . $field['image']) ?>" alt="<?= $field['image'] ?>" width="150"></td>
                         <td>
-                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
-                           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
+                           <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#viewModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Lihat</button>
+                           <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
+                           <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
                         </td>
                      </tr>
                   <?php endforeach; ?>

@@ -97,4 +97,16 @@ class User extends CI_Controller
       $this->load->view('user/kegiatan', $data);
       $this->load->view('templates/user/footer', $data);
    }
+
+   public function detail_kegiatan($id)
+   {
+      $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
+      $data['title'] = 'Kegiatan';
+      $data['no'] = 1;
+      $data['detail'] = $this->bm->get_by_id('kegiatan', $id);
+      $this->load->view('templates/user/header', $data);
+      $this->load->view('templates/user/topbar', $data);
+      $this->load->view('user/detail_kegiatan', $data);
+      $this->load->view('templates/user/footer', $data);
+   }
 }

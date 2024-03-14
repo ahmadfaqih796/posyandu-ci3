@@ -10,6 +10,7 @@ class User extends CI_Controller
       $this->load->model('Anak_model', 'am');
       $this->load->model('Perkembangan_Anak_model', 'pm');
       $this->load->model('Schedule_model', 'sm');
+      $this->load->model('Base_model', 'bm');
       $role = $this->session->userdata('role_id');
       if ($role != 3) {
          redirect('badrequest/error/403');
@@ -90,7 +91,7 @@ class User extends CI_Controller
       $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
       $data['title'] = 'Kegiatan';
       $data['no'] = 1;
-      $data['users'] = $this->am->get_all_anak_table_by_id("timbangan_anak", $this->session->userdata('user_id'));
+      $data['data'] = $this->bm->get_all('kegiatan');
       $this->load->view('templates/user/header', $data);
       $this->load->view('templates/user/topbar', $data);
       $this->load->view('user/kegiatan', $data);

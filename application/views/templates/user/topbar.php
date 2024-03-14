@@ -33,7 +33,7 @@
                   </a>
                </li>
                <li class="nav-item ms-lg-auto">
-                  <a class="nav-link nav-link-icon me-2" href="<?= base_url("user/home") ?>">
+                  <a class="nav-link nav-link-icon me-2" href="<?= base_url("user/kegiatan") ?>">
                      <i class="fa fa-clipboard-list me-1"></i>
                      <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Kegiatan">Kegiatan</p>
                   </a>

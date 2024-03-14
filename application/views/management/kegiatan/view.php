@@ -17,7 +17,7 @@
 </div>
 
 <script>
-   function getData(data) {
+   function getView(data) {
       document.getElementById('view_judul').innerHTML = data['judul'];
       var deskripsiHTML = data['deskripsi'].replace(/&lt;/g, '<').replace(/&gt;/g, '>');
       document.getElementById('view_deskripsi').innerHTML = deskripsiHTML;

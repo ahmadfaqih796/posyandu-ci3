@@ -104,6 +104,33 @@
    quill.on('text-change', function(delta, oldDelta, source) {
       document.querySelector("input[name='deskripsi']").value = quill.root.innerHTML;
    });
+
+   var quillEditor = new Quill('#editorEdit', {
+      theme: 'snow',
+      modules: {
+         toolbar: [
+            [{
+               header: [1, 2, 3, 4, 5, 6, false]
+            }],
+            ["bold", "italic"],
+            [{
+               list: "ordered"
+            }, {
+               list: "bullet"
+            }, {
+               align: []
+            }],
+            [{
+               color: []
+            }, {
+               background: []
+            }],
+         ]
+      },
+   });
+   quillEditor.on('text-change', function(delta, oldDelta, source) {
+      document.querySelector("input[name='deskripsi']").value = quill.root.innerHTML;
+   });
 </script>
 
 </body>

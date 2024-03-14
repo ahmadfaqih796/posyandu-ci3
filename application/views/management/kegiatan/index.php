@@ -37,7 +37,7 @@
                         <td><?= $field['waktu'] ?></td>
                         <td><img src="<?= base_url('assets/img/kegiatan/' . $field['image']) ?>" alt="<?= $field['image'] ?>" width="150"></td>
                         <td>
-                           <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#viewModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Lihat</button>
+                           <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#viewModal" onclick="getView(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Lihat</button>
                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
                            <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
                         </td>

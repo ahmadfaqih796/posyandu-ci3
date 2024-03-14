@@ -24,6 +24,11 @@
                   <input type="text" class="form-control" name="deskripsi" id="edit_deskripsi" value="<?= set_value('deskripsi'); ?>">
                   <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
+               <!-- <div class="form-group">
+                  <label for="deskripsi">Deskripsi</label>
+                  <input type="hidden" name="deskripsi" value="<?= set_value('deskripsi') ?>">
+                  <div id="editorEdit" style="min-height: 160px;"><?= set_value('deskripsi') ?></div>
+               </div> -->
                <div class="form-group">
                   <label for="edit_waktu">Waktu</label>
                   <input type="date" class="form-control" name="waktu" id="edit_waktu" value="<?= set_value('waktu'); ?>">
@@ -48,8 +53,7 @@
    function getData(data) {
       document.getElementById('edit_id').value = data['id'];
       document.getElementById('edit_judul').value = data['judul'];
-      document.getElementById('edit_deskripsi').value = data['deskripsi'];
+      document.getElementById('edit_deskripsi').value = data['deskripsi']; // Jika Anda masih memerlukan input teks biasa
       document.getElementById('edit_waktu').value = data['waktu'];
-      document.getElementById('edit_old_image').value = data['image'];
    }
 </script>

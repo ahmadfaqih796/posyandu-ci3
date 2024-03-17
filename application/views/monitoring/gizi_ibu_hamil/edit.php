@@ -13,7 +13,7 @@
                <!-- Hidden input for storing user ID -->
                <input type="hidden" name="updateData" id="updateData" value="true">
                <input type="hidden" name="id" id="edit_id">
-               <input type="hidden" name="bidan_id" id="edit_bidan_id">
+               <input type="hidden" name="bumil_id" id="edit_bumil_id">
 
                <div class="form-group">
                   <label for="edit_trimester">Status</label>
@@ -56,7 +56,7 @@
 <script>
    function getData(data) {
       document.getElementById('edit_id').value = data['id'];
-      document.getElementById('edit_bidan_id').value = data['bidan_id'];
+      document.getElementById('edit_bumil_id').value = data['bumil_id'];
       document.getElementById('edit_trimester').value = data['trimester'];
       document.getElementById('edit_sesi').value = data['sesi'];
       document.getElementById('edit_berat_badan').value = data['berat_badan'];

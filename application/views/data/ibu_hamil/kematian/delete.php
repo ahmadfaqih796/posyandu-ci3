@@ -12,7 +12,7 @@
             <input type="hidden" name="deleteData" id="deleteData" value="true">
             <div class="modal-body">
                <input type="hidden" name="id" id="delete_id">
-               <input type="hidden" name="bidan_id" id="delete_bidan_id">
+               <input type="hidden" name="bumil_id" id="delete_bumil_id">
                <p>Anda yakin ingin menghapus <?= $title ?>
                   <span id="delete_name"></span> ini ?
                </p>
@@ -29,7 +29,7 @@
 <script>
    function deleteData(data) {
       document.getElementById('delete_id').value = data['id'];
-      document.getElementById('delete_bidan_id').value = data['bidan_id'];
+      document.getElementById('delete_bumil_id').value = data['bumil_id'];
       document.getElementById('delete_name').innerHTML = data['n_ibu'];
    }
 </script>

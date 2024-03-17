@@ -12,14 +12,14 @@
             <div class="modal-body">
                <input type="hidden" name="addData" id="addData" value="true">
                <div class="form-group">
-                  <label for="bidan_id">Nama</label>
-                  <select name="bidan_id" id="bidan_id" class="form-control" required>
+                  <label for="bumil_id">Nama</label>
+                  <select name="bumil_id" id="bumil_id" class="form-control" required>
                      <option value="">-- Pilih Bidan --</option>
                      <?php foreach ($bidan as $field) : ?>
-                        <option value="<?= $field['id'] ?>" <?= set_select('bidan_id', $field['id'], (!empty($_POST['bidan_id']) && $_POST['bidan_id'] == $field['id'])); ?>><?= $field['n_ibu'] ?></option>
+                        <option value="<?= $field['id'] ?>" <?= set_select('bumil_id', $field['id'], (!empty($_POST['bumil_id']) && $_POST['bumil_id'] == $field['id'])); ?>><?= $field['n_ibu'] ?></option>
                      <?php endforeach; ?>
                   </select>
-                  <?= form_error('bidan_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                  <?= form_error('bumil_id', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
                   <label for="hamil_ke">Hamil Ke</label>
@@ -37,9 +37,9 @@
                   <?= form_error('htp', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
-                  <label for="jml_persalinan">Jumlah Persalinan</label>
-                  <input type="text" class="form-control" name="jml_persalinan" id="jml_persalinan" value="<?= set_value('jml_persalinan'); ?>" required>
-                  <?= form_error('jml_persalinan', '<small class="text-danger pl-3">', '</small>'); ?>
+                  <label for="jml_kehamilan">Jumlah Persalinan</label>
+                  <input type="text" class="form-control" name="jml_kehamilan" id="jml_kehamilan" value="<?= set_value('jml_kehamilan'); ?>" required>
+                  <?= form_error('jml_kehamilan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
                   <label for="jml_keguguran">Jumlah Keguguran</label>
@@ -47,9 +47,9 @@
                   <?= form_error('jml_keguguran', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
-                  <label for="jml_anak_hidup">Jumlah Anak Hidup</label>
-                  <input type="text" class="form-control" name="jml_anak_hidup" id="jml_anak_hidup" value="<?= set_value('jml_anak_hidup'); ?>" required>
-                  <?= form_error('jml_anak_hidup', '<small class="text-danger pl-3">', '</small>'); ?>
+                  <label for="jml_lahir_hidup">Jumlah Anak Hidup</label>
+                  <input type="text" class="form-control" name="jml_lahir_hidup" id="jml_lahir_hidup" value="<?= set_value('jml_lahir_hidup'); ?>" required>
+                  <?= form_error('jml_lahir_hidup', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
                   <label for="jml_lahir_mati">Jumlah Lahir Mati</label>
@@ -60,11 +60,6 @@
                   <label for="jarak_persalinan_terakhir">Jarak Persalinan Terakhir</label>
                   <input type="text" class="form-control" name="jarak_persalinan_terakhir" id="jarak_persalinan_terakhir" value="<?= set_value('jarak_persalinan_terakhir'); ?>" required>
                   <?= form_error('jarak_persalinan_terakhir', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
-               <div class="form-group">
-                  <label for="tinggi_badan">Tinggi Badan</label>
-                  <input type="text" class="form-control" name="tinggi_badan" id="tinggi_badan" value="<?= set_value('tinggi_badan'); ?>" required>
-                  <?= form_error('tinggi_badan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
             </div>
             <div class="modal-footer">

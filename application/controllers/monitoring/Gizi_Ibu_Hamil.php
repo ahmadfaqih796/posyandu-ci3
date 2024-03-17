@@ -76,7 +76,7 @@ class Gizi_Ibu_Hamil extends CI_Controller
 
    private function _payload()
    {
-      $bidan_id = htmlspecialchars($this->input->post('bidan_id', true));
+      $bumil_id = htmlspecialchars($this->input->post('bumil_id', true));
       $trimester = htmlspecialchars($this->input->post('trimester', true));
       $sesi = htmlspecialchars($this->input->post('sesi', true));
       $berat_badan = htmlspecialchars($this->input->post('berat_badan', true));
@@ -84,7 +84,7 @@ class Gizi_Ibu_Hamil extends CI_Controller
       $nilai_gizi = $berat_badan / (($tinggi_badan * $tinggi_badan) / 10000);
 
       $payload = [
-         'bidan_id' => $bidan_id,
+         'bumil_id' => $bumil_id,
          'trimester' => $trimester,
          'sesi' => $sesi,
          'berat_badan' => $berat_badan,
@@ -96,6 +96,6 @@ class Gizi_Ibu_Hamil extends CI_Controller
 
    private function _validation()
    {
-      $this->form_validation->set_rules('bidan_id', 'Nama Posyandu', 'required|trim');
+      $this->form_validation->set_rules('bumil_id', 'Nama Posyandu', 'required|trim');
    }
 }

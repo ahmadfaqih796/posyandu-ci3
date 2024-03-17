@@ -104,7 +104,7 @@ class Ibu_Hamil extends CI_Controller
    {
       $payload = [];
       $form_fields = array(
-         'bidan_id',
+         'bumil_id',
          'tanggal_periksa',
          'keluhan',
          'kunjungan',
@@ -136,6 +136,6 @@ class Ibu_Hamil extends CI_Controller
 
    private function _validation()
    {
-      $this->form_validation->set_rules('bidan_id', 'Nama Ibu', 'required|trim');
+      $this->form_validation->set_rules('bumil_id', 'Nama Ibu', 'required|trim');
    }
 }

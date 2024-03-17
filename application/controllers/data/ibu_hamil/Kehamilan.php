@@ -17,7 +17,7 @@ class Kehamilan extends CI_Controller
       $data['title'] = 'Kehamilan';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->im->get_all_kehamilan();
-      $data['bidan'] = $this->bm->get_all("ibu_hamil");
+      $data['bidan'] = $this->im->get_all_bidan_no_dead();
 
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
@@ -76,28 +76,26 @@ class Kehamilan extends CI_Controller
 
    private function _payload()
    {
-      $bidan_id = htmlspecialchars($this->input->post('bidan_id', true));
+      $bumil_id = htmlspecialchars($this->input->post('bumil_id', true));
       $hamil_ke = htmlspecialchars($this->input->post('hamil_ke', true));
       $hpht = htmlspecialchars($this->input->post('hpht', true));
       $htp = htmlspecialchars($this->input->post('htp', true));
-      $jml_persalinan = htmlspecialchars($this->input->post('jml_persalinan', true));
+      $jml_kehamilan = htmlspecialchars($this->input->post('jml_kehamilan', true));
       $jml_keguguran = htmlspecialchars($this->input->post('jml_keguguran', true));
-      $jml_anak_hidup = htmlspecialchars($this->input->post('jml_anak_hidup', true));
+      $jml_lahir_hidup = htmlspecialchars($this->input->post('jml_lahir_hidup', true));
       $jml_lahir_mati = htmlspecialchars($this->input->post('jml_lahir_mati', true));
       $jarak_persalinan_terakhir = htmlspecialchars($this->input->post('jarak_persalinan_terakhir', true));
-      $tinggi_badan = htmlspecialchars($this->input->post('tinggi_badan', true));
 
       $payload = [
-         'bidan_id' => $bidan_id,
+         'bumil_id' => $bumil_id,
          'hamil_ke' => $hamil_ke,
          'hpht' => $hpht,
          'htp' => $htp,
-         'jml_persalinan' => $jml_persalinan,
+         'jml_kehamilan' => $jml_kehamilan,
          'jml_keguguran' => $jml_keguguran,
-         'jml_anak_hidup' => $jml_anak_hidup,
+         'jml_lahir_hidup' => $jml_lahir_hidup,
          'jml_lahir_mati' => $jml_lahir_mati,
-         'jarak_persalinan_terakhir' => $jarak_persalinan_terakhir,
-         'tinggi_badan' => $tinggi_badan
+         'jarak_persalinan_terakhir' => $jarak_persalinan_terakhir
       ];
       return $payload;
    }
@@ -105,7 +103,7 @@ class Kehamilan extends CI_Controller
 
    private function _validation()
    {
-      $this->form_validation->set_rules('bidan_id', 'Nama Ibu', 'required|trim');
+      $this->form_validation->set_rules('bumil_id', 'Nama Ibu', 'required|trim');
       $this->form_validation->set_rules('hamil_ke', 'Hamil Ke', 'required|trim');
    }
 }

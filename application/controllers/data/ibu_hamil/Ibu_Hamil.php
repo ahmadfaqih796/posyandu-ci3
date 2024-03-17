@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Bidan extends CI_Controller
+class Ibu_Hamil extends CI_Controller
 {
    public function __construct()
    {
@@ -13,7 +13,7 @@ class Bidan extends CI_Controller
    public function index()
    {
       $this->_validation();
-      $data['title'] = 'Bidan';
+      $data['title'] = 'Ibu Hamil';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->bm->get_all("ibu_hamil");
 

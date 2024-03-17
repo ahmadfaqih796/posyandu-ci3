@@ -36,7 +36,7 @@
                </thead>
                <tbody>
                   <?php foreach ($data as $field) : ?>
-                     <tr style="color: <?= $field['is_death'] ? 'red' : 'black' ?>;">
+                     <tr style="background-color: <?= $field['is_death'] ? 'yellow' : 'none' ?>; color:black;">
                         <td><?= $no++ ?></td>
                         <td><?= $field['n_ibu'] ?></td>
                         <td><?= $field['n_suami'] ?></td>
@@ -47,8 +47,8 @@
                         <td><img src="<?= base_url('assets/img/bidan/') . $field['photo'] ?>" alt="Photo" width="100"></td>
                         <td><?= $field['is_death'] ? 'Meninggal' : 'Hidup' ?></td>
                         <td>
-                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
-                           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
+                           <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
+                           <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
                         </td>
                      </tr>
                   <?php endforeach; ?>

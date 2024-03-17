@@ -46,7 +46,7 @@ class Ibu_Hamil extends CI_Controller
       $data['title'] = 'Ibu Hamil';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->bm->get_all("monitoring_ibu_hamil");
-      $data['bidan'] = $this->bm->get_all("bidan");
+      $data['bidan'] = $this->bm->get_all("ibu_hamil");
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
@@ -70,7 +70,7 @@ class Ibu_Hamil extends CI_Controller
       $data['title'] = 'Ibu Hamil';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->bm->get_all("monitoring_ibu_hamil");
-      $data['bidan'] = $this->bm->get_all("bidan");
+      $data['bidan'] = $this->bm->get_all("ibu_hamil");
       $data['detail'] = $this->bm->get_by_id("monitoring_ibu_hamil", $id_data);
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {

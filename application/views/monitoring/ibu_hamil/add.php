@@ -17,14 +17,14 @@
             <hr class="sidebar-divider">
             <div class="row g-3">
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">
-                  <label for="bidan_id">Nama</label>
-                  <select name="bidan_id" id="bidan_id" class="form-control" required>
+                  <label for="bumil_id">Nama</label>
+                  <select name="bumil_id" id="bumil_id" class="form-control" required>
                      <option value="">-- Pilih Bidan --</option>
                      <?php foreach ($bidan as $field) : ?>
-                        <option value="<?= $field['id'] ?>" <?= set_select('bidan_id', $field['id'], (!empty($_POST['bidan_id']) && $_POST['bidan_id'] == $field['id'])); ?>><?= $field['n_ibu'] ?></option>
+                        <option value="<?= $field['id'] ?>" <?= set_select('bumil_id', $field['id'], (!empty($_POST['bumil_id']) && $_POST['bumil_id'] == $field['id'])); ?>><?= $field['n_ibu'] ?></option>
                      <?php endforeach; ?>
                   </select>
-                  <?= form_error('bidan_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                  <?= form_error('bumil_id', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">
                   <label for="tanggal_periksa">Tanggal Periksa</label>

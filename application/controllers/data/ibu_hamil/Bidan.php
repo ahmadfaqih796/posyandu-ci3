@@ -15,7 +15,7 @@ class Bidan extends CI_Controller
       $this->_validation();
       $data['title'] = 'Bidan';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['data'] = $this->bm->get_all("bidan");
+      $data['data'] = $this->bm->get_all("ibu_hamil");
 
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {

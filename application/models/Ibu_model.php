@@ -21,7 +21,7 @@ class Ibu_model extends CI_Model
    {
       $this->db->select('k.*, b.n_ibu');
       $this->db->from('kehamilan k');
-      $this->db->join('bidan b', 'k.bidan_id = b.id', 'left');
+      $this->db->join('ibu_hamil b', 'k.bumil_id = b.id', 'left');
       return $this->db->get()->result_array();
    }
 
@@ -29,14 +29,14 @@ class Ibu_model extends CI_Model
    {
       $this->db->select('k.*, b.n_ibu');
       $this->db->from('kematian_ibu_hamil k');
-      $this->db->join('bidan b', 'k.bidan_id = b.id', 'left');
+      $this->db->join('ibu_hamil b', 'k.bumil_id = b.id', 'left');
       return $this->db->get()->result_array();
    }
 
    public function get_all_bidan_no_dead()
    {
       $this->db->select('b.*');
-      $this->db->from('bidan b');
+      $this->db->from('ibu_hamil b');
       $this->db->where('b.is_death', 0);
       return $this->db->get()->result_array();
    }
@@ -45,7 +45,7 @@ class Ibu_model extends CI_Model
    {
       $this->db->select('t.*, b.n_ibu');
       $this->db->from($table . ' t');
-      $this->db->join('bidan b', 't.bidan_id = b.id', 'left');
+      $this->db->join('ibu_hamil b', 't.bumil_id = b.id', 'left');
       return $this->db->get()->result_array();
    }
 

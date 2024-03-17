@@ -16,7 +16,7 @@ class Gizi_Ibu_Hamil extends CI_Controller
       $this->_validation();
       $data['title'] = 'Status Gizi Ibu Hamil';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['bidan'] = $this->bm->get_all("bidan");
+      $data['bidan'] = $this->bm->get_all("ibu_hamil");
       // $data['data'] = $this->bm->get_all("gizi_ibu_hamil");
       $data['data'] = $this->im->get_all_bidan("gizi_ibu_hamil");
       $data['no'] = 1;

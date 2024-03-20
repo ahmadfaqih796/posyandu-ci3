@@ -30,9 +30,11 @@
                   <label for="role_id">Role</label>
                   <select name="role_id" id="role_id" class="form-control" required>
                      <option value="">--Pilih Role--</option>
-                     <option value="1" <?= set_select('role_id', '1', (!empty($_POST['role_id']) && $_POST['role_id'] == "1")); ?>>Admin</option>
+                     <option value="7" <?= set_select('role_id', '7', (!empty($_POST['role_id']) && $_POST['role_id'] == "7")); ?>>Bidan</option>
                      <option value="2" <?= set_select('role_id', '2', (!empty($_POST['role_id']) && $_POST['role_id'] == "2")); ?>>Kader</option>
                      <option value="3" <?= set_select('role_id', '3', (!empty($_POST['role_id']) && $_POST['role_id'] == "3")); ?>>User</option>
+                     <option value="5" <?= set_select('role_id', '5', (!empty($_POST['role_id']) && $_POST['role_id'] == "5")); ?>>Ibu Hamil</option>
+                     <option value="6" <?= set_select('role_id', '6', (!empty($_POST['role_id']) && $_POST['role_id'] == "6")); ?>>Koordinator Imunisasi</option>
                   </select>
                   <?= form_error('role_id', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>

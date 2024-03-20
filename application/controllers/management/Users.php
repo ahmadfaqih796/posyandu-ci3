@@ -54,6 +54,9 @@ class Users extends CI_Controller
          'role_id' => $role_id,
          'image' => "default.jpg",
       ];
+      if ($role_id == 7 || $role_id == 5) {
+         $payload['is_active'] = 1;
+      }
 
       $result = $this->um->insert_user($payload);
       if ($result) {

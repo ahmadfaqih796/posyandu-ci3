@@ -23,7 +23,7 @@
                <thead>
                   <tr>
                      <th>No</th>
-                     <th>Nama Bidan</th>
+                     <th>Nama Ibu Hamil</th>
                      <th>Nama Suami</th>
                      <th>Tanggal Lahir</th>
                      <th>Alamat</th>

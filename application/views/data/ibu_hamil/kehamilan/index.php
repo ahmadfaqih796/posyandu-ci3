@@ -23,7 +23,7 @@
                <thead>
                   <tr>
                      <th>No</th>
-                     <th>Nama Bidan</th>
+                     <th>Nama Ibu Hamil</th>
                      <th>Hamil Ke</th>
                      <th>HPHT</th>
                      <th>HTP</th>

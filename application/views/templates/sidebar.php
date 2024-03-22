@@ -105,43 +105,43 @@ $sidebarMenu = array(
    ),
    array(
       "text" => "Data Ibu Hamil",
-      "role" => array(1, 2, 6),
+      "role" => array(1, 7),
       "submenu" => array(
          array(
             "url" => "data/ibu_hamil/ibu_hamil",
             "text" => "Ibu Hamil",
             "icon" => "fas fa-fw fa-clipboard",
-            "role" => array(1, 2),
+            "role" => array(1, 7),
          ),
          array(
             "url" => "data/ibu_hamil/kehamilan",
             "text" => "Kehamilan",
             "icon" => "fas fa-fw fa-book",
-            "role" => array(1, 2),
+            "role" => array(1, 7),
          ),
          array(
             "url" => "data/ibu_hamil/kematian",
             "text" => "Kematian Ibu Hamil",
             "icon" => "fas fa-fw fa-book",
-            "role" => array(1, 2),
+            "role" => array(1, 7),
          ),
       )
    ),
    array(
       "text" => "Monitoring",
-      "role" => array(1),
+      "role" => array(1, 7),
       "submenu" => array(
          array(
             "url" => "monitoring/ibu_hamil",
             "text" => "Ibu Hamil",
             "icon" => "fas fa-fw fa-clipboard",
-            "role" => array(1),
+            "role" => array(1, 7),
          ),
          array(
             "url" => "monitoring/gizi_ibu_hamil",
             "text" => "Status Gizi Ibu Hamil",
             "icon" => "fas fa-fw fa-clipboard",
-            "role" => array(1),
+            "role" => array(1, 7),
          ),
       )
    ),

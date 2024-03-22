@@ -15,7 +15,7 @@
                <div class="form-group">
                   <label for="edit_bumil_id">Nama</label>
                   <select name="bumil_id" id="edit_bumil_id" class="form-control" required>
-                     <option value="">-- Pilih Bidan --</option>
+                     <option value="">-- Pilih Ibu Hamil --</option>
                      <?php foreach ($bidan as $field) : ?>
                         <option value="<?= $field['id'] ?>" <?= set_select('bumil_id', $field['id'], (!empty($_POST['bumil_id']) && $_POST['bumil_id'] == $field['id'])); ?>><?= $field['n_ibu'] ?></option>
                      <?php endforeach; ?>

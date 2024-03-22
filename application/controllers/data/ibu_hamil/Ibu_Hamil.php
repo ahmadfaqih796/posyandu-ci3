@@ -22,10 +22,10 @@ class Ibu_Hamil extends CI_Controller
          $this->load->view('templates/header', $data);
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
-         $this->load->view('data/ibu_hamil/bidan/index', $data);
-         $this->load->view('data/ibu_hamil/bidan/add');
-         $this->load->view('data/ibu_hamil/bidan/edit');
-         $this->load->view('data/ibu_hamil/bidan/delete');
+         $this->load->view('data/ibu_hamil/ibu_hamil/index', $data);
+         $this->load->view('data/ibu_hamil/ibu_hamil/add');
+         $this->load->view('data/ibu_hamil/ibu_hamil/edit');
+         $this->load->view('data/ibu_hamil/ibu_hamil/delete');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
@@ -35,40 +35,40 @@ class Ibu_Hamil extends CI_Controller
          } else if ($update) {
             return $this->update();
          } else {
-            $this->notification->notify_error('data/ibu_hamil/bidan', 'Method initidak ditemukan');
+            $this->notification->notify_error('data/ibu_hamil/ibu_hamil', 'Method initidak ditemukan');
          }
       }
    }
 
    private function add()
    {
-      $result = $this->bm->add('bidan', $this->_payload("post"));
+      $result = $this->bm->add('ibu_hamil', $this->_payload("post"));
       if ($result) {
-         $this->notification->notify_success('data/ibu_hamil/bidan', 'Berhasil menambahkan bidan');
+         $this->notification->notify_success('data/ibu_hamil/ibu_hamil', 'Berhasil menambahkan ibu_hamil');
       } else {
-         $this->notification->notify_error('data/ibu_hamil/bidan', 'Gagal menambahkan bidan');
+         $this->notification->notify_error('data/ibu_hamil/ibu_hamil', 'Gagal menambahkan ibu_hamil');
       }
    }
 
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
-      $result = $this->bm->update('bidan', $id, $this->_payload("update"));
+      $result = $this->bm->update('ibu_hamil', $id, $this->_payload("update"));
       if ($result) {
-         $this->notification->notify_success('data/ibu_hamil/bidan', 'Berhasil memperbarui bidan');
+         $this->notification->notify_success('data/ibu_hamil/ibu_hamil', 'Berhasil memperbarui ibu_hamil');
       } else {
-         $this->notification->notify_error('data/ibu_hamil/bidan', 'Gagal memperbarui bidan');
+         $this->notification->notify_error('data/ibu_hamil/ibu_hamil', 'Gagal memperbarui ibu_hamil');
       }
    }
 
    public function delete()
    {
       $id = $this->input->post('id');
-      $result = $this->bm->delete("bidan", $id);
+      $result = $this->bm->delete("ibu_hamil", $id);
       if ($result) {
-         $this->notification->notify_success('data/ibu_hamil/bidan', 'Berhasil menghapus bidan');
+         $this->notification->notify_success('data/ibu_hamil/ibu_hamil', 'Berhasil menghapus ibu_hamil');
       } else {
-         $this->notification->notify_error('data/ibu_hamil/bidan', 'Gagal menghapus bidan');
+         $this->notification->notify_error('data/ibu_hamil/ibu_hamil', 'Gagal menghapus ibu_hamil');
       }
    }
 
@@ -107,14 +107,14 @@ class Ibu_Hamil extends CI_Controller
          return $payload;
       }
 
-      $config['upload_path'] = './assets/img/bidan/';
+      $config['upload_path'] = './assets/img/ibu_hamil/';
       $config['allowed_types'] = 'jpg|jpeg|png|gif';
       $config['max_size'] = 1024;
 
       $this->load->library('upload', $config);
 
       if (!$this->upload->do_upload('photo')) {
-         return $this->notification->notify_error('data/ibu_hamil/bidan', 'Ukuran gambar terlalu besar atau gambar tidak valid');
+         return $this->notification->notify_error('data/ibu_hamil/ibu_hamil', 'Ukuran gambar terlalu besar atau gambar tidak valid');
       } else {
          $data = $this->upload->data();
          $payload = [

@@ -8,9 +8,12 @@
             <div class="col-6 align-self-center">
                <h6 class="m-0 font-weight-bold text-primary">Tambah Data <?= $title ?></h6>
             </div>
-
          </div>
       </div>
+      <?php
+      $kehamilan = $this->im->get_kehamilan_by_id(4);
+      var_dump($kehamilan);
+      ?>
       <div class="card-body">
          <form action="<?= base_url('monitoring/ibu_hamil/add') ?>" method="post">
             <h3 class="h3 mb-3 text-center">Monitoring</h3>

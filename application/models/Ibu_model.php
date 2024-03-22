@@ -25,6 +25,16 @@ class Ibu_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
+   public function get_kehamilan_by_id($id)
+   {
+      $this->db->select('k.*, b.n_ibu');
+      $this->db->from('kehamilan k');
+      $this->db->join('ibu_hamil b', 'k.bumil_id = b.id', 'left');
+      $this->db->where('k.bumil_id', $id);
+      $this->db->order_by('k.id', 'desc');
+      return $this->db->get()->row_array();
+   }
+
    public function get_all_kematian()
    {
       $this->db->select('k.*, b.n_ibu');

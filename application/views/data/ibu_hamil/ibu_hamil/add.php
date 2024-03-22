@@ -8,7 +8,7 @@
                <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <form action="<?= base_url('data/ibu_hamil/bidan') ?>" method="post">
+         <form action="<?= base_url('data/ibu_hamil/ibu_hamil') ?>" method="post">
             <div class="modal-body">
                <input type="hidden" name="addData" id="addData" value="true">
                <div class="form-group">

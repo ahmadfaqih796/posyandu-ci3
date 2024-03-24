@@ -77,11 +77,11 @@
                   <input type="text" class="form-control" name="riwayat_penyakit" id="edit_riwayat_penyakit" value="<?= set_value('riwayat_penyakit'); ?>" required>
                   <?= form_error('riwayat_penyakit', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
-               <div class="form-group">
+               <!-- <div class="form-group">
                   <label for="edit_photo">Photo</label>
                   <input type="file" class="form-control" name="photo" id="edit_photo" value="<?= set_value('photo'); ?>" required>
                   <?= form_error('photo', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
+               </div> -->
             </div>
             <div class="modal-footer">
                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -94,6 +94,7 @@
 
 <script>
    function getData(data) {
+      console.log("ddddddddd", data)
       document.getElementById('edit_id').value = data['id'];
       document.getElementById('edit_n_ibu').value = data['n_ibu'];
       document.getElementById('edit_no_medis').value = data['no_medis'];
@@ -102,7 +103,7 @@
       document.getElementById('edit_n_suami').value = data['n_suami'];
       document.getElementById('edit_alamat').value = data['alamat'];
       document.getElementById('edit_telepon').value = data['telepon'];
-      document.getElementById('edit_tgl_lahir').value = data['tgl_lahir'];
+      // document.getElementById('edit_tgl_lahir').value = data['tgl_lahir'];
       document.getElementById('edit_golongan_darah').value = data['golongan_darah'];
       document.getElementById('edit_pekerjaan').value = data['pekerjaan'];
       document.getElementById('edit_agama').value = data['agama'];

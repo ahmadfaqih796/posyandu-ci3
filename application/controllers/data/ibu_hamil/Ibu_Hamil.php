@@ -44,9 +44,9 @@ class Ibu_Hamil extends CI_Controller
    {
       $result = $this->bm->add('ibu_hamil', $this->_payload("post"));
       if ($result) {
-         $this->notification->notify_success('data/ibu_hamil/ibu_hamil', 'Berhasil menambahkan ibu_hamil');
+         $this->notification->notify_success('data/ibu_hamil/ibu_hamil', 'Berhasil menambahkan ibu hamil');
       } else {
-         $this->notification->notify_error('data/ibu_hamil/ibu_hamil', 'Gagal menambahkan ibu_hamil');
+         $this->notification->notify_error('data/ibu_hamil/ibu_hamil', 'Gagal menambahkan ibu hamil');
       }
    }
 
@@ -55,9 +55,9 @@ class Ibu_Hamil extends CI_Controller
       $id = htmlspecialchars($this->input->post('id'));
       $result = $this->bm->update('ibu_hamil', $id, $this->_payload("update"));
       if ($result) {
-         $this->notification->notify_success('data/ibu_hamil/ibu_hamil', 'Berhasil memperbarui ibu_hamil');
+         $this->notification->notify_success('data/ibu_hamil/ibu_hamil', 'Berhasil memperbarui ibu hamil');
       } else {
-         $this->notification->notify_error('data/ibu_hamil/ibu_hamil', 'Gagal memperbarui ibu_hamil');
+         $this->notification->notify_error('data/ibu_hamil/ibu_hamil', 'Gagal memperbarui ibu hamil');
       }
    }
 
@@ -66,9 +66,9 @@ class Ibu_Hamil extends CI_Controller
       $id = $this->input->post('id');
       $result = $this->bm->delete("ibu_hamil", $id);
       if ($result) {
-         $this->notification->notify_success('data/ibu_hamil/ibu_hamil', 'Berhasil menghapus ibu_hamil');
+         $this->notification->notify_success('data/ibu_hamil/ibu_hamil', 'Berhasil menghapus ibu hamil');
       } else {
-         $this->notification->notify_error('data/ibu_hamil/ibu_hamil', 'Gagal menghapus ibu_hamil');
+         $this->notification->notify_error('data/ibu_hamil/ibu_hamil', 'Gagal menghapus ibu hamil');
       }
    }
 
@@ -88,7 +88,7 @@ class Ibu_Hamil extends CI_Controller
       $pendidikan_terakhir = htmlspecialchars($this->input->post('pendidikan_terakhir', true));
       $riwayat_penyakit = htmlspecialchars($this->input->post('riwayat_penyakit', true));
 
-      if ($type == "post") {
+      if ($type == "update") {
          $payload = [
             'n_ibu' => $n_ibu,
             'no_medis' => $no_medis,
@@ -96,7 +96,7 @@ class Ibu_Hamil extends CI_Controller
             'password' => $password,
             'n_suami' => $n_suami,
             'alamat' => $alamat,
-            'telepon' => $telepon,
+            'telepon' => '08' . $telepon,
             'tgl_lahir' => $tgl_lahir,
             'golongan_darah' => $golongan_darah,
             'pekerjaan' => $pekerjaan,

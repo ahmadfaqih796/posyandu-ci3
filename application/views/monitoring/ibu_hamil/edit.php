@@ -12,10 +12,52 @@
       </div>
       <div class="card-body">
          <form action="<?= base_url('monitoring/ibu_hamil/edit/' . $detail['id']) ?>" method="post">
-            <h3 class="h3 mb-3 text-center">Monitoring</h3>
+            <?php
+            $kehamilan = $this->im->get_kehamilan_by_id($id_ibu_hamil);
+            ?>
+            <h3 class="h3 mb-3 text-center">Ibu Hamil</h3>
             <hr class="sidebar-divider">
             <div class="row g-3">
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>Nama Ibu Hamil</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["n_ibu"] ?>">
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>Alamat</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["alamat"] ?>">
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>Tanggal Lahir</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["tgl_lahir"] ?>">
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>Hamil Ke</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["hamil_ke"] ?>">
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>HPHT</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["hpht"] ?>">
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>HTP</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["htp"] ?>">
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>No Telepon</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["telepon"] ?>">
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>Nama Suami</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["n_suami"] ?>">
+               </div>
+            </div>
+
+            <h3 class="h3 mb-3 text-center">Monitoring</h3>
+            <hr class="sidebar-divider">
+            <div class="row g-3">
+               <input type="hidden" name="bumil_id" id="bumil_id" value="<?= $id_ibu_hamil ?>">
+               <input type="hidden" name="kehamilan_id" id="kehamilan_id" value="<?= $kehamilan['id_kehamilan'] ?>">
+               <!-- <div class="col-sx-12 col-md-6 col-lg-4 form-group">
                   <label for="bumil_id">Nama</label>
                   <select name="bumil_id" id="bumil_id" class="form-control" required>
                      <option value="">-- Pilih Ibu Hamil --</option>
@@ -24,7 +66,7 @@
                      <?php endforeach; ?>
                   </select>
                   <?= form_error('bumil_id', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
+               </div> -->
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">
                   <label for="tanggal_periksa">Tanggal Periksa</label>
                   <input type="date" class="form-control" name="tanggal_periksa" id="tanggal_periksa" value="<?= $detail['tanggal_periksa']; ?>" required>

@@ -41,11 +41,11 @@
                   <input type="text" class="form-control" name="jml_kehamilan" id="jml_kehamilan" value="<?= set_value('jml_kehamilan'); ?>" required>
                   <?= form_error('jml_kehamilan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
-               <div class="form-group">
+               <!-- <div class="form-group">
                   <label for="jml_keguguran">Jumlah Keguguran</label>
                   <input type="text" class="form-control" name="jml_keguguran" id="jml_keguguran" value="<?= set_value('jml_keguguran'); ?>" required>
                   <?= form_error('jml_keguguran', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
+               </div> -->
                <div class="form-group">
                   <label for="jml_lahir_hidup">Jumlah Anak Hidup</label>
                   <input type="text" class="form-control" name="jml_lahir_hidup" id="jml_lahir_hidup" value="<?= set_value('jml_lahir_hidup'); ?>" required>

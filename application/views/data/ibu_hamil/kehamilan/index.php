@@ -28,7 +28,7 @@
                      <th>HPHT</th>
                      <th>HTP</th>
                      <th>Jumlah Kehamilan</th>
-                     <th>Jumlah Keguguran</th>
+                     <!-- <th>Jumlah Keguguran</th> -->
                      <th>Jumlah Lahir Hidup</th>
                      <th>Jumlah Lahir Mati</th>
                      <th>Jumlah Persalinan Terakhir</th>
@@ -44,7 +44,7 @@
                         <td><?= $field['hpht'] ?></td>
                         <td><?= $field['htp'] ?></td>
                         <td><?= $field['jml_kehamilan'] ?></td>
-                        <td><?= $field['jml_keguguran'] ?></td>
+                        <!-- <td><?= $field['jml_keguguran'] ?></td> -->
                         <td><?= $field['jml_lahir_hidup'] ?></td>
                         <td><?= $field['jml_lahir_mati'] ?></td>
                         <td><?= $field['jarak_persalinan_terakhir'] ?></td>

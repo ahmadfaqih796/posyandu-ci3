@@ -28,10 +28,10 @@
                   <label>Alamat</label>
                   <input type="text" disabled class="form-control" value="<?= $kehamilan["alamat"] ?>">
                </div>
-               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+               <!-- <div class="col-sx-12 col-md-6 col-lg-4 form-group">
                   <label>Tanggal Lahir</label>
                   <input type="text" disabled class="form-control" value="<?= $kehamilan["tgl_lahir"] ?>">
-               </div>
+               </div> -->
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">
                   <label>Hamil Ke</label>
                   <input type="text" disabled class="form-control" value="<?= $kehamilan["hamil_ke"] ?>">
@@ -128,6 +128,33 @@
                   <label for="tinggi_badan">Tinggi Badan</label>
                   <input type="text" class="form-control" name="tinggi_badan" id="tinggi_badan" value="<?= set_value('tinggi_badan'); ?>" required>
                   <?= form_error('tinggi_badan', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label for="hiv">HIV</label>
+                  <select name="hiv" id="hiv" class="form-control" required>
+                     <option value="">--Pilih HIV--</option>
+                     <option value="NR" <?= set_select('hiv', 'NR', (!empty($_POST['hiv']) && $_POST['hiv'] == "NR")); ?>>NR</option>
+                     <option value="Positif" <?= set_select('hiv', 'Positif', (!empty($_POST['hiv']) && $_POST['hiv'] == "Positif")); ?>>Positif</option>
+                  </select>
+                  <?= form_error('hiv', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label for="sifilis">Sifilis</label>
+                  <select name="sifilis" id="sifilis" class="form-control" required>
+                     <option value="">--Pilih Sifilis--</option>
+                     <option value="NR" <?= set_select('sifilis', 'NR', (!empty($_POST['sifilis']) && $_POST['sifilis'] == "NR")); ?>>NR</option>
+                     <option value="Positif" <?= set_select('sifilis', 'Positif', (!empty($_POST['sifilis']) && $_POST['sifilis'] == "Positif")); ?>>Positif</option>
+                  </select>
+                  <?= form_error('sifilis', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label for="hibsag">HibSAg</label>
+                  <select name="hibsag" id="hibsag" class="form-control" required>
+                     <option value="">--Pilih HibSAg--</option>
+                     <option value="NR" <?= set_select('hibsag', 'NR', (!empty($_POST['hibsag']) && $_POST['hibsag'] == "NR")); ?>>NR</option>
+                     <option value="Positif" <?= set_select('hibsag', 'Positif', (!empty($_POST['hibsag']) && $_POST['hibsag'] == "Positif")); ?>>Positif</option>
+                  </select>
+                  <?= form_error('hibsag', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">
                   <label for="lila">Lingkar Lengan Atas (LILA)</label>

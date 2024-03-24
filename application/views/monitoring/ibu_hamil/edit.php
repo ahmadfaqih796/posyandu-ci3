@@ -129,6 +129,33 @@
                   <?= form_error('tinggi_badan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label for="hiv">HIV</label>
+                  <select name="hiv" id="hiv" class="form-control" required>
+                     <option value="">--Pilih HIV--</option>
+                     <option value="NR" <?= set_select('hiv', 'NR', (!empty($detail['hiv']) && $detail['hiv'] == "NR")); ?>>NR</option>
+                     <option value="Positif" <?= set_select('hiv', 'Positif', (!empty($detail['hiv']) && $detail['hiv'] == "Positif")); ?>>Positif</option>
+                  </select>
+                  <?= form_error('hiv', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label for="sifilis">Sifilis</label>
+                  <select name="sifilis" id="sifilis" class="form-control" required>
+                     <option value="">--Pilih Sifilis--</option>
+                     <option value="NR" <?= set_select('sifilis', 'NR', (!empty($detail['sifilis']) && $detail['sifilis'] == "NR")); ?>>NR</option>
+                     <option value="Positif" <?= set_select('sifilis', 'Positif', (!empty($detail['sifilis']) && $detail['sifilis'] == "Positif")); ?>>Positif</option>
+                  </select>
+                  <?= form_error('sifilis', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label for="hibsag">HibSAg</label>
+                  <select name="hibsag" id="hibsag" class="form-control" required>
+                     <option value="">--Pilih HibSAg--</option>
+                     <option value="NR" <?= set_select('hibsag', 'NR', (!empty($detail['hibsag']) && $detail['hibsag'] == "NR")); ?>>NR</option>
+                     <option value="Positif" <?= set_select('hibsag', 'Positif', (!empty($detail['hibsag']) && $detail['hibsag'] == "Positif")); ?>>Positif</option>
+                  </select>
+                  <?= form_error('hibsag', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
                   <label for="lila">Lingkar Lengan Atas (LILA)</label>
                   <input type="text" class="form-control" name="lila" id="lila" value="<?= $detail['lila']; ?>" required>
                   <?= form_error('lila', '<small class="text-danger pl-3">', '</small>'); ?>

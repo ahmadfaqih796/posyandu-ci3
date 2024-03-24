@@ -13,10 +13,6 @@
 
       <div class="card-body">
          <form action="<?= base_url('monitoring/ibu_hamil/add/' . $id_ibu_hamil) ?>" method="post">
-            <?php
-            $kehamilan = $this->im->get_kehamilan_by_id($id_ibu_hamil);
-            ?>
-
             <h3 class="h3 mb-3 text-center">Ibu Hamil</h3>
             <hr class="sidebar-divider">
             <div class="row g-3">

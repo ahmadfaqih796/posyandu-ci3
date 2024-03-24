@@ -13,12 +13,12 @@
       <div class="card-body">
          <form action="<?= base_url('monitoring/ibu_hamil/edit/' . $detail['id']) ?>" method="post">
             <?php
-            $kehamilan = $this->im->get_kehamilan_by_id($detail['id']);
+            $kehamilan = $this->im->get_kehamilan_by_id($detail['kehamilan_id']);
             var_dump($kehamilan);
             ?>
             <h3 class="h3 mb-3 text-center">Ibu Hamil</h3>
             <hr class="sidebar-divider">
-            <!-- <div class="row g-3">
+            <div class="row g-3">
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">
                   <label>Nama Ibu Hamil</label>
                   <input type="text" disabled class="form-control" value="<?= $kehamilan["n_ibu"] ?>">
@@ -27,10 +27,10 @@
                   <label>Alamat</label>
                   <input type="text" disabled class="form-control" value="<?= $kehamilan["alamat"] ?>">
                </div>
-               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+               <!-- <div class="col-sx-12 col-md-6 col-lg-4 form-group">
                   <label>Tanggal Lahir</label>
                   <input type="text" disabled class="form-control" value="<?= $kehamilan["tgl_lahir"] ?>">
-               </div>
+               </div> -->
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">
                   <label>Hamil Ke</label>
                   <input type="text" disabled class="form-control" value="<?= $kehamilan["hamil_ke"] ?>">
@@ -51,7 +51,7 @@
                   <label>Nama Suami</label>
                   <input type="text" disabled class="form-control" value="<?= $kehamilan["n_suami"] ?>">
                </div>
-            </div> -->
+            </div>
 
             <h3 class="h3 mb-3 text-center">Monitoring</h3>
             <hr class="sidebar-divider">

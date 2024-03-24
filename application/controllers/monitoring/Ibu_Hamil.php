@@ -47,9 +47,13 @@ class Ibu_Hamil extends CI_Controller
       $data['title'] = 'Ibu Hamil';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->bm->get_all("monitoring_ibu_hamil");
+      $data['kehamilan'] =  $this->im->get_kehamilan_by_bumil_id($id);
       $data['bidan'] = $this->bm->get_all("ibu_hamil");
       $data['id_ibu_hamil'] = $id;
       $data['no'] = 1;
+      if ($data['kehamilan'] == null) {
+         $this->notification->notify_error('monitoring/ibu_hamil', 'Maaf anda harus menambahkan data kehamilan terlebih dahulu');
+      }
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
          $this->load->view('templates/sidebar', $data);

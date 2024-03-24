@@ -119,7 +119,7 @@
                   <?= form_error('tinggi_fundus', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">
-                  <label for="umur_ibu">Tekanan Darah</label>
+                  <label for="umur_ibu">Umur Ibu </label>
                   <input type="text" class="form-control" name="umur_ibu" id="umur_ibu" value="<?= $detail['umur_ibu']; ?>" required>
                   <?= form_error('umur_ibu', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>

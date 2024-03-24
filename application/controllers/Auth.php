@@ -45,6 +45,10 @@ class Auth extends CI_Controller
                   redirect('dashboard');
                } elseif ($user['role_id'] == 3) {
                   redirect('user/home');
+               }
+               // ibu hamil
+               elseif ($user['role_id'] == 5) {
+                  redirect('user/home');
                } elseif ($user['role_id'] == 6) {
                   redirect('dashboard');
                } else {

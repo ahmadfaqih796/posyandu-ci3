@@ -46,11 +46,11 @@
                   <input type="text" class="form-control" name="telepon" id="telepon" value="<?= set_value('telepon'); ?>" required>
                   <?= form_error('telepon', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
-               <div class="form-group">
+               <!-- <div class="form-group">
                   <label for="tgl_lahir">Tanggal Lahir</label>
                   <input type="date" class="form-control" name="tgl_lahir" id="tgl_lahir" value="<?= set_value('tgl_lahir'); ?>" required>
                   <?= form_error('tgl_lahir', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
+               </div> -->
                <div class="form-group">
                   <label for="golongan_darah">Golongan Darah</label>
                   <input type="text" class="form-control" name="golongan_darah" id="golongan_darah" value="<?= set_value('golongan_darah'); ?>" required>

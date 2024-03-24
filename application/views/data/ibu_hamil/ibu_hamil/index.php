@@ -25,7 +25,7 @@
                      <th>No</th>
                      <th>Nama Ibu Hamil</th>
                      <th>Nama Suami</th>
-                     <th>Tanggal Lahir</th>
+                     <!-- <th>Tanggal Lahir</th> -->
                      <th>Alamat</th>
                      <th>Gol. Darah</th>
                      <th>Agama</th>
@@ -40,7 +40,7 @@
                         <td><?= $no++ ?></td>
                         <td><?= $field['n_ibu'] ?></td>
                         <td><?= $field['n_suami'] ?></td>
-                        <td><?= $field['tgl_lahir'] ?></td>
+                        <!-- <td><?= $field['tgl_lahir'] ?></td> -->
                         <td><?= $field['n_suami'] ?></td>
                         <td><?= $field['golongan_darah'] ?></td>
                         <td><?= $field['agama'] ?></td>

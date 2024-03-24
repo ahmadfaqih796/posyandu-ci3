@@ -41,7 +41,7 @@
                         <td><?= $field['n_ibu'] ?></td>
                         <td><?= $field['n_suami'] ?></td>
                         <!-- <td><?= $field['tgl_lahir'] ?></td> -->
-                        <td><?= $field['n_suami'] ?></td>
+                        <td><?= $field['alamat'] ?></td>
                         <td><?= $field['golongan_darah'] ?></td>
                         <td><?= $field['agama'] ?></td>
                         <td><img src="<?= base_url('assets/img/bidan/') . $field['photo'] ?>" alt="Photo" width="100"></td>

@@ -27,7 +27,7 @@ class Ibu_model extends CI_Model
 
    public function get_kehamilan_by_id($id)
    {
-      $this->db->select('k.*, b.n_ibu');
+      $this->db->select('k.*, k.id as id_kehamilan, b.*');
       $this->db->from('kehamilan k');
       $this->db->join('ibu_hamil b', 'k.bumil_id = b.id', 'left');
       $this->db->where('k.bumil_id', $id);

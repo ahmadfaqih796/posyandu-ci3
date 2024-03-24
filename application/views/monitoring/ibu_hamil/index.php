@@ -9,9 +9,12 @@
                <h6 class="m-0 font-weight-bold text-primary"><?= $title ?></h6>
             </div>
             <div class="col-6">
-               <a type="button" class="btn btn-primary float-right" href="<?= base_url('monitoring/ibu_hamil/add') ?>">
+               <!-- <a type="button" class="btn btn-primary float-right" href="<?= base_url('monitoring/ibu_hamil/add') ?>">
                   <i class="fas fa-plus"></i> Tambah
-               </a>
+               </a> -->
+               <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">
+                  <i class="fas fa-plus"></i> Tambah
+               </button>
             </div>
          </div>
       </div>

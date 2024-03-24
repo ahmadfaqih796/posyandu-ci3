@@ -17,13 +17,14 @@ class Ibu_Hamil extends CI_Controller
       $data['title'] = 'Ibu Hamil';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->im->get_all_bidan("monitoring_ibu_hamil");
+      $data['bidan'] = $this->bm->get_all("ibu_hamil");
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
          $this->load->view('monitoring/ibu_hamil/index', $data);
-         // $this->load->view('monitoring/ibu_hamil/add');
+         $this->load->view('monitoring/ibu_hamil/addModal');
          // $this->load->view('monitoring/ibu_hamil/edit');
          $this->load->view('monitoring/ibu_hamil/delete');
          $this->load->view('templates/footer', $data);
@@ -40,13 +41,14 @@ class Ibu_Hamil extends CI_Controller
       }
    }
 
-   public function add()
+   public function add($id)
    {
       $this->_validation();
       $data['title'] = 'Ibu Hamil';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->bm->get_all("monitoring_ibu_hamil");
       $data['bidan'] = $this->bm->get_all("ibu_hamil");
+      $data['id_ibu_hamil'] = $id;
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
@@ -72,6 +74,7 @@ class Ibu_Hamil extends CI_Controller
       $data['data'] = $this->bm->get_all("monitoring_ibu_hamil");
       $data['bidan'] = $this->bm->get_all("ibu_hamil");
       $data['detail'] = $this->bm->get_by_id("monitoring_ibu_hamil", $id_data);
+      $data['id_ibu_hamil'] = $id_data;
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
@@ -105,6 +108,7 @@ class Ibu_Hamil extends CI_Controller
       $payload = [];
       $form_fields = array(
          'bumil_id',
+         'kehamilan_id',
          'tanggal_periksa',
          'keluhan',
          'kunjungan',

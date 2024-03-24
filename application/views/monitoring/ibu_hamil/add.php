@@ -10,16 +10,55 @@
             </div>
          </div>
       </div>
-      <?php
-      $kehamilan = $this->im->get_kehamilan_by_id(4);
-      var_dump($kehamilan);
-      ?>
+
       <div class="card-body">
-         <form action="<?= base_url('monitoring/ibu_hamil/add') ?>" method="post">
-            <h3 class="h3 mb-3 text-center">Monitoring</h3>
+         <form action="<?= base_url('monitoring/ibu_hamil/add/' . $id_ibu_hamil) ?>" method="post">
+            <?php
+            $kehamilan = $this->im->get_kehamilan_by_id($id_ibu_hamil);
+            ?>
+
+            <h3 class="h3 mb-3 text-center">Ibu Hamil</h3>
             <hr class="sidebar-divider">
             <div class="row g-3">
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>Nama Ibu Hamil</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["n_ibu"] ?>">
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>Alamat</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["alamat"] ?>">
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>Tanggal Lahir</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["tgl_lahir"] ?>">
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>Hamil Ke</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["hamil_ke"] ?>">
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>HPHT</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["hpht"] ?>">
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>HTP</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["htp"] ?>">
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>No Telepon</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["telepon"] ?>">
+               </div>
+               <div class="col-sx-12 col-md-6 col-lg-4 form-group">
+                  <label>Nama Suami</label>
+                  <input type="text" disabled class="form-control" value="<?= $kehamilan["n_suami"] ?>">
+               </div>
+            </div>
+            <h3 class="h3 mb-3 text-center">Monitoring</h3>
+            <hr class="sidebar-divider">
+            <div class="row g-3">
+               <input type="hidden" name="bumil_id" id="bumil_id" value="<?= $id_ibu_hamil ?>">
+               <input type="hidden" name="kehamilan_id" id="kehamilan_id" value="<?= $kehamilan['id_kehamilan'] ?>">
+               <!-- <div class="col-sx-12 col-md-6 col-lg-4 form-group">
                   <label for="bumil_id">Nama</label>
                   <select name="bumil_id" id="bumil_id" class="form-control" required>
                      <option value="">-- Pilih Ibu Hamil --</option>
@@ -28,7 +67,7 @@
                      <?php endforeach; ?>
                   </select>
                   <?= form_error('bumil_id', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
+               </div> -->
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">
                   <label for="tanggal_periksa">Tanggal Periksa</label>
                   <input type="date" class="form-control" name="tanggal_periksa" id="tanggal_periksa" value="<?= set_value('tanggal_periksa'); ?>" required>
@@ -185,17 +224,10 @@
 </div>
 <!-- /.container-fluid -->
 
-
-<!-- Modal -->
-<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title" id="addModalLabel">Add <?= $title ?></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">&times;</span>
-            </button>
-         </div>
-      </div>
-   </div>
-</div>
+<script>
+   document.getElementById('bumil_id').addEventListener('change', function() {
+      var selectedValue = this.value;
+      document.getElementById('selected_bumil_id').value = selectedValue;
+      document.getElementById('bumilForm').submit();
+   });
+</script>

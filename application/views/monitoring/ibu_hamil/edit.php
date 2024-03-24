@@ -135,7 +135,7 @@
                </div>
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">
                   <label for="kunjungan_berikutnya">Kunjungan Berikutnya</label>
-                  <input type="text" class="form-control" name="kunjungan_berikutnya" id="kunjungan_berikutnya" value="<?= $detail['kunjungan_berikutnya']; ?>" required>
+                  <input type="date" class="form-control" name="kunjungan_berikutnya" id="kunjungan_berikutnya" value="<?= $detail['kunjungan_berikutnya']; ?>" required>
                   <?= form_error('kunjungan_berikutnya', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">

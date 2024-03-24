@@ -9,9 +9,9 @@
                <h6 class="m-0 font-weight-bold text-primary"><?= $title ?></h6>
             </div>
             <div class="col-6">
-               <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">
+               <!-- <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">
                   <i class="fas fa-plus"></i> Tambah
-               </button>
+               </button> -->
             </div>
          </div>
       </div>

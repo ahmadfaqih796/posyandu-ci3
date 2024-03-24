@@ -3,6 +3,7 @@
 assets/img/artikel/*
 assets/img/bidan/*
 assets/img/kegiatan/*
+assets/img/ibu_hamil/*
 
 application/cache/*
 !application/cache/index.html

@@ -72,7 +72,7 @@ class Ibu_Hamil extends CI_Controller
       }
    }
 
-   private function _payload($type)
+   private function _payload($type = null)
    {
       $n_ibu = htmlspecialchars($this->input->post('n_ibu', true));
       $no_medis = htmlspecialchars($this->input->post('no_medis', true));
@@ -93,7 +93,6 @@ class Ibu_Hamil extends CI_Controller
             'n_ibu' => $n_ibu,
             'no_medis' => $no_medis,
             'nik' => $nik,
-            'password' => $password,
             'n_suami' => $n_suami,
             'alamat' => $alamat,
             'telepon' => '08' . $telepon,
@@ -121,10 +120,10 @@ class Ibu_Hamil extends CI_Controller
             'n_ibu' => $n_ibu,
             'no_medis' => $no_medis,
             'nik' => $nik,
-            'password' => $password,
+            'password' => password_hash($password, PASSWORD_DEFAULT),
             'n_suami' => $n_suami,
             'alamat' => $alamat,
-            'telepon' => $telepon,
+            'telepon' => '08' . $telepon,
             'tgl_lahir' => $tgl_lahir,
             'golongan_darah' => $golongan_darah,
             'pekerjaan' => $pekerjaan,

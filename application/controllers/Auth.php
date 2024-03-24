@@ -22,10 +22,44 @@ class Auth extends CI_Controller
       }
    }
 
-   private function _login()
+   public function bumil()
+   {
+      $this->form_validation->set_rules('nik', 'NIK', 'trim|required');
+      $this->form_validation->set_rules('password', 'Password', 'trim|required');
+      if ($this->form_validation->run() == false) {
+         $data['title'] = 'Login';
+         $this->load->view('templates/auth_header', $data);
+         $this->load->view('auth/login_bumil');
+         $this->load->view('templates/auth_footer');
+      } else {
+         $this->_login("bumil");
+      }
+   }
+
+   private function _login($type = null)
    {
       $email = $this->input->post('email');
+      $nik = $this->input->post('nik');
       $password = $this->input->post('password');
+      if ($type === "bumil") {
+         $bumil = $this->db->get_where('ibu_hamil', ['nik' => $nik])->row_array();
+
+         if ($bumil) {
+            if (password_verify($password, $bumil['password'])) {
+               $data = [
+                  'user_id' => $bumil['id'],
+                  'nik' => $bumil['nik'],
+                  'role_id' => $bumil['role_id']
+               ];
+               $this->session->set_userdata($data);
+               redirect('user/home');
+            } else {
+               $this->notification->notify_error('auth/bumil', 'Password ini tidak sesuai');
+            }
+         } else {
+            $this->notification->notify_error('auth/bumil', 'NIK ini tidak terdaftar');
+         }
+      }
       $user = $this->db->get_where('users', ['email' => $email])->row_array();
       // cek usernya ada
       if ($user) {

@@ -32,6 +32,7 @@
                      <th>Jumlah Lahir Hidup</th>
                      <th>Jumlah Lahir Mati</th>
                      <th>Jumlah Persalinan Terakhir</th>
+                     <th>Jenis Persalinan Terakhir</th>
                      <th>Aksi</th>
                   </tr>
                </thead>
@@ -48,6 +49,7 @@
                         <td><?= $field['jml_lahir_hidup'] ?></td>
                         <td><?= $field['jml_lahir_mati'] ?></td>
                         <td><?= $field['jarak_persalinan_terakhir'] ?></td>
+                        <td><?= $field['jenis_persalinan_terakhir'] ?></td>
                         <td>
                            <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
                            <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>

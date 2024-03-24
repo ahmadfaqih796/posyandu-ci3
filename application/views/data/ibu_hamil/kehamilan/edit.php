@@ -62,6 +62,15 @@
                   <input type="text" class="form-control" name="jarak_persalinan_terakhir" id="edit_jarak_persalinan_terakhir" value="<?= set_value('jarak_persalinan_terakhir'); ?>" required>
                   <?= form_error('jarak_persalinan_terakhir', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
+               <div class="form-group">
+                  <label for="edit_jenis_persalinan_terakhir">Jenis Persalinan Terakhir</label>
+                  <select name="jenis_persalinan_terakhir" id="edit_jenis_persalinan_terakhir" class="form-control" required>
+                     <option value="">--Pilih Jenis Persalinan Terakhir--</option>
+                     <option value="Normal" <?= set_select('jenis_persalinan_terakhir', 'Normal', (!empty($_POST['jenis_persalinan_terakhir']) && $_POST['jenis_persalinan_terakhir'] == "Normal")); ?>>Normal</option>
+                     <option value="SC" <?= set_select('jenis_persalinan_terakhir', 'SC', (!empty($_POST['jenis_persalinan_terakhir']) && $_POST['jenis_persalinan_terakhir'] == "SC")); ?>>SC</option>
+                  </select>
+                  <?= form_error('jenis_persalinan_terakhir', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
             </div>
             <div class="modal-footer">
                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -80,10 +89,10 @@
       document.getElementById('edit_hpht').value = data['hpht'];
       document.getElementById('edit_htp').value = data['htp'];
       document.getElementById('edit_jml_kehamilan').value = data['jml_kehamilan'];
-      document.getElementById('edit_jml_keguguran').value = data['jml_keguguran'];
+      // document.getElementById('edit_jml_keguguran').value = data['jml_keguguran'];
       document.getElementById('edit_jml_lahir_hidup').value = data['jml_lahir_hidup'];
       document.getElementById('edit_jml_lahir_mati').value = data['jml_lahir_mati'];
       document.getElementById('edit_jarak_persalinan_terakhir').value = data['jarak_persalinan_terakhir'];
-      document.getElementById('edit_tinggi_badan').value = data['tinggi_badan'];
+      document.getElementById('edit_jenis_persalinan_terakhir').value = data['jenis_persalinan_terakhir'];
    }
 </script>

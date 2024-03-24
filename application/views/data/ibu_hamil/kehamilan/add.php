@@ -61,6 +61,15 @@
                   <input type="text" class="form-control" name="jarak_persalinan_terakhir" id="jarak_persalinan_terakhir" value="<?= set_value('jarak_persalinan_terakhir'); ?>" required>
                   <?= form_error('jarak_persalinan_terakhir', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
+               <div class="form-group">
+                  <label for="jenis_persalinan_terakhir">Jenis Persalinan Terakhir</label>
+                  <select name="jenis_persalinan_terakhir" id="jenis_persalinan_terakhir" class="form-control" required>
+                     <option value="">--Pilih Jenis Persalinan Terakhir--</option>
+                     <option value="Normal" <?= set_select('jenis_persalinan_terakhir', 'Normal', (!empty($_POST['jenis_persalinan_terakhir']) && $_POST['jenis_persalinan_terakhir'] == "Normal")); ?>>Normal</option>
+                     <option value="SC" <?= set_select('jenis_persalinan_terakhir', 'SC', (!empty($_POST['jenis_persalinan_terakhir']) && $_POST['jenis_persalinan_terakhir'] == "SC")); ?>>SC</option>
+                  </select>
+                  <?= form_error('jenis_persalinan_terakhir', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
             </div>
             <div class="modal-footer">
                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

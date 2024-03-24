@@ -85,6 +85,7 @@ class Kehamilan extends CI_Controller
       $jml_lahir_hidup = htmlspecialchars($this->input->post('jml_lahir_hidup', true));
       $jml_lahir_mati = htmlspecialchars($this->input->post('jml_lahir_mati', true));
       $jarak_persalinan_terakhir = htmlspecialchars($this->input->post('jarak_persalinan_terakhir', true));
+      $jenis_persalinan_terakhir = htmlspecialchars($this->input->post('jenis_persalinan_terakhir', true));
 
       $payload = [
          'bumil_id' => $bumil_id,
@@ -95,7 +96,8 @@ class Kehamilan extends CI_Controller
          'jml_keguguran' => $jml_keguguran,
          'jml_lahir_hidup' => $jml_lahir_hidup,
          'jml_lahir_mati' => $jml_lahir_mati,
-         'jarak_persalinan_terakhir' => $jarak_persalinan_terakhir
+         'jarak_persalinan_terakhir' => $jarak_persalinan_terakhir,
+         'jenis_persalinan_terakhir' => $jenis_persalinan_terakhir
       ];
       return $payload;
    }

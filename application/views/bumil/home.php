@@ -3,11 +3,11 @@
    <div class="container">
       <div class="row">
          <div class="col-md-6 m-auto">
-            <h4>Posyandu</h4>
+            <h4>Ibu Hamil</h4>
             <p class="mb-4">
-               Jadilah orang pertama yang melihat beritanya
+               Selamat datang di ibu hamil
             </p>
-            <div class="row">
+            <!-- <div class="row">
                <div class="col-8">
                   <div class="input-group">
                      <input type="text" class="form-control mb-sm-0" placeholder="Email Here...">
@@ -16,7 +16,7 @@
                <div class="col-4 ps-0">
                   <button type="button" class="btn bg-gradient-info mb-0 h-100 position-relative z-index-2">Subscribe</button>
                </div>
-            </div>
+            </div> -->
          </div>
          <div class="col-md-5 ms-auto">
             <div class="position-relative">

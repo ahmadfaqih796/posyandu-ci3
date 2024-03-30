@@ -24,8 +24,8 @@ class Bumil extends CI_Controller
       // $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
       $this->load->view('templates/bumil/header', $data);
       $this->load->view('templates/bumil/topbar', $data);
-      // $this->load->view('bumil/home', $data);
-      $this->load->view('user/home2', $data);
+      $this->load->view('bumil/home', $data);
+      // $this->load->view('user/home2', $data);
       $this->load->view('templates/bumil/footer', $data);
    }
 }

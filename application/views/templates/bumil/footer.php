@@ -7,7 +7,7 @@
                <p class="text-sm">
                   All rights reserved. Copyright © <script>
                      document.write(new Date().getFullYear())
-                  </script> <?= 'Bidan' ?> <a href="#" target="_blank"></a>
+                  </script> <?= 'UPT Puskesmas Medan Deli' ?> <a href="#" target="_blank"></a>
                </p>
             </div>
          </div>

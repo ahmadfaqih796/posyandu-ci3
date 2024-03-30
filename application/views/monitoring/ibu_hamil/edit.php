@@ -14,7 +14,7 @@
          <form action="<?= base_url('monitoring/ibu_hamil/edit/' . $detail['id']) ?>" method="post">
             <?php
             $kehamilan = $this->im->get_kehamilan_by_id($detail['kehamilan_id']);
-            var_dump($kehamilan);
+            // var_dump($kehamilan);
             ?>
             <h3 class="h3 mb-3 text-center">Ibu Hamil</h3>
             <hr class="sidebar-divider">

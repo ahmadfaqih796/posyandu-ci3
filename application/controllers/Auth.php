@@ -49,10 +49,10 @@ class Auth extends CI_Controller
                $data = [
                   'user_id' => $bumil['id'],
                   'nik' => $bumil['nik'],
-                  'role_id' => $bumil['role_id']
+                  'fullname' => $bumil['n_ibu'],
                ];
                $this->session->set_userdata($data);
-               redirect('user/home');
+               redirect('bumil');
             } else {
                $this->notification->notify_error('auth/bumil', 'Password ini tidak sesuai');
             }

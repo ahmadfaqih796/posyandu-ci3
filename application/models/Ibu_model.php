@@ -77,6 +77,11 @@ class Ibu_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
+   public function get_ibu_hamil_by_id($id)
+   {
+      return $this->db->get_where('ibu_hamil', ['id' => $id])->row_array();
+   }
+
    public function get_ibu_by_id($id)
    {
       return $this->db->get_where('ibu', ['id' => $id])->row_array();

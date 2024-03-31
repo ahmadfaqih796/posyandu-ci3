@@ -16,6 +16,7 @@
                         <th>Sesi</th>
                         <th>Tanggal Periksa</th>
                         <th>Kunjungan Berikutnya</th>
+                        <th>Status Standar 7T</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -43,6 +44,11 @@
                            <td><?= $no++ ?></td>
                            <!-- <td><?= $field['n_ibu'] ?></td> -->
                            <td><?= $field['hamil_ke'] ?></td>
+                           <td><?= $field['kunjungan'] ?></td>
+                           <td><?= $field['keluhan'] ?></td>
+                           <td><?= $field['sesi'] ?></td>
+                           <td><?= $field['tanggal_periksa'] ?></td>
+                           <td><?= $field['kunjungan_berikutnya'] ?></td>
                            <td><?= $result == 1 ? 'Belum' : 'Sudah' ?></td>
                         </tr>
                      <?php endforeach; ?>

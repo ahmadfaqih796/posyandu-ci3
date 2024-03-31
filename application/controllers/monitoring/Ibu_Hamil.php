@@ -1,6 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+
+require_once FCPATH . 'vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Ibu_Hamil extends CI_Controller
 {
    public function __construct()
@@ -39,6 +45,59 @@ class Ibu_Hamil extends CI_Controller
          //    $this->notification->notify_error('data/ibu_hamil/bidan', 'Method initidak ditemukan');
          // }
       }
+   }
+
+   public function pdf()
+   {
+      require_once FCPATH . 'vendor/autoload.php';
+      $mpdf = new \Mpdf\Mpdf();
+
+      $data['title'] = 'Monitoring Ibu Hamil';
+      $data['no'] = 1;
+      $data['users'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
+
+      $html = $this->load->view('monitoring/ibu_hamil/printPDF', $data, true);
+
+      $mpdf->WriteHTML($html);
+      $mpdf->Output('data_anak.pdf', 'D');
+   }
+
+   public function excel()
+   {
+      $spreadsheet = new Spreadsheet();
+      $sheet = $spreadsheet->getActiveSheet();
+      $sheet->setCellValue('A1', 'No');
+      $sheet->setCellValue('B1', 'Nama');
+      $sheet->setCellValue('C1', 'Hamil Ke');
+
+      $data = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
+      $no = 1;
+      $x = 2;
+      foreach ($data as $row) {
+         $sheet->setCellValue('A' . $x, $no++);
+         $sheet->setCellValue('B' . $x, $row['n_ibu']);
+         $sheet->setCellValue('C' . $x, $row['hamil_ke']);
+         $x++;
+      }
+
+      // Mengatur border untuk seluruh rentang data
+      $highestRow = $sheet->getHighestRow();
+      $range = 'A1:C' . $highestRow;
+      $style = $sheet->getStyle($range);
+      $style->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+
+      // Mengatur dimensi kolom agar isi dapat terlihat dengan jelas
+      $sheet->getColumnDimension('A')->setWidth(5);
+      $sheet->getColumnDimension('B')->setWidth(20);
+
+      $writer = new Xlsx($spreadsheet);
+      $filename = 'monitoring-ibu-hamil';
+
+      header('Content-Type: application/vnd.ms-excel');
+      header('Content-Disposition: attachment;filename="' . $filename . '.xlsx"');
+      header('Cache-Control: max-age=0');
+
+      $writer->save('php://output');
    }
 
    public function add($id)

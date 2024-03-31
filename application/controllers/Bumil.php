@@ -42,11 +42,21 @@ class Bumil extends CI_Controller
       $this->load->view('templates/bumil/footer', $data);
    }
 
+   public function monitoring()
+   {
+      $data['title'] = 'Monitoring';
+      $data['data'] = $this->im->get_all_ibu_hamil_by_id('monitoring_ibu_hamil', $this->session->userdata('user_id'));
+      $data['no'] = 1;
+      $this->load->view('templates/bumil/header', $data);
+      $this->load->view('templates/bumil/topbar', $data);
+      $this->load->view('bumil/monitoring', $data);
+      $this->load->view('templates/bumil/footer', $data);
+   }
+
    public function profil()
    {
       $data['title'] = 'Profil';
       $data['detail'] = $this->im->get_ibu_hamil_by_id($this->session->userdata('user_id'));
-      $data['no'] = 1;
       $this->load->view('templates/bumil/header', $data);
       $this->load->view('templates/bumil/topbar', $data);
       $this->load->view('bumil/profil', $data);

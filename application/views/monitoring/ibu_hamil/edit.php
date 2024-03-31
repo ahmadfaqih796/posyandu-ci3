@@ -58,6 +58,7 @@
             <div class="row g-3">
                <input type="hidden" name="bumil_id" id="bumil_id" value="<?= $id_ibu_hamil ?>">
                <input type="hidden" name="kehamilan_id" id="kehamilan_id" value="<?= $kehamilan['id_kehamilan'] ?>">
+               <input type="hidden" name="hamil_ke" id="hamil_ke" value="<?= $kehamilan["hamil_ke"] ?>">
                <!-- <div class="col-sx-12 col-md-6 col-lg-4 form-group">
                   <label for="bumil_id">Nama</label>
                   <select name="bumil_id" id="bumil_id" class="form-control" required>

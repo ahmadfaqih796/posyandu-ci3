@@ -61,7 +61,7 @@ class Ibu_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
-   public function get_all_bidan_no_dead()
+   public function get_all_ibu_hamil_no_dead()
    {
       $this->db->select('b.*');
       $this->db->from('ibu_hamil b');
@@ -69,13 +69,31 @@ class Ibu_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
-   public function get_all_bidan($table)
+   public function get_all_ibu_hamil($table)
    {
       $this->db->select('t.*, b.n_ibu');
       $this->db->from($table . ' t');
       $this->db->join('ibu_hamil b', 't.bumil_id = b.id', 'left');
       return $this->db->get()->result_array();
    }
+
+   public function get_all_ibu_hamil_by_id($table, $bumil_id)
+   {
+      $this->db->select('t.*, b.n_ibu');
+      $this->db->from($table . ' t');
+      $this->db->join('ibu_hamil b', 't.bumil_id = b.id', 'left');
+      $this->db->where('t.bumil_id', $bumil_id);
+      return $this->db->get()->result_array();
+   }
+
+   // public function get_all_monitoring_ibu_hamil_by_id($bumil_id)
+   // {
+   //    $this->db->select('m.*, b.n_ibu');
+   //    $this->db->from('monitoring_ibu_hamil m');
+   //    $this->db->join('ibu_hamil b', 'm.bumil_id = b.id', 'left');
+   //    $this->db->where('m.bumil_id', $bumil_id);
+   //    return $this->db->get()->result_array();
+   // }
 
    public function get_ibu_hamil_by_id($id)
    {

@@ -16,7 +16,7 @@ class Ibu_Hamil extends CI_Controller
       $this->_validation();
       $data['title'] = 'Ibu Hamil';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['data'] = $this->im->get_all_bidan("monitoring_ibu_hamil");
+      $data['data'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
       $data['bidan'] = $this->bm->get_all("ibu_hamil");
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
@@ -113,6 +113,7 @@ class Ibu_Hamil extends CI_Controller
       $form_fields = array(
          'bumil_id',
          'kehamilan_id',
+         'hamil_ke',
          'tanggal_periksa',
          'keluhan',
          'kunjungan',

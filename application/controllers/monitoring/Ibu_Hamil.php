@@ -121,6 +121,7 @@ class Ibu_Hamil extends CI_Controller
          $this->load->view('templates/footer', $data);
       } else {
          $result = $this->bm->add('monitoring_ibu_hamil', $this->_payload());
+         $this->bm->add("notification", $this->_payload_notification());
          if ($result) {
             $this->notification->notify_success('monitoring/ibu_hamil', 'Berhasil menambahkan data');
          } else {
@@ -164,6 +165,20 @@ class Ibu_Hamil extends CI_Controller
       } else {
          $this->notification->notify_error('monitoring/ibu_hamil', 'Gagal menghapus bidan');
       }
+   }
+
+   private function _payload_notification()
+   {
+      $bumil_id = htmlspecialchars($this->input->post('bumil_id', true));
+      $kunjungan_berikutnya = htmlspecialchars($this->input->post('kunjungan_berikutnya', true));
+
+      $payload = [
+         'bumil_id' => $bumil_id,
+         'message' => 'Jangan Lupa Datang Ya Bunda ' . $kunjungan_berikutnya,
+         'date' => $kunjungan_berikutnya
+      ];
+
+      return $payload;
    }
 
    private function _payload()

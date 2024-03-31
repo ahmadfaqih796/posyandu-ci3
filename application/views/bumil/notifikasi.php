@@ -9,38 +9,20 @@
                   <thead>
                      <tr>
                         <th>No</th>
-                        <th>Nama</th>
-                        <th>Trimester</th>
-                        <th>Sesi</th>
-                        <th>Berat Badan</th>
-                        <th>Tinggi Badan</th>
-                        <th>Status Gizi</th>
+                        <th>Nama Ibu Hamil</th>
+                        <th>Kunjungan Berikutnya</th>
+                        <th>Pesan</th>
                      </tr>
                   </thead>
                   <tbody>
                      <?php
-                     // var_dump($data);
-                     foreach ($data as $field) :
-                        $nilai_gizi = $field["berat_badan"] / (($field["tinggi_badan"] * $field["tinggi_badan"]) / 10000);
-                        $status_gizi = '';
-                        if ($nilai_gizi <= 18.5) {
-                           $status_gizi = 'Kurus';
-                        } elseif ($nilai_gizi <= 24.9) {
-                           $status_gizi = 'Normal';
-                        } elseif ($nilai_gizi <= 29.9) {
-                           $status_gizi = 'Gemuk';
-                        } else {
-                           $status_gizi = 'Obesitas';
-                        }
-                     ?>
+                     foreach ($data as $field) : ?>
                         <tr>
                            <td><?= $no++ ?></td>
                            <td><?= $field['n_ibu'] ?></td>
-                           <td><?= $field['kunjungan'] ?></td>
-                           <td><?= $field['sesi'] ?></td>
-                           <td><?= $field['berat_badan'] ?></td>
-                           <td><?= $field['tinggi_badan'] ?></td>
-                           <td><?= $status_gizi ?></td>
+                           <td><?= $field['kunjungan_berikutnya'] ?></td>
+                           <td><?= 'Jangan lupa datang kunjungan berikutnya pada tanggal ' . $field['kunjungan_berikutnya'] ?></td>
+
                         </tr>
                      <?php endforeach; ?>
                   </tbody>

@@ -15,8 +15,15 @@
 	width: 50%;
 }
 
+.notification {
+	display: block;
+}
+
 @media screen and (max-width: 768px) {
 	.gambar {
 		width: 100%;
+	}
+	.notification {
+		display: none;
 	}
 }

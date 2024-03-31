@@ -11,6 +11,10 @@
                   <!-- <img src="<?= base_url("assets/img/bumil/" . $detail['photo']) ?>" alt="" width="100%"> -->
                   <form action="<?= base_url('bumil/edit/' . $detail['id']) ?>" method="post" enctype="multipart/form-data">
                      <div class="mb-3">
+                        <label for="photo" class="form-label">Photo</label>
+                        <input type="file" class="form-control" id="photo" name="photo">
+                     </div>
+                     <div class="mb-3">
                         <label for="n_ibu" class="form-label">Nama Ibu</label>
                         <input type="text" class="form-control" id="n_ibu" name="n_ibu" value="<?= $detail['n_ibu'] ?>">
                      </div>

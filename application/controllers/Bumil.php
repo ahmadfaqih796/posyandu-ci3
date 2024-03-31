@@ -116,16 +116,39 @@ class Bumil extends CI_Controller
       $telepon = htmlspecialchars($this->input->post('telepon', true));
       $golongan_darah = htmlspecialchars($this->input->post('golongan_darah', true));
 
-      $payload = [
-         'n_ibu' => $n_ibu,
-         'no_medis' => $no_medis,
-         'nik' => $nik,
-         'n_suami' => $n_suami,
-         'alamat' => $alamat,
-         'telepon' => '08' . $telepon,
-         'golongan_darah' => $golongan_darah,
-      ];
-      return $payload;
+      // $payload = [
+      //    'n_ibu' => $n_ibu,
+      //    'no_medis' => $no_medis,
+      //    'nik' => $nik,
+      //    'n_suami' => $n_suami,
+      //    'alamat' => $alamat,
+      //    'telepon' => '08' . $telepon,
+      //    'golongan_darah' => $golongan_darah,
+      // ];
+      // return $payload;
+
+      $config['upload_path'] = './assets/img/ibu_hamil/';
+      $config['allowed_types'] = 'jpg|jpeg|png|gif';
+      $config['max_size'] = 1024;
+
+      $this->load->library('upload', $config);
+
+      if (!$this->upload->do_upload('photo')) {
+         return $this->notification->notify_error('bumil/profil', 'Ukuran gambar terlalu besar atau gambar tidak valid');
+      } else {
+         $data = $this->upload->data();
+         $payload = [
+            'n_ibu' => $n_ibu,
+            'no_medis' => $no_medis,
+            'nik' => $nik,
+            'n_suami' => $n_suami,
+            'alamat' => $alamat,
+            'telepon' => '08' . $telepon,
+            'golongan_darah' => $golongan_darah,
+            'photo' => $data['file_name']
+         ];
+         return $payload;
+      }
    }
 
    private function _validation()

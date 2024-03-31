@@ -8,13 +8,19 @@
          <div class="col-md-6">
             <div class="card">
                <div class="card-body">
-                  <!-- <img src="<?= base_url("assets/img/bumil/" . $detail['photo']) ?>" alt="" width="100%"> -->
+                  <img src="<?= base_url("assets/img/ibu_hamil/" . $detail['photo']) ?>" alt="" style="width: 100px; height: 100px; border: 3px solid black; border-radius: 50%; object-fit: contain; object-position: center; margin: 10px auto; display: block;">
+                  <!-- <?= $detail['photo'] ?> -->
                   <table class="table table-borderless table-sm">
                      <tbody>
                         <tr>
-                           <td>Nama</td>
+                           <td>Nama Ibu Hamil</td>
                            <td>:</td>
                            <td><?= $detail['n_ibu'] ?></td>
+                        </tr>
+                        <tr>
+                           <td>Nama Suami</td>
+                           <td>:</td>
+                           <td><?= $detail['n_suami'] ?></td>
                         </tr>
                         <tr>
                            <td>NIK</td>
@@ -22,9 +28,9 @@
                            <td><?= $detail['nik'] ?></td>
                         </tr>
                         <tr>
-                           <td>Tanggal Lahir</td>
+                           <td>No Rekam Medis</td>
                            <td>:</td>
-                           <td><?= $detail['tgl_lahir'] ?></td>
+                           <td><?= $detail['no_medis'] ?></td>
                         </tr>
                         <tr>
                            <td>Alamat</td>

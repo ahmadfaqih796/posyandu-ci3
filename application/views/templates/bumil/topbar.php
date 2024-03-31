@@ -15,27 +15,33 @@
          <ul class="navbar-nav navbar-nav-hover w-100 justify-content-between">
             <div class="d-lg-flex justify-content-center ">
                <li class="nav-item ms-lg-auto">
-                  <a class="nav-link nav-link-icon me-2" href="<?= base_url("user/home") ?>">
+                  <a class="nav-link nav-link-icon me-2" href="<?= base_url("bumil") ?>">
                      <i class="fa fa-paste me-1"></i>
                      <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home">Home</p>
                   </a>
                </li>
                <li class="nav-item ms-lg-auto">
-                  <a class="nav-link nav-link-icon me-2" href="<?= base_url("user/perkembangan_anak") ?>">
+                  <a class="nav-link nav-link-icon me-2" href="<?= base_url("bumil/kehamilan") ?>">
                      <i class="fa fa-notes-medical me-1"></i>
-                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Perkembangan Anak">Perkembangan Anak</p>
+                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Kehamilan">Kehamilan</p>
                   </a>
                </li>
                <li class="nav-item ms-lg-auto">
-                  <a class="nav-link nav-link-icon me-2" href="<?= base_url("user/jadwal_posyandu") ?>">
+                  <a class="nav-link nav-link-icon me-2" href="<?= base_url("bumil/monitoring") ?>">
                      <i class="fa fa-clipboard me-1"></i>
-                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="jadwal Posyandu">Jadwal Posyandu</p>
+                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Monitoring">Monitoring</p>
                   </a>
                </li>
                <li class="nav-item ms-lg-auto">
-                  <a class="nav-link nav-link-icon me-2" href="<?= base_url("user/kegiatan") ?>">
-                     <i class="fa fa-clipboard-list me-1"></i>
-                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Kegiatan">Kegiatan</p>
+                  <a class="nav-link nav-link-icon me-2" href="<?= base_url("bumil/status_gizi") ?>">
+                     <i class="fa fa-clipboard me-1"></i>
+                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Status Gizi">Status Gizi</p>
+                  </a>
+               </li>
+               <li class="nav-item ms-lg-auto">
+                  <a class="nav-link nav-link-icon me-2" href="<?= base_url("bumil/profil") ?>">
+                     <i class="fa fa-clipboard me-1"></i>
+                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Profil">Profil</p>
                   </a>
                </li>
             </div>

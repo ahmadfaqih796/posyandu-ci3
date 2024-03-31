@@ -11,6 +11,7 @@ class Bumil extends CI_Controller
       $this->load->model('Perkembangan_Anak_model', 'pm');
       $this->load->model('Schedule_model', 'sm');
       $this->load->model('Base_model', 'bm');
+      $this->load->model('Ibu_model', 'im');
       // $role = $this->session->userdata('role_id');
       // if ($role != 5) {
       //    redirect('badrequest/error/403');
@@ -25,6 +26,19 @@ class Bumil extends CI_Controller
       $this->load->view('templates/bumil/header', $data);
       $this->load->view('templates/bumil/topbar', $data);
       $this->load->view('bumil/home', $data);
+      // $this->load->view('user/home2', $data);
+
+      $this->load->view('templates/bumil/footer', $data);
+   }
+
+   public function kehamilan()
+   {
+      $data['title'] = 'Kehamilan';
+      $data['data'] = $this->im->get_all_kehamilan_by_bumil($this->session->userdata('user_id'));
+      $data['no'] = 1;
+      $this->load->view('templates/bumil/header', $data);
+      $this->load->view('templates/bumil/topbar', $data);
+      $this->load->view('bumil/kehamilan', $data);
       // $this->load->view('user/home2', $data);
       $this->load->view('templates/bumil/footer', $data);
    }

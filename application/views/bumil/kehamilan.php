@@ -16,7 +16,7 @@
                         <th>Jumlah Kehamilan</th>
                         <th>Jumlah Lahir Hidup</th>
                         <th>Jumlah Lahir Mati</th>
-                        <th>Jumlah Persalinan Terakhir</th>
+                        <th>Jarak Persalinan Terakhir</th>
                         <th>Jenis Persalinan Terakhir</th>
                      </tr>
                   </thead>

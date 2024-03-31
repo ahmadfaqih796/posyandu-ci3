@@ -64,6 +64,18 @@ class Bumil extends CI_Controller
       $this->load->view('templates/bumil/footer', $data);
    }
 
+   public function notifikasi()
+   {
+      $data['title'] = 'Notifikasi';
+      $data['data'] = $this->im->get_all_ibu_hamil_by_id('monitoring_ibu_hamil', $this->session->userdata('user_id'));
+      $data['no'] = 1;
+      $this->load->view('templates/bumil/header', $data);
+      $this->load->view('templates/bumil/topbar', $data);
+      $this->load->view('bumil/notifikasi', $data);
+      $this->load->view('templates/bumil/footer', $data);
+   }
+
+
    public function profil()
    {
       $data['title'] = 'Profil';
@@ -72,5 +84,52 @@ class Bumil extends CI_Controller
       $this->load->view('templates/bumil/topbar', $data);
       $this->load->view('bumil/profil', $data);
       $this->load->view('templates/bumil/footer', $data);
+   }
+
+   public function edit($id)
+   {
+      $this->_validation();
+      $data['title'] = ' Edit Profil';
+      $data['detail'] = $this->im->get_ibu_hamil_by_id($this->session->userdata('user_id'));
+      if ($this->form_validation->run() == false) {
+         $this->load->view('templates/bumil/header', $data);
+         $this->load->view('templates/bumil/topbar', $data);
+         $this->load->view('bumil/editProfil', $data);
+         $this->load->view('templates/bumil/footer', $data);
+      } else {
+         $result = $this->bm->update('ibu_hamil', $id, $this->_payload());
+         if ($result) {
+            $this->notification->notify_success('bumil/profil', 'Berhasil memperbarui ibu hamil');
+         } else {
+            $this->notification->notify_error('bumil/profil', 'Gagal memperbarui ibu hamil');
+         }
+      }
+   }
+
+   private function _payload()
+   {
+      $n_ibu = htmlspecialchars($this->input->post('n_ibu', true));
+      $no_medis = htmlspecialchars($this->input->post('no_medis', true));
+      $nik = htmlspecialchars($this->input->post('nik', true));
+      $n_suami = htmlspecialchars($this->input->post('n_suami', true));
+      $alamat = htmlspecialchars($this->input->post('alamat', true));
+      $telepon = htmlspecialchars($this->input->post('telepon', true));
+      $golongan_darah = htmlspecialchars($this->input->post('golongan_darah', true));
+
+      $payload = [
+         'n_ibu' => $n_ibu,
+         'no_medis' => $no_medis,
+         'nik' => $nik,
+         'n_suami' => $n_suami,
+         'alamat' => $alamat,
+         'telepon' => '08' . $telepon,
+         'golongan_darah' => $golongan_darah,
+      ];
+      return $payload;
+   }
+
+   private function _validation()
+   {
+      $this->form_validation->set_rules('n_ibu', 'Nama Ibu', 'required|trim');
    }
 }

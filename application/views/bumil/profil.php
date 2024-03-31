@@ -43,6 +43,7 @@
                         </tr>
                      </tbody>
                   </table>
+                  <a class="btn btn-primary text-center" href="<?= base_url('bumil/edit/' . $detail['id']) ?>">Edit</a>
                </div>
             </div>
          </div>

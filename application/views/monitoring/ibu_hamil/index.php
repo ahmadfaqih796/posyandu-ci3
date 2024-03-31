@@ -12,8 +12,11 @@
                <!-- <a type="button" class="btn btn-primary float-right" href="<?= base_url('monitoring/ibu_hamil/add') ?>">
                   <i class="fas fa-plus"></i> Tambah
                </a> -->
+               <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/ibu_hamil/pdf') ?>">
+                  <i class="fas fa-print"></i> PDF
+               </a>
                <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/ibu_hamil/excel') ?>">
-                  <i class="fas fa-print"></i> Cetak
+                  <i class="fas fa-print"></i> Excel
                </a>
                <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
                   <i class="fas fa-plus"></i> Tambah

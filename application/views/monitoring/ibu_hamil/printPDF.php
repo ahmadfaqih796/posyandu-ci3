@@ -32,6 +32,7 @@
       }
 
       h1 {
+         font-size: 20px;
          text-align: center;
       }
    </style>
@@ -41,13 +42,17 @@
    <table class="header">
       <tr>
          <td>
-            <img src="<?= $_SERVER['DOCUMENT_ROOT']; ?>/assets/img/logo-posyandu.png" border="0" alt="Logo" class="logo">
+            <img src="<?= $_SERVER['DOCUMENT_ROOT']; ?>/assets/img/dinkes_medan.png" border="0" alt="Logo" class="logo">
          </td>
          <td>
-            <h1>Posyandu</h1>
+            <h1>DINAS KESEHATAN KOTA MEDAN</h1>
+            <h1>UPT PUSKESMAS MEDAN DELI</h1>
             <br>
-            <p>Jl.Pramuka Rt.03 /03 Kecamatan Rawalumu Kota Bekasi</p>
-            <p>No. Telepon: 123-456-789</p>
+            <p>Jl. K.L. Yos Sudarso KM. 11, Kota Bangun, Kec. Medan Deli, Kota Medan, Sumatera Utara 20244</p>
+            <p>MEDAN</p>
+         </td>
+         <td>
+            <img src="<?= $_SERVER['DOCUMENT_ROOT']; ?>/assets/img/puskesmas.png" border="0" alt="Logo" class="logo">
          </td>
       </tr>
    </table>

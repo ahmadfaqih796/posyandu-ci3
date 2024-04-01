@@ -59,7 +59,7 @@ class Ibu_Hamil extends CI_Controller
       $html = $this->load->view('monitoring/ibu_hamil/printPDF', $data, true);
 
       $mpdf->WriteHTML($html);
-      $mpdf->Output('data_anak.pdf', 'D');
+      $mpdf->Output('monitoring_ibu_hamil.pdf', 'D');
    }
 
    public function excel()

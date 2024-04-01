@@ -63,25 +63,43 @@
             <th>No</th>
             <th>Nama</th>
             <th>Hamil ke</th>
-            <th>Kunjugan</th>
+            <!-- <th>Kunjugan</th>
             <th>Keluhan</th>
-            <th>Sesi</th>
+            <th>Sesi</th> -->
             <th>Tanggal Periksa</th>
             <th>Kunjungan Berikutnya</th>
-            <!-- <th>Status Standar 7T</th> -->
+            <th>Status Standar 7T</th>
          </tr>
       </thead>
       <tbody>
-         <?php foreach ($users as $field) : ?>
+         <?php foreach ($users as $field) :
+            $standar7t = [
+               $field['s_timbang_berat_badan'],
+               $field['s_tekanan_darah'],
+               $field['s_tinggi_puncak_rahim'],
+               $field['s_vaksinasi_tetanus'],
+               $field['s_tablet_zat_besi'],
+               $field['s_tes_laboratorium'],
+               $field['s_temu_wicara'],
+            ];
+            $result = 0;
+            foreach ($standar7t as $value) {
+               if (strpos($value, 'belum') !== false) {
+                  $result = 1;
+                  break;
+               }
+            }
+         ?>
             <tr>
                <td><?= $no++ ?></td>
                <td><?= $field['n_ibu'] ?></td>
                <td><?= $field['hamil_ke'] ?></td>
-               <td><?= $field['kunjungan'] ?></td>
+               <!-- <td><?= $field['kunjungan'] ?></td>
                <td><?= $field['keluhan'] ?></td>
-               <td><?= $field['sesi'] ?></td>
+               <td><?= $field['sesi'] ?></td> -->
                <td><?= $field['tanggal_periksa'] ?></td>
                <td><?= $field['kunjungan_berikutnya'] ?></td>
+               <td><?= $result == 1 ? 'Belum' : 'Sudah' ?></td>
             </tr>
          <?php endforeach; ?>
       </tbody>

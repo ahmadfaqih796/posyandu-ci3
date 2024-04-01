@@ -61,11 +61,11 @@
                   <input type="text" class="form-control" name="pekerjaan" id="pekerjaan" value="<?= set_value('pekerjaan'); ?>" required>
                   <?= form_error('pekerjaan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
-               <div class="form-group">
+               <!-- <div class="form-group">
                   <label for="agama">Agama</label>
                   <input type="text" class="form-control" name="agama" id="agama" value="<?= set_value('agama'); ?>" required>
                   <?= form_error('agama', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
+               </div> -->
                <div class="form-group">
                   <label for="pendidikan_terakhir">Pendidikan Terakhir</label>
                   <input type="text" class="form-control" name="pendidikan_terakhir" id="pendidikan_terakhir" value="<?= set_value('pendidikan_terakhir'); ?>" required>

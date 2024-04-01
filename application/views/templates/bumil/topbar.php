@@ -64,7 +64,7 @@ $total = $this->bm->get_count('notification');
                   <div class="dropdown-menu dropdown-menu-animation dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="notification">
                      <div class="d-none d-lg-block">
                         <?php foreach ($table as $row) : ?>
-                           <a href="../pages/about-us.html" class="dropdown-item border-radius-md">
+                           <a href="<?= base_url("bumil/detail_monitoring/" . $row['id']) ?>" class="dropdown-item border-radius-md">
                               <div><?= $row['message'] ?></div>
                            </a>
                         <?php endforeach ?>

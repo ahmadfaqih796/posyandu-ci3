@@ -65,7 +65,7 @@
             <th>Nama Suami</th>
             <th>Alamat</th>
             <th>Gol. Darah</th>
-            <th>Agama</th>
+            <!-- <th>Agama</th> -->
             <th>Status</th>
          </tr>
       </thead>
@@ -78,7 +78,7 @@
                <td><?= $field['n_suami'] ?></td>
                <td><?= $field['alamat'] ?></td>
                <td><?= $field['golongan_darah'] ?></td>
-               <td><?= $field['agama'] ?></td>
+               <!-- <td><?= $field['agama'] ?></td> -->
                <td><?= $field['is_death'] ? 'Meninggal' : 'Hidup' ?></td>
             </tr>
          <?php endforeach; ?>

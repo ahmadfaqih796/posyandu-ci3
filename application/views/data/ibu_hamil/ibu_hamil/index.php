@@ -31,7 +31,7 @@
                      <!-- <th>Tanggal Lahir</th> -->
                      <th>Alamat</th>
                      <th>Gol. Darah</th>
-                     <th>Agama</th>
+                     <!-- <th>Agama</th> -->
                      <th>Photo</th>
                      <th>Status</th>
                      <th>Aksi</th>
@@ -46,7 +46,7 @@
                         <!-- <td><?= $field['tgl_lahir'] ?></td> -->
                         <td><?= $field['alamat'] ?></td>
                         <td><?= $field['golongan_darah'] ?></td>
-                        <td><?= $field['agama'] ?></td>
+                        <!-- <td><?= $field['agama'] ?></td> -->
                         <td><img src="<?= base_url('assets/img/ibu_hamil/') . $field['photo'] ?>" alt="Photo" width="100"></td>
                         <td><?= $field['is_death'] ? 'Meninggal' : 'Hidup' ?></td>
                         <td>

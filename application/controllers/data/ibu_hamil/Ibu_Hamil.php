@@ -40,6 +40,21 @@ class Ibu_Hamil extends CI_Controller
       }
    }
 
+   public function pdf()
+   {
+      require_once FCPATH . 'vendor/autoload.php';
+      $mpdf = new \Mpdf\Mpdf();
+
+      $data['title'] = 'Data Ibu Hamil';
+      $data['no'] = 1;
+      $data['users'] = $this->bm->get_all("ibu_hamil");
+
+      $html = $this->load->view('data/ibu_hamil/ibu_hamil/printPDF', $data, true);
+
+      $mpdf->WriteHTML($html);
+      $mpdf->Output('data_ibu_hamil.pdf', 'D');
+   }
+
    private function add()
    {
       $result = $this->bm->add('ibu_hamil', $this->_payload("post"));

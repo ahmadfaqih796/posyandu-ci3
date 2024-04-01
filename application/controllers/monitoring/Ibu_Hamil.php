@@ -69,7 +69,22 @@ class Ibu_Hamil extends CI_Controller
       $sheet->setCellValue('A1', 'No');
       $sheet->setCellValue('B1', 'Nama');
       $sheet->setCellValue('C1', 'Hamil Ke');
-
+      $sheet->setCellValue('D1', 'Tanggal periksa');
+      $sheet->setCellValue('E1', 'Keluhan');
+      $sheet->setCellValue('F1', 'Kunjungan');
+      $sheet->setCellValue('G1', 'Sesi');
+      $sheet->setCellValue('H1', 'Tekanan Darah');
+      $sheet->setCellValue('I1', 'Berat Badan');
+      $sheet->setCellValue('J1', 'Tinggi Badan');
+      $sheet->setCellValue('K1', 'Umur Kehamilan');
+      $sheet->setCellValue('L1', 'Tinggi Fundus');
+      $sheet->setCellValue('M1', 'Umur Ibu');
+      $sheet->setCellValue('N1', 'HIV');
+      $sheet->setCellValue('O1', 'Sifilis');
+      $sheet->setCellValue('P1', 'HibSAg');
+      $sheet->setCellValue('Q1', 'LILA');
+      $sheet->setCellValue('R1', 'Kunjungan Berikutnya');
+      $sheet->setCellValue('S1', 'Keterangan');
       $data = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
       $no = 1;
       $x = 2;
@@ -77,16 +92,33 @@ class Ibu_Hamil extends CI_Controller
          $sheet->setCellValue('A' . $x, $no++);
          $sheet->setCellValue('B' . $x, $row['n_ibu']);
          $sheet->setCellValue('C' . $x, $row['hamil_ke']);
+         $sheet->setCellValue('D' . $x, $row['tanggal_periksa']);
+         $sheet->setCellValue('E' . $x, $row['keluhan']);
+         $sheet->setCellValue('F' . $x, $row['kunjungan']);
+         $sheet->setCellValue('G' . $x, $row['sesi']);
+         $sheet->setCellValue('H' . $x, $row['tekanan_darah']);
+         $sheet->setCellValue('I' . $x, $row['berat_badan']);
+         $sheet->setCellValue('J' . $x, $row['tinggi_badan']);
+         $sheet->setCellValue('K' . $x, $row['umur_kehamilan']);
+         $sheet->setCellValue('L' . $x, $row['tinggi_fundus']);
+         $sheet->setCellValue('M' . $x, $row['umur_ibu']);
+         $sheet->setCellValue('N' . $x, $row['hiv']);
+         $sheet->setCellValue('O' . $x, $row['sifilis']);
+         $sheet->setCellValue('P' . $x, $row['hibsag']);
+         $sheet->setCellValue('Q' . $x, $row['lila']);
+         $sheet->setCellValue('R' . $x, $row['kunjungan_berikutnya']);
+         $sheet->setCellValue('S' . $x, $row['keterangan']);
          $x++;
       }
 
-      // Mengatur border untuk seluruh rentang data
       $highestRow = $sheet->getHighestRow();
-      $range = 'A1:C' . $highestRow;
+      $range = 'A1:S' . $highestRow;
       $style = $sheet->getStyle($range);
       $style->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
 
-      // Mengatur dimensi kolom agar isi dapat terlihat dengan jelas
+      foreach (range('A', 'S') as $columnID) {
+         $sheet->getColumnDimension($columnID)->setAutoSize(true);
+      }
       $sheet->getColumnDimension('A')->setWidth(5);
       $sheet->getColumnDimension('B')->setWidth(20);
 

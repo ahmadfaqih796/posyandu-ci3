@@ -12,8 +12,8 @@
                         <!-- <th>Nama Ibu Hamil</th> -->
                         <th>Hamil ke</th>
                         <th>Kunjugan</th>
-                        <th>Keluhan</th>
                         <th>Sesi</th>
+                        <th>Keluhan</th>
                         <th>Tanggal Periksa</th>
                         <th>Kunjungan Berikutnya</th>
                         <th>Status Standar 7T</th>
@@ -46,8 +46,8 @@
                            <!-- <td><?= $field['n_ibu'] ?></td> -->
                            <td><?= $field['hamil_ke'] ?></td>
                            <td><?= $field['kunjungan'] ?></td>
-                           <td><?= $field['keluhan'] ?></td>
                            <td><?= $field['sesi'] ?></td>
+                           <td><?= $field['keluhan'] ?></td>
                            <td><?= $field['tanggal_periksa'] ?></td>
                            <td><?= $field['kunjungan_berikutnya'] ?></td>
                            <td><?= $result == 1 ? 'Belum' : 'Sudah' ?></td>

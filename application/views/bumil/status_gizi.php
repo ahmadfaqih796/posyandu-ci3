@@ -10,8 +10,9 @@
                      <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Trimester</th>
-                        <th>Sesi</th>
+                        <th>Tanggal Periksa</th>
+                        <!-- <th>Trimester</th>
+                        <th>Sesi</th> -->
                         <th>Berat Badan</th>
                         <th>Tinggi Badan</th>
                         <th>Status Gizi</th>
@@ -36,8 +37,9 @@
                         <tr>
                            <td><?= $no++ ?></td>
                            <td><?= $field['n_ibu'] ?></td>
-                           <td><?= $field['kunjungan'] ?></td>
-                           <td><?= $field['sesi'] ?></td>
+                           <td><?= $field['tanggal_periksa'] ?></td>
+                           <!-- <td><?= $field['kunjungan'] ?></td>
+                           <td><?= $field['sesi'] ?></td> -->
                            <td><?= $field['berat_badan'] ?></td>
                            <td><?= $field['tinggi_badan'] ?></td>
                            <td><?= $status_gizi ?></td>

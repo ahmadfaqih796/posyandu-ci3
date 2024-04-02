@@ -17,6 +17,7 @@
                         <th>Tanggal Periksa</th>
                         <th>Kunjungan Berikutnya</th>
                         <th>Status Standar 7T</th>
+                        <th>Aksi</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -50,6 +51,9 @@
                            <td><?= $field['tanggal_periksa'] ?></td>
                            <td><?= $field['kunjungan_berikutnya'] ?></td>
                            <td><?= $result == 1 ? 'Belum' : 'Sudah' ?></td>
+                           <td>
+                              <a href="<?= base_url('bumil/detail_monitoring/' . $field['id']) ?>" class="btn btn-primary mt-3">Detail</a>
+                           </td>
                         </tr>
                      <?php endforeach; ?>
                   </tbody>

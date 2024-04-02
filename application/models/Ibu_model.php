@@ -86,6 +86,16 @@ class Ibu_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
+   public function get_all_ibu_hamil_by_id_with_bumil($table, $id, $bumil_id)
+   {
+      $this->db->select('t.*, b.n_ibu');
+      $this->db->from($table . ' t');
+      $this->db->join('ibu_hamil b', 't.bumil_id = b.id', 'left');
+      $this->db->where('t.bumil_id', $bumil_id);
+      $this->db->where('t.id', $id);
+      return $this->db->get()->row_array();
+   }
+
    // public function get_all_monitoring_ibu_hamil_by_id($bumil_id)
    // {
    //    $this->db->select('m.*, b.n_ibu');

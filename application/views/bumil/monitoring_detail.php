@@ -45,7 +45,7 @@
                </div>
             </div>
 
-            <h3 class="h3 mb-3 text-center">Monitoring</h3>
+            <h4 class="h4 mb-3 text-center">Monitoring</h4>
             <hr class="sidebar-divider">
             <div class="row g-3">
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">
@@ -137,7 +137,7 @@
                </div>
             </div>
 
-            <h3 class="h3 mb-3 text-center">Standar 7T</h3>
+            <h4 class="h4 mb-3 text-center">Standar 7T</h4>
             <hr class="sidebar-divider">
             <div class="row g-3">
                <div class="col-sx-12 col-md-6 col-lg-4 form-group">

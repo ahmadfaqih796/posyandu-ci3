@@ -57,16 +57,16 @@
                   <input type="text" class="form-control" name="golongan_darah" id="edit_golongan_darah" value="<?= set_value('golongan_darah'); ?>" required>
                   <?= form_error('golongan_darah', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
-               <div class="form-group">
+               <!-- <div class="form-group">
                   <label for="edit_pekerjaan">Pekerjaan</label>
                   <input type="text" class="form-control" name="pekerjaan" id="edit_pekerjaan" value="<?= set_value('pekerjaan'); ?>" required>
                   <?= form_error('pekerjaan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
-               <!-- <div class="form-group">
+               <div class="form-group">
                   <label for="edit_agama">Agama</label>
                   <input type="text" class="form-control" name="agama" id="edit_agama" value="<?= set_value('agama'); ?>" required>
                   <?= form_error('agama', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div> -->
+               </div>
                <div class="form-group">
                   <label for="edit_pendidikan_terakhir">Pendidikan Terakhir</label>
                   <input type="text" class="form-control" name="pendidikan_terakhir" id="edit_pendidikan_terakhir" value="<?= set_value('pendidikan_terakhir'); ?>" required>
@@ -76,7 +76,7 @@
                   <label for="edit_riwayat_penyakit">Riwayat Penyakit</label>
                   <input type="text" class="form-control" name="riwayat_penyakit" id="edit_riwayat_penyakit" value="<?= set_value('riwayat_penyakit'); ?>" required>
                   <?= form_error('riwayat_penyakit', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
+               </div> -->
                <!-- <div class="form-group">
                   <label for="edit_photo">Photo</label>
                   <input type="file" class="form-control" name="photo" id="edit_photo" value="<?= set_value('photo'); ?>" required>

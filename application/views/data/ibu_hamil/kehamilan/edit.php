@@ -66,6 +66,7 @@
                   <label for="edit_jenis_persalinan_terakhir">Jenis Persalinan Terakhir</label>
                   <select name="jenis_persalinan_terakhir" id="edit_jenis_persalinan_terakhir" class="form-control" required>
                      <option value="">--Pilih Jenis Persalinan Terakhir--</option>
+                     <option value="tidak ada" <?= set_select('jenis_persalinan_terakhir', 'tidak ada', (!empty($_POST['jenis_persalinan_terakhir']) && $_POST['jenis_persalinan_terakhir'] == "tidak ada")); ?>>tidak ada</option>
                      <option value="Normal" <?= set_select('jenis_persalinan_terakhir', 'Normal', (!empty($_POST['jenis_persalinan_terakhir']) && $_POST['jenis_persalinan_terakhir'] == "Normal")); ?>>Normal</option>
                      <option value="SC" <?= set_select('jenis_persalinan_terakhir', 'SC', (!empty($_POST['jenis_persalinan_terakhir']) && $_POST['jenis_persalinan_terakhir'] == "SC")); ?>>SC</option>
                   </select>

@@ -57,7 +57,7 @@ class Ibu_Hamil extends CI_Controller
 
    private function add()
    {
-      $result = $this->bm->add('ibu_hamil', $this->_payload("post"));
+      $result = $this->bm->add('ibu_hamil', $this->_payload("update"));
       if ($result) {
          $this->notification->notify_success('data/ibu_hamil/ibu_hamil', 'Berhasil menambahkan ibu hamil');
       } else {

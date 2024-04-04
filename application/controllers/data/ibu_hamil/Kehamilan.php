@@ -42,6 +42,21 @@ class Kehamilan extends CI_Controller
       }
    }
 
+   public function pdf()
+   {
+      require_once FCPATH . 'vendor/autoload.php';
+      $mpdf = new \Mpdf\Mpdf();
+
+      $data['title'] = 'Data Kehamilan';
+      $data['no'] = 1;
+      $data['users'] = $this->im->get_all_kehamilan();
+
+      $html = $this->load->view('data/ibu_hamil/kehamilan/printPDF', $data, true);
+
+      $mpdf->WriteHTML($html);
+      $mpdf->Output('data_kehamilan.pdf', 'D');
+   }
+
    private function add()
    {
       $result = $this->bm->add('kehamilan', $this->_payload());

@@ -24,13 +24,10 @@
                   <tr>
                      <th>No</th>
                      <th>Nama</th>
+                     <th>Tanggal Periksa</th>
                      <th>Berat Badan</th>
                      <th>Tinggi Badan</th>
-                     <th>Trimester</th>
-                     <th>Sesi</th>
-                     <!-- <th>Nilai Gizi</th> -->
                      <th>Status Gizi</th>
-                     <!-- <th>Aksi</th> -->
                   </tr>
                </thead>
                <tbody>
@@ -50,16 +47,10 @@
                      <tr>
                         <td><?= $no++ ?></td>
                         <td><?= $field['n_ibu'] ?></td>
+                        <td><?= $field['tanggal_periksa'] ?></td>
                         <td><?= $field['berat_badan'] ?></td>
                         <td><?= $field['tinggi_badan'] ?></td>
-                        <td><?= $field['kunjungan'] ?></td>
-                        <td><?= $field['sesi'] ?></td>
-                        <!-- <td><?= $nilai_gizi ?></td> -->
                         <td><?= $status_gizi ?></td>
-                        <!-- <td>
-                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
-                           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
-                        </td> -->
                      </tr>
                   <?php endforeach; ?>
                </tbody>

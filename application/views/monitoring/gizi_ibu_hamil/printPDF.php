@@ -62,10 +62,9 @@
          <tr>
             <th>No</th>
             <th>Nama</th>
+            <th>Tanggal Periksa</th>
             <th>Berat Badan</th>
             <th>Tinggi Badan</th>
-            <th>Trimester</th>
-            <th>Sesi</th>
             <th>Status Gizi</th>
          </tr>
       </thead>
@@ -86,11 +85,9 @@
             <tr>
                <td><?= $no++ ?></td>
                <td><?= $field['n_ibu'] ?></td>
+               <td><?= $field['tanggal_periksa'] ?></td>
                <td><?= $field['berat_badan'] ?></td>
                <td><?= $field['tinggi_badan'] ?></td>
-               <td><?= $field['kunjungan'] ?></td>
-               <td><?= $field['sesi'] ?></td>
-               <!-- <td><?= $nilai_gizi ?></td> -->
                <td><?= $status_gizi ?></td>
             </tr>
          <?php endforeach; ?>

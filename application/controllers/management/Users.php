@@ -54,7 +54,7 @@ class Users extends CI_Controller
          'role_id' => $role_id,
          'image' => "default.jpg",
       ];
-      if ($role_id == 7 || $role_id == 5) {
+      if ($role_id == 7 || $role_id == 5 || $role_id == 4 || $role_id == 8) {
          $payload['is_active'] = 1;
       }
 

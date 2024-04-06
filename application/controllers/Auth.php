@@ -73,7 +73,7 @@ class Auth extends CI_Controller
                   'role_id' => $user['role_id']
                ];
                $this->session->set_userdata($data);
-               if ($user['role_id'] == 1 || $user['role_id'] == 7) {
+               if ($user['role_id'] == 1 || $user['role_id'] == 7 || $user['role_id'] == 8 || $user['role_id'] == 4) {
                   redirect('dashboard');
                } elseif ($user['role_id'] == 2) {
                   redirect('dashboard');

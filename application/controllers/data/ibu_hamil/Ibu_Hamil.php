@@ -57,7 +57,7 @@ class Ibu_Hamil extends CI_Controller
 
    private function add()
    {
-      $result = $this->bm->add('ibu_hamil', $this->_payload("update"));
+      $result = $this->bm->add('ibu_hamil', $this->_payload("post"));
       if ($result) {
          $this->notification->notify_success('data/ibu_hamil/ibu_hamil', 'Berhasil menambahkan ibu hamil');
       } else {
@@ -117,6 +117,25 @@ class Ibu_Hamil extends CI_Controller
             'agama' => $agama,
             'pendidikan_terakhir' => $pendidikan_terakhir,
             'riwayat_penyakit' => $riwayat_penyakit
+         ];
+         return $payload;
+      }
+
+      if ($type == "post") {
+         $payload = [
+            'n_ibu' => $n_ibu,
+            'no_medis' => $no_medis,
+            'nik' => $nik,
+            'password' => password_hash($password, PASSWORD_DEFAULT),
+            'n_suami' => $n_suami,
+            'alamat' => $alamat,
+            'telepon' => '08' . $telepon,
+            'tgl_lahir' => $tgl_lahir,
+            'golongan_darah' => $golongan_darah,
+            'pekerjaan' => $pekerjaan,
+            'agama' => $agama,
+            'pendidikan_terakhir' => $pendidikan_terakhir,
+            'riwayat_penyakit' => $riwayat_penyakit,
          ];
          return $payload;
       }

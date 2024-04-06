@@ -9,12 +9,7 @@
                <h6 class="m-0 font-weight-bold text-primary"><?= $title ?></h6>
             </div>
             <?php
-            if ($role == 4 || $role == 8) {
-            ?>
-               <div class="col-6">
-               </div>
-            <?php
-            } else {
+            if ($role == 1 || $role == 2) {
             ?>
                <div class="col-6">
                   <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">
@@ -39,8 +34,7 @@
                      <th>Jam Buka</th>
                      <th>Jam Tutup</th>
                      <?php
-                     if ($role == 4 || $role == 8) {
-                     } else {
+                     if ($role == 1 || $role == 2) {
                      ?>
                         <th>Aksi</th>
                      <?php
@@ -57,8 +51,7 @@
                         <td><?= $field['jam_buka'] ?></td>
                         <td><?= $field['jam_tutup'] ?></td>
                         <?php
-                        if ($role == 4 || $role == 8) {
-                        } else {
+                        if ($role == 1 || $role == 2) {
                         ?>
                            <td>
                               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>

@@ -1,7 +1,7 @@
 <?php
 $this->load->model('Base_model', 'bm');
-$table = $this->bm->get_all('notification');
-$total = $this->bm->get_count('notification');
+$table = $this->bm->get_all_by_bumil_id('notification', $this->session->userdata('user_id'));
+$total = $this->bm->get_count_bumil_id('notification', $this->session->userdata('user_id'));
 ?>
 
 <!-- Navbar Transparent -->

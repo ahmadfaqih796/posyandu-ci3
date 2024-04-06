@@ -14,6 +14,11 @@ class Base_model extends CI_Model
       return $this->db->get($table)->result_array();
    }
 
+   public function get_all_by_bumil_id($table, $bumil_id)
+   {
+      return $this->db->get_where($table, ['bumil_id' => $bumil_id])->result_array();
+   }
+
    public function get_by_id($table, $id)
    {
       return $this->db->get_where($table, ['id' => $id])->row_array();
@@ -40,5 +45,10 @@ class Base_model extends CI_Model
    public function get_count($table)
    {
       return $this->db->get($table)->num_rows();
+   }
+
+   public function get_count_bumil_id($table, $bumil_id)
+   {
+      return $this->db->get_where($table, ['bumil_id' => $bumil_id])->num_rows();
    }
 }

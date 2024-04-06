@@ -18,6 +18,7 @@ class Schedule extends CI_Controller
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->sm->get_schedule();
       $data['posyandu'] = $this->pm->get_posyandu();
+      $data['role'] = $this->session->userdata('role_id');
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);

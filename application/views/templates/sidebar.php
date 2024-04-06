@@ -1,5 +1,16 @@
 <?php
 // Array untuk menu sidebar
+/* 
+notes:
+- admin = 1
+- kader = 2
+- anak = 3
+- Poli Gizi = 4
+- ibu hamil = 5
+- Koordinator Imunisasi = 6
+- Bidan = 7
+- Poli Kia = 8
+*/
 $sidebarMenu = array(
    array(
       "text" => "Home",
@@ -15,7 +26,7 @@ $sidebarMenu = array(
    ),
    array(
       "text" => "Management",
-      "role" => array(1, 2, 6),
+      "role" => array(1, 2, 4, 6, 8),
       "submenu" => array(
          array(
             "url" => "management/users",
@@ -39,14 +50,14 @@ $sidebarMenu = array(
             "url" => "management/schedule",
             "text" => "Jadwal Posyandu",
             "icon" => "fas fa-fw fa-hospital",
-            "role" => array(1),
+            "role" => array(1, 4, 8),
          ),
-         array(
-            "url" => "management/artikel",
-            "text" => "Artikel",
-            "icon" => "fas fa-fw fa-book",
-            "role" => array(1),
-         ),
+         // array(
+         //    "url" => "management/artikel",
+         //    "text" => "Artikel",
+         //    "icon" => "fas fa-fw fa-book",
+         //    "role" => array(1),
+         // ),
          array(
             "url" => "management/kegiatan",
             "text" => "Kegiatan",
@@ -75,13 +86,13 @@ $sidebarMenu = array(
             "url" => "management/perkembangan_anak",
             "text" => "Perkembangan Anak",
             "icon" => "fas fa-fw fa-child",
-            "role" => array(2),
+            "role" => array(2, 8),
          ),
       )
    ),
    array(
       "text" => "Data Anak",
-      "role" => array(1, 2, 6),
+      "role" => array(1, 2, 4, 6, 8),
       "submenu" => array(
          array(
             "url" => "data/anak/timbangan",
@@ -93,7 +104,7 @@ $sidebarMenu = array(
             "url" => "data/anak/gizi_anak",
             "text" => "Status Gizi",
             "icon" => "fas fa-fw fa-book",
-            "role" => array(1, 2),
+            "role" => array(1, 2, 4, 8),
          ),
          array(
             "url" => "data/anak/kematian",

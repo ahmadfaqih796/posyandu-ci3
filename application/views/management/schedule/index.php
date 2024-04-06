@@ -8,11 +8,22 @@
             <div class="col-6 align-self-center">
                <h6 class="m-0 font-weight-bold text-primary"><?= $title ?></h6>
             </div>
-            <div class="col-6">
-               <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">
-                  <i class="fas fa-plus"></i> Tambah
-               </button>
-            </div>
+            <?php
+            if ($role == 4 || $role == 8) {
+            ?>
+               <div class="col-6">
+               </div>
+            <?php
+            } else {
+            ?>
+               <div class="col-6">
+                  <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">
+                     <i class="fas fa-plus"></i> Tambah
+                  </button>
+               </div>
+            <?php
+            }
+            ?>
          </div>
       </div>
       <div class="card-body">
@@ -27,7 +38,14 @@
                      <th>Tanggal</th>
                      <th>Jam Buka</th>
                      <th>Jam Tutup</th>
-                     <th>Aksi</th>
+                     <?php
+                     if ($role == 4 || $role == 8) {
+                     } else {
+                     ?>
+                        <th>Aksi</th>
+                     <?php
+                     }
+                     ?>
                   </tr>
                </thead>
                <tbody>
@@ -38,10 +56,18 @@
                         <td><?= $field['tanggal'] ?></td>
                         <td><?= $field['jam_buka'] ?></td>
                         <td><?= $field['jam_tutup'] ?></td>
-                        <td>
-                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
-                           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
-                        </td>
+                        <?php
+                        if ($role == 4 || $role == 8) {
+                        } else {
+                        ?>
+                           <td>
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
+                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
+                           </td>
+                        <?php
+                        }
+                        ?>
+
                      </tr>
                   <?php endforeach; ?>
                </tbody>

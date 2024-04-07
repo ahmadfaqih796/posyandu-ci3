@@ -50,9 +50,14 @@
                               <td><?= $detail['alamat'] ?></td>
                            </tr>
                            <tr>
-                              <td>Golongan Darah</td>
+                              <td>Berat Badan Lahir</td>
                               <td>:</td>
-                              <td><?= $detail['golongan_darah'] ?></td>
+                              <td><?= $detail['bb_lahir'] . " Kg" ?></td>
+                           </tr>
+                           <tr>
+                              <td>Panjang Badan Lahir</td>
+                              <td>:</td>
+                              <td><?= $detail['pb_lahir'] . " Cm" ?></td>
                            </tr>
                            <tr>
                               <td>Anak Ke</td>

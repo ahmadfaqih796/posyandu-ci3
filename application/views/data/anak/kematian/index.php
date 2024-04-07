@@ -24,6 +24,8 @@
                   <tr>
                      <th>No</th>
                      <th>Nama Anak</th>
+                     <th>NIK</th>
+                     <th>Alamat</th>
                      <th>Tanggal Kematian</th>
                      <th>Penyebab</th>
                      <th>Aksi</th>
@@ -34,6 +36,8 @@
                      <tr>
                         <td><?= $no++ ?></td>
                         <td><?= $field['name'] ?></td>
+                        <td><?= $field['nik'] ?></td>
+                        <td><?= $field['alamat'] ?></td>
                         <td><?= $field['tgl_kematian'] ?></td>
                         <td><?= $field['penyebab'] ?></td>
                         <td>

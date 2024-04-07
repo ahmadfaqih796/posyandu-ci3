@@ -9,6 +9,7 @@ class Gizi_Anak extends CI_Controller
       $this->load->library('session');
       $this->load->model('Base_model', 'bm');
       $this->load->model('Ibu_model', 'im');
+      $this->load->model('Anak_model', 'am');
    }
 
    public function index()
@@ -19,7 +20,8 @@ class Gizi_Anak extends CI_Controller
       $data['bidan'] = $this->bm->get_all("ibu_hamil");
       // $data['data'] = $this->bm->get_all("gizi_ibu_hamil");
       // $data['data'] = $this->im->get_all_ibu_hamil("gizi_ibu_hamil");
-      $data['data'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
+      // $data['data'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
+      $data['data'] = $this->am->get_all_anak_table('timbangan_anak');
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);

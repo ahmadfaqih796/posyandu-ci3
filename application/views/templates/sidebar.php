@@ -150,7 +150,7 @@ $sidebarMenu = array(
             "role" => array(1, 2),
          ),
          array(
-            "url" => "data/anak/gizi_anak",
+            "url" => "monitoring/gizi_anak",
             "text" => "Status Gizi Anak",
             "icon" => "fas fa-fw fa-book",
             "role" => array(1, 2, 4, 8),

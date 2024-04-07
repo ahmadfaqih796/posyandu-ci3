@@ -89,6 +89,12 @@ $sidebarMenu = array(
             "icon" => "fas fa-fw fa-child",
             "role" => array(6),
          ),
+         array(
+            "url" => "management/status_gizi",
+            "text" => "Status Gizi",
+            "icon" => "fas fa-fw fa-child",
+            "role" => array(4),
+         ),
          // array(
          //    "url" => "management/perkembangan_anak",
          //    "text" => "Perkembangan Anak",

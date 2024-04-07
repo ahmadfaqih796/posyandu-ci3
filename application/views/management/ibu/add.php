@@ -21,7 +21,7 @@
                   <input type="text" class="form-control" name="nik" id="nik" value="<?= set_value('nik'); ?>">
                   <?= form_error('nik', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
-               <div class="form-group">
+               <!-- <div class="form-group">
                   <label for="tempat_lahir">Tempat Lahir</label>
                   <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" value="<?= set_value('tempat_lahir'); ?>">
                   <?= form_error('tempat_lahir', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -35,7 +35,7 @@
                   <label for="golongan_darah">Golongan Darah</label>
                   <input type="text" class="form-control" name="golongan_darah" id="golongan_darah" value="<?= set_value('golongan_darah'); ?>">
                   <?= form_error('golongan_darah', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
+               </div> -->
                <div class="form-group">
                   <label for="alamat">Alamat</label>
                   <input type="text" class="form-control" name="alamat" id="alamat" value="<?= set_value('alamat'); ?>">

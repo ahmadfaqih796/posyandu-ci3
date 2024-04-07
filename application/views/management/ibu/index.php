@@ -28,9 +28,9 @@
                      <th>No</th>
                      <th>NIK</th>
                      <th>Nama</th>
-                     <th>Tempat Tanggal Lahir</th>
+                     <!-- <th>Tempat Tanggal Lahir</th> -->
                      <th>Alamat</th>
-                     <th>Golongan Darah</th>
+                     <!-- <th>Golongan Darah</th> -->
                      <th>Telepon</th>
                      <th>Total Anak</th>
                      <th>Aksi</th>
@@ -42,9 +42,9 @@
                         <td><?= $no++ ?></td>
                         <td><?= $field['nik'] ?></td>
                         <td><?= $field['n_ibu'] ?></td>
-                        <td><?= $field['tempat_lahir'] ? ($field['tempat_lahir'] . ', ' . $field['tanggal_lahir']) : '-' ?></td>
+                        <!-- <td><?= $field['tempat_lahir'] ? ($field['tempat_lahir'] . ', ' . $field['tanggal_lahir']) : '-' ?></td> -->
                         <td><?= $field['alamat'] ?></td>
-                        <td><?= $field['golongan_darah'] ?></td>
+                        <!-- <td><?= $field['golongan_darah'] ?></td> -->
                         <td><?= $field['telepon'] ?></td>
                         <td><?= $field['total_anak'] ?></td>
                         <td>

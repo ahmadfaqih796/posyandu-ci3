@@ -76,42 +76,25 @@ $sidebarMenu = array(
             "icon" => "fas fa-fw fa-child",
             "role" => array(2),
          ),
-         array(
-            "url" => "management/imunisasi",
-            "text" => "Imunisasi",
-            "icon" => "fas fa-fw fa-child",
-            "role" => array(6),
-         ),
-         array(
-            "url" => "management/perkembangan_anak",
-            "text" => "Perkembangan Anak",
-            "icon" => "fas fa-fw fa-child",
-            "role" => array(2, 8),
-         ),
-      )
-   ),
-   array(
-      "text" => "Data Anak",
-      "role" => array(1, 2, 4, 6, 8),
-      "submenu" => array(
-         array(
-            "url" => "data/anak/timbangan",
-            "text" => "Timbangan",
-            "icon" => "fas fa-fw fa-book",
-            "role" => array(1, 2),
-         ),
-         array(
-            "url" => "data/anak/gizi_anak",
-            "text" => "Status Gizi",
-            "icon" => "fas fa-fw fa-book",
-            "role" => array(1, 2, 4, 8),
-         ),
+
          array(
             "url" => "data/anak/kematian",
             "text" => "Kematian Anak",
             "icon" => "fas fa-fw fa-book",
             "role" => array(1, 2),
          ),
+         array(
+            "url" => "management/imunisasi",
+            "text" => "Imunisasi",
+            "icon" => "fas fa-fw fa-child",
+            "role" => array(6),
+         ),
+         // array(
+         //    "url" => "management/perkembangan_anak",
+         //    "text" => "Perkembangan Anak",
+         //    "icon" => "fas fa-fw fa-child",
+         //    "role" => array(2, 8),
+         // ),
       )
    ),
    array(
@@ -153,6 +136,18 @@ $sidebarMenu = array(
             "text" => "Status Gizi Ibu Hamil",
             "icon" => "fas fa-fw fa-clipboard",
             "role" => array(1, 7),
+         ),
+         array(
+            "url" => "data/anak/timbangan",
+            "text" => "Penimbangan Anak",
+            "icon" => "fas fa-fw fa-book",
+            "role" => array(1, 2),
+         ),
+         array(
+            "url" => "data/anak/gizi_anak",
+            "text" => "Status Gizi Anak",
+            "icon" => "fas fa-fw fa-book",
+            "role" => array(1, 2, 4, 8),
          ),
          array(
             "url" => "monitoring/kegiatan_posyandu",

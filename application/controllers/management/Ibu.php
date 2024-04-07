@@ -71,7 +71,7 @@ class Ibu extends CI_Controller
 
    private function add()
    {
-      $result = $this->im->add_ibu($this->_payload());
+      $result = $this->im->add_ibu($this->_payload('post'));
       if ($result) {
          $this->notification->notify_success('management/ibu', 'Berhasil menambahkan ibu');
       } else {
@@ -82,7 +82,7 @@ class Ibu extends CI_Controller
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
-      $result = $this->im->update_ibu($id, $this->_payload());
+      $result = $this->im->update_ibu($id, $this->_payload('update'));
       if ($result) {
          $this->notification->notify_success('management/ibu', 'Berhasil memperbarui ibu');
       } else {
@@ -105,7 +105,7 @@ class Ibu extends CI_Controller
       }
    }
 
-   private function _payload()
+   private function _payload($type = null)
    {
       $n_ibu = htmlspecialchars($this->input->post('n_ibu', true));
       $nik = htmlspecialchars($this->input->post('nik', true));
@@ -122,8 +122,14 @@ class Ibu extends CI_Controller
          'tanggal_lahir' => $tanggal_lahir,
          'alamat' => $alamat,
          'golongan_darah' => $golongan_darah,
-         'telepon' => $telepon
+         // 'telepon' => "08" . $telepon
       ];
+      if ($type == "update") {
+         $payload['telepon'] = $telepon;
+      }
+      if ($type == 'post') {
+         $payload['telepon'] = "08" . $telepon;
+      }
 
       return $payload;
    }
@@ -132,10 +138,10 @@ class Ibu extends CI_Controller
    {
       $this->form_validation->set_rules('n_ibu', 'Nama', 'required|trim');
       $this->form_validation->set_rules('nik', 'NIK', 'required|trim');
-      $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|trim');
-      $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required|trim');
+      // $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|trim');
+      // $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required|trim');
       $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
-      $this->form_validation->set_rules('golongan_darah', 'Golongan Darah', 'required|trim');
+      // $this->form_validation->set_rules('golongan_darah', 'Golongan Darah', 'required|trim');
       $this->form_validation->set_rules('telepon', 'Telepon', 'required|trim');
    }
 }

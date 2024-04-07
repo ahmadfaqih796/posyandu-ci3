@@ -140,7 +140,7 @@ $sidebarMenu = array(
    ),
    array(
       "text" => "Monitoring",
-      "role" => array(1, 7),
+      "role" => array(1, 2, 7),
       "submenu" => array(
          array(
             "url" => "monitoring/ibu_hamil",
@@ -153,6 +153,12 @@ $sidebarMenu = array(
             "text" => "Status Gizi Ibu Hamil",
             "icon" => "fas fa-fw fa-clipboard",
             "role" => array(1, 7),
+         ),
+         array(
+            "url" => "monitoring/kegiatan_posyandu",
+            "text" => "Kegiatan Posyandu",
+            "icon" => "fas fa-fw fa-clipboard",
+            "role" => array(1, 2),
          ),
       )
    ),

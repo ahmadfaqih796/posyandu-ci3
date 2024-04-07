@@ -24,7 +24,12 @@ class Kaders_model extends CI_Model
 
    public function get_kader_by_id($kader_id)
    {
-      return $this->db->get_where('kaders', ['id' => $kader_id])->row_array();
+      $this->db->select('k.*, u.name, u.email, u.is_active, p.n_posyandu');
+      $this->db->from('kaders k');
+      $this->db->join('users u', 'k.user_id = u.id', 'left');
+      $this->db->join('posyandu p', 'k.posyandu_id = p.id', 'left');
+      $this->db->where('k.user_id', $kader_id);
+      return $this->db->get()->row_array();
    }
 
    public function add_kader($data)

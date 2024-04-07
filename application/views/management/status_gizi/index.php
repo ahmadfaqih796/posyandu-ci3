@@ -29,44 +29,28 @@
                <thead>
                   <tr>
                      <th>No</th>
-                     <th>NIK</th>
-                     <th>KMS</th>
-                     <th>Nama</th>
-                     <th>Nama Orang Tua</th>
-                     <th>Posyandu</th>
-                     <th>Jenis Kelamin</th>
-                     <th>Tempat Tanggal Lahir</th>
-                     <th>Alamat</th>
-                     <!-- <th>Golongan Darah</th> -->
-                     <th>Anak ke</th>
-                     <th>Berat Badan Lahir (Kg)</th>
-                     <th>Panjang Badan Lahir (Cm)</th>
-                     <th>Status Akun</th>
-                     <th>Status Anak</th>
+                     <th>Umur</th>
+                     <th>Jenis kelamin</th>
+                     <th>Gizi Buruk</th>
+                     <th>Gizi Kurang</th>
+                     <th>Gizi Baik</th>
+                     <th>Gizi Lebih</th>
                      <th>Aksi</th>
                   </tr>
                </thead>
                <tbody>
                   <?php foreach ($users as $field) : ?>
-                     <tr style="background-color: <?= $field['is_death'] ? 'yellow' : 'none' ?>; color:black;">
+                     <tr>
                         <td><?= $no++ ?></td>
-                        <td><?= $field['nik'] ?></td>
-                        <td><?= $field['id_kms'] ?></td>
-                        <td><?= $field['name'] ?></td>
-                        <td><?= $field['n_ibu'] ?></td>
-                        <td><?= $field['n_posyandu'] ?></td>
+                        <td><?= $field['umur'] ?></td>
                         <td><?= $field['jk'] == 'L' ? 'Laki-laki' : 'Perempuan' ?></td>
-                        <td><?= $field['tempat_lahir'] ? ($field['tempat_lahir'] . ', ' . $field['tanggal_lahir']) : '-' ?></td>
-                        <td><?= $field['alamat'] ?></td>
-                        <!-- <td><?= $field['golongan_darah'] ?></td> -->
-                        <td><?= $field['anak_ke'] ?></td>
-                        <td><?= $field['bb_lahir'] ?></td>
-                        <td><?= $field['pb_lahir'] ?></td>
-                        <td><?= $field['is_active'] == 1 ? 'Aktif' : 'Tidak Aktif' ?></td>
-                        <td><?= $field['is_death'] ? 'Meninggal' : 'Hidup' ?></td>
+                        <td><?= $field['g_min'] . " Kg" ?></td>
+                        <td><?= ($field['g_min'] + 0.1) . " - " . ($field['g_middle']) . " Kg" ?></td>
+                        <td><?= ($field['g_middle'] + 0.1) . " - " . ($field['g_max'] - 0.1) . " Kg" ?></td>
+                        <td><?= $field['g_max'] . " Kg" ?></td>
                         <td>
                            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
-                           <a type="button" class="btn btn-success btn-sm btn-block" href="<?= base_url('management/anak/detail/' . $field['user_id']) ?>">Detail</a>
+                           <!-- <a type="button" class="btn btn-success btn-sm btn-block" href="<?= base_url('management/anak/detail/' . $field['user_id']) ?>">Detail</a> -->
                         </td>
                      </tr>
                   <?php endforeach; ?>

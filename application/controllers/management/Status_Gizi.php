@@ -27,9 +27,10 @@ class Status_Gizi extends CI_Controller
          $this->load->view('templates/header', $data);
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
-         $this->load->view('management/anak/index', $data);
-         $this->load->view('management/anak/add');
-         $this->load->view('management/anak/edit');
+         $this->load->view('management/status_gizi/index', $data);
+         $this->load->view('management/status_gizi/add');
+         $this->load->view('management/status_gizi/edit');
+         $this->load->view('management/status_gizi/delete');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
@@ -39,7 +40,7 @@ class Status_Gizi extends CI_Controller
          } else if ($update) {
             return $this->update();
          } else {
-            $this->notification->notify_error('management/anak', 'Method initidak ditemukan');
+            $this->notification->notify_error('management/status_gizi', 'Method initidak ditemukan');
          }
       }
    }
@@ -54,74 +55,39 @@ class Status_Gizi extends CI_Controller
       $this->load->view('templates/header', $data);
       $this->load->view('templates/sidebar');
       $this->load->view('templates/topbar', $data);
-      $this->load->view('management/anak/detail', $data);
+      $this->load->view('management/status_gizi/detail', $data);
       $this->load->view('templates/footer');
    }
 
    private function add()
    {
-      $name = htmlspecialchars($this->input->post('name', true));
-      $email = htmlspecialchars($this->input->post('email', true));
-      $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
-      $payload = [
-         'name' => $name,
-         'email' => $email,
-         'password' => $password,
-         'image' => "default.jpg",
-         'role_id' => 3,
-         'is_active' => 1,
-      ];
-      $this->db->insert('users', $payload);
-      $user_id = $this->db->insert_id();
-      $this->db->insert('anak', [
-         'user_id' => $user_id
-      ]);
-      $this->notification->notify_success('management/anak', 'Berhasil menambahkan anak');
-
-      // $result = $this->um->insert_user($payload);
-      // if ($result) {
-      //    $this->notification->notify_success('management/users', 'Berhasil menambahkan user');
-      // } else {
-      //    $this->notification->notify_error('management/users', 'Gagal menambahkan user');
-      // }
+      $result = $this->bm->add("gizi_status", $this->_payload());
+      if ($result) {
+         $this->notification->notify_success('management/status_gizi', 'Berhasil menambahkan status gizi');
+      } else {
+         $this->notification->notify_error('management/status_gizi', 'Gagal menambahkan status gizi');
+      }
    }
 
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
-      $nik = htmlspecialchars($this->input->post('nik'));
-      $id_kms = htmlspecialchars($this->input->post('id_kms'));
-      $orang_tua_id = htmlspecialchars($this->input->post('orang_tua_id'));
-      $posyandu_id = htmlspecialchars($this->input->post('posyandu_id'));
-      $tempat_lahir = htmlspecialchars($this->input->post('tempat_lahir'));
-      $tanggal_lahir = htmlspecialchars($this->input->post('tanggal_lahir'));
-      $jk = htmlspecialchars($this->input->post('jk'));
-      $alamat = htmlspecialchars($this->input->post('alamat'));
-      $golongan_darah = htmlspecialchars($this->input->post('golongan_darah'));
-      $anak_ke = htmlspecialchars($this->input->post('anak_ke'));
-      $pb_lahir = htmlspecialchars($this->input->post('pb_lahir'));
-      $bb_lahir = htmlspecialchars($this->input->post('bb_lahir'));
-
-      $payload = [
-         'id_kms' => $id_kms,
-         'nik' => $nik,
-         'orang_tua_id' => $orang_tua_id,
-         'posyandu_id' => $posyandu_id,
-         'tempat_lahir' => $tempat_lahir,
-         'tanggal_lahir' => $tanggal_lahir,
-         'jk' => $jk,
-         'alamat' => $alamat,
-         'golongan_darah' => $golongan_darah,
-         'anak_ke' => $anak_ke,
-         'pb_lahir' => $pb_lahir,
-         'bb_lahir' => $bb_lahir,
-      ];
-
-      $result = $this->am->update_anak($id, $payload);
+      $result = $this->bm->update("gizi_status", $id, $this->_payload());
       if ($result) {
-         $this->notification->notify_success('management/anak', 'Berhasil memperbarui anak');
+         $this->notification->notify_success('management/status_gizi', 'Berhasil memperbarui status gizi');
       } else {
-         $this->notification->notify_error('management/anak', 'Gagal memperbarui anak');
+         $this->notification->notify_error('management/status_gizi', 'Gagal memperbarui status gizi');
+      }
+   }
+
+   public function delete()
+   {
+      $id = $this->input->post('id');
+      $result = $this->bm->delete("gizi_status", $id);
+      if ($result) {
+         $this->notification->notify_success('management/status_gizi', 'Berhasil menghapus status gizi');
+      } else {
+         $this->notification->notify_error('management/status_gizi', 'Gagal menghapus status gizi');
       }
    }
 
@@ -134,24 +100,33 @@ class Status_Gizi extends CI_Controller
       $data['no'] = 1;
       $data['users'] = $this->am->get_all_anak();
 
-      $html = $this->load->view('management/anak/print', $data, true);
+      $html = $this->load->view('management/status_gizi/print', $data, true);
 
       $mpdf->WriteHTML($html);
       $mpdf->Output('data_anak.pdf', 'D');
    }
 
-   private function _validation_anak($type = null)
+   private function _payload()
    {
-      // if ($type == 'add') {
-      //    $this->form_validation->set_rules('name', 'Nama', 'required|trim');
-      //    return;
-      // }
-      $this->form_validation->set_rules('id_kms', 'KMS', 'required|trim');
-      // $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|trim');
-      // $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required|trim');
-      // $this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required|trim');
-      // $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
-      // $this->form_validation->set_rules('golongan_darah', 'Golongan Darah', 'required|trim');
-      // $this->form_validation->set_rules('anak_ke', 'Anak ke', 'required|trim');
+      $umur = htmlspecialchars($this->input->post('umur', true));
+      $jk = htmlspecialchars($this->input->post('jk', true));
+      $g_min = htmlspecialchars($this->input->post('g_min', true));
+      $g_middle = htmlspecialchars($this->input->post('g_middle', true));
+      $g_max = htmlspecialchars($this->input->post('g_max', true));
+
+      $payload = [
+         'umur' => $umur,
+         'jk' => $jk,
+         'g_min' => $g_min,
+         'g_middle' => $g_middle,
+         'g_max' => $g_max
+      ];
+
+      return $payload;
+   }
+
+   private function _validation_anak()
+   {
+      $this->form_validation->set_rules('umur', 'Umur', 'required|trim');
    }
 }

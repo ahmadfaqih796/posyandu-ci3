@@ -22,6 +22,11 @@
                   <?= form_error('anak_id', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
+                  <label for="tgl_ukur">Tanggal Ukur</label>
+                  <input type="date" class="form-control" name="tgl_ukur" id="tgl_ukur" value="<?= set_value('tgl_ukur'); ?>" required>
+                  <?= form_error('tgl_ukur', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <div class="form-group">
                   <label for="umur">Umur (Bulan)</label>
                   <input type="number" class="form-control" name="umur" id="umur" value="<?= set_value('umur'); ?>" required>
                   <?= form_error('umur', '<small class="text-danger pl-3">', '</small>'); ?>

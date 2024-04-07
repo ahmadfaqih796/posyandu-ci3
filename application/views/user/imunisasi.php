@@ -10,11 +10,11 @@
                      <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Usia</th>
+                        <th>Usia (Bulan)</th>
                         <th>Tanggal Periksa</th>
                         <th>Berat Badan</th>
                         <th>Tinggi</th>
-                        <th>Nilai Gizi</th>
+                        <th>Jenis Imunisasi</th>
                      </tr>
                   </thead>
                   <tbody>

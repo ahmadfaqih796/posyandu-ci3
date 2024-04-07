@@ -14,6 +14,11 @@
                <input type="hidden" name="id" id="edit_id">
                <input type="hidden" name="anak_id" id="edit_anak_id">
                <div class="form-group">
+                  <label for="edit_tgl_ukur">Tanggal Ukur</label>
+                  <input type="date" class="form-control" name="tgl_ukur" id="edit_tgl_ukur" value="<?= set_value('tgl_ukur'); ?>" required>
+                  <?= form_error('tgl_ukur', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <div class="form-group">
                   <label for="edit_umur">Umur (Bulan)</label>
                   <input type="number" class="form-control" name="umur" id="edit_umur" value="<?= set_value('umur'); ?>" required>
                   <?= form_error('umur', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -45,9 +50,10 @@
 
 <script>
    function getData(data) {
-      document.getElementById('edit_id').value = data['id'];
+      document.getElementById('edit_id').value = data['table_id'];
       document.getElementById('edit_anak_id').value = data['anak_id'];
       document.getElementById('edit_umur').value = data['umur'];
+      document.getElementById('edit_tgl_ukur').value = data['tgl_ukur'];
       document.getElementById('edit_lingkar_kepala').value = data['lingkar_kepala'];
       document.getElementById('edit_berat_badan').value = data['berat_badan'];
       document.getElementById('edit_tinggi_badan').value = data['tinggi_badan'];

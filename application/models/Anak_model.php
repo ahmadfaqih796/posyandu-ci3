@@ -30,7 +30,7 @@ class Anak_model extends CI_Model
 
    public function get_all_anak_table($table)
    {
-      $this->db->select('t.*, u.name, a.*');
+      $this->db->select('t.*, t.id AS table_id, u.name, a.*');
       $this->db->from($table . ' t');
       $this->db->join('users u', 't.anak_id = u.id', 'left');
       $this->db->join('anak a', 't.anak_id = a.user_id', 'left');

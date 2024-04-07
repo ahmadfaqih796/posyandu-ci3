@@ -26,6 +26,7 @@
                      <th>Nama Anak</th>
                      <th>NIK</th>
                      <th>Alamat</th>
+                     <th>Tanggal Ukur</th>
                      <th>Umur (bulan)</th>
                      <th>Lingkar Kepala (cm)</th>
                      <th>Berat Badan (kg)</th>
@@ -40,6 +41,7 @@
                         <td><?= $field['name'] ?></td>
                         <td><?= $field['nik'] ?></td>
                         <td><?= $field['alamat'] ?></td>
+                        <td><?= $field['tgl_ukur'] ?></td>
                         <td><?= $field['umur'] ?></td>
                         <td><?= $field['lingkar_kepala'] ?></td>
                         <td><?= $field['berat_badan'] ?></td>

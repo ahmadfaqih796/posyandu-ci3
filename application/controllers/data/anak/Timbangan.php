@@ -77,6 +77,7 @@ class Timbangan extends CI_Controller
    private function _payload()
    {
       $anak_id = htmlspecialchars($this->input->post('anak_id', true));
+      $tgl_ukur = htmlspecialchars($this->input->post('tgl_ukur', true));
       $umur = htmlspecialchars($this->input->post('umur', true));
       $lingkar_kepala = htmlspecialchars($this->input->post('lingkar_kepala', true));
       $berat_badan = htmlspecialchars($this->input->post('berat_badan', true));
@@ -84,6 +85,7 @@ class Timbangan extends CI_Controller
 
       $payload = [
          'anak_id' => $anak_id,
+         'tgl_ukur' => $tgl_ukur,
          'umur' => $umur,
          'lingkar_kepala' => $lingkar_kepala,
          'berat_badan' => $berat_badan,

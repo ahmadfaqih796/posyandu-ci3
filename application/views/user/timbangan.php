@@ -10,8 +10,8 @@
                      <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>NIK</th>
-                        <th>Alamat</th>
+                        <!-- <th>NIK</th>
+                        <th>Alamat</th> -->
                         <th>Umur (bulan)</th>
                         <th>Lingkar Kepala (cm)</th>
                         <th>Berat Badan (kg)</th>
@@ -23,8 +23,8 @@
                         <tr>
                            <td><?= $no++ ?></td>
                            <td><?= $field['name'] ?></td>
-                           <td><?= $field['nik'] ?></td>
-                           <td><?= $field['alamat'] ?></td>
+                           <!-- <td><?= $field['nik'] ?></td>
+                           <td><?= $field['alamat'] ?></td> -->
                            <td><?= $field['umur'] ?></td>
                            <td><?= $field['lingkar_kepala'] ?></td>
                            <td><?= $field['berat_badan'] ?></td>

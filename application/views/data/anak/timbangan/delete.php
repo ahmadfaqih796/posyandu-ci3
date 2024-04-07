@@ -27,7 +27,7 @@
 
 <script>
    function deleteData(data) {
-      document.getElementById('delete_id').value = data['id'];
+      document.getElementById('delete_id').value = data['table_id'];
       document.getElementById('delete_name').innerHTML = data['name'];
    }
 </script>

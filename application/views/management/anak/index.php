@@ -37,15 +37,18 @@
                      <th>Jenis Kelamin</th>
                      <th>Tempat Tanggal Lahir</th>
                      <th>Alamat</th>
-                     <th>Golongan Darah</th>
+                     <!-- <th>Golongan Darah</th> -->
                      <th>Anak ke</th>
-                     <th>Status</th>
+                     <th>Berat Badan Lahir (Kg)</th>
+                     <th>Panjang Badan Lahir (Cm)</th>
+                     <th>Status Akun</th>
+                     <th>Status Anak</th>
                      <th>Aksi</th>
                   </tr>
                </thead>
                <tbody>
                   <?php foreach ($users as $field) : ?>
-                     <tr>
+                     <tr style="background-color: <?= $field['is_death'] ? 'yellow' : 'none' ?>; color:black;">
                         <td><?= $no++ ?></td>
                         <td><?= $field['nik'] ?></td>
                         <td><?= $field['id_kms'] ?></td>
@@ -55,9 +58,12 @@
                         <td><?= $field['jk'] == 'L' ? 'Laki-laki' : 'Perempuan' ?></td>
                         <td><?= $field['tempat_lahir'] ? ($field['tempat_lahir'] . ', ' . $field['tanggal_lahir']) : '-' ?></td>
                         <td><?= $field['alamat'] ?></td>
-                        <td><?= $field['golongan_darah'] ?></td>
+                        <!-- <td><?= $field['golongan_darah'] ?></td> -->
                         <td><?= $field['anak_ke'] ?></td>
+                        <td><?= $field['bb_lahir'] ?></td>
+                        <td><?= $field['pb_lahir'] ?></td>
                         <td><?= $field['is_active'] == 1 ? 'Aktif' : 'Tidak Aktif' ?></td>
+                        <td><?= $field['is_death'] ? 'Meninggal' : 'Hidup' ?></td>
                         <td>
                            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
                            <a type="button" class="btn btn-success btn-sm btn-block" href="<?= base_url('management/anak/detail/' . $field['user_id']) ?>">Detail</a>

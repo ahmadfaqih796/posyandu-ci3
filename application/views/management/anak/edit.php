@@ -63,15 +63,25 @@
                   <input type="text" class="form-control" name="alamat" id="edit_alamat" value="<?= set_value('alamat'); ?>">
                   <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
-               <div class="form-group">
+               <!-- <div class="form-group">
                   <label for="edit_golongan_darah">Golongan Darah</label>
                   <input type="text" class="form-control" name="golongan_darah" id="edit_golongan_darah" value="<?= set_value('golongan_darah'); ?>">
                   <?= form_error('golongan_darah', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
+               </div> -->
                <div class="form-group">
                   <label for="edit_anak_ke">Anak ke</label>
                   <input type="text" class="form-control" name="anak_ke" id="edit_anak_ke" value="<?= set_value('anak_ke'); ?>">
                   <?= form_error('anak_ke', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <div class="form-group">
+                  <label for="edit_bb_lahir">Berat Badan Lahir (Kg)</label>
+                  <input type="text" class="form-control" name="bb_lahir" id="edit_bb_lahir" value="<?= set_value('bb_lahir'); ?>">
+                  <?= form_error('bb_lahir', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <div class="form-group">
+                  <label for="edit_pb_lahir">Panjang Badan Lahir (Cm)</label>
+                  <input type="text" class="form-control" name="pb_lahir" id="edit_pb_lahir" value="<?= set_value('pb_lahir'); ?>">
+                  <?= form_error('pb_lahir', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
             </div>
             <div class="modal-footer">
@@ -92,10 +102,12 @@
       document.getElementById('edit_posyandu_id').value = data['posyandu_id'];
       document.getElementById('edit_tempat_lahir').value = data['tempat_lahir'];
       document.getElementById('edit_tanggal_lahir').value = data['tanggal_lahir'];
-      document.getElementById('edit_golongan_darah').value = data['golongan_darah'];
+      // document.getElementById('edit_golongan_darah').value = data['golongan_darah'];
       document.getElementById('edit_jk').value = data['jk'];
       document.getElementById('edit_alamat').value = data['alamat'];
       document.getElementById('edit_anak_ke').value = data['anak_ke'];
-      document.getElementById('edit_telepon').value = data['telepon'];
+      // document.getElementById('edit_telepon').value = data['telepon'];
+      document.getElementById('edit_bb_lahir').value = data['bb_lahir'];
+      document.getElementById('edit_pb_lahir').value = data['pb_lahir'];
    }
 </script>

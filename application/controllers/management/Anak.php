@@ -98,6 +98,8 @@ class Anak extends CI_Controller
       $alamat = htmlspecialchars($this->input->post('alamat'));
       $golongan_darah = htmlspecialchars($this->input->post('golongan_darah'));
       $anak_ke = htmlspecialchars($this->input->post('anak_ke'));
+      $pb_lahir = htmlspecialchars($this->input->post('pb_lahir'));
+      $bb_lahir = htmlspecialchars($this->input->post('bb_lahir'));
 
       $payload = [
          'id_kms' => $id_kms,
@@ -109,7 +111,9 @@ class Anak extends CI_Controller
          'jk' => $jk,
          'alamat' => $alamat,
          'golongan_darah' => $golongan_darah,
-         'anak_ke' => $anak_ke
+         'anak_ke' => $anak_ke,
+         'pb_lahir' => $pb_lahir,
+         'bb_lahir' => $bb_lahir,
       ];
 
       $result = $this->am->update_anak($id, $payload);

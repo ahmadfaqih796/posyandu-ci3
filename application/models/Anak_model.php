@@ -19,6 +19,17 @@ class Anak_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
+   public function get_all_anak_by_posyandu_id($posyandu_id)
+   {
+      $this->db->select('a.*, u.name, u.email, u.is_active, p.n_posyandu, i.n_ibu');
+      $this->db->from('anak a');
+      $this->db->join('users u', 'a.user_id = u.id', 'left');
+      $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
+      $this->db->join('ibu i', 'a.orang_tua_id = i.id', 'left');
+      $this->db->where('a.posyandu_id', $posyandu_id);
+      return $this->db->get()->result_array();
+   }
+
    public function get_all_anak_no_dead()
    {
       $this->db->select('a.*, u.name');
@@ -30,11 +41,36 @@ class Anak_model extends CI_Model
 
    public function get_all_anak_table($table)
    {
-      $this->db->select('t.*, t.id AS table_id, u.name, a.*');
+      $this->db->select('t.*, t.id AS table_id, u.name, a.*, p.n_posyandu');
       $this->db->from($table . ' t');
       $this->db->join('users u', 't.anak_id = u.id', 'left');
       $this->db->join('anak a', 't.anak_id = a.user_id', 'left');
+      $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
       return $this->db->get()->result_array();
+   }
+
+   public function get_all_anak_table_by_posyandu($table, $posyandu_id, $tgl_ukur = null)
+   {
+      $this->db->select('t.*, t.id AS table_id, u.name, a.*, p.n_posyandu');
+      $this->db->from($table . ' t');
+      $this->db->join('users u', 't.anak_id = u.id', 'left');
+      $this->db->join('anak a', 't.anak_id = a.user_id', 'left');
+      $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
+      $this->db->where('a.posyandu_id', $posyandu_id);
+      $this->db->where('t.tgl_ukur', $tgl_ukur);
+      return $this->db->get()->result_array();
+   }
+
+   public function get_all_anak_table_by_count($table, $posyandu_id, $tgl_ukur = null)
+   {
+      $this->db->select('t.*, t.id AS table_id, u.name, a.*, p.n_posyandu');
+      $this->db->from($table . ' t');
+      $this->db->join('users u', 't.anak_id = u.id', 'left');
+      $this->db->join('anak a', 't.anak_id = a.user_id', 'left');
+      $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
+      $this->db->where('a.posyandu_id', $posyandu_id);
+      $this->db->where('t.tgl_ukur', $tgl_ukur);
+      return $this->db->get()->num_rows();
    }
 
    public function get_all_anak_table_by_id($table, $id)

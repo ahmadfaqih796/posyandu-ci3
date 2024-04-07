@@ -12,6 +12,9 @@
                <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/gizi_ibu_hamil/pdf') ?>">
                   <i class="fas fa-print"></i> PDF
                </a>
+               <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
+                  <i class="fas fa-plus"></i> Tambah
+               </button>
             </div>
          </div>
       </div>
@@ -23,11 +26,16 @@
                <thead>
                   <tr>
                      <th>No</th>
-                     <th>Nama</th>
-                     <th>Tanggal Periksa</th>
-                     <th>Berat Badan</th>
-                     <th>Tinggi Badan</th>
-                     <th>Status Gizi</th>
+                     <th>Posyandu</th>
+                     <th>Nama Anak</th>
+                     <th>NIK</th>
+                     <th>Alamat</th>
+                     <th>Tanggal Ukur</th>
+                     <th>Umur (bulan)</th>
+                     <th>Lingkar Kepala (cm)</th>
+                     <th>Berat Badan (kg)</th>
+                     <th>Tinggi Badan (cm)</th>
+                     <th>Status Gizi BB/U</th>
                   </tr>
                </thead>
                <tbody>
@@ -46,11 +54,16 @@
                   ?>
                      <tr>
                         <td><?= $no++ ?></td>
-                        <td><?= $field['n_ibu'] ?></td>
-                        <td><?= $field['tanggal_periksa'] ?></td>
+                        <td><?= $field['n_posyandu'] ?></td>
+                        <td><?= $field['name'] ?></td>
+                        <td><?= $field['nik'] ?></td>
+                        <td><?= $field['alamat'] ?></td>
+                        <td><?= $field['tgl_ukur'] ?></td>
+                        <td><?= $field['umur'] ?></td>
+                        <td><?= $field['lingkar_kepala'] ?></td>
                         <td><?= $field['berat_badan'] ?></td>
                         <td><?= $field['tinggi_badan'] ?></td>
-                        <td><?= $status_gizi ?></td>
+                        <td>sasa</td>
                      </tr>
                   <?php endforeach; ?>
                </tbody>

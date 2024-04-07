@@ -129,7 +129,7 @@ $sidebarMenu = array(
    ),
    array(
       "text" => "Monitoring",
-      "role" => array(1, 2, 7),
+      "role" => array(1, 4, 2, 7),
       "submenu" => array(
          array(
             "url" => "monitoring/ibu_hamil",

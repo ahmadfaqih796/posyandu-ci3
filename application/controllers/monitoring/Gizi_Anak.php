@@ -17,7 +17,8 @@ class Gizi_Anak extends CI_Controller
       $this->_validation();
       $data['title'] = 'Status Gizi Anak';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['bidan'] = $this->bm->get_all("ibu_hamil");
+      // $data['kader'] = $this->db->get_where('kaders', ['user_id' => $this->session->userdata('user_id')])->row_array();
+      $data['posyandu'] = $this->bm->get_all("posyandu");
       // $data['data'] = $this->bm->get_all("gizi_ibu_hamil");
       // $data['data'] = $this->im->get_all_ibu_hamil("gizi_ibu_hamil");
       // $data['data'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
@@ -27,8 +28,8 @@ class Gizi_Anak extends CI_Controller
          $this->load->view('templates/header', $data);
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
-         $this->load->view('monitoring/gizi_ibu_hamil/index', $data);
-         $this->load->view('monitoring/gizi_ibu_hamil/add');
+         $this->load->view('monitoring/gizi_anak/filterTable', $data);
+         $this->load->view('monitoring/gizi_anak/addModal');
          $this->load->view('monitoring/gizi_ibu_hamil/edit');
          $this->load->view('monitoring/gizi_ibu_hamil/delete');
          $this->load->view('templates/footer', $data);
@@ -41,6 +42,44 @@ class Gizi_Anak extends CI_Controller
             return $this->update();
          } else {
             $this->notification->notify_error('monitoring/gizi_ibu_hamil', 'Method initidak ditemukan');
+         }
+      }
+   }
+
+   public function anak($id_posyandu, $tgl_ukur = null)
+   {
+      $this->_validation();
+      $data['title'] = 'Anak';
+      $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+      // $data['kader'] = $this->db->get_where('kaders', ['user_id' => $this->session->userdata('user_id')])->row_array();
+      $data['posyandu'] = $this->bm->get_all("posyandu");
+      // $data['data'] = $this->bm->get_all("gizi_ibu_hamil");
+      // $data['data'] = $this->im->get_all_ibu_hamil("gizi_ibu_hamil");
+      // $data['data'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
+      $data['data'] = $this->am->get_all_anak_table_by_posyandu('timbangan_anak', $id_posyandu, $tgl_ukur);
+      $data['total'] = $this->am->get_all_anak_table_by_count('timbangan_anak', $id_posyandu, $tgl_ukur);
+      if ($data['total'] == 0) {
+         $this->notification->notify_error('monitoring/gizi_anak', 'Tidak ada data');
+      }
+      $data['no'] = 1;
+      if ($this->form_validation->run() == false) {
+         $this->load->view('templates/header', $data);
+         $this->load->view('templates/sidebar', $data);
+         $this->load->view('templates/topbar', $data);
+         $this->load->view('monitoring/gizi_anak/index', $data);
+         $this->load->view('monitoring/gizi_anak/addModal');
+         $this->load->view('monitoring/gizi_ibu_hamil/edit');
+         $this->load->view('monitoring/gizi_ibu_hamil/delete');
+         $this->load->view('templates/footer', $data);
+      } else {
+         $add = $this->input->post('addData');
+         $update = $this->input->post('updateData');
+         if ($add) {
+            return $this->add();
+         } else if ($update) {
+            return $this->update();
+         } else {
+            $this->notification->notify_error('monitoring/gizi_anak', 'Method initidak ditemukan');
          }
       }
    }

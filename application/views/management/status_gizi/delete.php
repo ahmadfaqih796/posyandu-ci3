@@ -10,7 +10,7 @@
          </div>
          <form action="<?= base_url('management/status_gizi/delete') ?>" method="post">
             <input type="hidden" name="deleteData" id="deleteData" value="true">
-            <input type="text" name="id" id="delete_id">
+            <input type="hidden" name="id" id="delete_id">
             <div class="modal-body">
                <p>Anda yakin ingin menghapus <?= $title ?> ini ?
                </p>

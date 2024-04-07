@@ -70,7 +70,8 @@ class Auth extends CI_Controller
                $data = [
                   'user_id' => $user['id'],
                   'email' => $user['email'],
-                  'role_id' => $user['role_id']
+                  'role_id' => $user['role_id'],
+                  'fullname' => $user['name'],
                ];
                $this->session->set_userdata($data);
                if ($user['role_id'] == 1 || $user['role_id'] == 7 || $user['role_id'] == 8 || $user['role_id'] == 4) {

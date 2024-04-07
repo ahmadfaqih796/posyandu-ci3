@@ -50,7 +50,7 @@
                         <td><?= $field['g_max'] . " Kg" ?></td>
                         <td>
                            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
-                           <!-- <a type="button" class="btn btn-success btn-sm btn-block" href="<?= base_url('management/anak/detail/' . $field['user_id']) ?>">Detail</a> -->
+                           <button type="button" class="btn btn-block btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
                         </td>
                      </tr>
                   <?php endforeach; ?>

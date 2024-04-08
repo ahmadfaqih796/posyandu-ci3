@@ -33,16 +33,6 @@ class Gizi_Anak extends CI_Controller
          $this->load->view('monitoring/gizi_ibu_hamil/edit');
          $this->load->view('monitoring/gizi_ibu_hamil/delete');
          $this->load->view('templates/footer', $data);
-      } else {
-         $add = $this->input->post('addData');
-         $update = $this->input->post('updateData');
-         if ($add) {
-            return $this->add();
-         } else if ($update) {
-            return $this->update();
-         } else {
-            $this->notification->notify_error('monitoring/gizi_ibu_hamil', 'Method initidak ditemukan');
-         }
       }
    }
 
@@ -67,16 +57,6 @@ class Gizi_Anak extends CI_Controller
          $this->load->view('monitoring/gizi_ibu_hamil/edit');
          $this->load->view('monitoring/gizi_ibu_hamil/delete');
          $this->load->view('templates/footer', $data);
-      } else {
-         $add = $this->input->post('addData');
-         $update = $this->input->post('updateData');
-         if ($add) {
-            return $this->add();
-         } else if ($update) {
-            return $this->update();
-         } else {
-            $this->notification->notify_error('monitoring/gizi_anak', 'Method initidak ditemukan');
-         }
       }
    }
 
@@ -120,58 +100,28 @@ class Gizi_Anak extends CI_Controller
          $this->load->view('monitoring/gizi_anak/edit', $data);
          $this->load->view('templates/footer', $data);
       } else {
-         $result = $this->bm->update('monitoring_ibu_hamil', $id_data, $this->_payload());
+         $result = $this->bm->update('timbangan_anak', $id_data, $this->_payload());
          if ($result) {
-            $this->notification->notify_success('monitoring/ibu_hamil', 'Berhasil mengubah data');
+            $this->notification->notify_success('monitoring/gizi_anak', 'Berhasil dinilai');
          } else {
-            $this->notification->notify_error('monitoring/ibu_hamil', 'Gagal mengubah data');
+            $this->notification->notify_error('monitoring/gizi_anak', 'Gagal dinilai');
          }
-      }
-   }
-
-   private function update()
-   {
-      $result = $this->bm->update('gizi_ibu_hamil', $this->input->post('id'), $this->_payload());
-      if ($result) {
-         $this->notification->notify_success('monitoring/gizi_ibu_hamil', 'Berhasil memperbarui status gizi Anak');
-      } else {
-         $this->notification->notify_error('monitoring/gizi_ibu_hamil', 'Gagal memperbarui status gizi Anak');
-      }
-   }
-
-   public function delete()
-   {
-      $id = $this->input->post('id');
-      $result = $this->bm->delete('gizi_ibu_hamil', $id);
-      if ($result) {
-         $this->notification->notify_success('monitoring/gizi_ibu_hamil', 'Berhasil menghapus status gizi Anak');
-      } else {
-         $this->notification->notify_error('monitoring/gizi_ibu_hamil', 'Gagal menghapus status gizi Anak');
       }
    }
 
    private function _payload()
    {
-      $bumil_id = htmlspecialchars($this->input->post('bumil_id', true));
-      $trimester = htmlspecialchars($this->input->post('trimester', true));
-      $sesi = htmlspecialchars($this->input->post('sesi', true));
-      $berat_badan = htmlspecialchars($this->input->post('berat_badan', true));
-      $tinggi_badan = htmlspecialchars($this->input->post('tinggi_badan', true));
-      $nilai_gizi = $berat_badan / (($tinggi_badan * $tinggi_badan) / 10000);
+      $status_gizi = htmlspecialchars($this->input->post('status_gizi', true));
 
       $payload = [
-         'bumil_id' => $bumil_id,
-         'trimester' => $trimester,
-         'sesi' => $sesi,
-         'berat_badan' => $berat_badan,
-         'tinggi_badan' => $tinggi_badan,
-         'nilai_gizi' => $nilai_gizi
+         'status_gizi' => $status_gizi,
+
       ];
       return $payload;
    }
 
    private function _validation()
    {
-      $this->form_validation->set_rules('bumil_id', 'Nama Posyandu', 'required|trim');
+      $this->form_validation->set_rules('status_gizi', 'Status Gizi', 'required|trim');
    }
 }

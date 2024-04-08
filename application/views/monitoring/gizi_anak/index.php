@@ -9,12 +9,9 @@
                <h6 class="m-0 font-weight-bold text-primary mb-2"><?= $title ?></h6>
             </div>
             <div class="col-md-2 col-xs-12">
-               <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/gizi_ibu_hamil/pdf') ?>">
+               <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/gizi_anak/pdf') ?>">
                   <i class="fas fa-print"></i> PDF
                </a>
-               <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
-                  <i class="fas fa-plus"></i> Tambah
-               </button>
             </div>
          </div>
       </div>
@@ -64,9 +61,11 @@
                         <td><?= $field['lingkar_kepala'] ?></td>
                         <td><?= $field['berat_badan'] ?></td>
                         <td><?= $field['tinggi_badan'] ?></td>
-                        <td>sasa</td>
+                        <td><?= $field['status_gizi'] ?></td>
                         <td>
-                           <a type="button" class="btn btn-primary" href="<?= base_url('monitoring/gizi_anak/edit/' . $field['table_id']) ?>">Edit</a>
+                           <?php if (!$field['status_gizi']) : ?>
+                              <a type="button" class="btn btn-primary" href="<?= base_url('monitoring/gizi_anak/edit/' . $field['table_id']) ?>">Proses</a>
+                           <?php endif; ?>
                         </td>
                      </tr>
                   <?php endforeach; ?>

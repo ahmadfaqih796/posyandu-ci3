@@ -11,6 +11,8 @@
          </div>
       </div>
       <div class="card-body">
+         <?= validation_errors('<div class="alert alert-danger" role="alert">', '</div>') ?>
+         <?= $this->session->flashdata('message'); ?>
          <form action="<?= base_url('monitoring/gizi_anak/edit/' . $detail['table_id']) ?>" method="post">
             <?php
             $gizi = $this->am->get_status_gizi_anak($detail['umur'], $detail['jk']);
@@ -74,7 +76,7 @@
                      // $status_gizi = 'Gizi Kurang';
                   }
                ?>
-                  <input type="hidden" name="status_gizi" disabled class="form-control" value="<?= $status_gizi ?>">
+                  <input type="hidden" name="status_gizi" id="status_gizi" class="form-control" value="<?= $status_gizi ?>">
                   <div class="col-sx-12 col-md-6 col-lg-6 form-group">
                      <label>Umur</label>
                      <input type="text" disabled class="form-control" value="<?= $gizi["umur"] ?>">

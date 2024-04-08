@@ -11,7 +11,7 @@
          <form action="<?= base_url('monitoring/kegiatan_posyandu') ?>" method="post">
             <div class="modal-body">
                <input type="hidden" name="addData" id="addData" value="true">
-               <input type="hidden" class="form-control" name="n_posyandu" id="n_posyandu" value="<?= $kader['n_posyandu'] ?>">
+               <input type="hidden" class="form-control" name="posyandu_id" id="posyandu_id" value="<?= $kader['posyandu_id'] ?>">
                <input type="hidden" class="form-control" name="kader_id" id="kader_id" value="<?= $kader['user_id'] ?>">
                <div class="form-group">
                   <label for="n_kegiatan">Nama Posyandu</label>
@@ -117,6 +117,13 @@
                   <input type="number" class="form-control" name="j10" id="j10" value="<?= set_value('j10'); ?>">
                   <?= form_error('j10', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
+               <div class="form-group">
+                  <label for="photo" id="photoLabel">Photo</label>
+                  <div id="cameraFeed" style="width: 100%;"></div>
+                  <input type="hidden" class="form-control" name="photo" id="photo" value="<?= set_value('photo'); ?>">
+                  <?= form_error('photo', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <button type="button" class="btn btn-primary" id="btnPhoto">Ambil Foto</button>
             </div>
             <div class="modal-footer">
                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -126,3 +133,55 @@
       </div>
    </div>
 </div>
+
+<script>
+   document.addEventListener("DOMContentLoaded", function() {
+      var video = document.createElement('video');
+      var canvas = document.createElement('canvas');
+      var photoInput = document.getElementById('photo');
+      var cameraFeed = document.getElementById('cameraFeed');
+      var btnPhoto = document.getElementById('btnPhoto');
+      var labelPhoto = document.getElementById('photoLabel');
+
+      labelPhoto.style.display = 'none';
+      video.style.display = 'block';
+      video.style.width = "300px";
+      video.style.margin = "0 auto";
+
+      btnPhoto.addEventListener('click', function() {
+         // Mengakses kamera menggunakan getUserMedia API
+         navigator.mediaDevices.getUserMedia({
+               video: true
+            })
+            .then(function(stream) {
+               labelPhoto.style.display = 'block';
+               btnPhoto.style.display = 'none';
+               video.srcObject = stream;
+               video.play();
+               cameraFeed.appendChild(video);
+            })
+            .catch(function(err) {
+               console.error('Tidak dapat mengakses kamera:', err);
+            });
+      });
+
+      video.addEventListener('click', function() {
+         canvas.width = video.videoWidth;
+         canvas.height = video.videoHeight;
+         canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+
+         var imageDataURL = canvas.toDataURL('image/jpeg');
+         var imgPreview = document.createElement('img');
+         imgPreview.style.display = 'block';
+         imgPreview.style.width = "300px";
+         imgPreview.style.margin = "0 auto";
+         imgPreview.src = imageDataURL;
+         photoInput.value = imageDataURL;
+         // Menghapus video dan canvas setelah mengambil gambar
+         video.srcObject.getTracks().forEach(track => track.stop());
+         video.remove();
+         canvas.remove();
+         cameraFeed.appendChild(imgPreview);
+      });
+   });
+</script>

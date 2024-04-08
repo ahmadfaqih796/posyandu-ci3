@@ -5,6 +5,7 @@ assets/img/bidan/*
 assets/img/kegiatan/*
 assets/img/ibu_hamil/*
 assets/img/status_gizi/*
+assets/img/kegiatan_posyandu/*
 
 application/cache/*
 !application/cache/index.html

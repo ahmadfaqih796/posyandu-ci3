@@ -21,6 +21,17 @@ class Posyandu_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
+   public function get_kegiatan_posyandu($id_posyandu = null)
+   {
+      $this->db->select('m.*, p.n_posyandu');
+      $this->db->from('monitoring_kegiatan_posyandu m');
+      $this->db->join('posyandu p', 'm.posyandu_id = p.id', 'left');
+      if ($id_posyandu != null) {
+         $this->db->where('m.posyandu_id', $id_posyandu);
+      }
+      return $this->db->get()->result_array();
+   }
+
    public function get_posyandu_by_id($posyandu_id)
    {
       return $this->db->get_where('posyandu', ['id' => $posyandu_id])->row_array();

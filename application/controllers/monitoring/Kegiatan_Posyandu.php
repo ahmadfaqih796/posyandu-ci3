@@ -10,6 +10,7 @@ class Kegiatan_Posyandu extends CI_Controller
       $this->load->model('Base_model', 'bm');
       $this->load->model('Ibu_model', 'im');
       $this->load->model('Kaders_model', 'km');
+      $this->load->model('Posyandu_model', 'pm');
    }
 
    public function index()
@@ -19,9 +20,13 @@ class Kegiatan_Posyandu extends CI_Controller
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['bidan'] = $this->bm->get_all("ibu_hamil");
       $data['kader'] = $this->km->get_kader_by_id($this->session->userdata('user_id'));
-      // $data['data'] = $this->bm->get_all("gizi_ibu_hamil");
-      // $data['data'] = $this->im->get_all_ibu_hamil("gizi_ibu_hamil");
-      $data['data'] = $this->bm->get_all("monitoring_kegiatan_posyandu");
+      $data['role'] = $this->session->userdata('role_id');
+
+      if ($data['role'] == 2) {
+         $data['data'] = $this->pm->get_kegiatan_posyandu($data['kader']['posyandu_id']);
+      } else {
+         $data['data'] = $this->pm->get_kegiatan_posyandu();
+      }
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
@@ -95,11 +100,12 @@ class Kegiatan_Posyandu extends CI_Controller
    private function _payload()
    {
       $kader_id = htmlspecialchars($this->input->post('kader_id', true));
-      $n_posyandu = htmlspecialchars($this->input->post('n_posyandu', true));
+      $posyandu_id = htmlspecialchars($this->input->post('posyandu_id', true));
       $n_kegiatan = htmlspecialchars($this->input->post('n_kegiatan', true));
       $tujuan = htmlspecialchars($this->input->post('tujuan', true));
       $sasaran = htmlspecialchars($this->input->post('sasaran', true));
       $parameter_keberhasilan = htmlspecialchars($this->input->post('parameter_keberhasilan', true));
+      $photo_data_url = $this->input->post('photo');
 
       $j1 = htmlspecialchars($this->input->post('j1', true));
       $j2 = htmlspecialchars($this->input->post('j2', true));
@@ -112,9 +118,21 @@ class Kegiatan_Posyandu extends CI_Controller
       $j9 = htmlspecialchars($this->input->post('j9', true));
       $j10 = htmlspecialchars($this->input->post('j10', true));
 
+      if (preg_match('/^data:image\/(\w+);base64,/', $photo_data_url, $matches)) {
+         $image_type = $matches[1];
+         $photo_data = substr($photo_data_url, strpos($photo_data_url, ',') + 1);
+         $photo_data = base64_decode($photo_data);
+         $photo_name = 'photo_' . time() . '.' . $image_type;
+         $photo_path = './assets/img/kegiatan_posyandu/' . $photo_name;
+         file_put_contents($photo_path, $photo_data);
+         $photo = $photo_name;
+      } else {
+         $photo = $photo_data_url;
+      }
+
       $payload = [
          'kader_id' => $kader_id,
-         'n_posyandu' => $n_posyandu,
+         'posyandu_id' => $posyandu_id,
          'n_kegiatan' => $n_kegiatan,
          'tujuan' => $tujuan,
          'sasaran' => $sasaran,
@@ -129,6 +147,7 @@ class Kegiatan_Posyandu extends CI_Controller
          'j8' => $j8,
          'j9' => $j9,
          'j10' => $j10,
+         'photo' => $photo
       ];
       return $payload;
    }

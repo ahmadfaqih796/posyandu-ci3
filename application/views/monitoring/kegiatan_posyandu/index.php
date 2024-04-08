@@ -30,6 +30,7 @@
                      <th>Nama Kegiatan</th>
                      <th>Sasaran</th>
                      <th>Parameter Keberhasilan</th>
+                     <th>Photo</th>
                      <th>Aksi</th>
                   </tr>
                </thead>
@@ -42,6 +43,7 @@
                         <td><?= $field['n_kegiatan'] ?></td>
                         <td><?= $field['sasaran'] ?></td>
                         <td><?= $field['parameter_keberhasilan'] ?></td>
+                        <td><img src="<?= base_url('assets/img/kegiatan_posyandu/') . $field['photo'] ?>" width="150"></td>
                         <td>
                            <a type="button" class="btn btn-primary" href="<?= base_url('monitoring/kegiatan_posyandu/edit/' . $field['id']) ?>">Edit</a>
                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= $field['id'] ?>)">Hapus</button>

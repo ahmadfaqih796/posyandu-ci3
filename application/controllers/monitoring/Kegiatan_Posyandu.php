@@ -55,14 +55,21 @@ class Kegiatan_Posyandu extends CI_Controller
       require_once FCPATH . 'vendor/autoload.php';
       $mpdf = new \Mpdf\Mpdf();
 
-      $data['title'] = 'Data Gizi Ibu Hamil';
+      $data['title'] = 'Data Kegiatan Posyandu';
       $data['no'] = 1;
-      $data['users'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
+      $data['kader'] = $this->km->get_kader_by_id($this->session->userdata('user_id'));
+      $data['role'] = $this->session->userdata('role_id');
+
+      if ($data['role'] == 2) {
+         $data['data'] = $this->pm->get_kegiatan_posyandu($data['kader']['posyandu_id']);
+      } else {
+         $data['data'] = $this->pm->get_kegiatan_posyandu();
+      }
 
       $html = $this->load->view('monitoring/kegiatan_posyandu/printPDF', $data, true);
 
       $mpdf->WriteHTML($html);
-      $mpdf->Output('data_gizi_ibu_hamil.pdf', 'D');
+      $mpdf->Output('data_kegiatan_posyandu.pdf', 'D');
    }
 
    private function add()

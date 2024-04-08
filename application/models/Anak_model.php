@@ -75,7 +75,7 @@ class Anak_model extends CI_Model
 
    public function get_all_anak_table_by_id($table, $id)
    {
-      $this->db->select('t.*, u.name, a.*');
+      $this->db->select('t.*, t.id AS table_id, u.name, a.*');
       $this->db->from($table . ' t');
       $this->db->join('users u', 't.anak_id = u.id', 'left');
       $this->db->join('anak a', 't.anak_id = a.user_id', 'left');
@@ -101,6 +101,25 @@ class Anak_model extends CI_Model
       $this->db->join('users u', 'a.user_id = u.id', 'left');
       $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
       $this->db->where('a.user_id', $anak_id);
+      return $this->db->get()->row_array();
+   }
+
+   public function get_anak_table_by_id($table, $table_id)
+   {
+      $this->db->select('t.*, t.id AS table_id, u.*, a.*');
+      $this->db->from($table . ' t');
+      $this->db->join('users u', 't.anak_id = u.id', 'left');
+      $this->db->join('anak a', 't.anak_id = a.user_id', 'left');
+      $this->db->where('t.id', $table_id);
+      return $this->db->get()->row_array();
+   }
+
+   public function get_status_gizi_anak($umur, $jk)
+   {
+      $this->db->select('g.*');
+      $this->db->from('gizi_status g');
+      $this->db->where('g.umur', $umur);
+      $this->db->where('g.jk', $jk);
       return $this->db->get()->row_array();
    }
 

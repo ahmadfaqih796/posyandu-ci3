@@ -36,6 +36,7 @@
                      <th>Berat Badan (kg)</th>
                      <th>Tinggi Badan (cm)</th>
                      <th>Status Gizi BB/U</th>
+                     <th>Aksi</th>
                   </tr>
                </thead>
                <tbody>
@@ -64,6 +65,9 @@
                         <td><?= $field['berat_badan'] ?></td>
                         <td><?= $field['tinggi_badan'] ?></td>
                         <td>sasa</td>
+                        <td>
+                           <a type="button" class="btn btn-primary" href="<?= base_url('monitoring/gizi_anak/edit/' . $field['table_id']) ?>">Edit</a>
+                        </td>
                      </tr>
                   <?php endforeach; ?>
                </tbody>

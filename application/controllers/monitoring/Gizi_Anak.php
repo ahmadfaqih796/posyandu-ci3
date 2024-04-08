@@ -51,11 +51,7 @@ class Gizi_Anak extends CI_Controller
       $this->_validation();
       $data['title'] = 'Anak';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      // $data['kader'] = $this->db->get_where('kaders', ['user_id' => $this->session->userdata('user_id')])->row_array();
       $data['posyandu'] = $this->bm->get_all("posyandu");
-      // $data['data'] = $this->bm->get_all("gizi_ibu_hamil");
-      // $data['data'] = $this->im->get_all_ibu_hamil("gizi_ibu_hamil");
-      // $data['data'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
       $data['data'] = $this->am->get_all_anak_table_by_posyandu('timbangan_anak', $id_posyandu, $tgl_ukur);
       $data['total'] = $this->am->get_all_anak_table_by_count('timbangan_anak', $id_posyandu, $tgl_ukur);
       if ($data['total'] == 0) {
@@ -89,7 +85,7 @@ class Gizi_Anak extends CI_Controller
       require_once FCPATH . 'vendor/autoload.php';
       $mpdf = new \Mpdf\Mpdf();
 
-      $data['title'] = 'Data Gizi Ibu Hamil';
+      $data['title'] = 'Data Gizi Gizi Anak';
       $data['no'] = 1;
       $data['users'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
 
@@ -107,6 +103,29 @@ class Gizi_Anak extends CI_Controller
          $this->notification->notify_success('monitoring/gizi_ibu_hamil', 'Berhasil menambahkan status gizi Anak');
       } else {
          $this->notification->notify_error('monitoring/gizi_ibu_hamil', 'Gagal menambahkan status gizi Anak');
+      }
+   }
+
+   public function edit($id_data)
+   {
+      $this->_validation();
+      $data['title'] = 'Gizi Anak';
+      $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+      $data['detail'] = $this->am->get_anak_table_by_id("timbangan_anak", $id_data);
+      $data['no'] = 1;
+      if ($this->form_validation->run() == false) {
+         $this->load->view('templates/header', $data);
+         $this->load->view('templates/sidebar', $data);
+         $this->load->view('templates/topbar', $data);
+         $this->load->view('monitoring/gizi_anak/edit', $data);
+         $this->load->view('templates/footer', $data);
+      } else {
+         $result = $this->bm->update('monitoring_ibu_hamil', $id_data, $this->_payload());
+         if ($result) {
+            $this->notification->notify_success('monitoring/ibu_hamil', 'Berhasil mengubah data');
+         } else {
+            $this->notification->notify_error('monitoring/ibu_hamil', 'Gagal mengubah data');
+         }
       }
    }
 

@@ -66,7 +66,7 @@ class Timbangan extends CI_Controller
    public function delete()
    {
       $id = $this->input->post('id');
-      $result = $this->bm->delete("timbangan_anak", $id - 1);
+      $result = $this->bm->delete("timbangan_anak", $id);
       if ($result) {
          $this->notification->notify_success('data/anak/timbangan', 'Berhasil menghapus timbangan');
       } else {
@@ -82,6 +82,20 @@ class Timbangan extends CI_Controller
       $lingkar_kepala = htmlspecialchars($this->input->post('lingkar_kepala', true));
       $berat_badan = htmlspecialchars($this->input->post('berat_badan', true));
       $tinggi_badan = htmlspecialchars($this->input->post('tinggi_badan', true));
+      $keterangan = htmlspecialchars($this->input->post('keterangan', true));
+      $photo_data_url = $this->input->post('photo');
+
+      if (preg_match('/^data:image\/(\w+);base64,/', $photo_data_url, $matches)) {
+         $image_type = $matches[1];
+         $photo_data = substr($photo_data_url, strpos($photo_data_url, ',') + 1);
+         $photo_data = base64_decode($photo_data);
+         $photo_name = 'photo_' . time() . '.' . $image_type;
+         $photo_path = './assets/img/status_gizi/' . $photo_name;
+         file_put_contents($photo_path, $photo_data);
+         $photo = $photo_name;
+      } else {
+         $photo = $photo_data_url;
+      }
 
       $payload = [
          'anak_id' => $anak_id,
@@ -89,7 +103,9 @@ class Timbangan extends CI_Controller
          'umur' => $umur,
          'lingkar_kepala' => $lingkar_kepala,
          'berat_badan' => $berat_badan,
-         'tinggi_badan' => $tinggi_badan
+         'tinggi_badan' => $tinggi_badan,
+         'keterangan' => $keterangan,
+         'photo' => $photo
       ];
 
       return $payload;

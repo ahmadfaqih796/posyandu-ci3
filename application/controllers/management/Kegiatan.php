@@ -13,7 +13,7 @@ class Kegiatan extends CI_Controller
    public function index()
    {
       $this->_validation();
-      $data['title'] = 'kegiatan';
+      $data['title'] = 'Artikel Anak';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->bm->get_all('kegiatan');
       $data['no'] = 1;

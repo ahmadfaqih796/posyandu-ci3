@@ -38,6 +38,13 @@
                   <input type="number" class="form-control" name="tinggi_badan" id="edit_tinggi_badan" value="<?= set_value('tinggi_badan'); ?>" required>
                   <?= form_error('tinggi_badan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
+               <div class="form-group">
+                  <label for="edit_keterangan">Keterangan</label>
+                  <input type="text" class="form-control" name="keterangan" id="edit_keterangan" value="<?= set_value('keterangan'); ?>" required>
+                  <?= form_error('keterangan', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <input type="text" class="form-control" name="photo" id="edit_photo" value="<?= set_value('photo'); ?>">
+
             </div>
             <div class="modal-footer">
                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -50,6 +57,7 @@
 
 <script>
    function getData(data) {
+      console.log("dataaaaaaaa", data)
       document.getElementById('edit_id').value = data['table_id'];
       document.getElementById('edit_anak_id').value = data['anak_id'];
       document.getElementById('edit_umur').value = data['umur'];
@@ -57,6 +65,8 @@
       document.getElementById('edit_lingkar_kepala').value = data['lingkar_kepala'];
       document.getElementById('edit_berat_badan').value = data['berat_badan'];
       document.getElementById('edit_tinggi_badan').value = data['tinggi_badan'];
+      document.getElementById('edit_keterangan').value = data['keterangan'];
+      document.getElementById('edit_photo').value = data['photo'];
 
    }
 </script>

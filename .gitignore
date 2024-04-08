@@ -4,6 +4,7 @@ assets/img/artikel/*
 assets/img/bidan/*
 assets/img/kegiatan/*
 assets/img/ibu_hamil/*
+assets/img/status_gizi/*
 
 application/cache/*
 !application/cache/index.html

@@ -60,7 +60,7 @@ $sidebarMenu = array(
          // ),
          array(
             "url" => "management/kegiatan",
-            "text" => "Kegiatan",
+            "text" => "Artikel Anak",
             "icon" => "fas fa-fw fa-book",
             "role" => array(1),
          ),

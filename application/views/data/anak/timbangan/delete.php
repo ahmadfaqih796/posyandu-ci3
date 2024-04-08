@@ -12,7 +12,7 @@
             <input type="hidden" name="deleteData" id="deleteData" value="true">
             <input type="hidden" name="id" id="delete_id">
             <div class="modal-body">
-               <p>Anda yakin ingin menghapus <?= $title ?>
+               <p>Anda yakin ingin menghapus
                   <span id="delete_name"></span> ini ?
                </p>
             </div>

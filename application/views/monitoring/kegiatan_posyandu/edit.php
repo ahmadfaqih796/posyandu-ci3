@@ -128,7 +128,6 @@
 
 <script>
    function getData(data) {
-      console.log("aaaaaaaaaaaaaaaa", data)
       document.getElementById('edit_id').value = data['id'];
       document.getElementById('edit_posyandu_id').value = data['posyandu_id'];
       document.getElementById('edit_kader_id').value = data['kader_id'];

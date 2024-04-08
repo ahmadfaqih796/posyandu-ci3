@@ -19,10 +19,10 @@ class Kegiatan_Posyandu extends CI_Controller
       $data['title'] = 'Kegiatan Posyandu';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['bidan'] = $this->bm->get_all("ibu_hamil");
-      $data['kader'] = $this->km->get_kader_by_id($this->session->userdata('user_id'));
       $data['role'] = $this->session->userdata('role_id');
 
       if ($data['role'] == 2) {
+         $data['kader'] = $this->km->get_kader_by_id($this->session->userdata('user_id'));
          $data['data'] = $this->pm->get_kegiatan_posyandu($data['kader']['posyandu_id']);
       } else {
          $data['data'] = $this->pm->get_kegiatan_posyandu();
@@ -33,7 +33,9 @@ class Kegiatan_Posyandu extends CI_Controller
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
          $this->load->view('monitoring/kegiatan_posyandu/index', $data);
-         $this->load->view('monitoring/kegiatan_posyandu/add');
+         if ($data['role'] == 2) {
+            $this->load->view('monitoring/kegiatan_posyandu/add');
+         }
          $this->load->view('monitoring/kegiatan_posyandu/edit');
          $this->load->view('monitoring/kegiatan_posyandu/delete');
          $this->load->view('templates/footer', $data);

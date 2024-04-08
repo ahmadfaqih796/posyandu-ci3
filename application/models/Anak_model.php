@@ -43,13 +43,16 @@ class Anak_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
-   public function get_all_anak_table($table)
+   public function get_all_anak_table($table, $id_posyandu = null)
    {
       $this->db->select('t.*, t.id AS table_id, u.name, a.*, p.n_posyandu');
       $this->db->from($table . ' t');
       $this->db->join('users u', 't.anak_id = u.id', 'left');
       $this->db->join('anak a', 't.anak_id = a.user_id', 'left');
       $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
+      if ($id_posyandu != null) {
+         $this->db->where('a.posyandu_id', $id_posyandu);
+      }
       return $this->db->get()->result_array();
    }
 

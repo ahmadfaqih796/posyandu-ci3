@@ -16,9 +16,15 @@ class Timbangan extends CI_Controller
       $this->_validation();
       $data['title'] = 'Penimbangan & Pengukuran Anak';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['data'] = $this->am->get_all_anak_table('timbangan_anak');
       $data['kader'] = $this->bm->get_by_id('kaders', $this->session->userdata('user_id'));
       $data['anak'] = $this->am->get_all_anak_no_dead($data['kader']['posyandu_id']);
+      $data['role'] = $this->session->userdata('role_id');
+
+      if ($data['role'] == 4) {
+         $data['data'] = $this->am->get_all_anak_table('timbangan_anak');
+      } else {
+         $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $data['kader']['posyandu_id']);
+      }
 
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {

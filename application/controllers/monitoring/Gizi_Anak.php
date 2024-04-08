@@ -17,12 +17,16 @@ class Gizi_Anak extends CI_Controller
       $this->_validation();
       $data['title'] = 'Status Gizi Anak';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      // $data['kader'] = $this->db->get_where('kaders', ['user_id' => $this->session->userdata('user_id')])->row_array();
+      $data['kader'] = $this->bm->get_by_id('kaders', $this->session->userdata('user_id'));
       $data['posyandu'] = $this->bm->get_all("posyandu");
-      // $data['data'] = $this->bm->get_all("gizi_ibu_hamil");
-      // $data['data'] = $this->im->get_all_ibu_hamil("gizi_ibu_hamil");
-      // $data['data'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
-      $data['data'] = $this->am->get_all_anak_table('timbangan_anak');
+      $data['role'] = $this->session->userdata('role_id');
+
+      if ($data['role'] == 4) {
+         $data['data'] = $this->am->get_all_anak_table('timbangan_anak');
+      } else {
+         $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $data['kader']['posyandu_id']);
+      }
+
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);

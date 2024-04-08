@@ -9,9 +9,11 @@
                <h6 class="m-0 font-weight-bold text-primary mb-2"><?= $title ?></h6>
             </div>
             <div class="col-md-2 col-xs-12">
-               <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
-                  <i class="fas fa-search"></i> Cari
-               </button>
+               <?php if ($role == 4) : ?>
+                  <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
+                     <i class="fas fa-search"></i> Cari
+                  </button>
+               <?php endif; ?>
             </div>
          </div>
       </div>
@@ -33,7 +35,9 @@
                      <th>Berat Badan (kg)</th>
                      <th>Tinggi Badan (cm)</th>
                      <th>Status Gizi BB/U</th>
-                     <th>Aksi</th>
+                     <?php if ($role == 4) : ?>
+                        <th>Aksi</th>
+                     <?php endif; ?>
                   </tr>
                </thead>
                <tbody>
@@ -62,11 +66,13 @@
                         <td><?= $field['berat_badan'] ?></td>
                         <td><?= $field['tinggi_badan'] ?></td>
                         <td><?= $field['status_gizi'] ?></td>
-                        <td>
-                           <?php if (!$field['status_gizi']) : ?>
-                              <a type="button" class="btn btn-primary" href="<?= base_url('monitoring/gizi_anak/edit/' . $field['table_id']) ?>">Proses</a>
-                           <?php endif; ?>
-                        </td>
+                        <?php if ($role == 4) : ?>
+                           <td>
+                              <?php if (!$field['status_gizi']) : ?>
+                                 <a type="button" class="btn btn-primary" href="<?= base_url('monitoring/gizi_anak/edit/' . $field['table_id']) ?>">Proses</a>
+                              <?php endif; ?>
+                           </td>
+                        <?php endif; ?>
                      </tr>
                   <?php endforeach; ?>
                </tbody>

@@ -52,9 +52,9 @@
                   <?= form_error('keterangan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
-                  <label for="photo">Photo</label>
+                  <label for="photo" id="photoLabel">Photo</label>
                   <div id="cameraFeed" style="width: 100%;"></div>
-                  <input type="text" class="form-control" name="photo" id="photo" value="<?= set_value('photo'); ?>">
+                  <input type="hidden" class="form-control" name="photo" id="photo" value="<?= set_value('photo'); ?>">
                   <?= form_error('photo', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <button type="button" class="btn btn-primary" id="btnPhoto">Ambil Foto</button>
@@ -76,7 +76,9 @@
       var photoInput = document.getElementById('photo');
       var cameraFeed = document.getElementById('cameraFeed');
       var btnPhoto = document.getElementById('btnPhoto');
+      var labelPhoto = document.getElementById('photoLabel');
 
+      labelPhoto.style.display = 'none';
       video.style.display = 'block';
       video.style.width = "300px";
       video.style.margin = "0 auto";
@@ -87,6 +89,8 @@
                video: true
             })
             .then(function(stream) {
+               labelPhoto.style.display = 'block';
+               btnPhoto.style.display = 'none';
                video.srcObject = stream;
                video.play();
                cameraFeed.appendChild(video);
@@ -100,22 +104,18 @@
          canvas.width = video.videoWidth;
          canvas.height = video.videoHeight;
          canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-         // Mengambil gambar dalam bentuk data URL
+
          var imageDataURL = canvas.toDataURL('image/jpeg');
-         // Menampilkan gambar dalam elemen img
          var imgPreview = document.createElement('img');
          imgPreview.style.display = 'block';
          imgPreview.style.width = "300px";
          imgPreview.style.margin = "0 auto";
          imgPreview.src = imageDataURL;
-         // Mengganti isi elemen photoInput dengan data URL gambar yang diambil
          photoInput.value = imageDataURL;
-         console.log("ssssssssss", photoInput.value)
          // Menghapus video dan canvas setelah mengambil gambar
          video.srcObject.getTracks().forEach(track => track.stop());
          video.remove();
          canvas.remove();
-         // Menampilkan gambar yang diambil dalam modal atau tempat yang sesuai
          cameraFeed.appendChild(imgPreview);
       });
    });

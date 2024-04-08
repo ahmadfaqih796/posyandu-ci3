@@ -34,7 +34,7 @@ class Kegiatan_Posyandu extends CI_Controller
          $this->load->view('templates/topbar', $data);
          $this->load->view('monitoring/kegiatan_posyandu/index', $data);
          $this->load->view('monitoring/kegiatan_posyandu/add');
-         // $this->load->view('monitoring/kegiatan_posyandu/edit');
+         $this->load->view('monitoring/kegiatan_posyandu/edit');
          // $this->load->view('monitoring/kegiatan_posyandu/delete');
          $this->load->view('templates/footer', $data);
       } else {
@@ -78,7 +78,7 @@ class Kegiatan_Posyandu extends CI_Controller
 
    private function update()
    {
-      $result = $this->bm->update('gizi_ibu_hamil', $this->input->post('id'), $this->_payload());
+      $result = $this->bm->update('monitoring_kegiatan_posyandu', $this->input->post('id'), $this->_payload());
       if ($result) {
          $this->notification->notify_success('monitoring/kegiatan_posyandu', 'Berhasil memperbarui Kegiatan Posyandu');
       } else {

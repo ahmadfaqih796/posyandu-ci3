@@ -45,8 +45,9 @@
                         <td><?= $field['parameter_keberhasilan'] ?></td>
                         <td><img src="<?= base_url('assets/img/kegiatan_posyandu/') . $field['photo'] ?>" width="150"></td>
                         <td>
-                           <a type="button" class="btn btn-primary" href="<?= base_url('monitoring/kegiatan_posyandu/edit/' . $field['id']) ?>">Edit</a>
-                           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= $field['id'] ?>)">Hapus</button>
+                           <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
+                           <a type="button" class="btn btn-success btn-sm" href="<?= base_url('management/ibu/detail/' . $field['id']) ?>">Detail</a>
+                           <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
                         </td>
                      </tr>
                   <?php endforeach; ?>

@@ -14,7 +14,7 @@
                <input type="hidden" class="form-control" name="posyandu_id" id="posyandu_id" value="<?= $kader['posyandu_id'] ?>">
                <input type="hidden" class="form-control" name="kader_id" id="kader_id" value="<?= $kader['user_id'] ?>">
                <div class="form-group">
-                  <label for="n_kegiatan">Nama Posyandu</label>
+                  <label>Nama Posyandu</label>
                   <input disabled type="text" class="form-control" value="<?= $kader['n_posyandu'] ?>">
                   <?= form_error('n_kegiatan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
@@ -37,11 +37,6 @@
                   <label for="parameter_keberhasilan">Parameter Keberhasilan</label>
                   <input type="text" class="form-control" name="parameter_keberhasilan" id="parameter_keberhasilan" value="<?= set_value('parameter_keberhasilan'); ?>">
                   <?= form_error('parameter_keberhasilan', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
-               <div class="form-group">
-                  <label for="tujuan">Tujuan</label>
-                  <input type="text" class="form-control" name="tujuan" id="tujuan" value="<?= set_value('tujuan'); ?>">
-                  <?= form_error('tujuan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
                   <label for="j1">1. Adanya pemberitahuan lewat media mana saja saat H-1 pelaksanaan posyandu</label>

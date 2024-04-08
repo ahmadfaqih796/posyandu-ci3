@@ -13,6 +13,7 @@
                <input type="hidden" name="updateData" id="updateData" value="true">
                <input type="hidden" name="id" id="edit_id">
                <input type="hidden" name="anak_id" id="edit_anak_id">
+               <input type="hidden" name="created_by" id="edit_created_by">
                <div class="form-group">
                   <label for="edit_tgl_ukur">Tanggal Ukur</label>
                   <input type="date" class="form-control" name="tgl_ukur" id="edit_tgl_ukur" value="<?= set_value('tgl_ukur'); ?>" required>
@@ -43,7 +44,7 @@
                   <input type="text" class="form-control" name="keterangan" id="edit_keterangan" value="<?= set_value('keterangan'); ?>" required>
                   <?= form_error('keterangan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
-               <input type="text" class="form-control" name="photo" id="edit_photo" value="<?= set_value('photo'); ?>">
+               <input type="hidden" class="form-control" name="photo" id="edit_photo" value="<?= set_value('photo'); ?>">
 
             </div>
             <div class="modal-footer">
@@ -60,6 +61,7 @@
       console.log("dataaaaaaaa", data)
       document.getElementById('edit_id').value = data['table_id'];
       document.getElementById('edit_anak_id').value = data['anak_id'];
+      document.getElementById('edit_created_by').value = data['created_by'];
       document.getElementById('edit_umur').value = data['umur'];
       document.getElementById('edit_tgl_ukur').value = data['tgl_ukur'];
       document.getElementById('edit_lingkar_kepala').value = data['lingkar_kepala'];

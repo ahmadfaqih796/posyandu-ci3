@@ -11,6 +11,7 @@
          <form action="<?= base_url('data/anak/timbangan') ?>" method="post">
             <div class="modal-body">
                <input type="hidden" name="addData" id="addData" value="true">
+               <input type="hidden" name="created_by" id="created_by" value="<?= $this->session->userdata('fullname'); ?>">
                <div class="form-group">
                   <label for="anak_id">Nama Anak</label>
                   <select name="anak_id" id="anak_id" class="form-control" required>

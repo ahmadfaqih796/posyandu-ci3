@@ -149,12 +149,12 @@ $sidebarMenu = array(
             "icon" => "fas fa-fw fa-book",
             "role" => array(1, 2),
          ),
-         array(
-            "url" => "monitoring/imunisasi",
-            "text" => "Imunisasi Anak",
-            "icon" => "fas fa-fw fa-book",
-            "role" => array(1, 2),
-         ),
+         // array(
+         //    "url" => "monitoring/imunisasi",
+         //    "text" => "Imunisasi Anak",
+         //    "icon" => "fas fa-fw fa-book",
+         //    "role" => array(1, 2),
+         // ),
          array(
             "url" => "monitoring/gizi_anak",
             "text" => "Status Gizi Anak",
@@ -171,14 +171,14 @@ $sidebarMenu = array(
    ),
    array(
       "text" => "Laporan",
-      "role" => array(1, 2, 6),
+      "role" => array(1, 6),
       "submenu" => array(
-         array(
-            "url" => "laporan/users",
-            "text" => "Perkembangan Anak",
-            "icon" => "fas fa-fw fa-clipboard",
-            "role" => array(1, 2),
-         ),
+         // array(
+         //    "url" => "laporan/users",
+         //    "text" => "Perkembangan Anak",
+         //    "icon" => "fas fa-fw fa-clipboard",
+         //    "role" => array(1, 2),
+         // ),
          array(
             "url" => "laporan/kaders",
             "text" => "Data Posyandu",

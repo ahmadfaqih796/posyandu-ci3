@@ -35,7 +35,7 @@ class Kegiatan_Posyandu extends CI_Controller
          $this->load->view('monitoring/kegiatan_posyandu/index', $data);
          $this->load->view('monitoring/kegiatan_posyandu/add');
          $this->load->view('monitoring/kegiatan_posyandu/edit');
-         // $this->load->view('monitoring/kegiatan_posyandu/delete');
+         $this->load->view('monitoring/kegiatan_posyandu/delete');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
@@ -89,7 +89,7 @@ class Kegiatan_Posyandu extends CI_Controller
    public function delete()
    {
       $id = $this->input->post('id');
-      $result = $this->bm->delete('gizi_ibu_hamil', $id);
+      $result = $this->bm->delete('monitoring_kegiatan_posyandu', $id);
       if ($result) {
          $this->notification->notify_success('monitoring/kegiatan_posyandu', 'Berhasil menghapus Kegiatan Posyandu');
       } else {

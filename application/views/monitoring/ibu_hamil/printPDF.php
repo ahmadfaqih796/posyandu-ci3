@@ -61,14 +61,12 @@
       <thead>
          <tr>
             <th>No</th>
-            <th>Nama</th>
-            <th>Hamil ke</th>
-            <!-- <th>Kunjugan</th>
-            <th>Keluhan</th>
-            <th>Sesi</th> -->
+            <th>Nama Ibu Hamil</th>
+            <th>NIK</th>
             <th>Tanggal Periksa</th>
-            <th>Kunjungan Berikutnya</th>
-            <th>Status Standar 7T</th>
+            <th>Usia Kehamilan</th>
+            <th>Standar 7T</th>
+            <th>Status Gizi</th>
          </tr>
       </thead>
       <tbody>
@@ -89,17 +87,27 @@
                   break;
                }
             }
+
+            $nilai_gizi = $field["berat_badan"] / (($field["tinggi_badan"] * $field["tinggi_badan"]) / 10000);
+            $status_gizi = '';
+            if ($nilai_gizi <= 18.5) {
+               $status_gizi = 'Kurus';
+            } elseif ($nilai_gizi <= 24.9) {
+               $status_gizi = 'Normal';
+            } elseif ($nilai_gizi <= 29.9) {
+               $status_gizi = 'Gemuk';
+            } else {
+               $status_gizi = 'Obesitas';
+            }
          ?>
             <tr>
                <td><?= $no++ ?></td>
                <td><?= $field['n_ibu'] ?></td>
-               <td><?= $field['hamil_ke'] ?></td>
-               <!-- <td><?= $field['kunjungan'] ?></td>
-               <td><?= $field['keluhan'] ?></td>
-               <td><?= $field['sesi'] ?></td> -->
+               <td><?= $field['nik'] ?></td>
                <td><?= $field['tanggal_periksa'] ?></td>
-               <td><?= $field['kunjungan_berikutnya'] ?></td>
+               <td><?= $field['umur_kehamilan'] ?></td>
                <td><?= $result == 1 ? 'Belum' : 'Sudah' ?></td>
+               <td><?= $status_gizi ?></td>
             </tr>
          <?php endforeach; ?>
       </tbody>

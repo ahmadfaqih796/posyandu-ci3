@@ -9,8 +9,8 @@
                <h6 class="m-0 font-weight-bold text-primary mb-2"><?= $title ?></h6>
             </div>
             <div class="col-md-2 col-xs-12">
-               <!-- <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/ibu_hamil/pdf') ?>"> -->
-               <i class="fas fa-print"></i> PDF
+               <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('data/anak/timbangan/pdf/') . $id_posyandu . '/' . $date  ?>">
+                  <i class="fas fa-print"></i> PDF
                </a>
                <?php if ($role == 2) : ?>
                   <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">

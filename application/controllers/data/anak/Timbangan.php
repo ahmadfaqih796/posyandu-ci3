@@ -17,6 +17,7 @@ class Timbangan extends CI_Controller
       $data['title'] = 'Penimbangan & Pengukuran Anak';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['role'] = $this->session->userdata('role_id');
+      $data['posyandu'] = $this->bm->get_all("posyandu");
 
       if ($data['role'] == 2) {
          $data['kader'] = $this->bm->get_by_id('kaders', $this->session->userdata('user_id'));
@@ -32,6 +33,7 @@ class Timbangan extends CI_Controller
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
          $this->load->view('data/anak/timbangan/filterTable', $data);
+         $this->load->view('data/anak/timbangan/filter');
          $this->load->view('data/anak/timbangan/add');
          $this->load->view('data/anak/timbangan/edit');
          $this->load->view('data/anak/timbangan/delete');
@@ -47,6 +49,51 @@ class Timbangan extends CI_Controller
             $this->notification->notify_error('data/anak/timbangan', 'Method initidak ditemukan');
          }
       }
+   }
+
+   public function anak($id_posyandu, $tgl_ukur = null)
+   {
+      $this->_validation();
+      $data['title'] = 'Penimbangan & Pengukuran Anak';
+      $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+      $data['role'] = $this->session->userdata('role_id');
+      $data['posyandu'] = $this->bm->get_all("posyandu");
+
+      if ($data['role'] == 2) {
+         $data['kader'] = $this->bm->get_by_id('kaders', $this->session->userdata('user_id'));
+         $data['anak'] = $this->am->get_all_anak_no_dead($data['kader']['posyandu_id']);
+         $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $data['kader']['posyandu_id']);
+      } else {
+         $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $id_posyandu, $tgl_ukur);
+      }
+      $data['no'] = 1;
+
+      if ($this->form_validation->run() == false) {
+         $this->load->view('templates/header', $data);
+         $this->load->view('templates/sidebar', $data);
+         $this->load->view('templates/topbar', $data);
+         $this->load->view('data/anak/timbangan/index', $data);
+         $this->load->view('data/anak/timbangan/filter');
+         $this->load->view('data/anak/timbangan/add');
+         $this->load->view('data/anak/timbangan/edit');
+         $this->load->view('data/anak/timbangan/delete');
+         $this->load->view('templates/footer', $data);
+      }
+   }
+
+   public function pdf($id_posyandu, $tgl_ukur = null)
+   {
+      require_once FCPATH . 'vendor/autoload.php';
+      $mpdf = new \Mpdf\Mpdf();
+
+      $data['title'] = 'Monitoring Penimbangan Anak';
+      $data['no'] = 1;
+      $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $id_posyandu, $tgl_ukur);
+
+      $html = $this->load->view('data/anak/timbangan/printPDF', $data, true);
+
+      $mpdf->WriteHTML($html);
+      $mpdf->Output('monitoring_ibu_hamil.pdf', 'D');
    }
 
    private function add()

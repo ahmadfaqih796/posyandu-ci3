@@ -10,7 +10,7 @@
             </div>
             <div class="col-md-2 col-xs-12">
                <?php if ($role == 4 || $role == 8) : ?>
-                  <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
+                  <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#filterModal">
                      <i class="fas fa-search"></i> Cari
                   </button>
                <?php endif; ?>

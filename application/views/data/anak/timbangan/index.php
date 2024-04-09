@@ -28,8 +28,8 @@
                <thead>
                   <tr>
                      <th>No</th>
+                     <th>Posyandu</th>
                      <th>Nama Anak</th>
-                     <th>Nama Posyandu</th>
                      <th>NIK</th>
                      <th>Alamat</th>
                      <th>Tanggal Ukur</th>
@@ -37,9 +37,14 @@
                      <th>Lingkar Kepala (cm)</th>
                      <th>Berat Badan (kg)</th>
                      <th>Tinggi Badan (cm)</th>
-                     <th>Keterangan</th>
-                     <th>Gambar</th>
                      <?php if ($role == 2) : ?>
+                        <th>Keterangan</th>
+                        <th>Gambar</th>
+                     <?php endif; ?>
+                     <?php if ($role == 8) : ?>
+                        <th>Status Gizi BB/U</th>
+                     <?php endif; ?>
+                     <?php if ($role != 8) : ?>
                         <th>Aksi</th>
                      <?php endif; ?>
                   </tr>
@@ -48,8 +53,8 @@
                   <?php foreach ($data as $field) : ?>
                      <tr>
                         <td><?= $no++ ?></td>
-                        <td><?= $field['name'] ?></td>
                         <td><?= $field['n_posyandu'] ?></td>
+                        <td><?= $field['name'] ?></td>
                         <td><?= $field['nik'] ?></td>
                         <td><?= $field['alamat'] ?></td>
                         <td><?= $field['tgl_ukur'] ?></td>
@@ -57,12 +62,26 @@
                         <td><?= $field['lingkar_kepala'] ?></td>
                         <td><?= $field['berat_badan'] ?></td>
                         <td><?= $field['tinggi_badan'] ?></td>
-                        <td><?= $field['keterangan'] ?></td>
-                        <td><img src="<?= base_url('assets/img/status_gizi/') . $field['photo'] ?>" width="150"></td>
                         <?php if ($role == 2) : ?>
+                           <td><?= $field['keterangan'] ?></td>
                            <td>
-                              <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
-                              <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
+                              <img src="<?= base_url('assets/img/status_gizi/') . $field['photo'] ?>" width="150px">
+                           </td>
+                        <?php endif; ?>
+                        <?php if ($role == 8) : ?>
+                           <td><?= $field['status_gizi'] ?></td>
+                        <?php endif; ?>
+                        <?php if ($role != 8) : ?>
+                           <td>
+                              <?php if ($role == 4) : ?>
+                                 <?php if (!$field['status_gizi']) : ?>
+                                    <a type="button" class="btn btn-primary" href="<?= base_url('monitoring/gizi_anak/edit/' . $field['table_id']) ?>">Proses</a>
+                                 <?php endif; ?>
+                              <?php endif; ?>
+                              <?php if ($role == 2) : ?>
+                                 <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
+                                 <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
+                              <?php endif; ?>
                            </td>
                         <?php endif; ?>
                      </tr>

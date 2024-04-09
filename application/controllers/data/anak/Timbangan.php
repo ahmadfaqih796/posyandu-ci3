@@ -58,6 +58,8 @@ class Timbangan extends CI_Controller
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['role'] = $this->session->userdata('role_id');
       $data['posyandu'] = $this->bm->get_all("posyandu");
+      $data['id_posyandu'] = $id_posyandu;
+      $data['date'] = $tgl_ukur;
 
       if ($data['role'] == 2) {
          $data['kader'] = $this->bm->get_by_id('kaders', $this->session->userdata('user_id'));
@@ -93,7 +95,7 @@ class Timbangan extends CI_Controller
       $html = $this->load->view('data/anak/timbangan/printPDF', $data, true);
 
       $mpdf->WriteHTML($html);
-      $mpdf->Output('monitoring_ibu_hamil.pdf', 'D');
+      $mpdf->Output('monitoring_penimbangan_anak.pdf', 'D');
    }
 
    private function add()

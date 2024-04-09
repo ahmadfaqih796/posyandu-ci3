@@ -69,11 +69,14 @@ class Ibu_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
-   public function get_all_ibu_hamil($table)
+   public function get_all_ibu_hamil($table, $date = null)
    {
-      $this->db->select('t.*, b.n_ibu');
+      $this->db->select('t.*, b.n_ibu, b.nik');
       $this->db->from($table . ' t');
       $this->db->join('ibu_hamil b', 't.bumil_id = b.id', 'left');
+      if ($date != null) {
+         $this->db->like('tanggal_periksa', $date, 'after');
+      }
       return $this->db->get()->result_array();
    }
 

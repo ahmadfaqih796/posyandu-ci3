@@ -135,7 +135,7 @@ $sidebarMenu = array(
             "url" => "monitoring/ibu_hamil",
             "text" => "Ibu Hamil",
             "icon" => "fas fa-fw fa-clipboard",
-            "role" => array(1, 7),
+            "role" => array(1, 7, 8),
          ),
          array(
             "url" => "monitoring/gizi_ibu_hamil",

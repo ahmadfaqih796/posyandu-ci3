@@ -24,6 +24,8 @@ class Ibu_Hamil extends CI_Controller
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
       $data['bidan'] = $this->bm->get_all("ibu_hamil");
+      $data['role'] = $this->session->userdata('role_id');
+      $data['date'] = null;
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
@@ -34,27 +36,39 @@ class Ibu_Hamil extends CI_Controller
          // $this->load->view('monitoring/ibu_hamil/edit');
          $this->load->view('monitoring/ibu_hamil/delete');
          $this->load->view('templates/footer', $data);
-      } else {
-         // $add = $this->input->post('addData');
-         // $update = $this->input->post('updateData');
-         // if ($add) {
-         //    return $this->add();
-         // } else if ($update) {
-         //    return $this->update();
-         // } else {
-         //    $this->notification->notify_error('data/ibu_hamil/bidan', 'Method initidak ditemukan');
-         // }
       }
    }
 
-   public function pdf()
+   public function month($date)
+   {
+      $this->_validation();
+      $data['title'] = 'Ibu Hamil';
+      $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+      $data['data'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil", $date);
+      $data['bidan'] = $this->bm->get_all("ibu_hamil");
+      $data['role'] = $this->session->userdata('role_id');
+      $data['date'] = $date;
+      $data['no'] = 1;
+      if ($this->form_validation->run() == false) {
+         $this->load->view('templates/header', $data);
+         $this->load->view('templates/sidebar', $data);
+         $this->load->view('templates/topbar', $data);
+         $this->load->view('monitoring/ibu_hamil/index', $data);
+         $this->load->view('monitoring/ibu_hamil/addModal');
+         // $this->load->view('monitoring/ibu_hamil/edit');
+         $this->load->view('monitoring/ibu_hamil/delete');
+         $this->load->view('templates/footer', $data);
+      }
+   }
+
+   public function pdf($date = null)
    {
       require_once FCPATH . 'vendor/autoload.php';
       $mpdf = new \Mpdf\Mpdf();
 
       $data['title'] = 'Monitoring Ibu Hamil';
       $data['no'] = 1;
-      $data['users'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
+      $data['users'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil", $date);
 
       $html = $this->load->view('monitoring/ibu_hamil/printPDF', $data, true);
 

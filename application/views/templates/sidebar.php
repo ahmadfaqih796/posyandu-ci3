@@ -198,6 +198,10 @@ $sidebarMenu = array(
 $userRole = $_SESSION['role_id'];
 $filteredMenu = array();
 
+if (!$userRole) {
+   $this->notification->notify_error('auth', 'Session Expired. Silahkan login kembali.');
+}
+
 foreach ($sidebarMenu as $menu) {
    if (in_array($userRole, $menu['role'])) {
       $filteredMenu[] = $menu;

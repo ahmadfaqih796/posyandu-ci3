@@ -38,6 +38,7 @@ class Kegiatan_Posyandu extends CI_Controller
          }
          $this->load->view('monitoring/kegiatan_posyandu/edit');
          $this->load->view('monitoring/kegiatan_posyandu/delete');
+         $this->load->view('monitoring/kegiatan_posyandu/proses');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
@@ -104,6 +105,36 @@ class Kegiatan_Posyandu extends CI_Controller
       } else {
          $this->notification->notify_error('monitoring/kegiatan_posyandu', 'Gagal menghapus Kegiatan Posyandu');
       }
+   }
+
+   public function proses()
+   {
+      $id = $this->input->post('id');
+      $payload = [
+         'is_verified' => 1,
+         'updated_at' => date('Y-m-d H:i:s'),
+      ];
+      $result = $this->bm->update('monitoring_kegiatan_posyandu', $id, $payload);
+      if ($result) {
+         $this->notification->notify_success('monitoring/kegiatan_posyandu', 'Berhasil mengsetujui Kegiatan Posyandu');
+      } else {
+         $this->notification->notify_error('monitoring/kegiatan_posyandu', 'Gagal mengsetujui Kegiatan Posyandu');
+      }
+   }
+
+   public function print($id)
+   {
+      require_once FCPATH . 'vendor/autoload.php';
+      $mpdf = new \Mpdf\Mpdf();
+
+      $data['title'] = 'Data Monitoring Kegiatan Posyandu';
+      $data['no'] = 1;
+      $data['detail'] = $this->pm->get_kegiatan_posyandu_by_id($id);
+
+      $html = $this->load->view('monitoring/kegiatan_posyandu/printDetail', $data, true);
+
+      $mpdf->WriteHTML($html);
+      $mpdf->Output('data_monitoring_kegiatan_posyandu.pdf', 'D');
    }
 
    private function _payload()

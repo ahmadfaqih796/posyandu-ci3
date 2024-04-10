@@ -61,7 +61,7 @@
                         <td><?= $field['umur'] ?></td>
                         <td><?= $field['lingkar_kepala'] ?></td>
                         <td><?= $field['berat_badan'] ?></td>
-                        <td><?= $field['tinggi_badan'] ?></td>as
+                        <td><?= $field['tinggi_badan'] ?></td>
                         <?php if ($role == 2) : ?>
                            <td><?= $field['keterangan'] ?></td>
                            <td>

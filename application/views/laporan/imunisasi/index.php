@@ -25,6 +25,7 @@
                      <th>No</th>
                      <th>NIK</th>
                      <th>Nama</th>
+                     <th>Nama Posyandu</th>
                      <th>Tanggal Imunisasi</th>
                      <th>Imunisasi</th>
                      <th>Status</th>
@@ -37,6 +38,7 @@
                         <td><?= $no++ ?></td>
                         <td><?= $field['nik'] ?></td>
                         <td><?= $field['name'] ?></td>
+                        <td><?= $field['n_posyandu'] ?></td>
                         <td><?= $field['tanggal_imunisasi'] ?></td>
                         <td><?= $field['n_imunisasi'] ?></td>
                         <td><?= $field['status'] ? 'Sudah' : 'Belum' ?></td>

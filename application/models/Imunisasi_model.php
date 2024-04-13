@@ -10,11 +10,12 @@ class Imunisasi_model extends CI_Model
 
    public function get_all_imunisasi()
    {
-      $this->db->select('i.*, u.name, u.email, u.is_active, t.n_imunisasi, a.nik');
+      $this->db->select('i.*, u.name, u.email, u.is_active, t.n_imunisasi, a.nik, p.n_posyandu');
       $this->db->from('imunisasi i');
       $this->db->join('users u', 'i.anak_id = u.id', 'left');
       $this->db->join('tipe_imunisasi t', 'i.tipe_imunisasi_id = t.id', 'left');
       $this->db->join('anak a', 'i.anak_id = a.user_id', 'left');
+      $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
       return $this->db->get()->result_array();
    }
 

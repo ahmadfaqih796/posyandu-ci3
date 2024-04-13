@@ -36,6 +36,7 @@ class Kegiatan_Posyandu extends CI_Controller
          if ($data['role'] == 2) {
             $this->load->view('monitoring/kegiatan_posyandu/add');
          }
+         $this->load->view('monitoring/kegiatan_posyandu/detail');
          $this->load->view('monitoring/kegiatan_posyandu/edit');
          $this->load->view('monitoring/kegiatan_posyandu/delete');
          $this->load->view('monitoring/kegiatan_posyandu/proses');

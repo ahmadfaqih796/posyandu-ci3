@@ -63,6 +63,9 @@
                               <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
                               <button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
                            <?php endif; ?>
+                           <?php if ($role == 8) : ?>
+                              <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#detailModal" onclick="getDetailData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Detail</button>
+                           <?php endif; ?>
                            <?php if ($role == 8 && !$field['is_verified']) : ?>
                               <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#prosesModal" onclick="prosesData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Proses</button>
                            <?php endif; ?>

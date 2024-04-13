@@ -21,7 +21,7 @@ class Posyandu_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
-   public function get_kegiatan_posyandu($id_posyandu = null)
+   public function get_kegiatan_posyandu($id_posyandu = null, $tanggal = null)
    {
       $this->db->select('m.*, p.n_posyandu, u.name');
       $this->db->from('monitoring_kegiatan_posyandu m');
@@ -29,6 +29,9 @@ class Posyandu_model extends CI_Model
       $this->db->join('users u', 'm.kader_id = u.id', 'left');
       if ($id_posyandu != null) {
          $this->db->where('m.posyandu_id', $id_posyandu);
+      }
+      if ($tanggal != null) {
+         $this->db->like('m.created_at', $tanggal);
       }
       return $this->db->get()->result_array();
    }

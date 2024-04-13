@@ -9,17 +9,9 @@
                <h6 class="m-0 font-weight-bold text-primary mb-2"><?= $title ?></h6>
             </div>
             <div class="col-md-2 col-xs-12">
-               <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/kegiatan_posyandu/pdf') ?>">
+               <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/kegiatan_posyandu/pdf/') . $id_posyandu . '/' . $date  ?>">
                   <i class="fas fa-print"></i> PDF
                </a>
-               <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#filterModal">
-                  <i class="fas fa-search"></i> Cari
-               </button>
-               <?php if ($role == 2) : ?>
-                  <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
-                     <i class="fas fa-plus"></i> Tambah
-                  </button>
-               <?php endif; ?>
             </div>
          </div>
       </div>
@@ -40,12 +32,10 @@
                      <?php if ($role == 8) : ?>
                         <th>Dibuat oleh</th>
                      <?php endif; ?>
-                     <th>Aksi</th>
                   </tr>
                </thead>
                <tbody>
-                  <?php foreach ($data as $field) :
-                  ?>
+                  <?php foreach ($data as $field) : ?>
                      <tr>
                         <td><?= $no++ ?></td>
                         <td><?= $field['n_posyandu'] ?></td>
@@ -59,19 +49,6 @@
                         <?php if ($role == 8) : ?>
                            <td><?= $field['name'] ?></td>
                         <?php endif; ?>
-                        <td>
-                           <?php if ($role == 2) : ?>
-                              <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
-                              <button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
-                           <?php endif; ?>
-                           <?php if ($role == 8) : ?>
-                              <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#detailModal" onclick="getDetailData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Detail</button>
-                           <?php endif; ?>
-                           <?php if ($role == 8 && !$field['is_verified']) : ?>
-                              <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#prosesModal" onclick="prosesData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Proses</button>
-                           <?php endif; ?>
-                           <a href="<?= base_url('monitoring/kegiatan_posyandu/print/' . $field['id']) ?>" class="btn btn-success btn-sm btn-block">Cetak</a>
-                        </td>
                      </tr>
                   <?php endforeach; ?>
                </tbody>

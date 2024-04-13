@@ -19,6 +19,7 @@ class Kegiatan_Posyandu extends CI_Controller
       $data['title'] = 'Kegiatan Posyandu';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['bidan'] = $this->bm->get_all("ibu_hamil");
+      $data['posyandu'] = $this->pm->get_posyandu();
       $data['role'] = $this->session->userdata('role_id');
 
       if ($data['role'] == 2) {
@@ -36,6 +37,7 @@ class Kegiatan_Posyandu extends CI_Controller
          if ($data['role'] == 2) {
             $this->load->view('monitoring/kegiatan_posyandu/add');
          }
+         $this->load->view('monitoring/kegiatan_posyandu/filter');
          $this->load->view('monitoring/kegiatan_posyandu/detail');
          $this->load->view('monitoring/kegiatan_posyandu/edit');
          $this->load->view('monitoring/kegiatan_posyandu/delete');
@@ -54,7 +56,27 @@ class Kegiatan_Posyandu extends CI_Controller
       }
    }
 
-   public function pdf()
+   public function data($id_posyandu = null, $tanggal = null)
+   {
+      $data['title'] = 'Imunisasi';
+      $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+      $data['posyandu'] = $this->pm->get_posyandu();
+      $data['role'] = $this->session->userdata('role_id');
+      $data['id_posyandu'] = $id_posyandu;
+      $data['date'] = $tanggal;
+
+      $data['data'] = $this->pm->get_kegiatan_posyandu($id_posyandu, $tanggal);
+      // $data['data'] = $this->im->get_all_imunisasi($id_posyandu, $tanggal);
+      $data['no'] = 1;
+
+      $this->load->view('templates/header', $data);
+      $this->load->view('templates/sidebar', $data);
+      $this->load->view('templates/topbar', $data);
+      $this->load->view('monitoring/kegiatan_posyandu/filterData', $data);
+      $this->load->view('templates/footer', $data);
+   }
+
+   public function pdf($id_posyandu = null, $tanggal = null)
    {
       require_once FCPATH . 'vendor/autoload.php';
       $mpdf = new \Mpdf\Mpdf();
@@ -67,7 +89,7 @@ class Kegiatan_Posyandu extends CI_Controller
       if ($data['role'] == 2) {
          $data['data'] = $this->pm->get_kegiatan_posyandu($data['kader']['posyandu_id']);
       } else {
-         $data['data'] = $this->pm->get_kegiatan_posyandu();
+         $data['data'] = $this->pm->get_kegiatan_posyandu($id_posyandu, $tanggal);
       }
 
       $html = $this->load->view('monitoring/kegiatan_posyandu/printPDF', $data, true);

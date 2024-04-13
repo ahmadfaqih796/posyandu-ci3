@@ -38,7 +38,7 @@
                   <?= form_error('htp', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
-                  <label for="edit_jml_kehamilan">Jumlah Persalinan</label>
+                  <label for="edit_jml_kehamilan">Jumlah Kehamilan</label>
                   <input type="text" class="form-control" name="jml_kehamilan" id="edit_jml_kehamilan" value="<?= set_value('jml_kehamilan'); ?>" required>
                   <?= form_error('jml_kehamilan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>

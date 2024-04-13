@@ -8,6 +8,7 @@ class Dashboard extends CI_Controller
       parent::__construct();
       $this->load->library('session');
       $this->load->model('Base_model', 'bm');
+      $this->load->model('Ibu_model', 'im');
    }
 
    public function index()
@@ -21,6 +22,12 @@ class Dashboard extends CI_Controller
          'anak' => $this->bm->get_count('anak'),
          'ibu' => $this->bm->get_count('ibu'),
          'imunisasi' => $this->bm->get_count('imunisasi'),
+         'status_gizi_bumil' => array(
+            'Kurus' => $this->im->get_count_ibu_hamil("monitoring_ibu_hamil", null, 'Kurus'),
+            'Normal' => $this->im->get_count_ibu_hamil("monitoring_ibu_hamil", null, 'Normal'),
+            'Gemuk' => $this->im->get_count_ibu_hamil("monitoring_ibu_hamil", null, 'Gemuk'),
+            'Obesitas' => $this->im->get_count_ibu_hamil("monitoring_ibu_hamil", null, 'Obesitas'),
+         )
       );
 
       $this->load->view('templates/header', $data);

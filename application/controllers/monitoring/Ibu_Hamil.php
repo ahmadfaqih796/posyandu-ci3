@@ -262,6 +262,22 @@ class Ibu_Hamil extends CI_Controller
          $value = htmlspecialchars($this->input->post($field, true));
          $payload[$field] = $value;
       }
+
+      $berat_badan = $payload['berat_badan'];
+      $tinggi_badan = $payload['tinggi_badan'];
+      $nilai_gizi = $berat_badan / (($tinggi_badan * $tinggi_badan) / 10000);
+      $status_gizi = '';
+      if ($nilai_gizi <= 18.5) {
+         $status_gizi = 'Kurus';
+      } elseif ($nilai_gizi <= 24.9) {
+         $status_gizi = 'Normal';
+      } elseif ($nilai_gizi <= 29.9) {
+         $status_gizi = 'Gemuk';
+      } else {
+         $status_gizi = 'Obesitas';
+      }
+
+      $payload['status_gizi'] = $status_gizi;
       return $payload;
    }
 

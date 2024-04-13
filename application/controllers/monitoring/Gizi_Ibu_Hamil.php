@@ -98,6 +98,16 @@ class Gizi_Ibu_Hamil extends CI_Controller
       $berat_badan = htmlspecialchars($this->input->post('berat_badan', true));
       $tinggi_badan = htmlspecialchars($this->input->post('tinggi_badan', true));
       $nilai_gizi = $berat_badan / (($tinggi_badan * $tinggi_badan) / 10000);
+      $status_gizi = '';
+      if ($nilai_gizi <= 18.5) {
+         $status_gizi = 'Kurus';
+      } elseif ($nilai_gizi <= 24.9) {
+         $status_gizi = 'Normal';
+      } elseif ($nilai_gizi <= 29.9) {
+         $status_gizi = 'Gemuk';
+      } else {
+         $status_gizi = 'Obesitas';
+      }
 
       $payload = [
          'bumil_id' => $bumil_id,
@@ -105,7 +115,8 @@ class Gizi_Ibu_Hamil extends CI_Controller
          'sesi' => $sesi,
          'berat_badan' => $berat_badan,
          'tinggi_badan' => $tinggi_badan,
-         'nilai_gizi' => $nilai_gizi
+         'nilai_gizi' => $nilai_gizi,
+         'status_gizi' => $status_gizi
       ];
       return $payload;
    }

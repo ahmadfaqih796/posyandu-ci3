@@ -14,6 +14,19 @@
                </div>
             </div>
          </div>
+         <!-- End -->
+         <div class="col-md-4 col-sx-12 m-auto">
+            <div class="card">
+               <div class="card-header">
+                  <h4 class="text-center">Status Gizi</h4>
+               </div>
+               <div class="card-body">
+                  <img src="<?= base_url("assets/img/posyandu/p_header.jpeg") ?>" alt="" width="100%">
+                  <a class="btn btn-primary mt-4" href="<?= base_url('user/status_gizi') ?>">Lihat</a>
+               </div>
+            </div>
+         </div>
+         <!-- End -->
          <div class="col-md-4 col-sx-12 m-auto">
             <div class="card">
                <div class="card-header">
@@ -25,7 +38,6 @@
                </div>
             </div>
          </div>
-
       </div>
    </div>
 </section>

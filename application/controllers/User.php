@@ -62,6 +62,18 @@ class User extends CI_Controller
       $this->load->view('templates/user/footer', $data);
    }
 
+   public function status_gizi()
+   {
+      $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
+      $data['title'] = 'Status Gizi';
+      $data['no'] = 1;
+      $data['data'] = $this->am->get_all_anak_table('timbangan_anak', null, null, $this->session->userdata('user_id'));
+      $this->load->view('templates/user/header', $data);
+      $this->load->view('templates/user/topbar', $data);
+      $this->load->view('user/status_gizi', $data);
+      $this->load->view('templates/user/footer', $data);
+   }
+
    public function timbangan()
    {
       $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));

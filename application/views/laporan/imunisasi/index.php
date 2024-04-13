@@ -5,13 +5,18 @@
    <div class="card shadow mb-4">
       <div class="card-header py-3">
          <div class="row">
-            <div class="col-6 align-self-center">
-               <h6 class="m-0 font-weight-bold text-primary"><?= $title ?></h6>
+            <div class="col-md-10 col-xs-12 align-self-center">
+               <h6 class="m-0 font-weight-bold text-primary mb-2"><?= $title ?></h6>
             </div>
-            <div class="col-6">
-               <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">
+            <div class="col-md-2 col-xs-12">
+               <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
                   <i class="fas fa-plus"></i> Tambah
                </button>
+               <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#filterModal">
+                  <i class="fas fa-search"></i> Cari
+               </button>
+               <!-- <?php if ($role == 4) : ?>
+               <?php endif; ?> -->
             </div>
          </div>
       </div>

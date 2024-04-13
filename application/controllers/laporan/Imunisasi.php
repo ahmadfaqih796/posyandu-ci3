@@ -10,6 +10,7 @@ class Imunisasi extends CI_Controller
       $this->load->model('Imunisasi_model', 'im');
       $this->load->model('Anak_model', 'am');
       $this->load->model('Base_model', 'bm');
+      $this->load->model('Posyandu_model', 'pm');
    }
 
    public function index()
@@ -19,6 +20,7 @@ class Imunisasi extends CI_Controller
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->im->get_all_imunisasi();
       $data['anak'] = $this->am->get_all_anak();
+      $data['posyandu'] = $this->pm->get_posyandu();
       $data['imunisasi'] = $this->bm->get_all('tipe_imunisasi');
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
@@ -26,6 +28,7 @@ class Imunisasi extends CI_Controller
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
          $this->load->view('laporan/imunisasi/index', $data);
+         $this->load->view('laporan/imunisasi/filter', $data);
          $this->load->view('laporan/imunisasi/add', $data);
          $this->load->view('laporan/imunisasi/edit', $data);
          $this->load->view('laporan/imunisasi/delete');

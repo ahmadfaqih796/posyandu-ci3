@@ -61,16 +61,12 @@
       <thead>
          <tr>
             <th>No</th>
-            <th>Nama Anak</th>
-            <th>Nama Posyandu</th>
             <th>NIK</th>
-            <th>Alamat</th>
-            <th>Tanggal Ukur</th>
-            <th>Umur (bulan)</th>
-            <th>Lingkar Kepala (cm)</th>
-            <th>Berat Badan (kg)</th>
-            <th>Tinggi Badan (cm)</th>
-            <th>Keterangan</th>
+            <th>Nama</th>
+            <th>Nama Posyandu</th>
+            <th>Tanggal Imunisasi</th>
+            <th>Imunisasi</th>
+            <th>Status</th>
          </tr>
       </thead>
       <tbody>
@@ -78,16 +74,12 @@
          ?>
             <tr>
                <td><?= $no++ ?></td>
+               <td><?= $field['nik'] ?></td>
                <td><?= $field['name'] ?></td>
                <td><?= $field['n_posyandu'] ?></td>
-               <td><?= $field['nik'] ?></td>
-               <td><?= $field['alamat'] ?></td>
-               <td><?= $field['tgl_ukur'] ?></td>
-               <td><?= $field['umur'] ?></td>
-               <td><?= $field['lingkar_kepala'] ?></td>
-               <td><?= $field['berat_badan'] ?></td>
-               <td><?= $field['tinggi_badan'] ?></td>
-               <td><?= $field['keterangan'] ?></td>
+               <td><?= $field['tanggal_imunisasi'] ?></td>
+               <td><?= $field['n_imunisasi'] ?></td>
+               <td><?= $field['status'] ? 'Sudah' : 'Belum' ?></td>
             </tr>
          <?php endforeach; ?>
       </tbody>

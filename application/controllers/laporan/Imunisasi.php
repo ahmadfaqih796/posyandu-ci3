@@ -65,6 +65,21 @@ class Imunisasi extends CI_Controller
       $this->load->view('templates/footer', $data);
    }
 
+   public function pdf($id_posyandu, $tanggal = null)
+   {
+      require_once FCPATH . 'vendor/autoload.php';
+      $mpdf = new \Mpdf\Mpdf();
+
+      $data['title'] = 'Laporan Imunisasi';
+      $data['no'] = 1;
+      $data['data'] = $this->im->get_all_imunisasi($id_posyandu, $tanggal);
+
+      $html = $this->load->view('laporan/imunisasi/printPDF', $data, true);
+
+      $mpdf->WriteHTML($html);
+      $mpdf->Output('laporan_imunisasi.pdf', 'D');
+   }
+
 
    private function add()
    {

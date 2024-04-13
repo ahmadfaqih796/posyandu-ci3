@@ -8,7 +8,7 @@ class Imunisasi_model extends CI_Model
       parent::__construct();
    }
 
-   public function get_all_imunisasi()
+   public function get_all_imunisasi($id_posyandu = null, $tanggal = null)
    {
       $this->db->select('i.*, u.name, u.email, u.is_active, t.n_imunisasi, a.nik, p.n_posyandu');
       $this->db->from('imunisasi i');
@@ -16,6 +16,12 @@ class Imunisasi_model extends CI_Model
       $this->db->join('tipe_imunisasi t', 'i.tipe_imunisasi_id = t.id', 'left');
       $this->db->join('anak a', 'i.anak_id = a.user_id', 'left');
       $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
+      if ($id_posyandu != null) {
+         $this->db->where('a.posyandu_id', $id_posyandu);
+      }
+      if ($tanggal != null) {
+         $this->db->where('i.tanggal_imunisasi', $tanggal);
+      }
       return $this->db->get()->result_array();
    }
 

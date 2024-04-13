@@ -46,6 +46,26 @@ class Imunisasi extends CI_Controller
       }
    }
 
+   public function data($id_posyandu = null, $tanggal = null)
+   {
+      $data['title'] = 'Imunisasi';
+      $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+      $data['posyandu'] = $this->pm->get_posyandu();
+      $data['role'] = $this->session->userdata('role_id');
+      $data['id_posyandu'] = $id_posyandu;
+      $data['date'] = $tanggal;
+
+      $data['data'] = $this->im->get_all_imunisasi($id_posyandu, $tanggal);
+      $data['no'] = 1;
+
+      $this->load->view('templates/header', $data);
+      $this->load->view('templates/sidebar', $data);
+      $this->load->view('templates/topbar', $data);
+      $this->load->view('laporan/imunisasi/filterData', $data);
+      $this->load->view('templates/footer', $data);
+   }
+
+
    private function add()
    {
       $result = $this->im->add_imunisasi($this->_payload());

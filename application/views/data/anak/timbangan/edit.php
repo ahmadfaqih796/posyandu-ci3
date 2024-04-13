@@ -26,17 +26,17 @@
                </div>
                <div class="form-group">
                   <label for="edit_lingkar_kepala">Lingkar Kepala (cm)</label>
-                  <input type="number" class="form-control" name="lingkar_kepala" id="edit_lingkar_kepala" value="<?= set_value('lingkar_kepala'); ?>" required>
+                  <input type="text" class="form-control" name="lingkar_kepala" id="edit_lingkar_kepala" value="<?= set_value('lingkar_kepala'); ?>" required>
                   <?= form_error('lingkar_kepala', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
                   <label for="edit_berat_badan">Berat Badan (kg)</label>
-                  <input type="number" class="form-control" name="berat_badan" id="edit_berat_badan" value="<?= set_value('berat_badan'); ?>" required>
+                  <input type="text" class="form-control" name="berat_badan" id="edit_berat_badan" value="<?= set_value('berat_badan'); ?>" required>
                   <?= form_error('berat_badan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
                   <label for="edit_tinggi_badan">Tinggi Badan (cm)</label>
-                  <input type="number" class="form-control" name="tinggi_badan" id="edit_tinggi_badan" value="<?= set_value('tinggi_badan'); ?>" required>
+                  <input type="text" class="form-control" name="tinggi_badan" id="edit_tinggi_badan" value="<?= set_value('tinggi_badan'); ?>" required>
                   <?= form_error('tinggi_badan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">

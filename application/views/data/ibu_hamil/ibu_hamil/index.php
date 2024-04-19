@@ -9,12 +9,14 @@
                <h6 class="m-0 font-weight-bold text-primary mb-2"><?= $title ?></h6>
             </div>
             <div class="col-md-2 col-xs-12">
-               <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('data/ibu_hamil/ibu_hamil/pdf') ?>">
-                  <i class="fas fa-print"></i> PDF
-               </a>
-               <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
-                  <i class="fas fa-plus"></i> Tambah
-               </button>
+               <?php if ($role == 7) : ?>
+                  <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('data/ibu_hamil/ibu_hamil/pdf') ?>">
+                     <i class="fas fa-print"></i> PDF
+                  </a>
+                  <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
+                     <i class="fas fa-plus"></i> Tambah
+                  </button>
+               <?php endif; ?>
             </div>
          </div>
       </div>
@@ -34,7 +36,9 @@
                      <!-- <th>Agama</th> -->
                      <th>Photo</th>
                      <th>Status</th>
-                     <th>Aksi</th>
+                     <?php if ($role == 7) : ?>
+                        <th>Aksi</th>
+                     <?php endif; ?>
                   </tr>
                </thead>
                <tbody>
@@ -49,10 +53,12 @@
                         <!-- <td><?= $field['agama'] ?></td> -->
                         <td><img src="<?= base_url('assets/img/ibu_hamil/') . $field['photo'] ?>" alt="Photo" width="100"></td>
                         <td><?= $field['is_death'] ? 'Meninggal' : 'Hidup' ?></td>
-                        <td>
-                           <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
-                           <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
-                        </td>
+                        <?php if ($role == 7) : ?>
+                           <td>
+                              <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
+                              <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
+                           </td>
+                        <?php endif; ?>
                      </tr>
                   <?php endforeach; ?>
                </tbody>

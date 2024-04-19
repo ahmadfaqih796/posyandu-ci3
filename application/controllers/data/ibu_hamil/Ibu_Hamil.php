@@ -16,6 +16,7 @@ class Ibu_Hamil extends CI_Controller
       $data['title'] = 'Ibu Hamil';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->bm->get_all("ibu_hamil");
+      $data['role'] = $this->session->userdata('role_id');
 
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {

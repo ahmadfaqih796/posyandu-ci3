@@ -18,6 +18,7 @@ class Kehamilan extends CI_Controller
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->im->get_all_kehamilan();
       $data['bidan'] = $this->im->get_all_ibu_hamil_no_dead();
+      $data['role'] = $this->session->userdata('role_id');
 
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {

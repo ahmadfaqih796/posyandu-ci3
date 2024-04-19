@@ -54,7 +54,7 @@ class Kegiatan extends CI_Controller
    private function update()
    {
       $id = htmlspecialchars($this->input->post('id'));
-      $result = $this->bm->update('kegiatan', $id, $this->_payload());
+      $result = $this->bm->update('kegiatan', $id, $this->_payload('update'));
       if ($result) {
          $this->notification->notify_success('management/kegiatan', 'Berhasil memperbarui kegiatan');
       } else {
@@ -82,8 +82,18 @@ class Kegiatan extends CI_Controller
    {
       $judul = htmlspecialchars($this->input->post('judul', true));
       $deskripsi = htmlspecialchars($this->input->post('deskripsi', true));
+      $kategori = htmlspecialchars($this->input->post('kategori', true));
       $waktu = htmlspecialchars($this->input->post('waktu', true));
       $old_image = htmlspecialchars($this->input->post('old_image', true));
+
+      if ($method == 'update') {
+         return $payload = [
+            'judul' => $judul,
+            'deskripsi' => $deskripsi,
+            'kategori' => $kategori,
+            'waktu' => $waktu
+         ];
+      }
 
       $config['upload_path'] = './assets/img/kegiatan/';
       $config['allowed_types'] = 'jpg|jpeg|png|gif';
@@ -98,6 +108,7 @@ class Kegiatan extends CI_Controller
          $payload = [
             'judul' => $judul,
             'deskripsi' => $deskripsi,
+            'kategori' => $kategori,
             'image' => $data['file_name'],
             'waktu' => $waktu
          ];

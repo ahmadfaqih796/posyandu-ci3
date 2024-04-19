@@ -22,6 +22,15 @@
                   <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
                </div> -->
                <div class="form-group">
+                  <label for="kategori">Kategori</label>
+                  <select name="kategori" id="kategori" class="form-control" required>
+                     <option value="">--Pilih Kategori--</option>
+                     <option value="anak" <?= set_select('kategori', 'anak', (!empty($_POST['kategori']) && $_POST['kategori'] == "anak")); ?>>Anak</option>
+                     <option value="bumil" <?= set_select('kategori', 'bumil', (!empty($_POST['kategori']) && $_POST['kategori'] == "bumil")); ?>>Bumil</option>
+                  </select>
+                  <?= form_error('kategori', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <div class="form-group">
                   <label for="deskripsi">Deskripsi</label>
                   <input type="hidden" name="deskripsi" value="<?= set_value('deskripsi') ?>">
                   <div id="editor" style="min-height: 160px;"><?= set_value('deskripsi') ?></div>

@@ -25,6 +25,7 @@
                      <th>No</th>
                      <th>Judul</th>
                      <th>Waktu</th>
+                     <th>Kategori</th>
                      <th>Image</th>
                      <th>Aksi</th>
                   </tr>
@@ -35,6 +36,7 @@
                         <td><?= $no++ ?></td>
                         <td><?= $field['judul'] ?></td>
                         <td><?= $field['waktu'] ?></td>
+                        <td><?= $field['kategori'] ?></td>
                         <td><img src="<?= base_url('assets/img/kegiatan/' . $field['image']) ?>" alt="<?= $field['image'] ?>" width="150"></td>
                         <td>
                            <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#viewModal" onclick="getView(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Lihat</button>

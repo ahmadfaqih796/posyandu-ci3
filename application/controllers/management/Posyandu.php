@@ -39,6 +39,21 @@ class Posyandu extends CI_Controller
       }
    }
 
+   public function print()
+   {
+      require_once FCPATH . 'vendor/autoload.php';
+      $mpdf = new \Mpdf\Mpdf();
+
+      $data['title'] = 'Data Posyandu';
+      $data['no'] = 1;
+      $data['data'] = $this->pm->get_posyandu();
+
+      $html = $this->load->view('management/posyandu/print', $data, true);
+
+      $mpdf->WriteHTML($html);
+      $mpdf->Output('data_posyandu.pdf', 'D');
+   }
+
    private function add()
    {
       $user_id = htmlspecialchars($this->input->post('user_id'));

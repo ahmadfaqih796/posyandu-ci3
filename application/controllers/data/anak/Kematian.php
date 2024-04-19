@@ -18,6 +18,7 @@ class Kematian extends CI_Controller
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['data'] = $this->am->get_all_anak_table('kematian_anak');
       $data['anak'] = $this->am->get_all_anak_no_dead();
+      $data['role'] = $this->session->userdata('role_id');
 
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {

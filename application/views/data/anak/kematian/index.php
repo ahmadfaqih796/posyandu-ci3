@@ -9,9 +9,11 @@
                <h6 class="m-0 font-weight-bold text-primary"><?= $title ?></h6>
             </div>
             <div class="col-6">
-               <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">
-                  <i class="fas fa-plus"></i> Tambah
-               </button>
+               <?php if ($role == 2) : ?>
+                  <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">
+                     <i class="fas fa-plus"></i> Tambah
+                  </button>
+               <?php endif; ?>
             </div>
          </div>
       </div>
@@ -28,7 +30,9 @@
                      <th>Alamat</th>
                      <th>Tanggal Kematian</th>
                      <th>Penyebab</th>
-                     <th>Aksi</th>
+                     <?php if ($role == 2) : ?>
+                        <th>Aksi</th>
+                     <?php endif; ?>
                   </tr>
                </thead>
                <tbody>
@@ -40,10 +44,12 @@
                         <td><?= $field['alamat'] ?></td>
                         <td><?= $field['tgl_kematian'] ?></td>
                         <td><?= $field['penyebab'] ?></td>
-                        <td>
-                           <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
-                           <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
-                        </td>
+                        <?php if ($role == 2) : ?>
+                           <td>
+                              <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
+                              <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
+                           </td>
+                        <?php endif; ?>
                      </tr>
                   <?php endforeach; ?>
                </tbody>

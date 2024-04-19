@@ -42,6 +42,21 @@ class Schedule extends CI_Controller
       }
    }
 
+   public function print()
+   {
+      require_once FCPATH . 'vendor/autoload.php';
+      $mpdf = new \Mpdf\Mpdf();
+
+      $data['title'] = 'Data Jadwal Posyandu';
+      $data['no'] = 1;
+      $data['data'] = $this->sm->get_schedule();
+
+      $html = $this->load->view('management/schedule/print', $data, true);
+
+      $mpdf->WriteHTML($html);
+      $mpdf->Output('data_jadwal_posyandu.pdf', 'D');
+   }
+
    private function add()
    {
       $result = $this->sm->add_schedule($this->_payload());

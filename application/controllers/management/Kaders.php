@@ -56,7 +56,7 @@ class Kaders extends CI_Controller
          'jabatan' => $jabatan,
          'alamat' => $alamat,
          'pendidikan_terakhir' => $pendidikan_terakhir,
-         'telepon' => $telepon
+         'telepon' => '08' . $telepon
       ];
       $result = $this->km->update_kader($id, $payload);
       if ($result) {

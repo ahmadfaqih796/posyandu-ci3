@@ -58,7 +58,7 @@ class Kegiatan_Posyandu extends CI_Controller
 
    public function data($id_posyandu = null, $tanggal = null)
    {
-      $data['title'] = 'Imunisasi';
+      $data['title'] = 'Kegiatan Posyandu';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['posyandu'] = $this->pm->get_posyandu();
       $data['role'] = $this->session->userdata('role_id');

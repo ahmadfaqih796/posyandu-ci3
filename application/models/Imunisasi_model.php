@@ -20,7 +20,7 @@ class Imunisasi_model extends CI_Model
          $this->db->where('a.posyandu_id', $id_posyandu);
       }
       if ($tanggal != null) {
-         $this->db->where('i.tanggal_imunisasi', $tanggal);
+         $this->db->like('i.tanggal_imunisasi', $tanggal);
       }
       return $this->db->get()->result_array();
    }

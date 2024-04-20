@@ -22,8 +22,8 @@
                   <?= form_error('posyandu_id', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
-                  <label for="tanggal">Tanggal Imunisasi</label>
-                  <input type="date" class="form-control" name="tanggal" id="tanggal" value="<?= set_value('tanggal'); ?>" required>
+                  <label for="tanggal">Pilih Bulan</label>
+                  <input type="month" class="form-control" name="tanggal" id="tanggal" value="<?= set_value('tanggal'); ?>" required>
                   <?= form_error('tanggal', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
             </div>

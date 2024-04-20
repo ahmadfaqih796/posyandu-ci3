@@ -22,6 +22,7 @@ class Imunisasi extends CI_Controller
       $data['anak'] = $this->am->get_all_anak();
       $data['posyandu'] = $this->pm->get_posyandu();
       $data['imunisasi'] = $this->bm->get_all('tipe_imunisasi');
+      $data['role'] = $this->session->userdata('role_id');
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);

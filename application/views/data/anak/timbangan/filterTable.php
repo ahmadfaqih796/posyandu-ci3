@@ -46,7 +46,7 @@
                      <?php if ($role == 8) : ?>
                         <th>Status Gizi BB/U</th>
                      <?php endif; ?>
-                     <?php if ($role != 8) : ?>
+                     <?php if ($role == 4 || $role == 2) : ?>
                         <th>Aksi</th>
                      <?php endif; ?>
                   </tr>
@@ -85,7 +85,7 @@
                         <?php if ($role == 8) : ?>
                            <td><?= $field['status_gizi'] ?></td>
                         <?php endif; ?>
-                        <?php if ($role != 8) : ?>
+                        <?php if ($role == 4 || $role == 2) : ?>
                            <td>
                               <?php if ($role == 4) : ?>
                                  <?php if (!$field['status_gizi']) : ?>

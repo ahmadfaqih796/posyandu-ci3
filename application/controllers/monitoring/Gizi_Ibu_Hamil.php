@@ -21,6 +21,8 @@ class Gizi_Ibu_Hamil extends CI_Controller
       // $data['data'] = $this->im->get_all_ibu_hamil("gizi_ibu_hamil");
       $data['data'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
       $data['no'] = 1;
+      $data['role'] = $this->session->userdata('role_id');
+
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
          $this->load->view('templates/sidebar', $data);

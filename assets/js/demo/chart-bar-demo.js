@@ -31,6 +31,16 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 // data
 var jan = document.getElementById("januari").innerHTML;
 var feb = document.getElementById("februari").innerHTML;
+var mar = document.getElementById("maret").innerHTML;
+var apr = document.getElementById("april").innerHTML;
+var mei = document.getElementById("mei").innerHTML;
+var jun = document.getElementById("juni").innerHTML;
+var jul = document.getElementById("juli").innerHTML;
+var agu = document.getElementById("agustus").innerHTML;
+var sep = document.getElementById("september").innerHTML;
+var okt = document.getElementById("oktober").innerHTML;
+var nov = document.getElementById("november").innerHTML;
+var des = document.getElementById("desember").innerHTML;
 
 // Bar Chart Example
 var ctx = document.getElementById("myBarChart");
@@ -57,7 +67,7 @@ var myBarChart = new Chart(ctx, {
 				backgroundColor: "#4e73df",
 				hoverBackgroundColor: "#2e59d9",
 				borderColor: "#4e73df",
-				data: [12, feb, 4, 5, 6, 8, 12, 3, 4, 5, 6, 8],
+				data: [jan, feb, mar, apr, mei, jun, jul, agu, sep, okt, nov, des],
 				maxBarThickness: 25,
 			},
 		],

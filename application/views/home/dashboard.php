@@ -59,6 +59,16 @@
                <div class="chart-bar">
                   <span id="januari" hidden><?= $total['b_imunisasi']['januari'] ?></span>
                   <span id="februari" hidden><?= $total['b_imunisasi']['februari'] ?></span>
+                  <span id="maret" hidden><?= $total['b_imunisasi']['maret'] ?></span>
+                  <span id="april" hidden><?= $total['b_imunisasi']['april'] ?></span>
+                  <span id="mei" hidden><?= $total['b_imunisasi']['mei'] ?></span>
+                  <span id="juni" hidden><?= $total['b_imunisasi']['juni'] ?></span>
+                  <span id="juli" hidden><?= $total['b_imunisasi']['juli'] ?></span>
+                  <span id="agustus" hidden><?= $total['b_imunisasi']['agustus'] ?></span>
+                  <span id="september" hidden><?= $total['b_imunisasi']['september'] ?></span>
+                  <span id="oktober" hidden><?= $total['b_imunisasi']['oktober'] ?></span>
+                  <span id="november" hidden><?= $total['b_imunisasi']['november'] ?></span>
+                  <span id="desember" hidden><?= $total['b_imunisasi']['desember'] ?></span>
                   <canvas id="myBarChart"></canvas>
                </div>
             </div>

@@ -47,6 +47,15 @@ class Base_model extends CI_Model
       return $this->db->get($table)->num_rows();
    }
 
+   public function get_count_per_month($table, $month = null, $year = null)
+   {
+      if ($month != null && $year != null) {
+         $this->db->where('MONTH(tanggal_imunisasi)', $month);
+         $this->db->where('YEAR(tanggal_imunisasi)', $year);
+      }
+      return $this->db->get($table)->num_rows();
+   }
+
    public function get_count_bumil_id($table, $bumil_id)
    {
       return $this->db->get_where($table, ['bumil_id' => $bumil_id])->num_rows();

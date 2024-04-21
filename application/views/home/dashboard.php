@@ -1,7 +1,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
    <div class="row">
-      <div class="col-md-4 mb-3">
+      <div class="col-md-3 mb-3">
          <div class="card">
             <div class="card-body text-center">
                <h1 class="h4 text-gray-800">Data User</h1>
@@ -9,15 +9,15 @@
             </div>
          </div>
       </div>
-      <div class="col-md-4 mb-3">
+      <!-- <div class="col-md-3 mb-3">
          <div class="card">
             <div class="card-body text-center">
                <h1 class="h4 text-gray-800">Data Kader</h1>
                <h1 class="h4 text-success"><?= $total['kader'] ?></h1>
             </div>
          </div>
-      </div>
-      <div class="col-md-4 mb-3">
+      </div> -->
+      <div class="col-md-3 mb-3">
          <div class="card">
             <div class="card-body text-center">
                <h1 class="h4 text-gray-800">Data Anak</h1>
@@ -25,15 +25,15 @@
             </div>
          </div>
       </div>
-      <div class="col-md-4 mb-3">
+      <div class="col-md-3 mb-3">
          <div class="card">
             <div class="card-body text-center">
-               <h1 class="h4 text-gray-800">Data Ibu</h1>
+               <h1 class="h4 text-gray-800">Data Ibu Hamil</h1>
                <h1 class="h4 text-success" id="d_total_ibu"><?= $total['ibu'] ?></h1>
             </div>
          </div>
       </div>
-      <div class="col-md-4 mb-3">
+      <div class="col-md-3 mb-3">
          <div class="card">
             <div class="card-body text-center">
                <h1 class="h4 text-gray-800">Data Posyandu</h1>
@@ -41,15 +41,14 @@
             </div>
          </div>
       </div>
-      <div class="col-md-4 mb-3">
+      <!-- <div class="col-md-4 mb-3">
          <div class="card">
             <div class="card-body text-center">
                <h1 class="h4 text-gray-800">Data Imunisasi</h1>
                <h1 class="h4 text-success"><?= $total['imunisasi'] ?></h1>
             </div>
          </div>
-      </div>
-
+      </div> -->
       <div class="col-xl-8 col-lg-7">
          <!-- Bar Chart -->
          <div class="card shadow mb-4">
@@ -58,6 +57,8 @@
             </div>
             <div class="card-body">
                <div class="chart-bar">
+                  <span id="januari" hidden><?= $total['b_imunisasi']['januari'] ?></span>
+                  <span id="februari" hidden><?= $total['b_imunisasi']['februari'] ?></span>
                   <canvas id="myBarChart"></canvas>
                </div>
             </div>

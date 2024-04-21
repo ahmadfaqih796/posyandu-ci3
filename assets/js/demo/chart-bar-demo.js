@@ -28,6 +28,10 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 	return s.join(dec);
 }
 
+// data
+var jan = document.getElementById("januari").innerHTML;
+var feb = document.getElementById("februari").innerHTML;
+
 // Bar Chart Example
 var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
@@ -53,7 +57,7 @@ var myBarChart = new Chart(ctx, {
 				backgroundColor: "#4e73df",
 				hoverBackgroundColor: "#2e59d9",
 				borderColor: "#4e73df",
-				data: [12, 3, 4, 5, 6, 8, 12, 3, 4, 5, 6, 8],
+				data: [12, feb, 4, 5, 6, 8, 12, 3, 4, 5, 6, 8],
 				maxBarThickness: 25,
 			},
 		],

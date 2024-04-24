@@ -11,16 +11,20 @@
          <form id="addForm" method="post">
             <div class="modal-body">
                <!-- <input type="hidden" name="addData" id="addData" value="true"> -->
-               <div class="form-group">
-                  <label for="posyandu_id">Posyandu</label>
-                  <select name="posyandu_id" id="posyandu_id" class="form-control" required>
-                     <option value="">-- Pilih Posyandu --</option>
-                     <?php foreach ($posyandu as $field) : ?>
-                        <option value="<?= $field['id'] ?>" <?= set_select('posyandu_id', $field['id'], (!empty($_POST['posyandu_id']) && $_POST['posyandu_id'] == $field['id'])); ?>><?= $field['n_posyandu'] ?></option>
-                     <?php endforeach; ?>
-                  </select>
-                  <?= form_error('posyandu_id', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
+               <?php if ($role != 2) { ?>
+                  <div class="form-group">
+                     <label for="posyandu_id">Posyandu</label>
+                     <select name="posyandu_id" id="posyandu_id" class="form-control" required>
+                        <option value="">-- Pilih Posyandu --</option>
+                        <?php foreach ($posyandu as $field) : ?>
+                           <option value="<?= $field['id'] ?>" <?= set_select('posyandu_id', $field['id'], (!empty($_POST['posyandu_id']) && $_POST['posyandu_id'] == $field['id'])); ?>><?= $field['n_posyandu'] ?></option>
+                        <?php endforeach; ?>
+                     </select>
+                     <?= form_error('posyandu_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                  </div>
+               <?php } else { ?>
+                  <input type="hidden" class="form-control" name="posyandu_id" id="posyandu_id" value="<?= $kader['posyandu_id'] ?>">
+               <?php } ?>
                <div class="form-group">
                   <label for="tanggal">Tanggal Pengajuan</label>
                   <input type="date" class="form-control" name="tanggal" id="tanggal" value="<?= set_value('tanggal'); ?>" required>

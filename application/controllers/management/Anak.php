@@ -11,6 +11,7 @@ class Anak extends CI_Controller
       $this->load->model('Ibu_model', 'im');
       $this->load->model('Posyandu_model', 'pm');
       $this->load->model('Imunisasi_model', 'imm');
+      $this->load->model('Kaders_model', 'km');
    }
 
    public function index()
@@ -18,8 +19,17 @@ class Anak extends CI_Controller
       $this->_validation_anak();
       $data['title'] = 'Anak';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['users'] = $this->am->get_all_anak();
       $data['ibu'] = $this->im->get_all_ibu();
+
+      $data['role'] = $this->session->userdata('role_id');
+
+      if ($data['role'] == 2) {
+         $data['kader'] = $this->km->get_kader_by_id($this->session->userdata('user_id'));
+         $data['users'] = $this->am->get_all_anak($data['kader']['posyandu_id']);
+      } else {
+         $data['users'] = $this->am->get_all_anak();
+      }
+
       $data['posyandu'] = $this->pm->get_posyandu();
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {

@@ -27,7 +27,7 @@
                   <?= form_error('tanggal_imunisasi', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
-                  <label for="tipe_imunisasi_id">Nama Anak</label>
+                  <label for="tipe_imunisasi_id">Nama Imunisasi</label>
                   <select name="tipe_imunisasi_id" id="tipe_imunisasi_id" class="form-control" required>
                      <option value="">-- Pilih Imunisasi --</option>
                      <?php foreach ($imunisasi as $field) : ?>

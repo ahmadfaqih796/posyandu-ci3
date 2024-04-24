@@ -12,6 +12,7 @@ class Anak extends CI_Controller
       $this->load->model('Posyandu_model', 'pm');
       $this->load->model('Imunisasi_model', 'imm');
       $this->load->model('Kaders_model', 'km');
+      $this->load->model('Base_model', 'bm');
    }
 
    public function index()
@@ -69,6 +70,7 @@ class Anak extends CI_Controller
 
    private function add()
    {
+      $data['kader'] = $this->km->get_kader_by_id($this->session->userdata('user_id'));
       $name = htmlspecialchars($this->input->post('name', true));
       $email = htmlspecialchars($this->input->post('email', true));
       $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
@@ -83,7 +85,8 @@ class Anak extends CI_Controller
       $this->db->insert('users', $payload);
       $user_id = $this->db->insert_id();
       $this->db->insert('anak', [
-         'user_id' => $user_id
+         'user_id' => $user_id,
+         'posyandu_id' => $data['kader']['posyandu_id'],
       ]);
       $this->notification->notify_success('management/anak', 'Berhasil menambahkan anak');
 
@@ -145,7 +148,7 @@ class Anak extends CI_Controller
       $data['role'] = $this->session->userdata('role_id');
 
       if ($data['role'] == 2) {
-         $data['kader'] = $this->km->get_kader_by_id($this->session->userdata('user_id'));
+         $data['kader'] = $this->bm->get_by_user_id($this->session->userdata('user_id'));
          $data['users'] = $this->am->get_all_anak($data['kader']['posyandu_id']);
       } else {
          $data['users'] = $this->am->get_all_anak();

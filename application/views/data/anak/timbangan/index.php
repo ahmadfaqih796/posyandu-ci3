@@ -37,8 +37,8 @@
                      <th>Lingkar Kepala (cm)</th>
                      <th>Berat Badan (kg)</th>
                      <th>Tinggi Badan (cm)</th>
+                     <th>Keterangan</th>
                      <?php if ($role == 2) : ?>
-                        <th>Keterangan</th>
                         <th>Gambar</th>
                      <?php endif; ?>
                      <?php if ($role == 8) : ?>
@@ -62,8 +62,8 @@
                         <td><?= $field['lingkar_kepala'] ?></td>
                         <td><?= $field['berat_badan'] ?></td>
                         <td><?= $field['tinggi_badan'] ?></td>
+                        <td><?= $field['keterangan'] ?></td>
                         <?php if ($role == 2) : ?>
-                           <td><?= $field['keterangan'] ?></td>
                            <td>
                               <img src="<?= base_url('assets/img/status_gizi/') . $field['photo'] ?>" width="150px">
                            </td>

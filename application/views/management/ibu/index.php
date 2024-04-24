@@ -12,9 +12,9 @@
                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">
                   <i class="fas fa-plus"></i> Tambah
                </button>
-               <a type="button" class="btn btn-success float-right mr-2" href="<?= base_url('management/ibu/print') ?>">
+               <!-- <a type="button" class="btn btn-success float-right mr-2" href="<?= base_url('management/ibu/print') ?>">
                   <i class="fas fa-print"></i> Cetak
-               </a>
+               </a> -->
             </div>
          </div>
       </div>
@@ -49,7 +49,7 @@
                         <td><?= $field['total_anak'] ?></td>
                         <td>
                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
-                           <a type="button" class="btn btn-success btn-sm" href="<?= base_url('management/ibu/detail/' . $field['id']) ?>">Detail</a>
+                           <!-- <a type="button" class="btn btn-success btn-sm" href="<?= base_url('management/ibu/detail/' . $field['id']) ?>">Detail</a> -->
                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
                         </td>
                      </tr>

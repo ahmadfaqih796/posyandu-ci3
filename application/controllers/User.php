@@ -103,7 +103,7 @@ class User extends CI_Controller
       $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
       $data['title'] = 'Kegiatan';
       $data['no'] = 1;
-      $data['data'] = $this->bm->get_all('kegiatan');
+      $data['data'] = $this->bm->get_all('kegiatan', 'anak');
       $this->load->view('templates/user/header', $data);
       $this->load->view('templates/user/topbar', $data);
       $this->load->view('user/kegiatan', $data);

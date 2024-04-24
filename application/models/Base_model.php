@@ -9,8 +9,11 @@ class Base_model extends CI_Model
       $this->load->database();
    }
 
-   public function get_all($table)
+   public function get_all($table, $kategori = null)
    {
+      if ($kategori != null) {
+         $this->db->where('kategori', $kategori);
+      }
       return $this->db->get($table)->result_array();
    }
 
@@ -22,6 +25,11 @@ class Base_model extends CI_Model
    public function get_by_id($table, $id)
    {
       return $this->db->get_where($table, ['id' => $id])->row_array();
+   }
+
+   public function get_by_user_id($table, $id)
+   {
+      return $this->db->get_where($table, ['user_id' => $id])->row_array();
    }
 
    public function add($table, $data)

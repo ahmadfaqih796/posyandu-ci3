@@ -9,6 +9,7 @@ class Kematian extends CI_Controller
       $this->load->library('session');
       $this->load->model('Base_model', 'bm');
       $this->load->model('Anak_model', 'am');
+      $this->load->model('Kaders_model', 'km');
    }
 
    public function index()
@@ -41,6 +42,29 @@ class Kematian extends CI_Controller
             $this->notification->notify_error('data/anak/kematian', 'Method initidak ditemukan');
          }
       }
+   }
+
+   public function print()
+   {
+      require_once FCPATH . 'vendor/autoload.php';
+      $mpdf = new \Mpdf\Mpdf();
+
+      $data['title'] = 'Kematian Anak';
+      $data['no'] = 1;
+
+      $data['role'] = $this->session->userdata('role_id');
+
+      if ($data['role'] == 2) {
+         $data['kader'] = $this->km->get_kader_by_id($this->session->userdata('user_id'));
+         $data['data'] = $this->am->get_all_anak_table('kematian_anak', $data['kader']['posyandu_id']);
+      } else {
+         $data['data'] = $this->am->get_all_anak_table('kematian_anak');
+      }
+
+      $html = $this->load->view('data/anak/kematian/print', $data, true);
+
+      $mpdf->WriteHTML($html);
+      $mpdf->Output('kematian_anak.pdf', 'D');
    }
 
    private function add()

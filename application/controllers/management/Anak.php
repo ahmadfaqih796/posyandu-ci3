@@ -141,7 +141,15 @@ class Anak extends CI_Controller
 
       $data['title'] = 'Data Anak';
       $data['no'] = 1;
-      $data['users'] = $this->am->get_all_anak();
+
+      $data['role'] = $this->session->userdata('role_id');
+
+      if ($data['role'] == 2) {
+         $data['kader'] = $this->km->get_kader_by_id($this->session->userdata('user_id'));
+         $data['users'] = $this->am->get_all_anak($data['kader']['posyandu_id']);
+      } else {
+         $data['users'] = $this->am->get_all_anak();
+      }
 
       $html = $this->load->view('management/anak/print', $data, true);
 

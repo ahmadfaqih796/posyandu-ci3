@@ -9,6 +9,7 @@ class Timbangan extends CI_Controller
       $this->load->library('session');
       $this->load->model('Base_model', 'bm');
       $this->load->model('Anak_model', 'am');
+      $this->load->model('Kaders_model', 'km');
    }
 
    public function index()
@@ -51,6 +52,37 @@ class Timbangan extends CI_Controller
       }
    }
 
+   public function month($id_posyandu, $date)
+   {
+      $this->_validation();
+      $data['title'] = 'Penimbangan & Pengukuran Anak';
+      $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+      $data['role'] = $this->session->userdata('role_id');
+      $data['posyandu'] = $this->bm->get_all("posyandu");
+
+      if ($data['role'] == 2) {
+         $data['kader'] = $this->bm->get_by_id('kaders', $this->session->userdata('user_id'));
+         $data['anak'] = $this->am->get_all_anak_no_dead($data['kader']['posyandu_id']);
+         $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $data['kader']['posyandu_id'], $date);
+      } else {
+         $data['data'] = $this->am->get_all_anak_table('timbangan_anak', null, $date);
+      }
+
+      $data['date'] = $date;
+      $data['no'] = 1;
+      if ($this->form_validation->run() == false) {
+         $this->load->view('templates/header', $data);
+         $this->load->view('templates/sidebar', $data);
+         $this->load->view('templates/topbar', $data);
+         $this->load->view('data/anak/timbangan/filterTable', $data);
+         $this->load->view('data/anak/timbangan/filter');
+         $this->load->view('data/anak/timbangan/add');
+         $this->load->view('data/anak/timbangan/edit');
+         $this->load->view('data/anak/timbangan/delete');
+         $this->load->view('templates/footer', $data);
+      }
+   }
+
    public function anak($id_posyandu, $tgl_ukur = null)
    {
       $this->_validation();
@@ -64,7 +96,7 @@ class Timbangan extends CI_Controller
       if ($data['role'] == 2) {
          $data['kader'] = $this->bm->get_by_id('kaders', $this->session->userdata('user_id'));
          $data['anak'] = $this->am->get_all_anak_no_dead($data['kader']['posyandu_id']);
-         $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $data['kader']['posyandu_id']);
+         $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $data['kader']['posyandu_id'], $tgl_ukur);
       } else {
          $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $id_posyandu, $tgl_ukur);
       }

@@ -13,7 +13,7 @@
                   <i class="fas fa-print"></i> PDF
                </a>
                <?php if ($role == 2) : ?>
-                  <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">
+                  <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
                      <i class="fas fa-plus"></i> Tambah
                   </button>
                <?php endif; ?>
@@ -44,7 +44,7 @@
                      <?php if ($role == 8) : ?>
                         <th>Status Gizi BB/U</th>
                      <?php endif; ?>
-                     <?php if ($role != 8 || $role != 1) : ?>
+                     <?php if ($role == 4 || $role == 2) : ?>
                         <th>Aksi</th>
                      <?php endif; ?>
                   </tr>

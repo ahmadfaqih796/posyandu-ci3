@@ -9,7 +9,10 @@
                <h6 class="m-0 font-weight-bold text-primary mb-2"><?= $title ?></h6>
             </div>
             <div class="col-md-2 col-xs-12">
-               <?php if ($role == 4 || $role == 8) : ?>
+               <span id="posyandu_id" hidden><?= $kader['posyandu_id'] ?></span>
+               <?php
+               // var_dump($kader['posyandu_id']);
+               if ($role == 4 || $role == 8) : ?>
                   <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#filterModal">
                      <i class="fas fa-search"></i> Cari
                   </button>
@@ -25,6 +28,11 @@
       <div class="card-body">
          <?= validation_errors('<div class="alert alert-danger" role="alert">', '</div>') ?>
          <?= $this->session->flashdata('message'); ?>
+         <?php if ($role == 2) : ?>
+            <div class="form-group mb-3 float-right" style="width: 180px;">
+               <input type="month" class="form-control" id="month" name="month">
+            </div>
+         <?php endif; ?>
          <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                <thead>
@@ -108,3 +116,12 @@
 
 </div>
 <!-- /.container-fluid -->
+
+<script>
+   var posyanduId = document.getElementById('posyandu_id').textContent;
+   document.getElementById('month').addEventListener('change', function() {
+      var selectedMonth = this.value;
+      // Mengalihkan ke halaman dengan URL yang disesuaikan
+      window.location.href = 'http://localhost:3000/data/anak/timbangan/anak/' + posyanduId + '/' + selectedMonth;
+   });
+</script>

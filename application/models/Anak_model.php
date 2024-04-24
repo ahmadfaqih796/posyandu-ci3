@@ -57,7 +57,7 @@ class Anak_model extends CI_Model
          $this->db->where('a.posyandu_id', $id_posyandu);
       }
       if ($tgl_ukur != null) {
-         $this->db->where('t.tgl_ukur', $tgl_ukur);
+         $this->db->like('t.tgl_ukur', $tgl_ukur);
       }
       if ($id_anak != null) {
          $this->db->where('t.anak_id', $id_anak);

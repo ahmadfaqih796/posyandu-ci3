@@ -89,6 +89,19 @@ class Anak_model extends CI_Model
       return $this->db->get()->num_rows();
    }
 
+   public function get_count_status_gizi($status_gizi = null)
+   {
+      $this->db->select('t.*, t.id AS table_id, u.name, a.*, p.n_posyandu');
+      $this->db->from('timbangan_anak t');
+      $this->db->join('users u', 't.anak_id = u.id', 'left');
+      $this->db->join('anak a', 't.anak_id = a.user_id', 'left');
+      $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
+      if ($status_gizi != null) {
+         $this->db->where('t.status_gizi', $status_gizi);
+      }
+      return $this->db->count_all_results();
+   }
+
    public function get_all_anak_table_by_id($table, $id)
    {
       $this->db->select('t.*, t.id AS table_id, u.name, a.*');

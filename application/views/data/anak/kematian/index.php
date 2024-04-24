@@ -9,10 +9,10 @@
                <h6 class="m-0 font-weight-bold text-primary mb-2"><?= $title ?></h6>
             </div>
             <div class="col-md-2 col-xs-12">
-               <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('data/anak/kematian/print') ?>">
-                  <i class="fas fa-print"></i> PDF
-               </a>
                <?php if ($role == 2) : ?>
+                  <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('data/anak/kematian/print') ?>">
+                     <i class="fas fa-print"></i> PDF
+                  </a>
                   <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
                      <i class="fas fa-plus"></i> Tambah
                   </button>

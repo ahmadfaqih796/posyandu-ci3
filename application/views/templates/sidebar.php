@@ -14,13 +14,13 @@ notes:
 $sidebarMenu = array(
    array(
       "text" => "Home",
-      "role" => array(1, 2),
+      "role" => array(1, 2, 3, 4, 5, 6, 7, 8),
       "submenu" => array(
          array(
             "url" => "dashboard",
             "text" => "Dashboard",
             "icon" => "fas fa-fw fa-clipboard",
-            "role" => array(1, 2),
+            "role" => array(1, 2, 3, 4, 5, 6, 7, 8),
          ),
       )
    ),

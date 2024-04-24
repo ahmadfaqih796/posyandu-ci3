@@ -41,7 +41,7 @@
          </div>
       <?php endif; ?>
 
-      <?php if ($role == 2) : ?>
+      <?php if ($role == 2 || $role == 4) : ?>
          <div class="col-md-3 mb-3">
             <div class="card">
                <div class="card-body text-center">
@@ -100,7 +100,7 @@
          </div>
       </div> -->
 
-      <?php if ($role == 1 || $role == 2 || $role == 8) : ?>
+      <?php if ($role == 1 || $role == 2 || $role == 6 || $role == 8) : ?>
          <div class="col-xl-8 col-lg-7">
             <!-- Bar Chart -->
             <div class="card shadow mb-4">
@@ -143,7 +143,7 @@
          </div>
       <?php endif; ?> -->
 
-      <?php if ($role == 1 || $role == 8) : ?>
+      <?php if ($role == 1 || $role == 8 || $role == 4) : ?>
          <div class="col-md-4 mb-3">
             <div class="card">
                <div class="card-body text-center">
@@ -166,9 +166,9 @@
                         <td><?= $total['status_gizi_bumil']['Obesitas'] ?></td>
                      </tr>
                   </table>
-                  <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/gizi_ibu_hamil/pdf') ?>">
+                  <!-- <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/gizi_ibu_hamil/pdf') ?>">
                      <i class="fas fa-print"></i> PDF
-                  </a>
+                  </a> -->
                </div>
             </div>
          </div>

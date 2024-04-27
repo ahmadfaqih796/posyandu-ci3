@@ -43,6 +43,21 @@ class Kematian extends CI_Controller
       }
    }
 
+   public function pdf()
+   {
+      require_once FCPATH . 'vendor/autoload.php';
+      $mpdf = new \Mpdf\Mpdf();
+
+      $data['title'] = 'Data Kehamilan Ibu Hamil';
+      $data['no'] = 1;
+      $data['users'] = $this->im->get_all_kematian();
+
+      $html = $this->load->view('data/ibu_hamil/kematian/printPDF', $data, true);
+
+      $mpdf->WriteHTML($html);
+      $mpdf->Output('data_kehamilan_ibu_hamil.pdf', 'D');
+   }
+
    private function add()
    {
       $result = $this->bm->add('kematian_ibu_hamil', $this->_payload());

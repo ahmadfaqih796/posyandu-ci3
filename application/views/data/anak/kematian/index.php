@@ -9,13 +9,15 @@
                <h6 class="m-0 font-weight-bold text-primary mb-2"><?= $title ?></h6>
             </div>
             <div class="col-md-2 col-xs-12">
-               <?php if ($role == 2) : ?>
+               <?php if ($role == 2 || $role == 8) : ?>
                   <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('data/anak/kematian/print') ?>">
                      <i class="fas fa-print"></i> PDF
                   </a>
-                  <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
-                     <i class="fas fa-plus"></i> Tambah
-                  </button>
+                  <?php if ($role == 2) : ?>
+                     <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
+                        <i class="fas fa-plus"></i> Tambah
+                     </button>
+                  <?php endif; ?>
                <?php endif; ?>
             </div>
          </div>
@@ -29,6 +31,7 @@
                   <tr>
                      <th>No</th>
                      <th>Nama Anak</th>
+                     <th>Nama Posyandu</th>
                      <th>NIK</th>
                      <th>Alamat</th>
                      <th>Tanggal Kematian</th>
@@ -43,6 +46,7 @@
                      <tr>
                         <td><?= $no++ ?></td>
                         <td><?= $field['name'] ?></td>
+                        <td><?= $field['n_posyandu'] ?></td>
                         <td><?= $field['nik'] ?></td>
                         <td><?= $field['alamat'] ?></td>
                         <td><?= $field['tgl_kematian'] ?></td>

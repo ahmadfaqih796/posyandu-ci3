@@ -67,7 +67,7 @@
                               <button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#deleteModal" onclick="deleteData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
                            <?php endif; ?>
                            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#detailModal" onclick="getDetailData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Detail</button>
-                           <?php if ($role == 8) : ?>
+                           <?php if ($role == 8 || $role == 2) : ?>
                               <a href="<?= base_url('monitoring/kegiatan_posyandu/print/' . $field['id']) ?>" class="btn btn-success btn-sm btn-block">Cetak</a>
                            <?php endif; ?>
                            <?php if ($role == 8 && !$field['is_verified']) : ?>

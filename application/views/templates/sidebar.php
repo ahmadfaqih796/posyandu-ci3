@@ -141,7 +141,7 @@ $sidebarMenu = array(
             "url" => "monitoring/gizi_ibu_hamil",
             "text" => "Status Gizi Ibu Hamil",
             "icon" => "fas fa-fw fa-clipboard",
-            "role" => array(1, 7),
+            "role" => array(1, 4, 7),
          ),
          array(
             "url" => "data/anak/timbangan",

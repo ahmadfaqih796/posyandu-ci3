@@ -96,14 +96,14 @@ class Status_Gizi extends CI_Controller
       require_once FCPATH . 'vendor/autoload.php';
       $mpdf = new \Mpdf\Mpdf();
 
-      $data['title'] = 'Data Anak';
+      $data['title'] = 'Data Status Gizi';
       $data['no'] = 1;
-      $data['users'] = $this->am->get_all_anak();
+      $data['data'] = $this->bm->get_all('gizi_status');
 
       $html = $this->load->view('management/status_gizi/print', $data, true);
 
       $mpdf->WriteHTML($html);
-      $mpdf->Output('data_anak.pdf', 'D');
+      $mpdf->Output('data_status_gizi.pdf', 'D');
    }
 
    private function _payload()

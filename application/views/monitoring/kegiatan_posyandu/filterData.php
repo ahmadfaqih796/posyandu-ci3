@@ -9,7 +9,7 @@
                <h6 class="m-0 font-weight-bold text-primary mb-2"><?= $title ?></h6>
             </div>
             <div class="col-md-2 col-xs-12">
-               <?php if ($role == 8) : ?>
+               <?php if ($role == 8 || $role == 2) : ?>
                   <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/kegiatan_posyandu/pdf/') . $id_posyandu . '/' . $date  ?>">
                      <i class="fas fa-print"></i> PDF
                   </a>

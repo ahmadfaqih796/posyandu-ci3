@@ -87,7 +87,7 @@ class Kegiatan_Posyandu extends CI_Controller
       $data['role'] = $this->session->userdata('role_id');
 
       if ($data['role'] == 2) {
-         $data['data'] = $this->pm->get_kegiatan_posyandu($data['kader']['posyandu_id']);
+         $data['data'] = $this->pm->get_kegiatan_posyandu($data['kader']['posyandu_id'], $tanggal);
       } else {
          $data['data'] = $this->pm->get_kegiatan_posyandu($id_posyandu, $tanggal);
       }

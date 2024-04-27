@@ -9,7 +9,7 @@
                <h6 class="m-0 font-weight-bold text-primary mb-2"><?= $title ?></h6>
             </div>
             <div class="col-md-2 col-xs-12">
-               <?php if ($role == 7 || $role == 4) : ?>
+               <?php if ($role == 4) : ?>
                   <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/gizi_ibu_hamil/pdf') ?>">
                      <i class="fas fa-print"></i> PDF
                   </a>

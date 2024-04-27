@@ -148,7 +148,7 @@ class Anak extends CI_Controller
       $data['role'] = $this->session->userdata('role_id');
 
       if ($data['role'] == 2) {
-         $data['kader'] = $this->bm->get_by_user_id($this->session->userdata('user_id'));
+         $data['kader'] = $this->bm->get_by_user_id("kaders", $this->session->userdata('user_id'));
          $data['users'] = $this->am->get_all_anak($data['kader']['posyandu_id']);
       } else {
          $data['users'] = $this->am->get_all_anak();

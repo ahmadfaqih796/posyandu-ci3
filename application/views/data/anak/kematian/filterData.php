@@ -10,12 +10,9 @@
             </div>
             <div class="col-md-2 col-xs-12">
                <?php if ($role == 2 || $role == 8) : ?>
-                  <!-- <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('data/anak/kematian/print') ?>">
+                  <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('data/anak/kematian/print/') . $id_posyandu . '/' . $date  ?>">
                      <i class="fas fa-print"></i> PDF
-                  </a> -->
-                  <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#filterModal">
-                     <i class="fas fa-search"></i> Cari
-                  </button>
+                  </a>
                   <?php if ($role == 2) : ?>
                      <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
                         <i class="fas fa-plus"></i> Tambah

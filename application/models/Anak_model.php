@@ -46,7 +46,7 @@ class Anak_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
-   public function get_all_anak_table($table, $id_posyandu = null, $tgl_ukur = null, $id_anak = null)
+   public function get_all_anak_table($table, $id_posyandu = null, $tgl_ukur = null, $id_anak = null, $tgl_kematian = null)
    {
       $this->db->select('t.*, t.id AS table_id, u.name, a.*, p.n_posyandu');
       $this->db->from($table . ' t');
@@ -61,6 +61,9 @@ class Anak_model extends CI_Model
       }
       if ($id_anak != null) {
          $this->db->where('t.anak_id', $id_anak);
+      }
+      if ($tgl_kematian != null) {
+         $this->db->where('t.tgl_kematian', $tgl_kematian);
       }
       return $this->db->get()->result_array();
    }

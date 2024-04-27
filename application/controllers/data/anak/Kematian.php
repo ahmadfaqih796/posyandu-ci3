@@ -21,12 +21,15 @@ class Kematian extends CI_Controller
       $data['anak'] = $this->am->get_all_anak_no_dead();
       $data['role'] = $this->session->userdata('role_id');
 
+      $data['posyandu'] = $this->bm->get_all("posyandu");
+
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
          $this->load->view('data/anak/kematian/index', $data);
+         $this->load->view('data/anak/kematian/filter');
          $this->load->view('data/anak/kematian/add');
          $this->load->view('data/anak/kematian/edit');
          $this->load->view('data/anak/kematian/delete');
@@ -44,7 +47,43 @@ class Kematian extends CI_Controller
       }
    }
 
-   public function print()
+   public function data($id_posyandu = null, $tanggal = null)
+   {
+      $this->_validation();
+      $data['title'] = 'Kematian Anak';
+      $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+      $data['data'] = $this->am->get_all_anak_table('kematian_anak', $id_posyandu, null, null, $tanggal);
+      $data['anak'] = $this->am->get_all_anak_no_dead();
+      $data['role'] = $this->session->userdata('role_id');
+
+      $data['posyandu'] = $this->bm->get_all("posyandu");
+      $data['id_posyandu'] = $id_posyandu;
+      $data['date'] = $tanggal;
+
+      $data['no'] = 1;
+      if ($this->form_validation->run() == false) {
+         $this->load->view('templates/header', $data);
+         $this->load->view('templates/sidebar', $data);
+         $this->load->view('templates/topbar', $data);
+         $this->load->view('data/anak/kematian/filterData', $data);
+         $this->load->view('data/anak/kematian/add');
+         $this->load->view('data/anak/kematian/edit');
+         $this->load->view('data/anak/kematian/delete');
+         $this->load->view('templates/footer', $data);
+      } else {
+         $add = $this->input->post('addData');
+         $update = $this->input->post('updateData');
+         if ($add) {
+            return $this->add();
+         } else if ($update) {
+            return $this->update();
+         } else {
+            $this->notification->notify_error('data/anak/kematian', 'Method initidak ditemukan');
+         }
+      }
+   }
+
+   public function print($id_posyandu = null, $tanggal = null)
    {
       require_once FCPATH . 'vendor/autoload.php';
       $mpdf = new \Mpdf\Mpdf();
@@ -52,13 +91,14 @@ class Kematian extends CI_Controller
       $data['title'] = 'Kematian Anak';
       $data['no'] = 1;
 
+      $data['kader'] = $this->km->get_kader_by_id($this->session->userdata('user_id'));
       $data['role'] = $this->session->userdata('role_id');
 
       if ($data['role'] == 2) {
          $data['kader'] = $this->km->get_kader_by_id($this->session->userdata('user_id'));
-         $data['data'] = $this->am->get_all_anak_table('kematian_anak', $data['kader']['posyandu_id']);
+         $data['data'] = $this->am->get_all_anak_table('kematian_anak', $data['kader']['posyandu_id'], null, null, $tanggal);
       } else {
-         $data['data'] = $this->am->get_all_anak_table('kematian_anak');
+         $data['data'] = $this->am->get_all_anak_table('kematian_anak', $id_posyandu, null, null, $tanggal);
       }
 
       $html = $this->load->view('data/anak/kematian/print', $data, true);

@@ -47,7 +47,7 @@
                   <?= form_error('jml_keguguran', '<small class="text-danger pl-3">', '</small>'); ?>
                </div> -->
                <div class="form-group">
-                  <label for="jml_lahir_hidup">Jumlah Anak Hidup</label>
+                  <label for="jml_lahir_hidup">Jumlah Lahir Hidup</label>
                   <input type="text" class="form-control" name="jml_lahir_hidup" id="jml_lahir_hidup" value="<?= set_value('jml_lahir_hidup'); ?>" required>
                   <?= form_error('jml_lahir_hidup', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>

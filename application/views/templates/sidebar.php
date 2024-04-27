@@ -91,7 +91,7 @@ $sidebarMenu = array(
          ),
          array(
             "url" => "management/status_gizi",
-            "text" => "Tabel Status Gizi",
+            "text" => "Tabel Status Gizi Anak",
             "icon" => "fas fa-fw fa-child",
             "role" => array(4),
          ),

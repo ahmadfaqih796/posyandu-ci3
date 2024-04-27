@@ -17,7 +17,7 @@ class Status_Gizi extends CI_Controller
    public function index()
    {
       $this->_validation_anak();
-      $data['title'] = 'Status Gizi';
+      $data['title'] = 'Status Gizi Anak';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['users'] = $this->bm->get_all('gizi_status');
       $data['ibu'] = $this->im->get_all_ibu();

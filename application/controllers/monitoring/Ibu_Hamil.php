@@ -76,7 +76,7 @@ class Ibu_Hamil extends CI_Controller
       $mpdf->Output('monitoring_ibu_hamil.pdf', 'D');
    }
 
-   public function excel()
+   public function excel($date = null)
    {
       $spreadsheet = new Spreadsheet();
       $sheet = $spreadsheet->getActiveSheet();
@@ -99,7 +99,7 @@ class Ibu_Hamil extends CI_Controller
       $sheet->setCellValue('Q1', 'LILA');
       $sheet->setCellValue('R1', 'Kunjungan Berikutnya');
       $sheet->setCellValue('S1', 'Keterangan');
-      $data = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
+      $data = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil", $date);
       $no = 1;
       $x = 2;
       foreach ($data as $row) {

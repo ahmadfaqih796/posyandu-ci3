@@ -69,7 +69,7 @@
          </div>
       <?php endif; ?>
 
-      <?php if ($role == 1 || $role == 8) : ?>
+      <?php if ($role == 1 || $role == 7 || $role == 8) : ?>
          <div class="col-md-3 mb-3">
             <div class="card">
                <div class="card-body text-center">
@@ -143,7 +143,7 @@
          </div>
       <?php endif; ?> -->
 
-      <?php if ($role == 1 || $role == 8 || $role == 4) : ?>
+      <?php if ($role == 1 || $role == 7 || $role == 8 || $role == 4) : ?>
          <div class="col-md-4 mb-3">
             <div class="card">
                <div class="card-body text-center">

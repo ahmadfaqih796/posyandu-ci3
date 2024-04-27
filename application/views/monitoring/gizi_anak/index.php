@@ -9,7 +9,7 @@
                <h6 class="m-0 font-weight-bold text-primary mb-2"><?= $title ?></h6>
             </div>
             <div class="col-md-2 col-xs-12">
-               <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/gizi_anak/pdf') ?>">
+               <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/gizi_anak/pdf/') . $id_posyandu . '/' . $date ?>">
                   <i class="fas fa-print"></i> PDF
                </a>
             </div>

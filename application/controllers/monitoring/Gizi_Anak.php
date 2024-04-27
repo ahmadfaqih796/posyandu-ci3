@@ -51,6 +51,8 @@ class Gizi_Anak extends CI_Controller
       if ($data['total'] == 0) {
          $this->notification->notify_error('monitoring/gizi_anak', 'Tidak ada data');
       }
+      $data['id_posyandu'] = $id_posyandu;
+      $data['date'] = $tgl_ukur;
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
@@ -64,19 +66,20 @@ class Gizi_Anak extends CI_Controller
       }
    }
 
-   public function pdf()
+   public function pdf($id_posyandu = null, $tanggal = null)
    {
       require_once FCPATH . 'vendor/autoload.php';
       $mpdf = new \Mpdf\Mpdf();
 
-      $data['title'] = 'Data Gizi Gizi Anak';
+      $data['title'] = 'Data Gizi Anak';
       $data['no'] = 1;
-      $data['users'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
+      $data['users'] = $this->am->get_all_anak_table('timbangan_anak', $id_posyandu, $tanggal);
+      $data['role'] = $this->session->userdata('role_id');
 
-      $html = $this->load->view('monitoring/gizi_ibu_hamil/printPDF', $data, true);
+      $html = $this->load->view('monitoring/gizi_anak/printPDF', $data, true);
 
       $mpdf->WriteHTML($html);
-      $mpdf->Output('data_gizi_ibu_hamil.pdf', 'D');
+      $mpdf->Output('data_gizi_anak.pdf', 'D');
    }
 
    private function add()

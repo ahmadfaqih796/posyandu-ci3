@@ -163,7 +163,7 @@ class Kegiatan_Posyandu extends CI_Controller
    private function _payload()
    {
       $posyandu_kader = htmlspecialchars($this->input->post('posyandu_kader', true));
-      $kader_id = $posyandu_kader || htmlspecialchars($this->input->post('kader_id', true));
+      $kader_id =  htmlspecialchars($this->input->post('kader_id', true));
       $posyandu_id = htmlspecialchars($this->input->post('posyandu_id', true));
       $n_kegiatan = htmlspecialchars($this->input->post('n_kegiatan', true));
       $tujuan = htmlspecialchars($this->input->post('tujuan', true));

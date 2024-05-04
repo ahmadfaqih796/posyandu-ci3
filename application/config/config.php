@@ -25,7 +25,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 // $config['base_url'] = 'http://localhost:84/web/posyandu/';
 // $config['base_url'] = 'https://efae-2a09-bac5-3a0a-16d2-00-246-87.ngrok-free.app/';
-$config['base_url'] = 'http://localhost:3000/';
+$config['base_url'] = 'http://localhost:84/web/posyandu/';
+// $config['base_url'] = 'http://localhost:3000/';
 
 /*
 |--------------------------------------------------------------------------

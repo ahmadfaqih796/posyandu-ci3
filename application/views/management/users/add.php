@@ -34,7 +34,7 @@
                      <option value="2" <?= set_select('role_id', '2', (!empty($_POST['role_id']) && $_POST['role_id'] == "2")); ?>>Kader</option>
                      <option value="8" <?= set_select('role_id', '8', (!empty($_POST['role_id']) && $_POST['role_id'] == "8")); ?>>Poli KIA</option>
                      <option value="4" <?= set_select('role_id', '4', (!empty($_POST['role_id']) && $_POST['role_id'] == "4")); ?>>Poli Gizi</option>
-                     <option value="3" <?= set_select('role_id', '3', (!empty($_POST['role_id']) && $_POST['role_id'] == "3")); ?>>Anak</option>
+                     <!-- <option value="3" <?= set_select('role_id', '3', (!empty($_POST['role_id']) && $_POST['role_id'] == "3")); ?>>Anak</option> -->
                      <!-- <option value="5" <?= set_select('role_id', '5', (!empty($_POST['role_id']) && $_POST['role_id'] == "5")); ?>>Ibu Hamil</option> -->
                      <option value="6" <?= set_select('role_id', '6', (!empty($_POST['role_id']) && $_POST['role_id'] == "6")); ?>>Koordinator Imunisasi</option>
                   </select>

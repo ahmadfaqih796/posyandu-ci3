@@ -111,6 +111,6 @@
    document.getElementById('month').addEventListener('change', function() {
       var selectedMonth = this.value;
       // Mengalihkan ke halaman dengan URL yang disesuaikan
-      window.location.href = 'http://localhost:3000/monitoring/ibu_hamil/month/' + selectedMonth;
+      window.location.href = '<?= base_url("monitoring/ibu_hamil/month/") ?>' + selectedMonth;
    });
 </script>

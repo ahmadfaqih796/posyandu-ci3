@@ -42,10 +42,9 @@
    <table class="header">
       <tr>
          <td>
-            <img src="<?= $_SERVER['DOCUMENT_ROOT']; ?>/assets/img/dinkes_medan.png" border="0" alt="Logo" class="logo">
+            <img src="<?= base_url(); ?>/assets/img/dinkes_medan.png" border="0" alt="Logo" class="logo">
          </td>
          <td>
-            <?= base_url(); ?>
             <h1>DINAS KESEHATAN KOTA MEDAN</h1>
             <h1>UPT PUSKESMAS MEDAN DELI</h1>
             <br>
@@ -53,7 +52,7 @@
             <p>MEDAN</p>
          </td>
          <td>
-            <img src="<?= $_SERVER['DOCUMENT_ROOT']; ?>/assets/img/puskesmas.png" border="0" alt="Logo" class="logo">
+            <img src="<?= base_url(); ?>/assets/img/puskesmas.png" border="0" alt="Logo" class="logo">
          </td>
       </tr>
    </table>

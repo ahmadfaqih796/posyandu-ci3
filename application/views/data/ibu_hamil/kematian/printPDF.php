@@ -45,6 +45,7 @@
             <img src="<?= $_SERVER['DOCUMENT_ROOT']; ?>/assets/img/dinkes_medan.png" border="0" alt="Logo" class="logo">
          </td>
          <td>
+            <?= base_url(); ?>
             <h1>DINAS KESEHATAN KOTA MEDAN</h1>
             <h1>UPT PUSKESMAS MEDAN DELI</h1>
             <br>

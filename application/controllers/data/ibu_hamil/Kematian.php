@@ -48,14 +48,14 @@ class Kematian extends CI_Controller
       require_once FCPATH . 'vendor/autoload.php';
       $mpdf = new \Mpdf\Mpdf();
 
-      $data['title'] = 'Data Kehamilan Ibu Hamil';
+      $data['title'] = 'Data Kematian Ibu Hamil';
       $data['no'] = 1;
       $data['users'] = $this->im->get_all_kematian();
 
       $html = $this->load->view('data/ibu_hamil/kematian/printPDF', $data, true);
 
       $mpdf->WriteHTML($html);
-      $mpdf->Output('data_kehamilan_ibu_hamil.pdf', 'D');
+      $mpdf->Output('data_kematian_ibu_hamil.pdf', 'D');
    }
 
    private function add()

@@ -113,7 +113,7 @@ class User extends CI_Controller
    public function detail_kegiatan($id)
    {
       $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
-      $data['title'] = 'Kegiatan';
+      $data['title'] = 'Artikel';
       $data['no'] = 1;
       $data['detail'] = $this->bm->get_by_id('kegiatan', $id);
       $this->load->view('templates/user/header', $data);

@@ -61,6 +61,12 @@ $total = $this->bm->get_count_bumil_id('notification', $this->session->userdata(
                   </a>
                </li>
                <li class="nav-item ms-lg-auto">
+                  <a class="nav-link nav-link-icon me-2" href="<?= base_url("bumil/artikel") ?>">
+                     <i class="fa fa-clipboard me-1"></i>
+                     <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Artikel">Artikel</p>
+                  </a>
+               </li>
+               <li class="nav-item ms-lg-auto">
                   <a class="nav-link nav-link-icon me-2" href="<?= base_url("bumil/profil") ?>">
                      <i class="fa fa-clipboard me-1"></i>
                      <p class="d-inline text-sm z-index-1 font-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Profil">Profil</p>

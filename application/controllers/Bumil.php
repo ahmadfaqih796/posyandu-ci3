@@ -31,6 +31,30 @@ class Bumil extends CI_Controller
       $this->load->view('templates/bumil/footer', $data);
    }
 
+   public function artikel()
+   {
+      // $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
+      $data['title'] = 'Artikel';
+      $data['no'] = 1;
+      $data['data'] = $this->bm->get_all('kegiatan', 'bumil');
+      $this->load->view('templates/bumil/header', $data);
+      $this->load->view('templates/bumil/topbar', $data);
+      $this->load->view('bumil/artikel', $data);
+      $this->load->view('templates/bumil/footer', $data);
+   }
+
+   public function detail_kegiatan($id)
+   {
+      // $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
+      $data['title'] = 'Artikel';
+      $data['no'] = 1;
+      $data['detail'] = $this->bm->get_by_id('kegiatan', $id);
+      $this->load->view('templates/bumil/header', $data);
+      $this->load->view('templates/bumil/topbar', $data);
+      $this->load->view('bumil/detail_kegiatan', $data);
+      $this->load->view('templates/bumil/footer', $data);
+   }
+
    public function kehamilan()
    {
       $data['title'] = 'Kehamilan';

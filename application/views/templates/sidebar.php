@@ -50,7 +50,7 @@ $sidebarMenu = array(
             "url" => "management/schedule",
             "text" => "Jadwal Posyandu",
             "icon" => "fas fa-fw fa-hospital",
-            "role" => array(1, 4, 8),
+            "role" => array(1, 6, 8),
          ),
          // array(
          //    "url" => "management/artikel",

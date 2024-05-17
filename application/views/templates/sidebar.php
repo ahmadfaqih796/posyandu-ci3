@@ -81,7 +81,7 @@ $sidebarMenu = array(
             "url" => "data/anak/kematian",
             "text" => "Kematian Anak",
             "icon" => "fas fa-fw fa-book",
-            "role" => array(1, 2, 8),
+            "role" => array(2, 8),
          ),
          array(
             "url" => "management/imunisasi",
@@ -105,7 +105,7 @@ $sidebarMenu = array(
    ),
    array(
       "text" => "Data Ibu Hamil",
-      "role" => array(1, 7, 8),
+      "role" => array(7, 8),
       "submenu" => array(
          array(
             "url" => "data/ibu_hamil/ibu_hamil",
@@ -129,7 +129,7 @@ $sidebarMenu = array(
    ),
    array(
       "text" => "Monitoring",
-      "role" => array(1, 4, 2, 7, 8),
+      "role" => array(4, 2, 7, 8),
       "submenu" => array(
          array(
             "url" => "monitoring/ibu_hamil",

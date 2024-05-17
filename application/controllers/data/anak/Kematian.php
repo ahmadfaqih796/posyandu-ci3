@@ -23,6 +23,10 @@ class Kematian extends CI_Controller
 
       $data['posyandu'] = $this->bm->get_all("posyandu");
 
+      if ($data['role'] == 2) {
+         $data['kader'] = $this->bm->get_by_id('kaders', $this->session->userdata('user_id'));
+      }
+
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);

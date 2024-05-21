@@ -35,12 +35,6 @@ $sidebarMenu = array(
             "role" => array(1),
          ),
          array(
-            "url" => "management/kaders",
-            "text" => "Kader",
-            "icon" => "fas fa-fw fa-user",
-            "role" => array(1),
-         ),
-         array(
             "url" => "management/posyandu",
             "text" => "Posyandu",
             "icon" => "fas fa-fw fa-hospital",
@@ -101,6 +95,42 @@ $sidebarMenu = array(
          //    "icon" => "fas fa-fw fa-child",
          //    "role" => array(2, 8),
          // ),
+      )
+   ),
+   array(
+      "text" => "Petugas",
+      "role" => array(1),
+      "submenu" => array(
+         array(
+            "url" => "management/kaders",
+            "text" => "Kader",
+            "icon" => "fas fa-fw fa-user",
+            "role" => array(1),
+         ),
+         array(
+            "url" => "petugas/poli_kia",
+            "text" => "Poli KIA",
+            "icon" => "fas fa-fw fa-users",
+            "role" => array(1),
+         ),
+         array(
+            "url" => "petugas/poli_gizi",
+            "text" => "Poli Gizi",
+            "icon" => "fas fa-fw fa-users",
+            "role" => array(1),
+         ),
+         array(
+            "url" => "petugas/bidan",
+            "text" => "Bidan",
+            "icon" => "fas fa-fw fa-users",
+            "role" => array(1),
+         ),
+         array(
+            "url" => "petugas/koordinator_imunisasi",
+            "text" => "Koordinator Imunisasi",
+            "icon" => "fas fa-fw fa-users",
+            "role" => array(1),
+         ),
       )
    ),
    array(

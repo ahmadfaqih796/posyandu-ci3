@@ -36,6 +36,6 @@ class Bidan extends CI_Controller
       $html = $this->load->view('petugas/print', $data, true);
 
       $mpdf->WriteHTML($html);
-      $mpdf->Output('data_petugas_poli_gizi.pdf', 'D');
+      $mpdf->Output('data_petugas_bidan.pdf', 'D');
    }
 }

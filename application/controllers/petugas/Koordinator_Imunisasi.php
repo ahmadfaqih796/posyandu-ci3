@@ -1,23 +1,21 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Poli_Kia extends CI_Controller
+class Koordinator_Imunisasi extends CI_Controller
 {
    public function __construct()
    {
       parent::__construct();
       $this->load->library('session');
-      $this->load->model('Kaders_model', 'km');
-      $this->load->model('Posyandu_model', 'pm');
       $this->load->model('Users_model', 'um');
    }
 
    public function index()
    {
-      $data['title'] = 'Petugas Poli KIA';
+      $data['title'] = 'Petugas Koordinator Imunisasi';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['users'] = $this->um->get_users(8);
-      $data['url'] = base_url('petugas/poli_kia/print');
+      $data['users'] = $this->um->get_users(6);
+      $data['url'] = base_url('petugas/koordinator_imunisasi/print');
       $data['no'] = 1;
       $this->load->view('templates/header', $data);
       $this->load->view('templates/sidebar', $data);
@@ -31,13 +29,13 @@ class Poli_Kia extends CI_Controller
       require_once FCPATH . 'vendor/autoload.php';
       $mpdf = new \Mpdf\Mpdf();
 
-      $data['title'] = 'Petugas Poli KIA';
+      $data['title'] = 'Petugas Koordinator Imunisasi';
       $data['no'] = 1;
-      $data['users'] = $this->um->get_users(8);
+      $data['users'] = $this->um->get_users(6);
 
       $html = $this->load->view('petugas/print', $data, true);
 
       $mpdf->WriteHTML($html);
-      $mpdf->Output('data_petugas_poli_kia.pdf', 'D');
+      $mpdf->Output('data_petugas_koordinator_imunisasi.pdf', 'D');
    }
 }

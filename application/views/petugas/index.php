@@ -9,7 +9,7 @@
                <h6 class="m-0 font-weight-bold text-primary"><?= $title ?></h6>
             </div>
             <div class="col-6">
-               <a type="button" class="btn btn-success float-right" href="<?= base_url('management/kaders/print') ?>">
+               <a type="button" class="btn btn-success float-right" href="<?= $url ?>">
                   <i class="fas fa-print"></i> Cetak
                </a>
             </div>

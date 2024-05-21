@@ -17,6 +17,7 @@ class Poli_Kia extends CI_Controller
       $data['title'] = 'Petugas Poli KIA';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['users'] = $this->um->get_users(8);
+      $data['url'] = base_url('petugas/poli_kia/print');
       $data['no'] = 1;
       $this->load->view('templates/header', $data);
       $this->load->view('templates/sidebar', $data);

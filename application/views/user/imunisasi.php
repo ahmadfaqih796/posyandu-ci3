@@ -9,12 +9,12 @@
                   <thead>
                      <tr>
                         <th>No</th>
+                        <th>NIK</th>
                         <th>Nama</th>
-                        <th>Usia (Bulan)</th>
-                        <th>Tanggal Periksa</th>
-                        <th>Berat Badan</th>
-                        <th>Tinggi</th>
-                        <th>Jenis Imunisasi</th>
+                        <th>Nama Posyandu</th>
+                        <th>Tanggal Imunisasi</th>
+                        <th>Imunisasi</th>
+                        <th>Status</th>
                      </tr>
                   </thead>
                   <tbody>

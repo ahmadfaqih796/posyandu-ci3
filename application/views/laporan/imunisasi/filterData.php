@@ -40,7 +40,7 @@
                         <td><?= $field['n_posyandu'] ?></td>
                         <td><?= $field['tanggal_imunisasi'] ?></td>
                         <td><?= $field['n_imunisasi'] ?></td>
-                        <td><?= $field['status'] ? 'Sudah' : 'Belum' ?></td>
+                        <td><?= $field['status'] == 1 ? 'Sudah' : 'Belum' ?></td>
                      </tr>
                   <?php endforeach; ?>
                </tbody>

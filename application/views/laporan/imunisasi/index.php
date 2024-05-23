@@ -50,7 +50,7 @@
                         <td><?= $field['n_posyandu'] ?></td>
                         <td><?= $field['tanggal_imunisasi'] ?></td>
                         <td><?= $field['n_imunisasi'] ?></td>
-                        <td><?= $field['status'] ? 'Sudah' : 'Belum' ?></td>
+                        <td><?= $field['status'] == 1 ? 'Sudah' : 'Belum' ?></td>
                         <?php if ($role == 6) : ?>
                            <td>
                               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>

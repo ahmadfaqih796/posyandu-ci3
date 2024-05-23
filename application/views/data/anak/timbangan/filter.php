@@ -16,7 +16,7 @@
                   <select name="posyandu_id" id="posyandu_id" class="form-control" required>
                      <option value="">-- Pilih Posyandu --</option>
                      <?php foreach ($posyandu as $field) : ?>
-                        <option value="<?= $field['id'] ?>" <?= set_select('posyandu_id', $field['id'], (!empty($_POST['posyandu_id']) && $_POST['posyandu_id'] == $field['id'])); ?>><?= $field['n_posyandu'] . ' - ' . $field['id'] ?></option>
+                        <option value="<?= $field['id'] ?>" <?= set_select('posyandu_id', $field['id'], (!empty($_POST['posyandu_id']) && $_POST['posyandu_id'] == $field['id'])); ?>><?= $field['n_posyandu'] ?></option>
                      <?php endforeach; ?>
                   </select>
                   <?= form_error('posyandu_id', '<small class="text-danger pl-3">', '</small>'); ?>

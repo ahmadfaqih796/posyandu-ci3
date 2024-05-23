@@ -7,6 +7,7 @@ class User extends CI_Controller
    {
       parent::__construct();
       $this->load->library('session');
+      $this->load->model('Imunisasi_model', 'im');
       $this->load->model('Anak_model', 'am');
       $this->load->model('Perkembangan_Anak_model', 'pm');
       $this->load->model('Schedule_model', 'sm');
@@ -55,7 +56,8 @@ class User extends CI_Controller
       $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
       $data['title'] = 'Imunisasi';
       $data['no'] = 1;
-      $data['users'] = $this->pm->get_pa_by_id($this->session->userdata('user_id'));
+      $data['users'] = $this->im->get_all_imunisasi(null, null, $this->session->userdata('user_id'));
+      // $data['users'] = $this->pm->get_pa_by_id($this->session->userdata('user_id'));
       $this->load->view('templates/user/header', $data);
       $this->load->view('templates/user/topbar', $data);
       $this->load->view('user/imunisasi', $data);

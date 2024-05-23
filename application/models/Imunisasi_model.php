@@ -8,7 +8,7 @@ class Imunisasi_model extends CI_Model
       parent::__construct();
    }
 
-   public function get_all_imunisasi($id_posyandu = null, $tanggal = null)
+   public function get_all_imunisasi($id_posyandu = null, $tanggal = null, $anak_id = null)
    {
       $this->db->select('i.*, u.name, u.email, u.is_active, t.n_imunisasi, a.nik, p.n_posyandu');
       $this->db->from('imunisasi i');
@@ -21,6 +21,9 @@ class Imunisasi_model extends CI_Model
       }
       if ($tanggal != null) {
          $this->db->like('i.tanggal_imunisasi', $tanggal);
+      }
+      if ($anak_id != null) {
+         $this->db->where('i.anak_id', $anak_id);
       }
       return $this->db->get()->result_array();
    }

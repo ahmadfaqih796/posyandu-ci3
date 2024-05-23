@@ -18,15 +18,16 @@
                      </tr>
                   </thead>
                   <tbody>
-                     <?php foreach ($users as $field) : ?>
+                     <?php foreach ($users as $field) :
+                     ?>
                         <tr>
                            <td><?= $no++ ?></td>
+                           <td><?= $field['nik'] ?></td>
                            <td><?= $field['name'] ?></td>
-                           <td><?= $field['usia'] ?></td>
-                           <td><?= $field['tanggal_periksa'] ?></td>
-                           <td><?= $field['berat_badan'] ?></td>
-                           <td><?= $field['tinggi_badan'] ?></td>
-                           <td><?= $field['nilai_gizi'] ?></td>
+                           <td><?= $field['n_posyandu'] ?></td>
+                           <td><?= $field['tanggal_imunisasi'] ?></td>
+                           <td><?= $field['n_imunisasi'] ?></td>
+                           <td><?= $field['status'] == 1 ? 'Sudah' : 'Belum' ?></td>>
                         </tr>
                      <?php endforeach; ?>
                   </tbody>

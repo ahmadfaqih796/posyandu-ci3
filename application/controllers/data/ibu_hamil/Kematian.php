@@ -61,7 +61,7 @@ class Kematian extends CI_Controller
    private function add()
    {
       $result = $this->bm->add('kematian_ibu_hamil', $this->_payload());
-      $this->bm->update('bidan', $this->input->post('bumil_id'), ['is_death' => 1]);
+      $this->bm->update('ibu_hamil', $this->input->post('bumil_id'), ['is_death' => 1]);
       if ($result) {
          $this->notification->notify_success('data/ibu_hamil/kematian', 'Berhasil menambahkan kematian');
       } else {
@@ -84,7 +84,7 @@ class Kematian extends CI_Controller
    {
       $id = $this->input->post('id');
       $result = $this->bm->delete("kematian_ibu_hamil", $id);
-      $this->bm->update('bidan', $this->input->post('bumil_id'), ['is_death' => 0]);
+      $this->bm->update('ibu_hamil', $this->input->post('bumil_id'), ['is_death' => 0]);
       if ($result) {
          $this->notification->notify_success('data/ibu_hamil/kematian', 'Berhasil menghapus kematian');
       } else {

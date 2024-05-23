@@ -94,7 +94,7 @@ class Timbangan extends CI_Controller
       $data['date'] = $tgl_ukur;
 
       if ($data['role'] == 2) {
-         $data['kader'] = $this->bm->get_by_id('kaders', $this->session->userdata('user_id'));
+         $data['kader'] = $this->bm->get_by_user_id('kaders', $this->session->userdata('user_id'));
          $data['anak'] = $this->am->get_all_anak_no_dead($data['kader']['posyandu_id']);
          $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $data['kader']['posyandu_id'], $tgl_ukur);
       } else {

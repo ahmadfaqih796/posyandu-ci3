@@ -169,7 +169,17 @@ class Bumil extends CI_Controller
       $this->load->library('upload', $config);
 
       if (!$this->upload->do_upload('photo')) {
-         return $this->notification->notify_error('bumil/profil', 'Ukuran gambar terlalu besar atau gambar tidak valid');
+         $payload = [
+            'n_ibu' => $n_ibu,
+            'no_medis' => $no_medis,
+            'nik' => $nik,
+            'n_suami' => $n_suami,
+            'alamat' => $alamat,
+            'telepon' => '08' . $telepon,
+            'golongan_darah' => $golongan_darah,
+         ];
+         return $payload;
+         // return $this->notification->notify_error('bumil/profil', 'Ukuran gambar terlalu besar atau gambar tidak valid');
       } else {
          $data = $this->upload->data();
          $payload = [

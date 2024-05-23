@@ -9,7 +9,7 @@
             <div class="card">
                <div class="card-body">
                   <img src="<?= base_url("assets/img/ibu_hamil/" . $detail['photo']) ?>" alt="" style="width: 100px; height: 100px; border: 3px solid black; border-radius: 50%; object-fit: contain; object-position: center; margin: 10px auto; display: block;">
-                  <!-- <?= $detail['photo'] ?> -->
+                  <!-- <?= var_dump($detail) ?> -->
                   <table class="table table-borderless table-sm">
                      <tbody>
                         <tr>

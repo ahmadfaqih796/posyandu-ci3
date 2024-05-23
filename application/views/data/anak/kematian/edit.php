@@ -35,7 +35,7 @@
 
 <script>
    function getData(data) {
-      document.getElementById('edit_id').value = data['id'];
+      document.getElementById('edit_id').value = data['table_id'];
       document.getElementById('edit_anak_id').value = data['anak_id'];
       document.getElementById('edit_tgl_kematian').value = data['tgl_kematian'];
       document.getElementById('edit_penyebab').value = data['penyebab'];

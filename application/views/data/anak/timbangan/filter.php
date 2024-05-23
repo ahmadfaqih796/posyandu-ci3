@@ -16,7 +16,7 @@
                   <select name="posyandu_id" id="posyandu_id" class="form-control" required>
                      <option value="">-- Pilih Posyandu --</option>
                      <?php foreach ($posyandu as $field) : ?>
-                        <option value="<?= $field['id'] ?>" <?= set_select('posyandu_id', $field['id'], (!empty($_POST['posyandu_id']) && $_POST['posyandu_id'] == $field['id'])); ?>><?= $field['n_posyandu'] ?></option>
+                        <option value="<?= $field['id'] ?>" <?= set_select('posyandu_id', $field['id'], (!empty($_POST['posyandu_id']) && $_POST['posyandu_id'] == $field['id'])); ?>><?= $field['n_posyandu'] . ' - ' . $field['id'] ?></option>
                      <?php endforeach; ?>
                   </select>
                   <?= form_error('posyandu_id', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -40,10 +40,8 @@
    document.addEventListener('DOMContentLoaded', function() {
       var form = document.getElementById('addForm');
       form.addEventListener('submit', function(event) {
-         event.preventDefault(); // Mencegah formulir untuk melakukan submit default
-
-         // Lakukan pengalihan halaman menggunakan JavaScript
-         var selectedValue = document.getElementById('posyandu_id').value;
+         event.preventDefault();
+         var selectedValue = event.target.posyandu_id.value;
          var tgl_ukur = document.getElementById('tgl_ukur').value;
          var redirectUrl = '<?= base_url("data/anak/timbangan/anak/") ?>' + selectedValue + '/' + tgl_ukur;
          window.location.href = redirectUrl;

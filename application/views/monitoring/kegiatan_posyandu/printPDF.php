@@ -56,15 +56,16 @@
          </td>
       </tr>
    </table>
-   <h1>Monitoring Ibu Hamil</h1>
+   <h1><?= $title ?></h1>
    <table class="table" width="100%" cellspacing="0">
       <thead>
          <tr>
             <th>No</th>
             <th>Nama Posyandu</th>
             <th>Nama Kegiatan</th>
-            <th>Sasaran</th>
-            <th>Parameter Keberhasilan</th>
+            <th>Tanggal Pengajuan</th>
+            <th>Tanggal Disetujui</th>
+            <th>Disetujui</th>
          </tr>
       </thead>
       <tbody>
@@ -74,8 +75,9 @@
                <td><?= $no++ ?></td>
                <td><?= $field['n_posyandu'] ?></td>
                <td><?= $field['n_kegiatan'] ?></td>
-               <td><?= $field['sasaran'] ?></td>
-               <td><?= $field['parameter_keberhasilan'] ?></td>
+               <td><?= $field['created_at'] ?></td>
+               <td><?= ($field['updated_at'] == $field['created_at'] ? '-' : $field['updated_at']) ?></td>
+               <td><?= ($field['is_verified'] ? 'Sudah' : 'Belum') ?></td>
             </tr>
          <?php endforeach; ?>
       </tbody>

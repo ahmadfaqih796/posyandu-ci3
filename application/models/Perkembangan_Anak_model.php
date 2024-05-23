@@ -22,7 +22,7 @@ class Perkembangan_Anak_model extends CI_Model
       $this->db->select('p.*, u.name, u.email, u.is_active');
       $this->db->from('perkembangan_anak p');
       $this->db->join('users u', 'p.anak_id = u.id', 'left');
-      $this->db->where('u.id', $id);
+      $this->db->where('p.anak_id', $id);
       return $this->db->get()->result_array();
       // return $this->db->get_where('perkembangan_anak', ['id' => $id])->row_array();
    }

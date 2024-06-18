@@ -33,7 +33,7 @@
          <!-- Bar Chart -->
          <div class="card shadow mb-4">
             <div class="card-header py-3">
-               <h6 class="m-0 font-weight-bold text-primary">Data Imunisasi</h6>
+               <h6 class="m-0 font-weight-bold text-primary">Monitoring Imunisasi</h6>
             </div>
             <form action="<?= base_url('dashboard') ?>" method="get">
                <div class="row px-4 mt-3">
@@ -84,6 +84,66 @@
                   <span id="november" hidden><?= $total['b_imunisasi']['november'] ?></span>
                   <span id="desember" hidden><?= $total['b_imunisasi']['desember'] ?></span>
                   <canvas id="myBarChart"></canvas>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="col-xl-6">
+         <!-- Bar Chart -->
+         <div class="card shadow mb-4">
+            <div class="card-header py-3">
+               <h6 class="m-0 font-weight-bold text-primary">Monitoring Kegiatan Posyandu</h6>
+            </div>
+            <form action="<?= base_url('dashboard') ?>" method="get">
+               <div class="row px-4 mt-3">
+                  <div class="col-md-5">
+                     <div class="form-group">
+                        <select name="posyandu_id" id="posyandu_id" class="form-control" required>
+                           <option value="">-- Pilih Posyandu --</option>
+                           <?php foreach ($posyandu as $field) : ?>
+                              <option value="<?= $field['id'] ?>" <?= set_select('posyandu_id', $field['id'], (!empty($_POST['posyandu_id']) && $_POST['posyandu_id'] == $field['id'])); ?>><?= $field['n_posyandu'] ?></option>
+                           <?php endforeach; ?>
+                        </select>
+                        <?= form_error('posyandu_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                     </div>
+                  </div>
+                  <div class="col-md-5">
+                     <div class="form-group">
+                        <select name="year" id="year" class="form-control" required>
+                           <option value="">-- Pilih Tahun --</option>
+                           <?php
+                           $currentYear = date('Y') + 5;
+                           $startYear = 2020;
+                           for ($year = $startYear; $year <= $currentYear; $year++) : ?>
+                              <option value="<?= $year ?>" <?= set_select('year', $year, (!empty($_POST['year']) && $_POST['year'] == $year)); ?>><?= $year ?></option>
+                           <?php endfor; ?>
+                        </select>
+                        <?= form_error('year', '<small class="text-danger pl-3">', '</small>'); ?>
+                     </div>
+                  </div>
+                  <div class="col-md-2">
+                     <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-search"></i>
+                     </button>
+                  </div>
+               </div>
+            </form>
+            <div class="card-body">
+               <div class="chart-bar">
+                  <span id="KP_januari" hidden><?= $total['b_k_posyandu']['januari'] ?></span>
+                  <span id="KP_februari" hidden><?= $total['b_k_posyandu']['februari'] ?></span>
+                  <span id="KP_maret" hidden><?= $total['b_k_posyandu']['maret'] ?></span>
+                  <span id="KP_april" hidden><?= $total['b_k_posyandu']['april'] ?></span>
+                  <span id="KP_mei" hidden><?= $total['b_k_posyandu']['mei'] ?></span>
+                  <span id="KP_juni" hidden><?= $total['b_k_posyandu']['juni'] ?></span>
+                  <span id="KP_juli" hidden><?= $total['b_k_posyandu']['juli'] ?></span>
+                  <span id="KP_agustus" hidden><?= $total['b_k_posyandu']['agustus'] ?></span>
+                  <span id="KP_september" hidden><?= $total['b_k_posyandu']['september'] ?></span>
+                  <span id="KP_oktober" hidden><?= $total['b_k_posyandu']['oktober'] ?></span>
+                  <span id="KP_november" hidden><?= $total['b_k_posyandu']['november'] ?></span>
+                  <span id="KP_desember" hidden><?= $total['b_k_posyandu']['desember'] ?></span>
+                  <canvas id="kegiatanPosyandu"></canvas>
                </div>
             </div>
          </div>

@@ -85,6 +85,21 @@ class Base_model extends CI_Model
       return $this->db->get()->num_rows();
    }
 
+   public function get_count_k_posyandu_per_month($month = null, $year = null, $id_posyandu = null)
+   {
+      $this->db->select('m.*, p.n_posyandu, u.name');
+      $this->db->from('monitoring_kegiatan_posyandu m');
+      $this->db->join('posyandu p', 'm.posyandu_id = p.id', 'left');
+      $this->db->join('users u', 'm.kader_id = u.id', 'left');
+      if ($month != null) {
+         $this->db->where('MONTH(m.created_at)', $month);
+      }
+      if ($year != null) {
+         $this->db->where('YEAR(m.created_at)', $year);
+      }
+      return $this->db->get()->num_rows();
+   }
+
    public function get_count_bumil_id($table, $bumil_id)
    {
       return $this->db->get_where($table, ['bumil_id' => $bumil_id])->num_rows();

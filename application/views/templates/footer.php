@@ -64,7 +64,7 @@
 <!-- Page level custom scripts -->
 <script src="<?= base_url("assets/") ?>js/demo/chart-area-demo.js"></script>
 <script src="<?= base_url("assets/") ?>js/demo/chart-pie-demo.js"></script>
-<script src="<?= base_url("assets/") ?>js/demo/chart-bar-demo.js"></script>
+<script src="<?= base_url("assets/") ?>js/demo/chart-bar.js"></script>
 
 <!-- Quill for editor content -->
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>

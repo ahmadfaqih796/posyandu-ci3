@@ -84,6 +84,36 @@ class Base_model extends CI_Model
       return $this->db->get()->num_rows();
    }
 
+   public function get_count_monitoring_bumil($month = null, $year = null, $status = null)
+   {
+      $this->db->select('m.*, b.n_ibu, b.nik, 
+        CASE 
+            WHEN (
+                m.s_timbang_berat_badan LIKE "%belum%" OR
+                m.s_tekanan_darah LIKE "%belum%" OR
+                m.s_tinggi_puncak_rahim LIKE "%belum%" OR
+                m.s_vaksinasi_tetanus LIKE "%belum%" OR
+                m.s_tablet_zat_besi LIKE "%belum%" OR
+                m.s_tes_laboratorium LIKE "%belum%" OR
+                m.s_temu_wicara LIKE "%belum%"
+            ) THEN "belum"
+            ELSE "sudah"
+        END AS status');
+      $this->db->from('monitoring_ibu_hamil m');
+      $this->db->join('ibu_hamil b', 'm.bumil_id = b.id', 'left');
+      if ($month != null) {
+         $this->db->where('MONTH(m.tanggal_periksa)', $month);
+      }
+      if ($year != null) {
+         $this->db->where('YEAR(m.tanggal_periksa)', $year);
+      }
+      if ($status != null) {
+         $this->db->having('status', $status);
+      }
+      return $this->db->get()->num_rows();
+   }
+
+
    public function get_count_k_posyandu_per_month($month = null, $year = null, $id_posyandu = null)
    {
       $this->db->select('m.*, p.n_posyandu, u.name');

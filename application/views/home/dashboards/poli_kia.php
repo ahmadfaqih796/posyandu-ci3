@@ -149,6 +149,55 @@
          </div>
       </div>
 
+      <div class="col-xl-6">
+         <!-- Bar Chart -->
+         <div class="card shadow mb-4">
+            <div class="card-header py-3">
+               <h6 class="m-0 font-weight-bold text-primary">Monitoring Status 7T Ibu Hamil</h6>
+            </div>
+            <form action="<?= base_url('dashboard') ?>" method="get">
+               <div class="row px-4 mt-3">
+                  <div class="col-md-10">
+                     <div class="form-group">
+                        <select name="year" id="year" class="form-control" required>
+                           <option value="">-- Pilih Tahun --</option>
+                           <?php
+                           $currentYear = date('Y') + 5;
+                           $startYear = 2020;
+                           for ($year = $startYear; $year <= $currentYear; $year++) : ?>
+                              <option value="<?= $year ?>" <?= set_select('year', $year, (!empty($_POST['year']) && $_POST['year'] == $year)); ?>><?= $year ?></option>
+                           <?php endfor; ?>
+                        </select>
+                        <?= form_error('year', '<small class="text-danger pl-3">', '</small>'); ?>
+                     </div>
+                  </div>
+                  <div class="col-md-2">
+                     <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-search"></i>
+                     </button>
+                  </div>
+               </div>
+            </form>
+            <div class="card-body">
+               <div class="chart-bar">
+                  <span id="MB_januari" hidden><?= $total['b_m_status_bumil']['januari'] ?></span>
+                  <span id="MB_februari" hidden><?= $total['b_m_status_bumil']['februari'] ?></span>
+                  <span id="MB_maret" hidden><?= $total['b_m_status_bumil']['maret'] ?></span>
+                  <span id="MB_april" hidden><?= $total['b_m_status_bumil']['april'] ?></span>
+                  <span id="MB_mei" hidden><?= $total['b_m_status_bumil']['mei'] ?></span>
+                  <span id="MB_juni" hidden><?= $total['b_m_status_bumil']['juni'] ?></span>
+                  <span id="MB_juli" hidden><?= $total['b_m_status_bumil']['juli'] ?></span>
+                  <span id="MB_agustus" hidden><?= $total['b_m_status_bumil']['agustus'] ?></span>
+                  <span id="MB_september" hidden><?= $total['b_m_status_bumil']['september'] ?></span>
+                  <span id="MB_oktober" hidden><?= $total['b_m_status_bumil']['oktober'] ?></span>
+                  <span id="MB_november" hidden><?= $total['b_m_status_bumil']['november'] ?></span>
+                  <span id="MB_desember" hidden><?= $total['b_m_status_bumil']['desember'] ?></span>
+                  <canvas id="monitoringStatusBumil"></canvas>
+               </div>
+            </div>
+         </div>
+      </div>
+
       <div class="col-md-4 mb-3">
          <div class="card">
             <div class="card-body text-center">
@@ -343,29 +392,30 @@
       maxBarThickness: 1000,
    }, ];
 
-   // var dataGiziAnak = [{
-   //    label: "Total Anaks",
-   //    backgroundColor: "#4e73df",
-   //    hoverBackgroundColor: "#2e59d9",
-   //    borderColor: "#4e73df",
-   //    data: [
-   //       parseInt(document.getElementById("GA_januari").innerHTML),
-   //       parseInt(document.getElementById("GA_februari").innerHTML),
-   //       parseInt(document.getElementById("GA_maret").innerHTML),
-   //       parseInt(document.getElementById("GA_april").innerHTML),
-   //       parseInt(document.getElementById("GA_mei").innerHTML),
-   //       parseInt(document.getElementById("GA_juni").innerHTML),
-   //       parseInt(document.getElementById("GA_juli").innerHTML),
-   //       parseInt(document.getElementById("GA_agustus").innerHTML),
-   //       parseInt(document.getElementById("GA_september").innerHTML),
-   //       parseInt(document.getElementById("GA_oktober").innerHTML),
-   //       parseInt(document.getElementById("GA_november").innerHTML),
-   //       parseInt(document.getElementById("GA_desember").innerHTML),
-   //    ],
-   //    maxBarThickness: 1000,
-   // }, ];
+   var dataMonitoringStatusBumil = [{
+      label: "Total Ibu Hamil",
+      backgroundColor: "#4e73df",
+      hoverBackgroundColor: "#2e59d9",
+      borderColor: "#4e73df",
+      data: [
+         parseInt(document.getElementById("MB_januari").innerHTML),
+         parseInt(document.getElementById("MB_februari").innerHTML),
+         parseInt(document.getElementById("MB_maret").innerHTML),
+         parseInt(document.getElementById("MB_april").innerHTML),
+         parseInt(document.getElementById("MB_mei").innerHTML),
+         parseInt(document.getElementById("MB_juni").innerHTML),
+         parseInt(document.getElementById("MB_juli").innerHTML),
+         parseInt(document.getElementById("MB_agustus").innerHTML),
+         parseInt(document.getElementById("MB_september").innerHTML),
+         parseInt(document.getElementById("MB_oktober").innerHTML),
+         parseInt(document.getElementById("MB_november").innerHTML),
+         parseInt(document.getElementById("MB_desember").innerHTML),
+      ],
+      maxBarThickness: 1000,
+   }, ];
 
    // Create the chart
    createBarChart("myBarChart", dataImunisasi);
    createBarChart("kegiatanPosyandu", dataKegiatanPosyandu);
+   createBarChart("monitoringStatusBumil", dataMonitoringStatusBumil);
 </script>

@@ -58,6 +58,20 @@ class Dashboard extends CI_Controller
             'november' => $this->bm->get_count_k_posyandu_per_month(11, $year, $posyandu_id),
             'desember' => $this->bm->get_count_k_posyandu_per_month(12, $year, $posyandu_id),
          ),
+         'b_m_status_bumil' => array(
+            'januari' => $this->bm->get_count_monitoring_bumil(1, $year, "sudah"),
+            'februari' => $this->bm->get_count_monitoring_bumil(2, $year, "sudah"),
+            'maret' => $this->bm->get_count_monitoring_bumil(3, $year, "sudah"),
+            'april' => $this->bm->get_count_monitoring_bumil(4, $year, "sudah"),
+            'mei' => $this->bm->get_count_monitoring_bumil(5, $year, "sudah"),
+            'juni' => $this->bm->get_count_monitoring_bumil(6, $year, "sudah"),
+            'juli' => $this->bm->get_count_monitoring_bumil(7, $year, "sudah"),
+            'agustus' => $this->bm->get_count_monitoring_bumil(8, $year, "sudah"),
+            'september' => $this->bm->get_count_monitoring_bumil(9, $year, "sudah"),
+            'oktober' => $this->bm->get_count_monitoring_bumil(10, $year, "sudah"),
+            'november' => $this->bm->get_count_monitoring_bumil(11, $year, "sudah"),
+            'desember' => $this->bm->get_count_monitoring_bumil(12, $year, "sudah"),
+         ),
          'b_g_anak' => array(
             'buruk' => array(
                'januari' => $this->bm->get_count_gizi_anak(1, $year, $posyandu_id, "Gizi Buruk"),
@@ -200,6 +214,8 @@ class Dashboard extends CI_Controller
       // - Poli Kia = 8
       if ($role == 8) {
          $this->load->view('home/dashboards/poli_kia', $data);
+      } else if ($role == 7) {
+         $this->load->view('home/dashboards/bidan', $data);
       } else if ($role == 4) {
          $this->load->view('home/dashboards/poli_gizi', $data);
       } else {

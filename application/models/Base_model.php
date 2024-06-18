@@ -77,7 +77,6 @@ class Base_model extends CI_Model
       }
       if ($year != null) {
          $this->db->where('YEAR(tanggal_imunisasi)', $year);
-         # code...
       }
       if ($id_posyandu != null) {
          $this->db->where('a.posyandu_id', $id_posyandu);
@@ -96,6 +95,31 @@ class Base_model extends CI_Model
       }
       if ($year != null) {
          $this->db->where('YEAR(m.created_at)', $year);
+      }
+      if ($id_posyandu != null) {
+         $this->db->where('m.posyandu_id', $id_posyandu);
+      }
+      return $this->db->get()->num_rows();
+   }
+
+   public function get_count_gizi_anak($month = null, $year = null, $id_posyandu = null, $status = null)
+   {
+      $this->db->select('t.*, t.id AS table_id, u.name, a.*, p.n_posyandu');
+      $this->db->from('timbangan_anak t');
+      $this->db->join('users u', 't.anak_id = u.id', 'left');
+      $this->db->join('anak a', 't.anak_id = a.user_id', 'left');
+      $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
+      if ($id_posyandu != null) {
+         $this->db->where('a.posyandu_id', $id_posyandu);
+      }
+      if ($month != null) {
+         $this->db->where('MONTH(t.tgl_ukur)', $month);
+      }
+      if ($year != null) {
+         $this->db->where('YEAR(t.tgl_ukur)', $year);
+      }
+      if ($status != null) {
+         $this->db->where('t.status_gizi', $status);
       }
       return $this->db->get()->num_rows();
    }

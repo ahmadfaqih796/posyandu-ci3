@@ -6,7 +6,7 @@
          <!-- Bar Chart -->
          <div class="card shadow mb-4">
             <div class="card-header py-3">
-               <h6 class="m-0 font-weight-bold text-primary">Monitoring Kegiatan Posyandu</h6>
+               <h6 class="m-0 font-weight-bold text-primary">Monitoring Gizi Anak</h6>
             </div>
             <form action="<?= base_url('dashboard') ?>" method="get">
                <div class="row px-4 mt-3">
@@ -44,18 +44,59 @@
             </form>
             <div class="card-body">
                <div class="chart-bar">
-                  <span id="GA_januari" hidden><?= $total['b_k_posyandu']['januari'] ?></span>
-                  <span id="GA_februari" hidden><?= $total['b_k_posyandu']['februari'] ?></span>
-                  <span id="GA_maret" hidden><?= $total['b_k_posyandu']['maret'] ?></span>
-                  <span id="GA_april" hidden><?= $total['b_k_posyandu']['april'] ?></span>
-                  <span id="GA_mei" hidden><?= $total['b_k_posyandu']['mei'] ?></span>
-                  <span id="GA_juni" hidden><?= $total['b_k_posyandu']['juni'] ?></span>
-                  <span id="GA_juli" hidden><?= $total['b_k_posyandu']['juli'] ?></span>
-                  <span id="GA_agustus" hidden><?= $total['b_k_posyandu']['agustus'] ?></span>
-                  <span id="GA_september" hidden><?= $total['b_k_posyandu']['september'] ?></span>
-                  <span id="GA_oktober" hidden><?= $total['b_k_posyandu']['oktober'] ?></span>
-                  <span id="GA_november" hidden><?= $total['b_k_posyandu']['november'] ?></span>
-                  <span id="GA_desember" hidden><?= $total['b_k_posyandu']['desember'] ?></span>
+                  <!-- Gizi Buruk -->
+                  <span id="GA_Buruk_januari" hidden><?= $total['b_g_anak']['buruk']['januari'] ?></span>
+                  <span id="GA_Buruk_februari" hidden><?= $total['b_g_anak']['buruk']['februari'] ?></span>
+                  <span id="GA_Buruk_maret" hidden><?= $total['b_g_anak']['buruk']['maret'] ?></span>
+                  <span id="GA_Buruk_april" hidden><?= $total['b_g_anak']['buruk']['april'] ?></span>
+                  <span id="GA_Buruk_mei" hidden><?= $total['b_g_anak']['buruk']['mei'] ?></span>
+                  <span id="GA_Buruk_juni" hidden><?= $total['b_g_anak']['buruk']['juni'] ?></span>
+                  <span id="GA_Buruk_juli" hidden><?= $total['b_g_anak']['buruk']['juli'] ?></span>
+                  <span id="GA_Buruk_agustus" hidden><?= $total['b_g_anak']['buruk']['agustus'] ?></span>
+                  <span id="GA_Buruk_september" hidden><?= $total['b_g_anak']['buruk']['september'] ?></span>
+                  <span id="GA_Buruk_oktober" hidden><?= $total['b_g_anak']['buruk']['oktober'] ?></span>
+                  <span id="GA_Buruk_november" hidden><?= $total['b_g_anak']['buruk']['november'] ?></span>
+                  <span id="GA_Buruk_desember" hidden><?= $total['b_g_anak']['buruk']['desember'] ?></span>
+                  <!--Gizi Kurang -->
+                  <span id="GA_Kurang_januari" hidden><?= $total['b_g_anak']['kurang']['januari'] ?></span>
+                  <span id="GA_Kurang_februari" hidden><?= $total['b_g_anak']['kurang']['februari'] ?></span>
+                  <span id="GA_Kurang_maret" hidden><?= $total['b_g_anak']['kurang']['maret'] ?></span>
+                  <span id="GA_Kurang_april" hidden><?= $total['b_g_anak']['kurang']['april'] ?></span>
+                  <span id="GA_Kurang_mei" hidden><?= $total['b_g_anak']['kurang']['mei'] ?></span>
+                  <span id="GA_Kurang_juni" hidden><?= $total['b_g_anak']['kurang']['juni'] ?></span>
+                  <span id="GA_Kurang_juli" hidden><?= $total['b_g_anak']['kurang']['juli'] ?></span>
+                  <span id="GA_Kurang_agustus" hidden><?= $total['b_g_anak']['kurang']['agustus'] ?></span>
+                  <span id="GA_Kurang_september" hidden><?= $total['b_g_anak']['kurang']['september'] ?></span>
+                  <span id="GA_Kurang_oktober" hidden><?= $total['b_g_anak']['kurang']['oktober'] ?></span>
+                  <span id="GA_Kurang_november" hidden><?= $total['b_g_anak']['kurang']['november'] ?></span>
+                  <span id="GA_Kurang_desember" hidden><?= $total['b_g_anak']['kurang']['desember'] ?></span>
+                  <!-- Gizi Baik -->
+                  <span id="GA_Baik_januari" hidden><?= $total['b_g_anak']['baik']['januari'] ?></span>
+                  <span id="GA_Baik_februari" hidden><?= $total['b_g_anak']['baik']['februari'] ?></span>
+                  <span id="GA_Baik_maret" hidden><?= $total['b_g_anak']['baik']['maret'] ?></span>
+                  <span id="GA_Baik_april" hidden><?= $total['b_g_anak']['baik']['april'] ?></span>
+                  <span id="GA_Baik_mei" hidden><?= $total['b_g_anak']['baik']['mei'] ?></span>
+                  <span id="GA_Baik_juni" hidden><?= $total['b_g_anak']['baik']['juni'] ?></span>
+                  <span id="GA_Baik_juli" hidden><?= $total['b_g_anak']['baik']['juli'] ?></span>
+                  <span id="GA_Baik_agustus" hidden><?= $total['b_g_anak']['baik']['agustus'] ?></span>
+                  <span id="GA_Baik_september" hidden><?= $total['b_g_anak']['baik']['september'] ?></span>
+                  <span id="GA_Baik_oktober" hidden><?= $total['b_g_anak']['baik']['oktober'] ?></span>
+                  <span id="GA_Baik_november" hidden><?= $total['b_g_anak']['baik']['november'] ?></span>
+                  <span id="GA_Baik_desember" hidden><?= $total['b_g_anak']['baik']['desember'] ?></span>
+                  <!-- Gizi Lebih -->
+                  <span id="GA_Lebih_januari" hidden><?= $total['b_g_anak']['lebih']['januari'] ?></span>
+                  <span id="GA_Lebih_februari" hidden><?= $total['b_g_anak']['lebih']['februari'] ?></span>
+                  <span id="GA_Lebih_maret" hidden><?= $total['b_g_anak']['lebih']['maret'] ?></span>
+                  <span id="GA_Lebih_april" hidden><?= $total['b_g_anak']['lebih']['april'] ?></span>
+                  <span id="GA_Lebih_mei" hidden><?= $total['b_g_anak']['lebih']['mei'] ?></span>
+                  <span id="GA_Lebih_juni" hidden><?= $total['b_g_anak']['lebih']['juni'] ?></span>
+                  <span id="GA_Lebih_juli" hidden><?= $total['b_g_anak']['lebih']['juli'] ?></span>
+                  <span id="GA_Lebih_agustus" hidden><?= $total['b_g_anak']['lebih']['agustus'] ?></span>
+                  <span id="GA_Lebih_september" hidden><?= $total['b_g_anak']['lebih']['september'] ?></span>
+                  <span id="GA_Lebih_oktober" hidden><?= $total['b_g_anak']['lebih']['oktober'] ?></span>
+                  <span id="GA_Lebih_november" hidden><?= $total['b_g_anak']['lebih']['november'] ?></span>
+                  <span id="GA_Lebih_desember" hidden><?= $total['b_g_anak']['lebih']['desember'] ?></span>
+
                   <canvas id="giziAnak"></canvas>
                </div>
             </div>
@@ -243,18 +284,18 @@
          hoverBackgroundColor: "#8B0000",
          borderColor: "#FF0000",
          data: [
-            parseInt(document.getElementById("GA_januari").innerHTML),
-            parseInt(document.getElementById("GA_februari").innerHTML),
-            parseInt(document.getElementById("GA_maret").innerHTML),
-            parseInt(document.getElementById("GA_april").innerHTML),
-            parseInt(document.getElementById("GA_mei").innerHTML),
-            parseInt(document.getElementById("GA_juni").innerHTML),
-            parseInt(document.getElementById("GA_juli").innerHTML),
-            parseInt(document.getElementById("GA_agustus").innerHTML),
-            parseInt(document.getElementById("GA_september").innerHTML),
-            parseInt(document.getElementById("GA_oktober").innerHTML),
-            parseInt(document.getElementById("GA_november").innerHTML),
-            parseInt(document.getElementById("GA_desember").innerHTML),
+            parseInt(document.getElementById("GA_Buruk_januari").innerHTML),
+            parseInt(document.getElementById("GA_Buruk_februari").innerHTML),
+            parseInt(document.getElementById("GA_Buruk_maret").innerHTML),
+            parseInt(document.getElementById("GA_Buruk_april").innerHTML),
+            parseInt(document.getElementById("GA_Buruk_mei").innerHTML),
+            parseInt(document.getElementById("GA_Buruk_juni").innerHTML),
+            parseInt(document.getElementById("GA_Buruk_juli").innerHTML),
+            parseInt(document.getElementById("GA_Buruk_agustus").innerHTML),
+            parseInt(document.getElementById("GA_Buruk_september").innerHTML),
+            parseInt(document.getElementById("GA_Buruk_oktober").innerHTML),
+            parseInt(document.getElementById("GA_Buruk_november").innerHTML),
+            parseInt(document.getElementById("GA_Buruk_desember").innerHTML),
          ],
          maxBarThickness: 1000,
       },
@@ -264,18 +305,18 @@
          hoverBackgroundColor: "#8B8000",
          borderColor: "#FFFF00",
          data: [
-            parseInt(document.getElementById("GA_januari").innerHTML),
-            parseInt(document.getElementById("GA_februari").innerHTML),
-            parseInt(document.getElementById("GA_maret").innerHTML),
-            parseInt(document.getElementById("GA_april").innerHTML),
-            parseInt(document.getElementById("GA_mei").innerHTML),
-            parseInt(document.getElementById("GA_juni").innerHTML),
-            parseInt(document.getElementById("GA_juli").innerHTML),
-            parseInt(document.getElementById("GA_agustus").innerHTML),
-            parseInt(document.getElementById("GA_september").innerHTML),
-            parseInt(document.getElementById("GA_oktober").innerHTML),
-            parseInt(document.getElementById("GA_november").innerHTML),
-            parseInt(document.getElementById("GA_desember").innerHTML),
+            parseInt(document.getElementById("GA_Kurang_januari").innerHTML),
+            parseInt(document.getElementById("GA_Kurang_februari").innerHTML),
+            parseInt(document.getElementById("GA_Kurang_maret").innerHTML),
+            parseInt(document.getElementById("GA_Kurang_april").innerHTML),
+            parseInt(document.getElementById("GA_Kurang_mei").innerHTML),
+            parseInt(document.getElementById("GA_Kurang_juni").innerHTML),
+            parseInt(document.getElementById("GA_Kurang_juli").innerHTML),
+            parseInt(document.getElementById("GA_Kurang_agustus").innerHTML),
+            parseInt(document.getElementById("GA_Kurang_september").innerHTML),
+            parseInt(document.getElementById("GA_Kurang_oktober").innerHTML),
+            parseInt(document.getElementById("GA_Kurang_november").innerHTML),
+            parseInt(document.getElementById("GA_Kurang_desember").innerHTML),
          ],
          maxBarThickness: 1000,
       },
@@ -285,18 +326,18 @@
          hoverBackgroundColor: "#023020",
          borderColor: "#008000",
          data: [
-            parseInt(document.getElementById("GA_januari").innerHTML),
-            parseInt(document.getElementById("GA_februari").innerHTML),
-            parseInt(document.getElementById("GA_maret").innerHTML),
-            parseInt(document.getElementById("GA_april").innerHTML),
-            parseInt(document.getElementById("GA_mei").innerHTML),
-            parseInt(document.getElementById("GA_juni").innerHTML),
-            parseInt(document.getElementById("GA_juli").innerHTML),
-            parseInt(document.getElementById("GA_agustus").innerHTML),
-            parseInt(document.getElementById("GA_september").innerHTML),
-            parseInt(document.getElementById("GA_oktober").innerHTML),
-            parseInt(document.getElementById("GA_november").innerHTML),
-            parseInt(document.getElementById("GA_desember").innerHTML),
+            parseInt(document.getElementById("GA_Baik_januari").innerHTML),
+            parseInt(document.getElementById("GA_Baik_februari").innerHTML),
+            parseInt(document.getElementById("GA_Baik_maret").innerHTML),
+            parseInt(document.getElementById("GA_Baik_april").innerHTML),
+            parseInt(document.getElementById("GA_Baik_mei").innerHTML),
+            parseInt(document.getElementById("GA_Baik_juni").innerHTML),
+            parseInt(document.getElementById("GA_Baik_juli").innerHTML),
+            parseInt(document.getElementById("GA_Baik_agustus").innerHTML),
+            parseInt(document.getElementById("GA_Baik_september").innerHTML),
+            parseInt(document.getElementById("GA_Baik_oktober").innerHTML),
+            parseInt(document.getElementById("GA_Baik_november").innerHTML),
+            parseInt(document.getElementById("GA_Baik_desember").innerHTML),
          ],
          maxBarThickness: 1000,
       },
@@ -306,18 +347,18 @@
          hoverBackgroundColor: "#2e59d9",
          borderColor: "#4e73df",
          data: [
-            parseInt(document.getElementById("GA_januari").innerHTML),
-            parseInt(document.getElementById("GA_februari").innerHTML),
-            parseInt(document.getElementById("GA_maret").innerHTML),
-            parseInt(document.getElementById("GA_april").innerHTML),
-            parseInt(document.getElementById("GA_mei").innerHTML),
-            parseInt(document.getElementById("GA_juni").innerHTML),
-            parseInt(document.getElementById("GA_juli").innerHTML),
-            parseInt(document.getElementById("GA_agustus").innerHTML),
-            parseInt(document.getElementById("GA_september").innerHTML),
-            parseInt(document.getElementById("GA_oktober").innerHTML),
-            parseInt(document.getElementById("GA_november").innerHTML),
-            parseInt(document.getElementById("GA_desember").innerHTML),
+            parseInt(document.getElementById("GA_Lebih_januari").innerHTML),
+            parseInt(document.getElementById("GA_Lebih_februari").innerHTML),
+            parseInt(document.getElementById("GA_Lebih_maret").innerHTML),
+            parseInt(document.getElementById("GA_Lebih_april").innerHTML),
+            parseInt(document.getElementById("GA_Lebih_mei").innerHTML),
+            parseInt(document.getElementById("GA_Lebih_juni").innerHTML),
+            parseInt(document.getElementById("GA_Lebih_juli").innerHTML),
+            parseInt(document.getElementById("GA_Lebih_agustus").innerHTML),
+            parseInt(document.getElementById("GA_Lebih_september").innerHTML),
+            parseInt(document.getElementById("GA_Lebih_oktober").innerHTML),
+            parseInt(document.getElementById("GA_Lebih_november").innerHTML),
+            parseInt(document.getElementById("GA_Lebih_desember").innerHTML),
          ],
          maxBarThickness: 1000,
       },

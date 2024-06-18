@@ -166,6 +166,31 @@ var dataKegiatanPosyandu = [
 	},
 ];
 
+var dataGiziAnak = [
+	{
+		label: "Total Anaks",
+		backgroundColor: "#4e73df",
+		hoverBackgroundColor: "#2e59d9",
+		borderColor: "#4e73df",
+		data: [
+			parseInt(document.getElementById("GA_januari").innerHTML),
+			parseInt(document.getElementById("GA_februari").innerHTML),
+			parseInt(document.getElementById("GA_maret").innerHTML),
+			parseInt(document.getElementById("GA_april").innerHTML),
+			parseInt(document.getElementById("GA_mei").innerHTML),
+			parseInt(document.getElementById("GA_juni").innerHTML),
+			parseInt(document.getElementById("GA_juli").innerHTML),
+			parseInt(document.getElementById("GA_agustus").innerHTML),
+			parseInt(document.getElementById("GA_september").innerHTML),
+			parseInt(document.getElementById("GA_oktober").innerHTML),
+			parseInt(document.getElementById("GA_november").innerHTML),
+			parseInt(document.getElementById("GA_desember").innerHTML),
+		],
+		maxBarThickness: 1000,
+	},
+];
+
 // Create the chart
 createBarChart("myBarChart", dataImunisasi);
 createBarChart("kegiatanPosyandu", dataKegiatanPosyandu);
+createBarChart("giziAnak", dataGiziAnak);

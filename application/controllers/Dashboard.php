@@ -84,6 +84,8 @@ class Dashboard extends CI_Controller
       // - Poli Kia = 8
       if ($role == 8) {
          $this->load->view('home/dashboards/poli_kia', $data);
+      } else if ($role == 4) {
+         $this->load->view('home/dashboards/poli_gizi', $data);
       } else {
          $this->load->view('home/dashboard', $data);
       }

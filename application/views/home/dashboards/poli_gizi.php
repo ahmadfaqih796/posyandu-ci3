@@ -103,6 +103,96 @@
          </div>
       </div>
 
+      <div class="col-xl-12">
+         <!-- Bar Chart -->
+         <div class="card shadow mb-4">
+            <div class="card-header py-3">
+               <h6 class="m-0 font-weight-bold text-primary">Monitoring Gizi Ibu Hamil</h6>
+            </div>
+            <form action="<?= base_url('dashboard') ?>" method="get">
+               <div class="row px-4 mt-3">
+                  <div class="col-md-10">
+                     <div class="form-group">
+                        <select name="year" id="year" class="form-control" required>
+                           <option value="">-- Pilih Tahun --</option>
+                           <?php
+                           $currentYear = date('Y') + 5;
+                           $startYear = 2020;
+                           for ($year = $startYear; $year <= $currentYear; $year++) : ?>
+                              <option value="<?= $year ?>" <?= set_select('year', $year, (!empty($_POST['year']) && $_POST['year'] == $year)); ?>><?= $year ?></option>
+                           <?php endfor; ?>
+                        </select>
+                        <?= form_error('year', '<small class="text-danger pl-3">', '</small>'); ?>
+                     </div>
+                  </div>
+                  <div class="col-md-2">
+                     <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-search"></i>
+                     </button>
+                  </div>
+               </div>
+            </form>
+            <div class="card-body">
+               <div class="chart-bar">
+                  <!-- Kurus -->
+                  <span id="GB_Kurus_januari" hidden><?= $total['b_g_bumil']['kurus']['januari'] ?></span>
+                  <span id="GB_Kurus_februari" hidden><?= $total['b_g_bumil']['kurus']['februari'] ?></span>
+                  <span id="GB_Kurus_maret" hidden><?= $total['b_g_bumil']['kurus']['maret'] ?></span>
+                  <span id="GB_Kurus_april" hidden><?= $total['b_g_bumil']['kurus']['april'] ?></span>
+                  <span id="GB_Kurus_mei" hidden><?= $total['b_g_bumil']['kurus']['mei'] ?></span>
+                  <span id="GB_Kurus_juni" hidden><?= $total['b_g_bumil']['kurus']['juni'] ?></span>
+                  <span id="GB_Kurus_juli" hidden><?= $total['b_g_bumil']['kurus']['juli'] ?></span>
+                  <span id="GB_Kurus_agustus" hidden><?= $total['b_g_bumil']['kurus']['agustus'] ?></span>
+                  <span id="GB_Kurus_september" hidden><?= $total['b_g_bumil']['kurus']['september'] ?></span>
+                  <span id="GB_Kurus_oktober" hidden><?= $total['b_g_bumil']['kurus']['oktober'] ?></span>
+                  <span id="GB_Kurus_november" hidden><?= $total['b_g_bumil']['kurus']['november'] ?></span>
+                  <span id="GB_Kurus_desember" hidden><?= $total['b_g_bumil']['kurus']['desember'] ?></span>
+                  <!-- normal -->
+                  <span id="GB_Normal_januari" hidden><?= $total['b_g_bumil']['normal']['januari'] ?></span>
+                  <span id="GB_Normal_februari" hidden><?= $total['b_g_bumil']['normal']['februari'] ?></span>
+                  <span id="GB_Normal_maret" hidden><?= $total['b_g_bumil']['normal']['maret'] ?></span>
+                  <span id="GB_Normal_april" hidden><?= $total['b_g_bumil']['normal']['april'] ?></span>
+                  <span id="GB_Normal_mei" hidden><?= $total['b_g_bumil']['normal']['mei'] ?></span>
+                  <span id="GB_Normal_juni" hidden><?= $total['b_g_bumil']['normal']['juni'] ?></span>
+                  <span id="GB_Normal_juli" hidden><?= $total['b_g_bumil']['normal']['juli'] ?></span>
+                  <span id="GB_Normal_agustus" hidden><?= $total['b_g_bumil']['normal']['agustus'] ?></span>
+                  <span id="GB_Normal_september" hidden><?= $total['b_g_bumil']['normal']['september'] ?></span>
+                  <span id="GB_Normal_oktober" hidden><?= $total['b_g_bumil']['normal']['oktober'] ?></span>
+                  <span id="GB_Normal_november" hidden><?= $total['b_g_bumil']['normal']['november'] ?></span>
+                  <span id="GB_Normal_desember" hidden><?= $total['b_g_bumil']['normal']['desember'] ?></span>
+                  <!-- gemuk -->
+                  <span id="GB_Gemuk_januari" hidden><?= $total['b_g_bumil']['gemuk']['januari'] ?></span>
+                  <span id="GB_Gemuk_februari" hidden><?= $total['b_g_bumil']['gemuk']['februari'] ?></span>
+                  <span id="GB_Gemuk_maret" hidden><?= $total['b_g_bumil']['gemuk']['maret'] ?></span>
+                  <span id="GB_Gemuk_april" hidden><?= $total['b_g_bumil']['gemuk']['april'] ?></span>
+                  <span id="GB_Gemuk_mei" hidden><?= $total['b_g_bumil']['gemuk']['mei'] ?></span>
+                  <span id="GB_Gemuk_juni" hidden><?= $total['b_g_bumil']['gemuk']['juni'] ?></span>
+                  <span id="GB_Gemuk_juli" hidden><?= $total['b_g_bumil']['gemuk']['juli'] ?></span>
+                  <span id="GB_Gemuk_agustus" hidden><?= $total['b_g_bumil']['gemuk']['agustus'] ?></span>
+                  <span id="GB_Gemuk_september" hidden><?= $total['b_g_bumil']['gemuk']['september'] ?></span>
+                  <span id="GB_Gemuk_oktober" hidden><?= $total['b_g_bumil']['gemuk']['oktober'] ?></span>
+                  <span id="GB_Gemuk_november" hidden><?= $total['b_g_bumil']['gemuk']['november'] ?></span>
+                  <span id="GB_Gemuk_desember" hidden><?= $total['b_g_bumil']['gemuk']['desember'] ?></span>
+                  <!-- obesitas -->
+                  <span id="GB_Obesitas_januari" hidden><?= $total['b_g_bumil']['obesitas']['januari'] ?></span>
+                  <span id="GB_Obesitas_februari" hidden><?= $total['b_g_bumil']['obesitas']['februari'] ?></span>
+                  <span id="GB_Obesitas_maret" hidden><?= $total['b_g_bumil']['obesitas']['maret'] ?></span>
+                  <span id="GB_Obesitas_april" hidden><?= $total['b_g_bumil']['obesitas']['april'] ?></span>
+                  <span id="GB_Obesitas_mei" hidden><?= $total['b_g_bumil']['obesitas']['mei'] ?></span>
+                  <span id="GB_Obesitas_juni" hidden><?= $total['b_g_bumil']['obesitas']['juni'] ?></span>
+                  <span id="GB_Obesitas_juli" hidden><?= $total['b_g_bumil']['obesitas']['juli'] ?></span>
+                  <span id="GB_Obesitas_agustus" hidden><?= $total['b_g_bumil']['obesitas']['agustus'] ?></span>
+                  <span id="GB_Obesitas_september" hidden><?= $total['b_g_bumil']['obesitas']['september'] ?></span>
+                  <span id="GB_Obesitas_oktober" hidden><?= $total['b_g_bumil']['obesitas']['oktober'] ?></span>
+                  <span id="GB_Obesitas_november" hidden><?= $total['b_g_bumil']['obesitas']['november'] ?></span>
+                  <span id="GB_Obesitas_desember" hidden><?= $total['b_g_bumil']['obesitas']['desember'] ?></span>
+
+                  <canvas id="giziBumil"></canvas>
+               </div>
+            </div>
+         </div>
+      </div>
+
       <div class="col-md-3 mb-3">
          <div class="card">
             <div class="card-body text-center">
@@ -364,6 +454,93 @@
       },
    ];
 
+   var dataGiziBumil = [{
+         label: "Kurus",
+         backgroundColor: "#FF0000",
+         hoverBackgroundColor: "#8B0000",
+         borderColor: "#FF0000",
+         data: [
+            parseInt(document.getElementById("GB_Kurus_januari").innerHTML),
+            parseInt(document.getElementById("GB_Kurus_februari").innerHTML),
+            parseInt(document.getElementById("GB_Kurus_maret").innerHTML),
+            parseInt(document.getElementById("GB_Kurus_april").innerHTML),
+            parseInt(document.getElementById("GB_Kurus_mei").innerHTML),
+            parseInt(document.getElementById("GB_Kurus_juni").innerHTML),
+            parseInt(document.getElementById("GB_Kurus_juli").innerHTML),
+            parseInt(document.getElementById("GB_Kurus_agustus").innerHTML),
+            parseInt(document.getElementById("GB_Kurus_september").innerHTML),
+            parseInt(document.getElementById("GB_Kurus_oktober").innerHTML),
+            parseInt(document.getElementById("GB_Kurus_november").innerHTML),
+            parseInt(document.getElementById("GB_Kurus_desember").innerHTML),
+         ],
+         maxBarThickness: 1000,
+      },
+      {
+         label: "Gemuk",
+         backgroundColor: "#FFFF00",
+         hoverBackgroundColor: "#8B8000",
+         borderColor: "#FFFF00",
+         data: [
+            parseInt(document.getElementById("GB_Gemuk_januari").innerHTML),
+            parseInt(document.getElementById("GB_Gemuk_februari").innerHTML),
+            parseInt(document.getElementById("GB_Gemuk_maret").innerHTML),
+            parseInt(document.getElementById("GB_Gemuk_april").innerHTML),
+            parseInt(document.getElementById("GB_Gemuk_mei").innerHTML),
+            parseInt(document.getElementById("GB_Gemuk_juni").innerHTML),
+            parseInt(document.getElementById("GB_Gemuk_juli").innerHTML),
+            parseInt(document.getElementById("GB_Gemuk_agustus").innerHTML),
+            parseInt(document.getElementById("GB_Gemuk_september").innerHTML),
+            parseInt(document.getElementById("GB_Gemuk_oktober").innerHTML),
+            parseInt(document.getElementById("GB_Gemuk_november").innerHTML),
+            parseInt(document.getElementById("GB_Gemuk_desember").innerHTML),
+         ],
+         maxBarThickness: 1000,
+      },
+      {
+         label: "Normal",
+         backgroundColor: "#008000",
+         hoverBackgroundColor: "#023020",
+         borderColor: "#008000",
+         data: [
+            parseInt(document.getElementById("GB_Normal_januari").innerHTML),
+            parseInt(document.getElementById("GB_Normal_februari").innerHTML),
+            parseInt(document.getElementById("GB_Normal_maret").innerHTML),
+            parseInt(document.getElementById("GB_Normal_april").innerHTML),
+            parseInt(document.getElementById("GB_Normal_mei").innerHTML),
+            parseInt(document.getElementById("GB_Normal_juni").innerHTML),
+            parseInt(document.getElementById("GB_Normal_juli").innerHTML),
+            parseInt(document.getElementById("GB_Normal_agustus").innerHTML),
+            parseInt(document.getElementById("GB_Normal_september").innerHTML),
+            parseInt(document.getElementById("GB_Normal_oktober").innerHTML),
+            parseInt(document.getElementById("GB_Normal_november").innerHTML),
+            parseInt(document.getElementById("GB_Normal_desember").innerHTML),
+         ],
+         maxBarThickness: 1000,
+      },
+      {
+         label: "Obesitas",
+         backgroundColor: "#4e73df",
+         hoverBackgroundColor: "#2e59d9",
+         borderColor: "#4e73df",
+         data: [
+            parseInt(document.getElementById("GB_Obesitas_januari").innerHTML),
+            parseInt(document.getElementById("GB_Obesitas_februari").innerHTML),
+            parseInt(document.getElementById("GB_Obesitas_maret").innerHTML),
+            parseInt(document.getElementById("GB_Obesitas_april").innerHTML),
+            parseInt(document.getElementById("GB_Obesitas_mei").innerHTML),
+            parseInt(document.getElementById("GB_Obesitas_juni").innerHTML),
+            parseInt(document.getElementById("GB_Obesitas_juli").innerHTML),
+            parseInt(document.getElementById("GB_Obesitas_agustus").innerHTML),
+            parseInt(document.getElementById("GB_Obesitas_september").innerHTML),
+            parseInt(document.getElementById("GB_Obesitas_oktober").innerHTML),
+            parseInt(document.getElementById("GB_Obesitas_november").innerHTML),
+            parseInt(document.getElementById("GB_Obesitas_desember").innerHTML),
+         ],
+         maxBarThickness: 1000,
+      },
+   ];
+
    // Create the chart
    createBarChart("giziAnak", dataGiziAnak);
+   createBarChart("giziBumil", dataGiziBumil);
 </script>

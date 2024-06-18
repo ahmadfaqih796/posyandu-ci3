@@ -124,6 +124,32 @@ class Base_model extends CI_Model
       return $this->db->get()->num_rows();
    }
 
+   public function get_count_gizi_bumil($month = null, $year = null, $status = null)
+   {
+      $this->db->select('m.*, b.n_ibu, b.nik,
+        (m.berat_badan / ((m.tinggi_badan * m.tinggi_badan) / 10000)) AS nilai_gizi,
+        CASE 
+            WHEN (m.berat_badan / ((m.tinggi_badan * m.tinggi_badan) / 10000)) <= 18.5 THEN "Kurus"
+            WHEN (m.berat_badan / ((m.tinggi_badan * m.tinggi_badan) / 10000)) <= 24.9 THEN "Normal"
+            WHEN (m.berat_badan / ((m.tinggi_badan * m.tinggi_badan) / 10000)) <= 29.9 THEN "Gemuk"
+            ELSE "Obesitas"
+        END AS status_gizi');
+      $this->db->from('monitoring_ibu_hamil m');
+      $this->db->join('ibu_hamil b', 'm.bumil_id = b.id', 'left');
+
+      if ($month != null) {
+         $this->db->where('MONTH(m.tanggal_periksa)', $month);
+      }
+      if ($year != null) {
+         $this->db->where('YEAR(m.tanggal_periksa)', $year);
+      }
+      if ($status != null) {
+         $this->db->having('status_gizi', $status);
+      }
+      return $this->db->get()->num_rows();
+   }
+
+
    public function get_count_bumil_id($table, $bumil_id)
    {
       return $this->db->get_where($table, ['bumil_id' => $bumil_id])->num_rows();

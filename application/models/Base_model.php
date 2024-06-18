@@ -64,6 +64,27 @@ class Base_model extends CI_Model
       return $this->db->get($table)->num_rows();
    }
 
+   public function get_count_imunisasi_per_month($month = null, $year = null, $id_posyandu = null)
+   {
+      $this->db->select('i.*, u.name, u.email, u.is_active, t.n_imunisasi, a.nik, p.n_posyandu');
+      $this->db->from('imunisasi i');
+      $this->db->join('users u', 'i.anak_id = u.id', 'left');
+      $this->db->join('tipe_imunisasi t', 'i.tipe_imunisasi_id = t.id', 'left');
+      $this->db->join('anak a', 'i.anak_id = a.user_id', 'left');
+      $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
+      if ($month != null) {
+         $this->db->where('MONTH(tanggal_imunisasi)', $month);
+      }
+      if ($year != null) {
+         $this->db->where('YEAR(tanggal_imunisasi)', $year);
+         # code...
+      }
+      if ($id_posyandu != null) {
+         $this->db->where('a.posyandu_id', $id_posyandu);
+      }
+      return $this->db->get()->num_rows();
+   }
+
    public function get_count_bumil_id($table, $bumil_id)
    {
       return $this->db->get_where($table, ['bumil_id' => $bumil_id])->num_rows();

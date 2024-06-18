@@ -101,7 +101,35 @@
       </div> -->
 
       <?php if ($role == 1 || $role == 2 || $role == 6 || $role == 8) : ?>
-         <div class="col-xl-8 col-lg-7">
+         <div class="col-xl-6">
+            <!-- Bar Chart -->
+            <div class="card shadow mb-4">
+               <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Data Imunisasi</h6>
+               </div>
+               <div class="card-body">
+                  <div class="chart-bar">
+                     <span id="januari" hidden><?= $total['b_imunisasi']['januari'] ?></span>
+                     <span id="februari" hidden><?= $total['b_imunisasi']['februari'] ?></span>
+                     <span id="maret" hidden><?= $total['b_imunisasi']['maret'] ?></span>
+                     <span id="april" hidden><?= $total['b_imunisasi']['april'] ?></span>
+                     <span id="mei" hidden><?= $total['b_imunisasi']['mei'] ?></span>
+                     <span id="juni" hidden><?= $total['b_imunisasi']['juni'] ?></span>
+                     <span id="juli" hidden><?= $total['b_imunisasi']['juli'] ?></span>
+                     <span id="agustus" hidden><?= $total['b_imunisasi']['agustus'] ?></span>
+                     <span id="september" hidden><?= $total['b_imunisasi']['september'] ?></span>
+                     <span id="oktober" hidden><?= $total['b_imunisasi']['oktober'] ?></span>
+                     <span id="november" hidden><?= $total['b_imunisasi']['november'] ?></span>
+                     <span id="desember" hidden><?= $total['b_imunisasi']['desember'] ?></span>
+                     <canvas id="myBarChart"></canvas>
+                  </div>
+               </div>
+            </div>
+         </div>
+      <?php endif; ?>
+
+      <?php if ($role == 1 || $role == 2 || $role == 6 || $role == 8) : ?>
+         <div class="col-xl-6">
             <!-- Bar Chart -->
             <div class="card shadow mb-4">
                <div class="card-header py-3">

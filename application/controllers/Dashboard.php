@@ -14,9 +14,14 @@ class Dashboard extends CI_Controller
 
    public function index()
    {
+      $posyandu_id = htmlspecialchars($this->input->get('posyandu_id'));
+      $year = htmlspecialchars($this->input->get('year'));
+      $role = $this->session->userdata('role_id');
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['title'] = 'Dashboard';
-      $data['role'] = $this->session->userdata('role_id');
+      $data['role'] = $role;
+      $data['posyandu'] = $this->bm->get_all("posyandu");
+      $data['tanggal'] = $year;
       $data['total'] = array(
          'user' => $this->bm->get_count('users'),
          'posyandu' => $this->bm->get_count('posyandu'),
@@ -26,18 +31,18 @@ class Dashboard extends CI_Controller
          'ibu_anak' => $this->bm->get_count('ibu'),
          'imunisasi' => $this->bm->get_count('imunisasi'),
          'b_imunisasi' => array(
-            'januari' => $this->bm->get_count_per_month('imunisasi', 1, date('Y')),
-            'februari' => $this->bm->get_count_per_month('imunisasi', 2, date('Y')),
-            'maret' => $this->bm->get_count_per_month('imunisasi', 3, date('Y')),
-            'april' => $this->bm->get_count_per_month('imunisasi', 4, date('Y')),
-            'mei' => $this->bm->get_count_per_month('imunisasi', 5, date('Y')),
-            'juni' => $this->bm->get_count_per_month('imunisasi', 6, date('Y')),
-            'juli' => $this->bm->get_count_per_month('imunisasi', 7, date('Y')),
-            'agustus' => $this->bm->get_count_per_month('imunisasi', 8, date('Y')),
-            'september' => $this->bm->get_count_per_month('imunisasi', 9, date('Y')),
-            'oktober' => $this->bm->get_count_per_month('imunisasi', 10, date('Y')),
-            'november' => $this->bm->get_count_per_month('imunisasi', 11, date('Y')),
-            'desember' => $this->bm->get_count_per_month('imunisasi', 12, date('Y')),
+            'januari' => $this->bm->get_count_imunisasi_per_month(1, $year, $posyandu_id),
+            'februari' => $this->bm->get_count_imunisasi_per_month(2, $year, $posyandu_id),
+            'maret' => $this->bm->get_count_imunisasi_per_month(3, $year, $posyandu_id),
+            'april' => $this->bm->get_count_imunisasi_per_month(4, $year, $posyandu_id),
+            'mei' => $this->bm->get_count_imunisasi_per_month(5, $year, $posyandu_id),
+            'juni' => $this->bm->get_count_imunisasi_per_month(6, $year, $posyandu_id),
+            'juli' => $this->bm->get_count_imunisasi_per_month(7, $year, $posyandu_id),
+            'agustus' => $this->bm->get_count_imunisasi_per_month(8, $year, $posyandu_id),
+            'september' => $this->bm->get_count_imunisasi_per_month(9, $year, $posyandu_id),
+            'oktober' => $this->bm->get_count_imunisasi_per_month(10, $year, $posyandu_id),
+            'november' => $this->bm->get_count_imunisasi_per_month(11, $year, $posyandu_id),
+            'desember' => $this->bm->get_count_imunisasi_per_month(12, $year, $posyandu_id),
          ),
          'status_gizi_bumil' => array(
             'Kurus' => $this->im->get_count_ibu_hamil("monitoring_ibu_hamil", null, 'Kurus'),
@@ -55,7 +60,19 @@ class Dashboard extends CI_Controller
       $this->load->view('templates/header', $data);
       $this->load->view('templates/sidebar', $data);
       $this->load->view('templates/topbar', $data);
-      $this->load->view('home/dashboard', $data);
+      // - admin = 1
+      // - kader = 2
+      // - anak = 3
+      // - Poli Gizi = 4
+      // - ibu hamil = 5
+      // - Koordinator Imunisasi = 6
+      // - Bidan = 7
+      // - Poli Kia = 8
+      if ($role == 8) {
+         $this->load->view('home/dashboards/poli_kia', $data);
+      } else {
+         $this->load->view('home/dashboard', $data);
+      }
       $this->load->view('templates/footer', $data);
    }
 }

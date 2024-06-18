@@ -193,7 +193,7 @@
          </div>
       </div>
 
-      <div class="col-md-3 mb-3">
+      <!-- <div class="col-md-3 mb-3">
          <div class="card">
             <div class="card-body text-center">
                <h1 class="h4 text-gray-800">Status Gizi Anak</h1>
@@ -217,11 +217,9 @@
                </table>
             </div>
          </div>
-      </div>
+      </div> -->
 
-
-
-      <div class="col-md-3 mb-3">
+      <!-- <div class="col-md-3 mb-3">
          <div class="card">
             <div class="card-body text-center">
                <h1 class="h4 text-gray-800">Status Gizi Ibu Hamil</h1>
@@ -245,7 +243,7 @@
                </table>
             </div>
          </div>
-      </div>
+      </div> -->
    </div>
 </div>
 <!-- /.container-fluid -->

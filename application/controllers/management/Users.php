@@ -15,7 +15,7 @@ class Users extends CI_Controller
       $this->_validation_user();
       $data['title'] = 'Users';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['users'] = $this->um->get_users();
+      $data['users'] = $this->um->get_users(null, true);
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
@@ -36,7 +36,7 @@ class Users extends CI_Controller
          } else if ($delete) {
             return $this->delete();
          } else {
-            $this->notification->notify_error('management/users', 'Method initidak ditemukan');
+            $this->notification->notify_error('management/users', 'Method ini tidak ditemukan');
          }
       }
    }

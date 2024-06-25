@@ -11,13 +11,16 @@ class Users_model extends CI_Model
       $this->load->model('Anak_model', 'am');
    }
 
-   public function get_users($role = null)
+   public function get_users($role = null, $notAnak = null)
    {
       $this->db->select('users.*, roles.role');
       $this->db->from('users');
       $this->db->join('roles', 'users.role_id = roles.id', 'left');
       if ($role) {
          $this->db->where('users.role_id', $role);
+      }
+      if ($notAnak) {
+         $this->db->where('users.role_id != 3');
       }
       $query = $this->db->get();
       return $query->result_array();

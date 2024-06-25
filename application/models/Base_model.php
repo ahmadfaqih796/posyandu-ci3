@@ -72,6 +72,7 @@ class Base_model extends CI_Model
       $this->db->join('tipe_imunisasi t', 'i.tipe_imunisasi_id = t.id', 'left');
       $this->db->join('anak a', 'i.anak_id = a.user_id', 'left');
       $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
+      $this->db->where('status', 1);
       if ($month != null) {
          $this->db->where('MONTH(tanggal_imunisasi)', $month);
       }

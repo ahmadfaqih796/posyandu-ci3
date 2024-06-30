@@ -28,6 +28,15 @@
                   <?= form_error('n_kegiatan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
+                  <label for="edit_kehadiran">Kehadiran</label>
+                  <select name="kehadiran" id="edit_kehadiran" class="form-control" required>
+                     <option value="">--Pilih Kehadiran--</option>
+                     <option value="1" <?= set_select('kehadiran', '1', (!empty($_POST['kehadiran']) && $_POST['kehadiran'] == "1")); ?>>hadir</option>
+                     <option value="0" <?= set_select('kehadiran', '0', (!empty($_POST['kehadiran']) && $_POST['kehadiran'] == "0")); ?>>tidak hadir / kunjungan rumah</option>
+                  </select>
+                  <?= form_error('kehadiran', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <div class="form-group">
                   <label for="edit_tujuan">Tujuan</label>
                   <input type="text" class="form-control" name="tujuan" id="edit_tujuan" value="<?= set_value('tujuan'); ?>">
                   <?= form_error('tujuan', '<small class="text-danger pl-3">', '</small>'); ?>

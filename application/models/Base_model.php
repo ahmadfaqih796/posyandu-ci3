@@ -121,6 +121,7 @@ class Base_model extends CI_Model
       $this->db->from('monitoring_kegiatan_posyandu m');
       $this->db->join('posyandu p', 'm.posyandu_id = p.id', 'left');
       $this->db->join('users u', 'm.kader_id = u.id', 'left');
+      $this->db->where('m.kehadiran = 1');
       if ($month != null) {
          $this->db->where('MONTH(m.created_at)', $month);
       }

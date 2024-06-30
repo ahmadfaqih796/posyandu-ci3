@@ -39,6 +39,7 @@
                      <th>Tanggal Disetujui</th>
                      <th>Photo</th>
                      <th>Disetujui</th>
+                     <th>Kehadiran</th>
                      <?php if ($role == 8) : ?>
                         <th>Dibuat oleh</th>
                      <?php endif; ?>
@@ -46,7 +47,19 @@
                   </tr>
                </thead>
                <tbody>
-                  <?php foreach ($data as $field) :
+                  <?php
+                  function check_kehadiran($status)
+                  {
+                     switch ($status) {
+                        case '1':
+                           return 'Hadir';
+                        case '0':
+                           return 'tidak hadir/kunjungan rumah';
+                        default:
+                           return '-';
+                     }
+                  }
+                  foreach ($data as $field) :
                   ?>
                      <tr>
                         <td><?= $no++ ?></td>
@@ -58,6 +71,7 @@
                         <td><?= $field['parameter_keberhasilan'] ?></td> -->
                         <td><img src="<?= base_url('assets/img/kegiatan_posyandu/') . $field['photo'] ?>" width="150"></td>
                         <td><?= $field['is_verified'] ? 'Sudah' : 'Belum' ?></td>
+                        <td><?= check_kehadiran($field['kehadiran'])  ?></td>
                         <?php if ($role == 8) : ?>
                            <td><?= $field['name'] ?></td>
                         <?php endif; ?>

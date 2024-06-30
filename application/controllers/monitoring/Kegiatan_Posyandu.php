@@ -169,6 +169,7 @@ class Kegiatan_Posyandu extends CI_Controller
       $tujuan = htmlspecialchars($this->input->post('tujuan', true));
       $sasaran = htmlspecialchars($this->input->post('sasaran', true));
       $parameter_keberhasilan = htmlspecialchars($this->input->post('parameter_keberhasilan', true));
+      $kehadiran = htmlspecialchars($this->input->post('kehadiran', true));
       $photo_data_url = $this->input->post('photo');
 
       $j1 = htmlspecialchars($this->input->post('j1', true));
@@ -201,6 +202,7 @@ class Kegiatan_Posyandu extends CI_Controller
          'tujuan' => $tujuan,
          'sasaran' => $sasaran,
          'parameter_keberhasilan' => $parameter_keberhasilan,
+         'kehadiran' => $kehadiran,
          'j1' => $j1,
          'j2' => $j2,
          'j3' => $j3,

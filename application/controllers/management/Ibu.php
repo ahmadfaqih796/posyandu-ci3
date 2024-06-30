@@ -9,14 +9,17 @@ class Ibu extends CI_Controller
       $this->load->library('session');
       $this->load->model('Ibu_model', 'im');
       $this->load->model('Anak_model', 'am');
+      $this->load->model('Base_model', 'bm');
    }
 
    public function index()
    {
       $this->_validation_ibu();
+      $kader = $this->bm->get_by_user_id('kaders', $this->session->userdata('user_id'));
       $data['title'] = 'Ibu';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['users'] = $this->im->get_all_ibu();
+      $data['kader'] = $kader;
+      $data['users'] = $this->im->get_all_ibu($kader['posyandu_id']);
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
@@ -107,6 +110,7 @@ class Ibu extends CI_Controller
 
    private function _payload($type = null)
    {
+      $posyandu_id = htmlspecialchars($this->input->post('posyandu_id', true));
       $n_ibu = htmlspecialchars($this->input->post('n_ibu', true));
       $nik = htmlspecialchars($this->input->post('nik', true));
       $tempat_lahir = htmlspecialchars($this->input->post('tempat_lahir', true));
@@ -116,6 +120,7 @@ class Ibu extends CI_Controller
       $telepon = htmlspecialchars($this->input->post('telepon', true));
 
       $payload = [
+         'posyandu_id' => $posyandu_id,
          'n_ibu' => $n_ibu,
          'nik' => $nik,
          'tempat_lahir' => $tempat_lahir,

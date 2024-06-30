@@ -15,7 +15,7 @@ class Ibu_model extends CI_Model
       (SELECT COUNT(orang_tua_id) FROM anak WHERE orang_tua_id = i.id) AS total_anak');
       $this->db->from('ibu i');
       if ($id_posyandu != null) {
-         $this->db->where('i.id_posyandu', $id_posyandu);
+         $this->db->where('i.posyandu_id', $id_posyandu);
       }
       return $this->db->get()->result_array();
    }

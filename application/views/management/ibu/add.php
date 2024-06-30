@@ -11,6 +11,7 @@
          <form action="<?= base_url('management/ibu') ?>" method="post">
             <div class="modal-body">
                <input type="hidden" name="addData" id="addData" value="true">
+               <input type="hidden" name="posyandu_id" id="posyandu_id" value="<?= $kader['posyandu_id'] ?>">
                <div class="form-group">
                   <label for="n_ibu">Nama Ibu</label>
                   <input type="text" class="form-control" name="n_ibu" id="n_ibu" value="<?= set_value('n_ibu'); ?>">

@@ -13,6 +13,7 @@
                <!-- Hidden input for storing user ID -->
                <input type="hidden" name="updateData" id="updateData" value="true">
                <input type="hidden" name="id" id="edit_id">
+               <input type="hidden" name="posyandu_id" value="<?= $kader['posyandu_id'] ?>">
                <div class="form-group">
                   <label for="edit_n_ibu">Nama Ibu</label>
                   <input type="text" class="form-control" name="n_ibu" id="edit_n_ibu" value="<?= set_value('n_ibu'); ?>">

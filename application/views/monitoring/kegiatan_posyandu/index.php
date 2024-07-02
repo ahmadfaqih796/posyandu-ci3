@@ -39,7 +39,6 @@
                      <th>Tanggal Disetujui</th>
                      <th>Photo</th>
                      <th>Disetujui</th>
-                     <th>Kehadiran</th>
                      <?php if ($role == 8) : ?>
                         <th>Dibuat oleh</th>
                      <?php endif; ?>
@@ -71,7 +70,7 @@
                         <td><?= $field['parameter_keberhasilan'] ?></td> -->
                         <td><img src="<?= base_url('assets/img/kegiatan_posyandu/') . $field['photo'] ?>" width="150"></td>
                         <td><?= $field['is_verified'] ? 'Sudah' : 'Belum' ?></td>
-                        <td><?= check_kehadiran($field['kehadiran'])  ?></td>
+                        <!-- <td><?= check_kehadiran($field['kehadiran'])  ?></td> -->
                         <?php if ($role == 8) : ?>
                            <td><?= $field['name'] ?></td>
                         <?php endif; ?>

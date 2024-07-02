@@ -22,11 +22,11 @@
                   <input disabled type="text" id="edit_n_posyandu" class="form-control">
                   <?= form_error('n_kegiatan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
-               <div class="form-group">
+               <!-- <div class="form-group">
                   <label for="edit_n_kegiatan">Nama Kegiatan</label>
                   <input type="text" class="form-control" name="n_kegiatan" id="edit_n_kegiatan" value="<?= set_value('n_kegiatan'); ?>">
                   <?= form_error('n_kegiatan', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
+               </div> -->
                <div class="form-group">
                   <label for="edit_kehadiran">Kehadiran</label>
                   <select name="kehadiran" id="edit_kehadiran" class="form-control" required>

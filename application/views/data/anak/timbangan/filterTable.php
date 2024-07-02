@@ -48,6 +48,7 @@
                      <th>Berat Badan (kg)</th>
                      <th>Tinggi Badan (cm)</th>
                      <th>Keterangan</th>
+                     <th>Kehadiran</th>
                      <?php if ($role == 2 || $role == 8) : ?>
                         <th>Gambar</th>
                      <?php endif; ?>
@@ -60,7 +61,19 @@
                   </tr>
                </thead>
                <tbody>
-                  <?php foreach ($data as $field) :
+                  <?php
+                  function check_kehadiran($status)
+                  {
+                     switch ($status) {
+                        case '1':
+                           return 'Hadir';
+                        case '0':
+                           return 'tidak hadir/kunjungan rumah';
+                        default:
+                           return '-';
+                     }
+                  }
+                  foreach ($data as $field) :
                      $nilai_gizi = $field["berat_badan"] / (($field["tinggi_badan"] * $field["tinggi_badan"]) / 10000);
                      $status_gizi = '';
                      if ($nilai_gizi <= 18.5) {
@@ -85,6 +98,7 @@
                         <td><?= $field['berat_badan'] ?></td>
                         <td><?= $field['tinggi_badan'] ?></td>
                         <td><?= $field['keterangan'] ?></td>
+                        <td><?= check_kehadiran($field['kehadiran']) ?></td>
                         <?php if ($role == 2 || $role == 8) : ?>
                            <td>
                               <img src="<?= base_url('assets/img/status_gizi/') . $field['photo'] ?>" width="150px">

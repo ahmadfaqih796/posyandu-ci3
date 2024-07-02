@@ -53,6 +53,15 @@
                   <?= form_error('keterangan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
                <div class="form-group">
+                  <label for="kehadiran">Kehadiran</label>
+                  <select name="kehadiran" id="kehadiran" class="form-control" required>
+                     <option value="">--Pilih Kehadiran--</option>
+                     <option value="1" <?= set_select('kehadiran', '1', (!empty($_POST['kehadiran']) && $_POST['kehadiran'] == "1")); ?>>hadir</option>
+                     <option value="0" <?= set_select('kehadiran', '0', (!empty($_POST['kehadiran']) && $_POST['kehadiran'] == "0")); ?>>tidak hadir / kunjungan rumah</option>
+                  </select>
+                  <?= form_error('kehadiran', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
+               <div class="form-group">
                   <label for="photo" id="photoLabel">Photo</label>
                   <div id="cameraFeed" style="width: 100%;"></div>
                   <input type="hidden" class="form-control" name="photo" id="photo" value="<?= set_value('photo'); ?>">

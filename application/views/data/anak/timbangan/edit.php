@@ -44,6 +44,15 @@
                   <input type="text" class="form-control" name="keterangan" id="edit_keterangan" value="<?= set_value('keterangan'); ?>" required>
                   <?= form_error('keterangan', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
+               <div class="form-group">
+                  <label for="edit_kehadiran">Kehadiran</label>
+                  <select name="kehadiran" id="edit_kehadiran" class="form-control" required>
+                     <option value="">--Pilih Kehadiran--</option>
+                     <option value="1" <?= set_select('kehadiran', '1', (!empty($_POST['kehadiran']) && $_POST['kehadiran'] == "1")); ?>>hadir</option>
+                     <option value="0" <?= set_select('kehadiran', '0', (!empty($_POST['kehadiran']) && $_POST['kehadiran'] == "0")); ?>>tidak hadir / kunjungan rumah</option>
+                  </select>
+                  <?= form_error('kehadiran', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
                <input type="hidden" class="form-control" name="photo" id="edit_photo" value="<?= set_value('photo'); ?>">
 
             </div>
@@ -68,6 +77,7 @@
       document.getElementById('edit_berat_badan').value = data['berat_badan'];
       document.getElementById('edit_tinggi_badan').value = data['tinggi_badan'];
       document.getElementById('edit_keterangan').value = data['keterangan'];
+      document.getElementById('edit_kehadiran').value = data['kehadiran'];
       document.getElementById('edit_photo').value = data['photo'];
 
    }

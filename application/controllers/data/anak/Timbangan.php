@@ -171,6 +171,7 @@ class Timbangan extends CI_Controller
       $berat_badan = htmlspecialchars($this->input->post('berat_badan', true));
       $tinggi_badan = htmlspecialchars($this->input->post('tinggi_badan', true));
       $keterangan = htmlspecialchars($this->input->post('keterangan', true));
+      $kehadiran = htmlspecialchars($this->input->post('kehadiran', true));
       $created_by = htmlspecialchars($this->input->post('created_by', true));
       $photo_data_url = $this->input->post('photo');
 
@@ -194,6 +195,7 @@ class Timbangan extends CI_Controller
          'berat_badan' => $berat_badan,
          'tinggi_badan' => $tinggi_badan,
          'keterangan' => $keterangan,
+         'kehadiran' => $kehadiran,
          'created_by' => $created_by,
          'photo' => $photo
       ];

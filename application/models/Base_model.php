@@ -128,7 +128,7 @@ class Base_model extends CI_Model
          $this->db->where('YEAR(t.created_at)', $year);
       }
       if ($id_posyandu != null) {
-         $this->db->where('t.posyandu_id', $id_posyandu);
+         $this->db->where('a.posyandu_id', $id_posyandu);
       }
       return $this->db->get()->num_rows();
    }

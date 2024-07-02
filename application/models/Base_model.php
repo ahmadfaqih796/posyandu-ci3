@@ -114,25 +114,43 @@ class Base_model extends CI_Model
       return $this->db->get()->num_rows();
    }
 
-
    public function get_count_k_posyandu_per_month($month = null, $year = null, $id_posyandu = null)
    {
-      $this->db->select('m.*, p.n_posyandu, u.name');
-      $this->db->from('monitoring_kegiatan_posyandu m');
-      $this->db->join('posyandu p', 'm.posyandu_id = p.id', 'left');
-      $this->db->join('users u', 'm.kader_id = u.id', 'left');
-      $this->db->where('m.kehadiran = 1');
+      $this->db->select('t.*');
+      $this->db->from('timbangan_anak t');
+      $this->db->join('anak a', 't.anak_id = a.id', 'left');
+      $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
+      $this->db->where('t.kehadiran = 1');
       if ($month != null) {
-         $this->db->where('MONTH(m.created_at)', $month);
+         $this->db->where('MONTH(t.created_at)', $month);
       }
       if ($year != null) {
-         $this->db->where('YEAR(m.created_at)', $year);
+         $this->db->where('YEAR(t.created_at)', $year);
       }
       if ($id_posyandu != null) {
-         $this->db->where('m.posyandu_id', $id_posyandu);
+         $this->db->where('t.posyandu_id', $id_posyandu);
       }
       return $this->db->get()->num_rows();
    }
+
+   // public function get_count_k_posyandu_per_month($month = null, $year = null, $id_posyandu = null)
+   // {
+   //    $this->db->select('m.*, p.n_posyandu, u.name');
+   //    $this->db->from('monitoring_kegiatan_posyandu m');
+   //    $this->db->join('posyandu p', 'm.posyandu_id = p.id', 'left');
+   //    $this->db->join('users u', 'm.kader_id = u.id', 'left');
+   //    $this->db->where('m.kehadiran = 1');
+   //    if ($month != null) {
+   //       $this->db->where('MONTH(m.created_at)', $month);
+   //    }
+   //    if ($year != null) {
+   //       $this->db->where('YEAR(m.created_at)', $year);
+   //    }
+   //    if ($id_posyandu != null) {
+   //       $this->db->where('m.posyandu_id', $id_posyandu);
+   //    }
+   //    return $this->db->get()->num_rows();
+   // }
 
    public function get_count_gizi_anak($month = null, $year = null, $id_posyandu = null, $status = null)
    {

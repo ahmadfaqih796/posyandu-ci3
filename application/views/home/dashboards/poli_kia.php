@@ -198,34 +198,6 @@
          </div>
       </div>
 
-      <div class="col-md-4 mb-3">
-         <div class="card">
-            <div class="card-body text-center">
-               <h1 class="h4 text-gray-800">Status Gizi Ibu Hamil</h1>
-               <table class="table table-bordered table-striped table-sm">
-                  <tr>
-                     <td>Kurus</td>
-                     <td><?= $total['status_gizi_bumil']['Kurus'] ?></td>
-                  </tr>
-                  <tr>
-                     <td>Normal</td>
-                     <td><?= $total['status_gizi_bumil']['Normal'] ?></td>
-                  </tr>
-                  <tr>
-                     <td>Gemuk</td>
-                     <td><?= $total['status_gizi_bumil']['Gemuk'] ?></td>
-                  </tr>
-                  <tr>
-                     <td>Obesitas</td>
-                     <td><?= $total['status_gizi_bumil']['Obesitas'] ?></td>
-                  </tr>
-               </table>
-               <!-- <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/gizi_ibu_hamil/pdf') ?>">
-                     <i class="fas fa-print"></i> PDF
-                  </a> -->
-            </div>
-         </div>
-      </div>
    </div>
 </div>
 <!-- /.container-fluid -->

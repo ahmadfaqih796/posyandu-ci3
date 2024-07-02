@@ -122,10 +122,10 @@ class Base_model extends CI_Model
       $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
       $this->db->where('t.kehadiran = 1');
       if ($month != null) {
-         $this->db->where('MONTH(t.created_at)', $month);
+         $this->db->where('MONTH(t.tgl_ukur)', $month);
       }
       if ($year != null) {
-         $this->db->where('YEAR(t.created_at)', $year);
+         $this->db->where('YEAR(t.tgl_ukur)', $year);
       }
       if ($id_posyandu != null) {
          $this->db->where('a.posyandu_id', $id_posyandu);

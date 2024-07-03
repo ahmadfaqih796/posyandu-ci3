@@ -23,9 +23,9 @@ class Timbangan extends CI_Controller
       if ($data['role'] == 2) {
          $data['kader'] = $this->bm->get_by_user_id('kaders', $this->session->userdata('user_id'));
          $data['anak'] = $this->am->get_all_anak_no_dead($data['kader']['posyandu_id']);
-         $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $data['kader']['posyandu_id']);
+         $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', $data['kader']['posyandu_id']);
       } else {
-         $data['data'] = $this->am->get_all_anak_table('timbangan_anak');
+         $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak');
       }
 
       $data['no'] = 1;
@@ -63,9 +63,9 @@ class Timbangan extends CI_Controller
       if ($data['role'] == 2) {
          $data['kader'] = $this->bm->get_by_id('kaders', $this->session->userdata('user_id'));
          $data['anak'] = $this->am->get_all_anak_no_dead($data['kader']['posyandu_id']);
-         $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $data['kader']['posyandu_id'], $date);
+         $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', $data['kader']['posyandu_id'], $date);
       } else {
-         $data['data'] = $this->am->get_all_anak_table('timbangan_anak', null, $date);
+         $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', null, $date);
       }
 
       $data['date'] = $date;
@@ -96,9 +96,9 @@ class Timbangan extends CI_Controller
       if ($data['role'] == 2) {
          $data['kader'] = $this->bm->get_by_user_id('kaders', $this->session->userdata('user_id'));
          $data['anak'] = $this->am->get_all_anak_no_dead($data['kader']['posyandu_id']);
-         $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $data['kader']['posyandu_id'], $tgl_ukur);
+         $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', $data['kader']['posyandu_id'], $tgl_ukur);
       } else {
-         $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $id_posyandu, $tgl_ukur);
+         $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', $id_posyandu, $tgl_ukur);
       }
       $data['no'] = 1;
 
@@ -122,7 +122,7 @@ class Timbangan extends CI_Controller
 
       $data['title'] = 'Monitoring Penimbangan Anak';
       $data['no'] = 1;
-      $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $id_posyandu, $tgl_ukur);
+      $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', $id_posyandu, $tgl_ukur);
 
       $html = $this->load->view('data/anak/timbangan/printPDF', $data, true);
 

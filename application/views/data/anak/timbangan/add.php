@@ -17,7 +17,7 @@
                   <select name="anak_id" id="anak_id" class="form-control" required>
                      <option value="">-- Pilih Anak --</option>
                      <?php foreach ($anak as $field) : ?>
-                        <option value="<?= $field['user_id'] ?>" <?= set_select('anak_id', $field['user_id'], (!empty($_POST['anak_id']) && $_POST['anak_id'] == $field['user_id'])); ?>><?= $field['name'] . " - " . $field['nik'] . " - " . $field['n_posyandu'] ?></option>
+                        <option value="<?= $field['id'] ?>" <?= set_select('anak_id', $field['id'], (!empty($_POST['anak_id']) && $_POST['anak_id'] == $field['id'])); ?>><?= $field['name'] . " - " . $field['nik'] . " - " . $field['n_posyandu'] ?></option>
                      <?php endforeach; ?>
                   </select>
                   <?= form_error('anak_id', '<small class="text-danger pl-3">', '</small>'); ?>

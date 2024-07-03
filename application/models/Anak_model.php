@@ -68,6 +68,28 @@ class Anak_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
+   public function get_all_timbangan_anak($table, $id_posyandu = null, $tgl_ukur = null, $id_anak = null, $tgl_kematian = null)
+   {
+      $this->db->select('t.*, t.id AS table_id, u.name, a.*, p.n_posyandu');
+      $this->db->from($table . ' t');
+      $this->db->join('anak a', 't.anak_id = a.id', 'left');
+      $this->db->join('users u', 'a.user_id = u.id', 'left');
+      $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
+      if ($id_posyandu != null) {
+         $this->db->where('a.posyandu_id', $id_posyandu);
+      }
+      if ($tgl_ukur != null) {
+         $this->db->like('t.tgl_ukur', $tgl_ukur);
+      }
+      if ($id_anak != null) {
+         $this->db->where('t.anak_id', $id_anak);
+      }
+      if ($tgl_kematian != null) {
+         $this->db->where('t.tgl_kematian', $tgl_kematian);
+      }
+      return $this->db->get()->result_array();
+   }
+
    public function get_all_anak_table_by_posyandu($table, $posyandu_id, $tgl_ukur = null)
    {
       $this->db->select('t.*, t.id AS table_id, u.name, a.*, p.n_posyandu');

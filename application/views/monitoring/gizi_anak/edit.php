@@ -13,6 +13,7 @@
       <div class="card-body">
          <?= validation_errors('<div class="alert alert-danger" role="alert">', '</div>') ?>
          <?= $this->session->flashdata('message'); ?>
+         <!-- <?= print_r($detail) ?> -->
          <form action="<?= base_url('monitoring/gizi_anak/edit/' . $detail['table_id']) ?>" method="post">
             <?php
             $gizi = $this->am->get_status_gizi_anak($detail['umur'], $detail['jk']);

@@ -90,6 +90,17 @@ class Anak_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
+   public function get_timbangan_anak_by_id($table, $id)
+   {
+      $this->db->select('t.*, t.id AS table_id, u.name, a.*, p.n_posyandu');
+      $this->db->from($table . ' t');
+      $this->db->join('anak a', 't.anak_id = a.id', 'left');
+      $this->db->join('users u', 'a.user_id = u.id', 'left');
+      $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
+      $this->db->where('t.id', $id);
+      return $this->db->get()->row_array();
+   }
+
    public function get_all_anak_table_by_posyandu($table, $posyandu_id, $tgl_ukur = null)
    {
       $this->db->select('t.*, t.id AS table_id, u.name, a.*, p.n_posyandu');

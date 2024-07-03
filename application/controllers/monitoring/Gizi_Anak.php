@@ -22,9 +22,9 @@ class Gizi_Anak extends CI_Controller
 
       if ($data['role'] == 2) {
          $data['kader'] = $this->bm->get_by_user_id('kaders', $this->session->userdata('user_id'));
-         $data['data'] = $this->am->get_all_anak_table('timbangan_anak', $data['kader']['posyandu_id']);
+         $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', $data['kader']['posyandu_id']);
       } else {
-         $data['data'] = $this->am->get_all_anak_table('timbangan_anak');
+         $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak');
       }
 
       $data['no'] = 1;
@@ -73,7 +73,7 @@ class Gizi_Anak extends CI_Controller
 
       $data['title'] = 'Data Gizi Anak';
       $data['no'] = 1;
-      $data['users'] = $this->am->get_all_anak_table('timbangan_anak', $id_posyandu, $tanggal);
+      $data['users'] = $this->am->get_all_timbangan_anak('timbangan_anak', $id_posyandu, $tanggal);
       $data['role'] = $this->session->userdata('role_id');
 
       $html = $this->load->view('monitoring/gizi_anak/printPDF', $data, true);
@@ -93,12 +93,12 @@ class Gizi_Anak extends CI_Controller
       }
    }
 
-   public function edit($id_data)
+   public function edit($id_data, $anak_id)
    {
       $this->_validation();
       $data['title'] = 'Gizi Anak';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['detail'] = $this->am->get_anak_table_by_id("timbangan_anak", $id_data);
+      $data['detail'] = $this->am->get_timbangan_anak_by_id("timbangan_anak", $id_data);
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);

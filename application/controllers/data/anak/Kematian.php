@@ -17,14 +17,21 @@ class Kematian extends CI_Controller
       $this->_validation();
       $data['title'] = 'Kematian Anak';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['data'] = $this->am->get_all_anak_table('kematian_anak');
-      $data['anak'] = $this->am->get_all_anak_no_dead();
       $data['role'] = $this->session->userdata('role_id');
 
       $data['posyandu'] = $this->bm->get_all("posyandu");
 
       if ($data['role'] == 2) {
          $data['kader'] = $this->bm->get_by_user_id('kaders', $this->session->userdata('user_id'));
+         // print_r(array(
+         //    'kader' => $data['kader']['posyandu_id'],
+         //    'user' => $this->session->userdata('user_id'),
+         // ));
+         $data['anak'] = $this->am->get_all_anak_no_dead($data['kader']['posyandu_id']);
+         $data['data'] =   $this->am->get_all_anak_table('kematian_anak', $data['kader']['posyandu_id']);
+      } else {
+         $data['anak'] = $this->am->get_all_anak_no_dead();
+         $data['data'] = $this->am->get_all_anak_table('kematian_anak');
       }
 
       $data['no'] = 1;

@@ -95,7 +95,7 @@ class Gizi_Anak extends CI_Controller
       }
    }
 
-   public function edit($id_data, $anak_id)
+   public function edit($id_data)
    {
       $this->_validation();
       $data['title'] = 'Gizi Anak';

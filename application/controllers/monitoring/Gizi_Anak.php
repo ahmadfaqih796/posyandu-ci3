@@ -76,6 +76,8 @@ class Gizi_Anak extends CI_Controller
       $data['users'] = $this->am->get_all_timbangan_anak('timbangan_anak', $id_posyandu, $tanggal);
       $data['role'] = $this->session->userdata('role_id');
 
+      // print_r($data['users']);
+
       $html = $this->load->view('monitoring/gizi_anak/printPDF', $data, true);
 
       $mpdf->WriteHTML($html);

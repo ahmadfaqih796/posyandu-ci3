@@ -156,8 +156,8 @@ class Base_model extends CI_Model
    {
       $this->db->select('t.*, t.id AS table_id, u.name, a.*, p.n_posyandu');
       $this->db->from('timbangan_anak t');
-      $this->db->join('users u', 't.anak_id = u.id', 'left');
-      $this->db->join('anak a', 't.anak_id = a.user_id', 'left');
+      $this->db->join('anak a', 't.anak_id = a.id', 'left');
+      $this->db->join('users u', 'a.user_id = u.id', 'left');
       $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
       if ($id_posyandu != null) {
          $this->db->where('a.posyandu_id', $id_posyandu);

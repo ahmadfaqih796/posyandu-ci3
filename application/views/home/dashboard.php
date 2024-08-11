@@ -100,7 +100,7 @@
          </div>
       </div> -->
 
-      <?php if ($role == 1 || $role == 2 || $role == 6 || $role == 8) : ?>
+      <?php if ($role == 2 || $role == 6 || $role == 8) : ?>
          <div class="col-xl-6">
             <!-- Bar Chart -->
             <div class="card shadow mb-4">

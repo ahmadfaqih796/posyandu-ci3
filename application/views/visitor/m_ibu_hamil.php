@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Home</title>
+   <title>Monitoring Ibu Hamil</title>
 
    <!-- Bootstrap CSS -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -33,7 +33,7 @@
                   </a>
                   <ul class="dropdown-menu">
                      <li><a class="dropdown-item" href="#">Monitoring Posyandu</a></li>
-                     <li><a class="dropdown-item" href="<?= base_url("home/monitoring_ibu_hamil") ?>">Monitoring Ibu Hamil</a></li>
+                     <li><a class="dropdown-item" href="#">Monitoring Ibu Hamil</a></li>
                   </ul>
                </li>
                <li class="nav-item">
@@ -44,36 +44,32 @@
       </div>
    </nav>
 
-   <!-- Header -->
-   <div id="home" class="container my-5">
-      <div class="row">
-         <div class="col-12">
-            <h1 class="text-center">Selamat Datang</h1>
-            <h1 class="text-center">di Layanan Monitoring</h1>
-            <h1 class="text-center">UPT Puskesmas Medan Deli</h1>
-         </div>
-      </div>
-   </div>
-
-   <hr class="border border-3 opacity-75">
-
    <!-- Content -->
    <div class="container my-5">
       <div class="row">
-         <div class="col-md-6 col-xs-12">
-            <h1>Visi</h1>
-            <ul>
-               <li>Terwujudnya masyarakat Kecamatan Medan Deli yang sehat dalam keberkahan, maju dan kondusif.</li>
-            </ul>
-         </div>
-         <div class="col-md-6 col-xs-12">
-            <h1>Misi</h1>
-            <ul>
-               <li>Melaksanakan pelayanan kesehatan yang bermutu dan bermuara pada kepuasan.</li>
-               <li>Menggerakan kemandirian dan partisipan masyarakat melalui pemberdayaan masyarakat dalam pembangunan kesehatan.</li>
-               <li>Melaksanakan penanggulangan masalah kesehatan di wilayah kerja.</li>
-               <li>Meningkatan kualitas SDM yang handal dan sesuai dengan perkembangan zaman.</li>
-            </ul>
+         <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+               <thead>
+                  <tr>
+                     <!-- <th>No</th> -->
+                     <th>Nama Posyandu</th>
+                     <th>Tanggal</th>
+                     <th>Jam Buka</th>
+                     <th>Jam Tutup</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <?php foreach ($data as $field) : ?>
+                     <tr>
+                        <!-- <td><?= $no++ ?></td> -->
+                        <td><?= $field['n_posyandu'] ?></td>
+                        <td><?= $field['tanggal'] ?></td>
+                        <td><?= $field['jam_buka'] ?></td>
+                        <td><?= $field['jam_tutup'] ?></td>
+                     </tr>
+                  <?php endforeach; ?>
+               </tbody>
+            </table>
          </div>
       </div>
    </div>

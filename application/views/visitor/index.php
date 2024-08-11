@@ -12,7 +12,8 @@
 </head>
 
 <body>
-   <nav class="navbar navbar-expand-lg bg-body-tertiary">
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
       <div class="container-fluid">
          <a class="navbar-brand" href="#">Navbar</a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,6 +43,62 @@
          </div>
       </div>
    </nav>
+
+   <!-- Header -->
+   <div class="container my-5">
+      <div class="row">
+         <div class="col-12">
+            <h1 class="text-center">Selamat Datang</h1>
+            <h1 class="text-center">di Layanan Monitoring</h1>
+            <h1 class="text-center">UPT Puskesmas Medan Deli</h1>
+         </div>
+      </div>
+   </div>
+
+   <hr class="border border-3 opacity-75">
+
+   <!-- Content -->
+   <div class="container my-5">
+      <div class="row">
+         <div class="col-md-6 col-xs-12">
+            <h1>Visi</h1>
+            <ul>
+               <li>Terwujudnya masyarakat Kecamatan Medan Deli yang sehat dalam keberkahan, maju dan kondusif.</li>
+            </ul>
+         </div>
+         <div class="col-md-6 col-xs-12">
+            <h1>Misi</h1>
+            <ul>
+               <li>Melaksanakan pelayanan kesehatan yang bermutu dan bermuara pada kepuasan.</li>
+               <li>Menggerakan kemandirian dan partisipan masyarakat melalui pemberdayaan masyarakat dalam pembangunan kesehatan.</li>
+               <li>Melaksanakan penanggulangan masalah kesehatan di wilayah kerja.</li>
+               <li>Meningkatan kualitas SDM yang handal dan sesuai dengan perkembangan zaman.</li>
+            </ul>
+         </div>
+      </div>
+   </div>
+
+   <!-- Footer -->
+   <footer class="text-center text-lg-start text-muted" style="background-color: #e3f2fd;">
+      <div class="text-center p-4">
+         <h3>
+            UPT Puskesmas Medan Deli
+         </h3>
+         <p>
+            Jl. K.L. Yos Sudarso Km 11, Kel. Kota Bangun,
+         </p>
+         <p>
+            Kec. Medan Deli, Kab. Deli Serdang, Sumatera Utara 20244
+         </p>
+         <p>
+            Telp. 061-6854190
+         </p>
+      </div>
+
+      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+         © UPT Puskesmas Medan Deli 2024
+      </div>
+   </footer>
 </body>
 
 </html>

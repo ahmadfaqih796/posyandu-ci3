@@ -53,6 +53,7 @@
                   <tr>
                      <!-- <th>No</th> -->
                      <th>Nama Posyandu</th>
+                     <th>Alamat</th>
                      <th>Tanggal</th>
                      <th>Jam Buka</th>
                      <th>Jam Tutup</th>
@@ -63,6 +64,7 @@
                      <tr>
                         <!-- <td><?= $no++ ?></td> -->
                         <td><?= $field['n_posyandu'] ?></td>
+                        <td><?= $field['alamat'] ?></td>
                         <td><?= $field['tanggal'] ?></td>
                         <td><?= $field['jam_buka'] ?></td>
                         <td><?= $field['jam_tutup'] ?></td>

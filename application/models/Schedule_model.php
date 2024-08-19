@@ -10,7 +10,7 @@ class Schedule_model extends CI_Model
 
    public function get_schedule()
    {
-      $this->db->select('s.*, p.n_posyandu');
+      $this->db->select('s.*, p.n_posyandu, p.alamat');
       $this->db->from('schedule s');
       $this->db->join('posyandu p', 's.posyandu_id = p.id', 'left');
       return $this->db->get()->result_array();

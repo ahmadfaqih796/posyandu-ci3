@@ -32,7 +32,7 @@
                      Layanan
                   </a>
                   <ul class="dropdown-menu">
-                     <li><a class="dropdown-item" href="#">Monitoring Posyandu</a></li>
+                     <li><a class="dropdown-item" href="<?= base_url("home/monitoring_posyandu") ?>">Monitoring Posyandu</a></li>
                      <li><a class="dropdown-item" href="<?= base_url("home/monitoring_ibu_hamil") ?>">Monitoring Ibu Hamil</a></li>
                   </ul>
                </li>

@@ -32,8 +32,8 @@
                      Layanan
                   </a>
                   <ul class="dropdown-menu">
-                     <li><a class="dropdown-item" href="#">Monitoring Posyandu</a></li>
-                     <li><a class="dropdown-item" href="#">Monitoring Ibu Hamil</a></li>
+                     <li><a class="dropdown-item" href="<?= base_url("home/monitoring_posyandu") ?>">Monitoring Posyandu</a></li>
+                     <li><a class="dropdown-item" href="<?= base_url("home/monitoring_ibu_hamil") ?>">Monitoring Ibu Hamil</a></li>
                   </ul>
                </li>
                <li class="nav-item">
@@ -46,6 +46,7 @@
 
    <!-- Content -->
    <div class="container my-5">
+      <h1 class="text-center mb-5">Monitoring Ibu Hamil</h1>
       <div class="row">
          <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

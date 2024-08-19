@@ -14,6 +14,15 @@ class Home extends CI_Controller
       $this->load->view('visitor/index');
    }
 
+   public function monitoring_posyandu()
+   {
+      $data =  [
+         'title' => 'Monitoring Posyandu',
+         'data' => $this->sm->get_schedule()
+      ];
+      $this->load->view('visitor/m_posyandu', $data);
+   }
+
    public function monitoring_ibu_hamil()
    {
       $data =  [

@@ -24,6 +24,7 @@ class Users extends CI_Controller
          $this->load->view('management/users/index', $data);
          $this->load->view('management/users/add');
          $this->load->view('management/users/edit');
+         $this->load->view('management/users/delete');
          $this->load->view('templates/footer', $data);
       } else {
          $add = $this->input->post('addData');
@@ -86,6 +87,13 @@ class Users extends CI_Controller
 
    private function delete()
    {
+      $id = $this->input->post('id');
+      $result = $this->um->delete_user($id);
+      if ($result) {
+         $this->notification->notify_success('management/users', 'Berhasil menghapus user');
+      } else {
+         $this->notification->notify_error('management/users', 'Gagal menghapus user');
+      }
    }
 
    private function _validation_user()

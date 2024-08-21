@@ -16,6 +16,7 @@ class Users_model extends CI_Model
       $this->db->select('users.*, roles.role');
       $this->db->from('users');
       $this->db->join('roles', 'users.role_id = roles.id', 'left');
+      $this->db->where('users.is_deleted', 0);
       if ($role) {
          $this->db->where('users.role_id', $role);
       }
@@ -68,6 +69,6 @@ class Users_model extends CI_Model
 
    public function delete_user($user_id)
    {
-      return $this->db->delete('users', array('id' => $user_id));
+      return $this->db->update('users', ['is_deleted' => 1], ['id' => $user_id]);
    }
 }

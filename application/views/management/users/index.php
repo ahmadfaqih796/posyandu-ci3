@@ -40,7 +40,11 @@
                         <td><?= $field['is_active'] == 1 ? 'Aktif' : 'Tidak Aktif' ?></td>
                         <td>
                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Edit</button>
-                           <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="getData(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button> -->
+                           <?php
+                           if ($field['is_active'] == 0) {
+                           ?>
+                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="getDataDelete(<?= htmlspecialchars(json_encode($field), ENT_QUOTES, 'UTF-8') ?>)">Hapus</button>
+                           <?php } ?>
                         </td>
                      </tr>
                   <?php endforeach; ?>

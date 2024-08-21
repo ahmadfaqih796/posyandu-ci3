@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Monitoring Ibu Hamil</title>
+   <title>Monitoring Posyandu</title>
 
    <!-- Bootstrap CSS -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -33,13 +33,16 @@
                   </a>
                   <ul class="dropdown-menu">
                      <li><a class="dropdown-item" href="<?= base_url("home/monitoring_posyandu") ?>">Monitoring Posyandu</a></li>
-                     <li><a class="dropdown-item" href="<?= base_url("home/monitoring_ibu_hamil") ?>">Monitoring Ibu Hamil</a></li>
+                     <li><a class="dropdown-item" href="<?= base_url("auth/bumil") ?>">Monitoring Ibu Hamil</a></li>
                   </ul>
                </li>
                <li class="nav-item">
                   <a class="nav-link" aria-current="page" href="#footer">Kontak Kami</a>
                </li>
             </ul>
+            <a class="btn btn-primary" href="<?= base_url("auth") ?>">
+               Login
+            </a>
          </div>
       </div>
    </nav>

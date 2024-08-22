@@ -146,7 +146,6 @@
    var anakId = document.getElementById('anak_id').textContent;
    document.getElementById('anak_id').addEventListener('change', function() {
       var selectedAnak = this.value;
-      console.log("sasasas", selectedAnak)
       // Mengalihkan ke halaman dengan URL yang disesuaikan
       window.location.href = '<?= base_url("data/anak/timbangan/anak/") ?>' + posyanduId + '/' + null + '/' + selectedAnak;
    });

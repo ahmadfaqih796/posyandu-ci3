@@ -47,7 +47,7 @@ class Imunisasi extends CI_Controller
       }
    }
 
-   public function data($id_posyandu = null, $tanggal = null)
+   public function data($id_posyandu = null, $tanggal = null, $anak_id = null)
    {
       $data['title'] = 'Imunisasi';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
@@ -55,8 +55,14 @@ class Imunisasi extends CI_Controller
       $data['role'] = $this->session->userdata('role_id');
       $data['id_posyandu'] = $id_posyandu;
       $data['date'] = $tanggal;
+      $data['anak_id'] = $anak_id;
 
-      $data['data'] = $this->im->get_all_imunisasi($id_posyandu, $tanggal);
+      if ($tanggal == "null" && $id_posyandu == "null") {
+         # code...
+         $data['data'] = $this->im->get_all_imunisasi(null, null, null, $anak_id);
+      } else {
+         $data['data'] = $this->im->get_all_imunisasi($id_posyandu, $tanggal);
+      }
       $data['no'] = 1;
 
       $this->load->view('templates/header', $data);
@@ -66,14 +72,19 @@ class Imunisasi extends CI_Controller
       $this->load->view('templates/footer', $data);
    }
 
-   public function pdf($id_posyandu, $tanggal = null)
+   public function pdf($id_posyandu = null, $tanggal = null, $anak_id = null)
    {
       require_once FCPATH . 'vendor/autoload.php';
       $mpdf = new \Mpdf\Mpdf();
 
       $data['title'] = 'Laporan Imunisasi';
       $data['no'] = 1;
-      $data['data'] = $this->im->get_all_imunisasi($id_posyandu, $tanggal);
+      if ($tanggal == "null") {
+         $data['data'] = $this->im->get_all_imunisasi(null, null, null, $anak_id);
+      } else {
+
+         $data['data'] = $this->im->get_all_imunisasi($id_posyandu, $tanggal);
+      }
 
       $html = $this->load->view('laporan/imunisasi/printPDF', $data, true);
 

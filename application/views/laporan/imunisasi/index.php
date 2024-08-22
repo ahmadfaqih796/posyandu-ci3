@@ -10,9 +10,17 @@
             </div>
             <div class="col-md-2 col-xs-12">
                <?php if ($role == 6) : ?>
-                  <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#addModal">
+                  <button type="button" class="btn btn-primary mb-3 float-right btn-block" data-toggle="modal" data-target="#addModal">
                      <i class="fas fa-plus"></i> Tambah
                   </button>
+                  <div class="form-group mb-3" style="width: 180px;">
+                     <select name="anak_id" id="anak_id" class="form-control" required>
+                        <option value="">Progress Anak</option>
+                        <?php foreach ($anak as $field) : ?>
+                           <option value="<?= $field['id'] ?>" <?= set_select('anak_id', $field['id'], (!empty($_POST['anak_id']) && $_POST['anak_id'] == $field['id'])); ?>><?= $field['name'] . " - " . $field['nik'] . " - " . $field['n_posyandu'] ?></option>
+                        <?php endforeach; ?>
+                     </select>
+                  </div>
                <?php endif; ?>
                <button type="button" class="btn btn-primary float-right btn-block" data-toggle="modal" data-target="#filterModal">
                   <i class="fas fa-search"></i> Cari
@@ -67,3 +75,13 @@
 
 </div>
 <!-- /.container-fluid -->
+
+<script>
+   var anakId = document.getElementById('anak_id').textContent;
+   document.getElementById('anak_id').addEventListener('change', function() {
+      var selectedAnak = this.value;
+      console.log("trtrtr", selectedAnak)
+      // Mengalihkan ke halaman dengan URL yang disesuaikan
+      window.location.href = '<?= base_url("laporan/imunisasi/data/") ?>' + null + '/' + null + '/' + selectedAnak;
+   });
+</script>

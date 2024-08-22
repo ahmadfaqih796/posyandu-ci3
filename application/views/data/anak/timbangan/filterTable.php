@@ -29,8 +29,18 @@
          <?= validation_errors('<div class="alert alert-danger" role="alert">', '</div>') ?>
          <?= $this->session->flashdata('message'); ?>
          <?php if ($role == 2) : ?>
-            <div class="form-group mb-3 float-right" style="width: 180px;">
-               <input type="month" class="form-control" id="month" name="month">
+            <div class="float-right">
+               <div class="form-group mb-3" style="width: 180px;">
+                  <select name="anak_id" id="anak_id" class="form-control" required>
+                     <option value="">Progress Anak</option>
+                     <?php foreach ($anak as $field) : ?>
+                        <option value="<?= $field['id'] ?>" <?= set_select('anak_id', $field['id'], (!empty($_POST['anak_id']) && $_POST['anak_id'] == $field['id'])); ?>><?= $field['name'] . " - " . $field['nik'] . " - " . $field['n_posyandu'] ?></option>
+                     <?php endforeach; ?>
+                  </select>
+               </div>
+               <div class="form-group mb-3" style="width: 180px;">
+                  <input type="month" class="form-control" id="month" name="month">
+               </div>
             </div>
          <?php endif; ?>
          <div class="table-responsive">
@@ -133,6 +143,14 @@
 
 <script>
    var posyanduId = document.getElementById('posyandu_id').textContent;
+   var anakId = document.getElementById('anak_id').textContent;
+   document.getElementById('anak_id').addEventListener('change', function() {
+      var selectedAnak = this.value;
+      console.log("sasasas", selectedAnak)
+      // Mengalihkan ke halaman dengan URL yang disesuaikan
+      window.location.href = '<?= base_url("data/anak/timbangan/anak/") ?>' + posyanduId + '/' + null + '/' + selectedAnak;
+   });
+
    document.getElementById('month').addEventListener('change', function() {
       var selectedMonth = this.value;
       // Mengalihkan ke halaman dengan URL yang disesuaikan

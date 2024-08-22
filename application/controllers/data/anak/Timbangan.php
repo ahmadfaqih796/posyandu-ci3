@@ -83,7 +83,7 @@ class Timbangan extends CI_Controller
       }
    }
 
-   public function anak($id_posyandu, $tgl_ukur = null)
+   public function anak($id_posyandu, $tgl_ukur = null, $anak_id = null)
    {
       $this->_validation();
       $data['title'] = 'Penimbangan & Pengukuran Anak';
@@ -91,12 +91,17 @@ class Timbangan extends CI_Controller
       $data['role'] = $this->session->userdata('role_id');
       $data['posyandu'] = $this->bm->get_all("posyandu");
       $data['id_posyandu'] = $id_posyandu;
+      $data['id_anak'] = $anak_id;
       $data['date'] = $tgl_ukur;
 
       if ($data['role'] == 2) {
          $data['kader'] = $this->bm->get_by_user_id('kaders', $this->session->userdata('user_id'));
          $data['anak'] = $this->am->get_all_anak_no_dead($data['kader']['posyandu_id']);
-         $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', $data['kader']['posyandu_id'], $tgl_ukur);
+         if ($tgl_ukur == "null") {
+            $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', $data['kader']['posyandu_id'], null, $anak_id);
+         } else {
+            $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', $data['kader']['posyandu_id'], $tgl_ukur, $anak_id);
+         }
       } else {
          $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', $id_posyandu, $tgl_ukur);
       }
@@ -115,14 +120,18 @@ class Timbangan extends CI_Controller
       }
    }
 
-   public function pdf($id_posyandu, $tgl_ukur = null)
+   public function pdf($id_posyandu, $tgl_ukur = null, $anak_id = null)
    {
       require_once FCPATH . 'vendor/autoload.php';
       $mpdf = new \Mpdf\Mpdf();
 
       $data['title'] = 'Monitoring Penimbangan Anak';
       $data['no'] = 1;
-      $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', $id_posyandu, $tgl_ukur);
+      if ($tgl_ukur == "null") {
+         $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', $id_posyandu, null, $anak_id);
+      } else {
+         $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', $id_posyandu, $tgl_ukur, $anak_id);
+      }
 
       $html = $this->load->view('data/anak/timbangan/printPDF', $data, true);
 

@@ -9,7 +9,7 @@
                <h6 class="m-0 font-weight-bold text-primary mb-2"><?= $title ?></h6>
             </div>
             <div class="col-md-2 col-xs-12">
-               <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('data/anak/timbangan/pdf/') . $id_posyandu . '/' . $date  ?>">
+               <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('data/anak/timbangan/pdf/') . $id_posyandu . '/' . $date . '/' . $id_anak  ?>">
                   <i class="fas fa-print"></i> PDF
                </a>
                <?php if ($role == 2) : ?>

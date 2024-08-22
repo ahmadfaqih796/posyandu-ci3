@@ -175,7 +175,7 @@ $sidebarMenu = array(
          ),
          array(
             "url" => "data/anak/timbangan",
-            "text" => "Penimbangan Anak",
+            "text" => "Posyandu Balita",
             "icon" => "fas fa-fw fa-book",
             "role" => array(1, 2, 8),
          ),

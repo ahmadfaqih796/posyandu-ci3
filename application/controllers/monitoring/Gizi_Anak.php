@@ -19,6 +19,7 @@ class Gizi_Anak extends CI_Controller
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['posyandu'] = $this->bm->get_all("posyandu");
       $data['role'] = $this->session->userdata('role_id');
+      $data['anak'] = $this->am->get_all_anak();
 
       if ($data['role'] == 2) {
          $data['kader'] = $this->bm->get_by_user_id('kaders', $this->session->userdata('user_id'));
@@ -40,19 +41,24 @@ class Gizi_Anak extends CI_Controller
       }
    }
 
-   public function anak($id_posyandu, $tgl_ukur = null)
+   public function anak($id_posyandu = null, $tgl_ukur = null, $anak_id = null)
    {
       $this->_validation();
       $data['title'] = 'Anak';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['posyandu'] = $this->bm->get_all("posyandu");
-      $data['data'] = $this->am->get_all_anak_table_by_posyandu('timbangan_anak', $id_posyandu, $tgl_ukur);
-      $data['total'] = $this->am->get_all_anak_table_by_count('timbangan_anak', $id_posyandu, $tgl_ukur);
-      if ($data['total'] == 0) {
-         $this->notification->notify_error('monitoring/gizi_anak', 'Tidak ada data');
+      if ($anak_id != null) {
+         $data['data'] = $this->am->get_all_anak_table_by_posyandu('timbangan_anak', null, null, $anak_id);
+      } else {
+         $data['data'] = $this->am->get_all_anak_table_by_posyandu('timbangan_anak', $id_posyandu, $tgl_ukur);
       }
+      // $data['total'] = $this->am->get_all_anak_table_by_count('timbangan_anak', $id_posyandu, $tgl_ukur);
+      // if ($data['total'] == 0) {
+      //    $this->notification->notify_error('monitoring/gizi_anak', 'Tidak ada data');
+      // }
       $data['id_posyandu'] = $id_posyandu;
       $data['date'] = $tgl_ukur;
+      $data['anak_id'] = $anak_id;
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
@@ -66,14 +72,18 @@ class Gizi_Anak extends CI_Controller
       }
    }
 
-   public function pdf($id_posyandu = null, $tanggal = null)
+   public function pdf($id_posyandu = null, $tanggal = null, $anak_id = null)
    {
       require_once FCPATH . 'vendor/autoload.php';
       $mpdf = new \Mpdf\Mpdf();
 
       $data['title'] = 'Data Gizi Anak';
       $data['no'] = 1;
-      $data['users'] = $this->am->get_all_timbangan_anak('timbangan_anak', $id_posyandu, $tanggal);
+      if ($anak_id != null) {
+         $data['users'] = $this->am->get_all_timbangan_anak('timbangan_anak', null, null, $anak_id);
+      } else {
+         $data['users'] = $this->am->get_all_timbangan_anak('timbangan_anak', $id_posyandu, $tanggal);
+      }
       $data['role'] = $this->session->userdata('role_id');
 
       // print_r($data['users']);

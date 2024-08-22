@@ -45,14 +45,18 @@ class Gizi_Ibu_Hamil extends CI_Controller
       }
    }
 
-   public function pdf()
+   public function pdf($bumil_id = null)
    {
       require_once FCPATH . 'vendor/autoload.php';
       $mpdf = new \Mpdf\Mpdf();
 
       $data['title'] = 'Data Gizi Ibu Hamil';
       $data['no'] = 1;
-      $data['users'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
+      if ($bumil_id != null) {
+         $data['users'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil", null, $bumil_id);
+      } else {
+         $data['users'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil");
+      }
 
       $html = $this->load->view('monitoring/gizi_ibu_hamil/printPDF', $data, true);
 

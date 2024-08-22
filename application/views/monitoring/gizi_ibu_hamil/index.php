@@ -20,6 +20,17 @@
       <div class="card-body">
          <?= validation_errors('<div class="alert alert-danger" role="alert">', '</div>') ?>
          <?= $this->session->flashdata('message'); ?>
+         <div class="float-right">
+            <div class="form-group" style="width: 180px;">
+               <select name="bumil_id" id="bumil_id" class="form-control" required>
+                  <option value="">Progress</option>
+                  <?php foreach ($bidan as $field) : ?>
+                     <option value="<?= $field['id'] ?>" <?= set_select('bumil_id', $field['id'], (!empty($_POST['bumil_id']) && $_POST['bumil_id'] == $field['id'])); ?>><?= $field['n_ibu'] . " - " . $field['nik'] ?></option>
+                  <?php endforeach; ?>
+               </select>
+            </div>
+
+         </div>
          <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                <thead>
@@ -63,3 +74,11 @@
 
 </div>
 <!-- /.container-fluid -->
+
+<script>
+   document.getElementById('bumil_id').addEventListener('change', function() {
+      var selectedBumil = this.value;
+      // Mengalihkan ke halaman dengan URL yang disesuaikan
+      window.location.href = '<?= base_url("monitoring/gizi_ibu_hamil/pdf/") ?>' + selectedBumil;
+   });
+</script>

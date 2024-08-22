@@ -39,15 +39,20 @@ class Ibu_Hamil extends CI_Controller
       }
    }
 
-   public function month($date)
+   public function month($date = null, $bumil_id = null)
    {
       $this->_validation();
       $data['title'] = 'Ibu Hamil';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['data'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil", $date);
+      if ($date == "null") {
+         $data['data'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil", null, $bumil_id);
+      } else {
+         $data['data'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil", $date);
+      }
       $data['bidan'] = $this->bm->get_all("ibu_hamil");
       $data['role'] = $this->session->userdata('role_id');
       $data['date'] = $date;
+      $data['bumil_id'] = $bumil_id;
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
@@ -61,14 +66,19 @@ class Ibu_Hamil extends CI_Controller
       }
    }
 
-   public function pdf($date = null)
+   public function pdf($date = null, $bumil_id = null)
    {
       require_once FCPATH . 'vendor/autoload.php';
       $mpdf = new \Mpdf\Mpdf();
 
       $data['title'] = 'Monitoring Ibu Hamil';
       $data['no'] = 1;
-      $data['users'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil", $date);
+      if ($date == "null") {
+         # code...
+         $data['users'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil", null, $bumil_id);
+      } else {
+         $data['users'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil", $date);
+      }
 
       $html = $this->load->view('monitoring/ibu_hamil/printPDF', $data, true);
 
@@ -76,7 +86,7 @@ class Ibu_Hamil extends CI_Controller
       $mpdf->Output('monitoring_ibu_hamil.pdf', 'D');
    }
 
-   public function excel($date = null)
+   public function excel($date = null, $bumil_id = null)
    {
       $spreadsheet = new Spreadsheet();
       $sheet = $spreadsheet->getActiveSheet();
@@ -99,7 +109,11 @@ class Ibu_Hamil extends CI_Controller
       $sheet->setCellValue('Q1', 'LILA');
       $sheet->setCellValue('R1', 'Kunjungan Berikutnya');
       $sheet->setCellValue('S1', 'Keterangan');
-      $data = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil", $date);
+      if ($date == "null") {
+         $data = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil", null, $bumil_id);
+      } else {
+         $data = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil", $date);
+      }
       $no = 1;
       $x = 2;
       foreach ($data as $row) {

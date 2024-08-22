@@ -13,10 +13,10 @@
                   <i class="fas fa-plus"></i> Tambah
                </a> -->
                <?php if ($role == 2 || $role == 7) : ?>
-                  <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/ibu_hamil/pdf/') . $date ?>">
+                  <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/ibu_hamil/pdf/') . $date . '/' . $bumil_id ?>">
                      <i class="fas fa-print"></i> PDF
                   </a>
-                  <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/ibu_hamil/excel/') . $date ?>">
+                  <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/ibu_hamil/excel/') . $date . '/' . $bumil_id ?>">
                      <i class="fas fa-print"></i> Excel
                   </a>
                <?php endif; ?>
@@ -32,8 +32,18 @@
          <?= validation_errors('<div class="alert alert-danger" role="alert">', '</div>') ?>
          <?= $this->session->flashdata('message'); ?>
          <?php if ($role == 7) : ?>
-            <div class="form-group mb-3 float-right" style="width: 180px;">
-               <input type="month" class="form-control" id="month" name="month">
+            <div class="float-right">
+               <div class="form-group mb-3" style="width: 180px;">
+                  <select name="bumil_id" id="bumil_id" class="form-control" required>
+                     <option value="">Progress</option>
+                     <?php foreach ($bidan as $field) : ?>
+                        <option value="<?= $field['id'] ?>" <?= set_select('bumil_id', $field['id'], (!empty($_POST['bumil_id']) && $_POST['bumil_id'] == $field['id'])); ?>><?= $field['n_ibu'] . " - " . $field['nik'] ?></option>
+                     <?php endforeach; ?>
+                  </select>
+               </div>
+               <div class="form-group mb-3" style="width: 180px;">
+                  <input type="month" class="form-control" id="month" name="month">
+               </div>
             </div>
          <?php endif; ?>
          <div class="table-responsive">
@@ -108,6 +118,12 @@
 <!-- /.container-fluid -->
 
 <script>
+   document.getElementById('bumil_id').addEventListener('change', function() {
+      var selectedBumil = this.value;
+      // Mengalihkan ke halaman dengan URL yang disesuaikan
+      window.location.href = '<?= base_url("monitoring/ibu_hamil/month/") ?>' + null + '/' + selectedBumil;
+   });
+
    document.getElementById('month').addEventListener('change', function() {
       var selectedMonth = this.value;
       // Mengalihkan ke halaman dengan URL yang disesuaikan

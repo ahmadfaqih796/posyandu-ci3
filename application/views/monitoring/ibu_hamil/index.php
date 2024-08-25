@@ -56,7 +56,7 @@
                      <th>Tanggal Periksa</th>
                      <th>Usia Kehamilan</th>
                      <th>Standar 7T</th>
-                     <th>Status Gizi</th>
+                     <!-- <th>Status Gizi</th> -->
                      <?php if ($role == 7) : ?>
                         <th>Aksi</th>
                      <?php endif; ?>
@@ -99,7 +99,7 @@
                         <td><?= $field['tanggal_periksa'] ?></td>
                         <td><?= $field['umur_kehamilan'] ?></td>
                         <td><?= $result == 1 ? 'Belum' : 'Sudah' ?></td>
-                        <td><?= $status_gizi ?></td>
+                        <!-- <td><?= $status_gizi ?></td> -->
                         <?php if ($role == 7) : ?>
                            <td>
                               <a type="button" class="btn btn-primary" href="<?= base_url('monitoring/ibu_hamil/edit/' . $field['id']) ?>">Edit</a>

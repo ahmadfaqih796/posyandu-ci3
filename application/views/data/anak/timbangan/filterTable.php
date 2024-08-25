@@ -28,8 +28,8 @@
       <div class="card-body">
          <?= validation_errors('<div class="alert alert-danger" role="alert">', '</div>') ?>
          <?= $this->session->flashdata('message'); ?>
-         <?php if ($role == 2) : ?>
-            <div class="float-right">
+         <div class="float-right">
+            <?php if ($role == 2 || $role == 8) : ?>
                <div class="form-group mb-3" style="width: 180px;">
                   <select name="anak_id" id="anak_id" class="form-control" required>
                      <option value="">Progress Anak</option>
@@ -38,11 +38,13 @@
                      <?php endforeach; ?>
                   </select>
                </div>
+            <?php endif; ?>
+            <?php if ($role == 2) : ?>
                <div class="form-group mb-3" style="width: 180px;">
                   <input type="month" class="form-control" id="month" name="month">
                </div>
-            </div>
-         <?php endif; ?>
+            <?php endif; ?>
+         </div>
          <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                <thead>
@@ -57,6 +59,7 @@
                      <th>Lingkar Kepala (cm)</th>
                      <th>Berat Badan (kg)</th>
                      <th>Tinggi Badan (cm)</th>
+                     <th>Tanggal Imunisasi</th>
                      <th>Keterangan</th>
                      <th>Kehadiran</th>
                      <?php if ($role == 2 || $role == 8) : ?>
@@ -107,6 +110,7 @@
                         <td><?= $field['lingkar_kepala'] ?></td>
                         <td><?= $field['berat_badan'] ?></td>
                         <td><?= $field['tinggi_badan'] ?></td>
+                        <td><?= $field['tgl_buat'] ?></td>
                         <td><?= $field['keterangan'] ?></td>
                         <td><?= check_kehadiran($field['kehadiran']) ?></td>
                         <?php if ($role == 2 || $role == 8) : ?>
@@ -147,7 +151,7 @@
    document.getElementById('anak_id').addEventListener('change', function() {
       var selectedAnak = this.value;
       // Mengalihkan ke halaman dengan URL yang disesuaikan
-      window.location.href = '<?= base_url("data/anak/timbangan/anak/") ?>' + posyanduId + '/' + null + '/' + selectedAnak;
+      window.location.href = '<?= base_url("data/anak/timbangan/anak/") ?>' + null + '/' + null + '/' + selectedAnak;
    });
 
    document.getElementById('month').addEventListener('change', function() {

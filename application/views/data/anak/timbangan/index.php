@@ -37,6 +37,7 @@
                      <th>Lingkar Kepala (cm)</th>
                      <th>Berat Badan (kg)</th>
                      <th>Tinggi Badan (cm)</th>
+                     <th>Tinggi Imunisasi</th>
                      <th>Keterangan</th>
                      <th>Kehadiran</th>
                      <?php if ($role == 2 || $role == 8) : ?>
@@ -75,6 +76,7 @@
                         <td><?= $field['lingkar_kepala'] ?></td>
                         <td><?= $field['berat_badan'] ?></td>
                         <td><?= $field['tinggi_badan'] ?></td>
+                        <td><?= $field['tgl_buat'] ?></td>
                         <td><?= $field['keterangan'] ?></td>
                         <td><?= check_kehadiran($field['kehadiran']) ?></td>
                         <?php if ($role == 2 || $role == 8) : ?>

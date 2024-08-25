@@ -70,7 +70,7 @@ class Anak_model extends CI_Model
 
    public function get_all_timbangan_anak($table, $id_posyandu = null, $tgl_ukur = null, $id_anak = null, $tgl_kematian = null)
    {
-      $this->db->select('t.*, t.id AS table_id, u.name, a.*, p.n_posyandu');
+      $this->db->select('t.*, t.id AS table_id, t.created_at AS tgl_buat, u.name, a.*, p.n_posyandu');
       $this->db->from($table . ' t');
       $this->db->join('anak a', 't.anak_id = a.id', 'left');
       $this->db->join('users u', 'a.user_id = u.id', 'left');

@@ -19,7 +19,9 @@ class Timbangan extends CI_Controller
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['role'] = $this->session->userdata('role_id');
       $data['posyandu'] = $this->bm->get_all("posyandu");
-
+      if ($data['role'] == 8) {
+         $data['anak'] = $this->am->get_all_anak();
+      }
       if ($data['role'] == 2) {
          $data['kader'] = $this->bm->get_by_user_id('kaders', $this->session->userdata('user_id'));
          $data['anak'] = $this->am->get_all_anak_no_dead($data['kader']['posyandu_id']);
@@ -83,7 +85,7 @@ class Timbangan extends CI_Controller
       }
    }
 
-   public function anak($id_posyandu, $tgl_ukur = null, $anak_id = null)
+   public function anak($id_posyandu = null, $tgl_ukur = null, $anak_id = null)
    {
       $this->_validation();
       $data['title'] = 'Penimbangan & Pengukuran Anak';
@@ -93,8 +95,11 @@ class Timbangan extends CI_Controller
       $data['id_posyandu'] = $id_posyandu;
       $data['id_anak'] = $anak_id;
       $data['date'] = $tgl_ukur;
-
-      if ($data['role'] == 2) {
+      // poli kia
+      if ($data['role'] == 8) {
+         $data['anak'] = $this->am->get_all_anak();
+         $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', null, null, $anak_id);
+      } else if ($data['role'] == 2) {
          $data['kader'] = $this->bm->get_by_user_id('kaders', $this->session->userdata('user_id'));
          $data['anak'] = $this->am->get_all_anak_no_dead($data['kader']['posyandu_id']);
          if ($tgl_ukur == "null") {
@@ -128,7 +133,7 @@ class Timbangan extends CI_Controller
       $data['title'] = 'Monitoring Penimbangan Anak';
       $data['no'] = 1;
       if ($tgl_ukur == "null") {
-         $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', $id_posyandu, null, $anak_id);
+         $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', null, null, $anak_id);
       } else {
          $data['data'] = $this->am->get_all_timbangan_anak('timbangan_anak', $id_posyandu, $tgl_ukur, $anak_id);
       }

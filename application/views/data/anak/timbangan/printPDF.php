@@ -70,6 +70,7 @@
             <th>Lingkar Kepala (cm)</th>
             <th>Berat Badan (kg)</th>
             <th>Tinggi Badan (cm)</th>
+            <th>Tanggal Imunisasi</th>
             <th>Keterangan</th>
          </tr>
       </thead>
@@ -87,6 +88,7 @@
                <td><?= $field['lingkar_kepala'] ?></td>
                <td><?= $field['berat_badan'] ?></td>
                <td><?= $field['tinggi_badan'] ?></td>
+               <td><?= $field['tgl_buat'] ?></td>
                <td><?= $field['keterangan'] ?></td>
             </tr>
          <?php endforeach; ?>

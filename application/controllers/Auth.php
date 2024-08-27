@@ -36,6 +36,44 @@ class Auth extends CI_Controller
       }
    }
 
+   public function bunda()
+   {
+      $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+      $this->form_validation->set_rules('password', 'Password', 'trim|required');
+      if ($this->form_validation->run() == false) {
+         $data['title'] = 'Login Bunda';
+         $this->load->view('templates/auth_header', $data);
+         $this->load->view('auth/login_bunda');
+         $this->load->view('templates/auth_footer');
+      } else {
+         $this->_login_bunda();
+      }
+   }
+
+   private function _login_bunda()
+   {
+      $email = $this->input->post('email');
+      $password = $this->input->post('password');
+      $bunda = $this->db->get_where('ibu', ['email' => $email])->row_array();
+      // return print_r($bunda);
+      if ($bunda) {
+         if (password_verify($password, $bunda['password'])) {
+            $data = [
+               'user_id' => $bunda['id'],
+               'nik' => $bunda['nik'],
+               'fullname' => $bunda['n_ibu'],
+               'posyandu_id' => $bunda['posyandu_id'],
+            ];
+            $this->session->set_userdata($data);
+            return redirect('bunda');
+         } else {
+            $this->notification->notify_error('auth/bunda', 'Password ini tidak sesuai');
+         }
+      } else {
+         $this->notification->notify_error('auth/bunda', 'Email ini tidak terdaftar');
+      }
+   }
+
    private function _login($type = null)
    {
       $email = $this->input->post('email');

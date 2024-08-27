@@ -183,7 +183,7 @@ $sidebarMenu = array(
             "url" => "laporan/imunisasi",
             "text" => "Data Imunisasi",
             "icon" => "fas fa-fw fa-book",
-            "role" => array(1),
+            "role" => array(1, 8),
          ),
          array(
             "url" => "monitoring/gizi_anak",

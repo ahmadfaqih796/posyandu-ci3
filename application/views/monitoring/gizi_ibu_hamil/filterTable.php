@@ -9,8 +9,8 @@
                <h6 class="m-0 font-weight-bold text-primary mb-2"><?= $title ?></h6>
             </div>
             <div class="col-md-2 col-xs-12">
-               <?php if ($role == 4) : ?>
-                  <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/gizi_ibu_hamil/pdf') ?>">
+               <?php if ($role == 4 || $role == 7) : ?>
+                  <a type="button" class="btn btn-success float-right ml-2 btn-block" href="<?= base_url('monitoring/gizi_ibu_hamil/pdf/' . $bumil_id) ?>">
                      <i class="fas fa-print"></i> PDF
                   </a>
                <?php endif; ?>
@@ -79,6 +79,6 @@
    document.getElementById('bumil_id').addEventListener('change', function() {
       var selectedBumil = this.value;
       // Mengalihkan ke halaman dengan URL yang disesuaikan
-      window.location.href = '<?= base_url("monitoring/gizi_ibu_hamil/bumil/") ?>' + selectedBumil;
+      window.location.href = '<?= base_url("monitoring/gizi_ibu_hamil/pdf/") ?>' + selectedBumil;
    });
 </script>

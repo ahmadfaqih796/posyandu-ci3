@@ -45,6 +45,42 @@ class Gizi_Ibu_Hamil extends CI_Controller
       }
    }
 
+   public function bumil($bumil_id = null)
+   {
+      $this->_validation();
+      $data['title'] = 'Status Gizi Ibu Hamil';
+      $data['bumil_id'] = $bumil_id;
+      // return print_r($data['bumil_ids']);
+      $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+      $data['bidan'] = $this->bm->get_all("ibu_hamil");
+      // $data['data'] = $this->bm->get_all("gizi_ibu_hamil");
+      // $data['data'] = $this->im->get_all_ibu_hamil("gizi_ibu_hamil");
+      $data['data'] = $this->im->get_all_ibu_hamil("monitoring_ibu_hamil", null, $bumil_id);
+      $data['no'] = 1;
+      $data['role'] = $this->session->userdata('role_id');
+
+      if ($this->form_validation->run() == false) {
+         $this->load->view('templates/header', $data);
+         $this->load->view('templates/sidebar', $data);
+         $this->load->view('templates/topbar', $data);
+         $this->load->view('monitoring/gizi_ibu_hamil/filterTable', $data);
+         $this->load->view('monitoring/gizi_ibu_hamil/add');
+         $this->load->view('monitoring/gizi_ibu_hamil/edit');
+         $this->load->view('monitoring/gizi_ibu_hamil/delete');
+         $this->load->view('templates/footer', $data);
+      } else {
+         $add = $this->input->post('addData');
+         $update = $this->input->post('updateData');
+         if ($add) {
+            return $this->add();
+         } else if ($update) {
+            return $this->update();
+         } else {
+            $this->notification->notify_error('monitoring/gizi_ibu_hamil', 'Method initidak ditemukan');
+         }
+      }
+   }
+
    public function pdf($bumil_id = null)
    {
       require_once FCPATH . 'vendor/autoload.php';

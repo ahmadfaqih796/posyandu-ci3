@@ -20,6 +20,7 @@ class Ibu extends CI_Controller
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
       $data['kader'] = $kader;
       $data['users'] = $this->im->get_all_ibu($kader['posyandu_id']);
+      // return print_r($kader);
       $data['no'] = 1;
       if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);

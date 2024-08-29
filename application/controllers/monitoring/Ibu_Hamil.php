@@ -58,7 +58,7 @@ class Ibu_Hamil extends CI_Controller
          $this->load->view('templates/header', $data);
          $this->load->view('templates/sidebar', $data);
          $this->load->view('templates/topbar', $data);
-         $this->load->view('monitoring/ibu_hamil/index', $data);
+         $this->load->view('monitoring/ibu_hamil/filterTable', $data);
          $this->load->view('monitoring/ibu_hamil/addModal');
          // $this->load->view('monitoring/ibu_hamil/edit');
          $this->load->view('monitoring/ibu_hamil/delete');

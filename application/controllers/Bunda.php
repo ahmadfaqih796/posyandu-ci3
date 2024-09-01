@@ -44,8 +44,8 @@ class Bunda extends CI_Controller
 
    public function perkembangan_anak()
    {
-      $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
       $data['title'] = 'Perkembangan Anak';
+      $data['user'] = $this->ibm->get_ibu_by_id($this->session->userdata('user_id'));
       $data['no'] = 1;
       $data['users'] = $this->pm->get_pa_by_id($this->session->userdata('user_id'));
       $this->load->view('templates/bunda/header', $data);
@@ -95,8 +95,8 @@ class Bunda extends CI_Controller
 
    public function jadwal_posyandu()
    {
-      $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
       $data['title'] = 'Jadwal Posyandu';
+      $data['user'] = $this->ibm->get_ibu_by_id($this->session->userdata('user_id'));
       $data['no'] = 1;
       $data['posyandu'] = $this->sm->get_schedule_by_id($data['user']['posyandu_id']);
       $this->load->view('templates/bunda/header', $data);
@@ -107,19 +107,19 @@ class Bunda extends CI_Controller
 
    public function kegiatan()
    {
-      $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
       $data['title'] = 'Artikel';
+      $data['user'] = $this->ibm->get_ibu_by_id($this->session->userdata('user_id'));
       $data['no'] = 1;
       $data['data'] = $this->bm->get_all('kegiatan', 'anak');
       $this->load->view('templates/bunda/header', $data);
       $this->load->view('templates/bunda/topbar', $data);
-      $this->load->view('user/kegiatan', $data);
+      $this->load->view('bunda/kegiatan', $data);
       $this->load->view('templates/bunda/footer', $data);
    }
 
    public function detail_kegiatan($id)
    {
-      $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
+      $data['user'] = $this->ibm->get_ibu_by_id($this->session->userdata('user_id'));
       $data['title'] = 'Artikel';
       $data['no'] = 1;
       $data['detail'] = $this->bm->get_by_id('kegiatan', $id);

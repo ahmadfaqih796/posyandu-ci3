@@ -12,14 +12,15 @@
             <div class="modal-body">
                <!-- <input type="hidden" name="addData" id="addData" value="true"> -->
                <div class="form-group">
-                  <label for="bumil_id">Nama</label>
-                  <select name="bumil_id" id="bumil_id" class="form-control" required>
+                  <label for="bumil_idx">Nama</label>
+                  <select name="bumil_idx" id="bumil_idx" class="form-control" required>
                      <option value="">-- Pilih Ibu Hamil --</option>
                      <?php foreach ($bidan as $field) : ?>
-                        <option value="<?= $field['id'] ?>" <?= set_select('bumil_id', $field['id'], (!empty($_POST['bumil_id']) && $_POST['bumil_id'] == $field['id'])); ?>><?= $field['n_ibu'] ?></option>
+                        <!-- <option value="<?= $field['id'] ?>" <?= set_select('posyandu_id', $field['id'], (!empty($_POST['posyandu_id']) && $_POST['posyandu_id'] == $field['id'])); ?>><?= $field['n_posyandu'] ?></option> -->
+                        <option value="<?= $field['id'] ?>" <?= set_select('bumil_idx', $field['id'], (!empty($_POST['bumil_idx']) && $_POST['bumil_idx'] == $field['id'])); ?>><?= $field['n_ibu'] . ' - ' . $field['id'] ?></option>
                      <?php endforeach; ?>
                   </select>
-                  <?= form_error('bumil_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                  <?= form_error('bumil_idx', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
             </div>
             <div class="modal-footer">
@@ -38,8 +39,9 @@
          event.preventDefault(); // Mencegah formulir untuk melakukan submit default
 
          // Lakukan pengalihan halaman menggunakan JavaScript
-         var selectedValue = document.getElementById('bumil_id').value;
+         var selectedValue = document.getElementById('bumil_idx').value;
          var redirectUrl = '<?= base_url("monitoring/ibu_hamil/add/") ?>' + selectedValue;
+         // console.log("ssssssssssss", redirectUrl)
          window.location.href = redirectUrl;
       });
    });

@@ -77,10 +77,16 @@ class Bumil extends CI_Controller
       $this->load->view('templates/bumil/footer', $data);
    }
 
-   public function detail_monitoring($id)
+   public function detail_monitoring($id = null, $tanggal = null)
    {
       $data['title'] = 'Detail Monitoring';
-      $data['detail'] = $this->im->get_all_ibu_hamil_by_id_with_bumil('monitoring_ibu_hamil', $id, $this->session->userdata('user_id'));
+      // return print_r($this->session->userdata('user_id'));
+      if ($tanggal) {
+         $data['detail'] = $this->im->get_all_ibu_hamil_by_id_with_bumil('monitoring_ibu_hamil', $id, $this->session->userdata('user_id'), $tanggal);
+      } else {
+         $data['detail'] = $this->im->get_all_ibu_hamil_by_id_with_bumil('monitoring_ibu_hamil', $id, $this->session->userdata('user_id'));
+      }
+      $data['tanggal'] = $tanggal;
       $data['no'] = 1;
       $this->load->view('templates/bumil/header', $data);
       $this->load->view('templates/bumil/topbar', $data);

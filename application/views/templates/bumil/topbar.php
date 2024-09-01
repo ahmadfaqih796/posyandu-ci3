@@ -1,6 +1,9 @@
 <?php
 $this->load->model('Base_model', 'bm');
+$this->load->model('Ibu_model', 'im');
 $table = $this->bm->get_all_by_bumil_id('notification', $this->session->userdata('user_id'));
+$table1 = $this->im->get_all_ibu_hamil_by_id('monitoring_ibu_hamil', $this->session->userdata('user_id'));
+// return print_r($table1);
 $total = $this->bm->get_count_bumil_id('notification', $this->session->userdata('user_id'));
 ?>
 
@@ -14,9 +17,9 @@ $total = $this->bm->get_count_bumil_id('notification', $this->session->userdata(
          </a>
          <div class="dropdown-menu dropdown-menu-animation dropdown-md p-3 border-radius-lg mt-0 mt-lg-3 position-absolute" aria-labelledby="notification">
             <div class="d-block d-lg-none">
-               <?php foreach ($table as $row) : ?>
+               <?php foreach ($table1 as $row) : ?>
                   <a href="<?= base_url("bumil/detail_monitoring/" . $row['id']) ?>" class="dropdown-item border-radius-md">
-                     <div><?= "Periksa tanggal " . $row['date'] ?></div>
+                     <div><?= "Jangan Lupa Datang Ya Bunda " . $row['kunjungan_berikutnya'] ?></div>
                   </a>
                <?php endforeach ?>
             </div>
@@ -85,9 +88,9 @@ $total = $this->bm->get_count_bumil_id('notification', $this->session->userdata(
                   </a>
                   <div class="dropdown-menu dropdown-menu-animation dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="notification">
                      <div class="d-none d-lg-block">
-                        <?php foreach ($table as $row) : ?>
-                           <a href="<?= base_url("bumil/detail_monitoring/" . $row['id']) ?>" class="dropdown-item border-radius-md">
-                              <div><?= $row['message'] ?></div>
+                        <?php foreach ($table1 as $row) : ?>
+                           <a href="<?= base_url("bumil/detail_monitoring/" . $row['id'] . "/" . $row['tanggal_periksa']) ?>" class="dropdown-item border-radius-md">
+                              <div><?= "Jangan Lupa Datang Ya Bunda " . $row['tanggal_periksa']  ?></div>
                            </a>
                         <?php endforeach ?>
                      </div>

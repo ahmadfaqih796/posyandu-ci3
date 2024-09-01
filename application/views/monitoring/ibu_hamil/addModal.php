@@ -17,7 +17,7 @@
                      <option value="">-- Pilih Ibu Hamil --</option>
                      <?php foreach ($bidan as $field) : ?>
                         <!-- <option value="<?= $field['id'] ?>" <?= set_select('posyandu_id', $field['id'], (!empty($_POST['posyandu_id']) && $_POST['posyandu_id'] == $field['id'])); ?>><?= $field['n_posyandu'] ?></option> -->
-                        <option value="<?= $field['id'] ?>" <?= set_select('bumil_idx', $field['id'], (!empty($_POST['bumil_idx']) && $_POST['bumil_idx'] == $field['id'])); ?>><?= $field['n_ibu'] . ' - ' . $field['id'] ?></option>
+                        <option value="<?= $field['id'] ?>" <?= set_select('bumil_idx', $field['id'], (!empty($_POST['bumil_idx']) && $_POST['bumil_idx'] == $field['id'])); ?>><?= $field['n_ibu']  ?></option>
                      <?php endforeach; ?>
                   </select>
                   <?= form_error('bumil_idx', '<small class="text-danger pl-3">', '</small>'); ?>

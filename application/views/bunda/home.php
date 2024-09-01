@@ -15,7 +15,7 @@
                               <th>Nama</th>
                               <th>Nama Posyandu</th>
                               <th>Anak Ke</th>
-                              <th>Action</th>
+                              <th>Perkembangan Anak</th>
                            </tr>
                         </thead>
                         <tbody>

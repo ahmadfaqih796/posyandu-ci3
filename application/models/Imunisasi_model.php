@@ -31,7 +31,7 @@ class Imunisasi_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
-   public function get_all_imunisasi_by_ibu($ibu_id)
+   public function get_all_imunisasi_by_ibu($ibu_id = null, $anak_id = null)
    {
       $this->db->select('i.*, u.name, u.email, u.is_active, t.n_imunisasi, a.nik, p.n_posyandu, ib.n_ibu');
       $this->db->from('imunisasi i');
@@ -42,6 +42,9 @@ class Imunisasi_model extends CI_Model
       $this->db->join('ibu ib', 'a.orang_tua_id = ib.id', 'left');
       if ($ibu_id != null) {
          $this->db->where('ib.id', $ibu_id);
+      }
+      if ($anak_id != null) {
+         $this->db->where('i.anak_id', $anak_id);
       }
       return $this->db->get()->result_array();
    }

@@ -54,12 +54,12 @@ class Bunda extends CI_Controller
       $this->load->view('templates/bunda/footer', $data);
    }
 
-   public function imunisasi()
+   public function imunisasi($anak_id = null)
    {
       $data['title'] = 'Imunisasi';
       $data['no'] = 1;
       $data['user'] = $this->ibm->get_ibu_by_id($this->session->userdata('user_id'));
-      $data['users'] = $this->im->get_all_imunisasi_by_ibu($this->session->userdata('user_id'));
+      $data['users'] = $this->im->get_all_imunisasi_by_ibu($this->session->userdata('user_id'), $anak_id);
       // $data['users'] = $this->pm->get_pa_by_id($this->session->userdata('user_id'));
       $this->load->view('templates/bunda/header', $data);
       $this->load->view('templates/bunda/topbar', $data);
@@ -67,12 +67,12 @@ class Bunda extends CI_Controller
       $this->load->view('templates/bunda/footer', $data);
    }
 
-   public function status_gizi()
+   public function status_gizi($anak_id = null)
    {
       $data['title'] = 'Status Gizi';
       $data['no'] = 1;
       $data['user'] = $this->ibm->get_ibu_by_id($this->session->userdata('user_id'));
-      $data['data'] = $this->am->get_all_anak_table_by_id_v2("timbangan_anak", null, $this->session->userdata('user_id'));
+      $data['data'] = $this->am->get_all_anak_table_by_id_v2("timbangan_anak", $anak_id, $this->session->userdata('user_id'));
       // $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
       // $data['data'] = $this->am->get_all_anak_table('timbangan_anak', null, null, $this->session->userdata('user_id'));
       $this->load->view('templates/bunda/header', $data);

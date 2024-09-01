@@ -20,14 +20,15 @@ class Anak extends CI_Controller
       $this->_validation_anak();
       $data['title'] = 'Anak';
       $data['user'] =  $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-      $data['ibu'] = $this->im->get_all_ibu();
 
       $data['role'] = $this->session->userdata('role_id');
 
       if ($data['role'] == 2) {
          $data['kader'] = $this->km->get_kader_by_id($this->session->userdata('user_id'));
+         $data['ibu'] = $this->im->get_all_ibu($data['kader']['posyandu_id']);
          $data['users'] = $this->am->get_all_anak($data['kader']['posyandu_id']);
       } else {
+         $data['ibu'] = $this->im->get_all_ibu();
          $data['users'] = $this->am->get_all_anak();
       }
 

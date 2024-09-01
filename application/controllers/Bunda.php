@@ -45,8 +45,8 @@ class Bunda extends CI_Controller
    public function perkembangan_anak()
    {
       $data['title'] = 'Perkembangan Anak';
-      $data['user'] = $this->ibm->get_ibu_by_id($this->session->userdata('user_id'));
       $data['no'] = 1;
+      $data['user'] = $this->ibm->get_ibu_by_id($this->session->userdata('user_id'));
       $data['users'] = $this->pm->get_pa_by_id($this->session->userdata('user_id'));
       $this->load->view('templates/bunda/header', $data);
       $this->load->view('templates/bunda/topbar', $data);
@@ -56,10 +56,10 @@ class Bunda extends CI_Controller
 
    public function imunisasi()
    {
-      $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
       $data['title'] = 'Imunisasi';
       $data['no'] = 1;
-      $data['users'] = $this->im->get_all_imunisasi(null, null, $this->session->userdata('user_id'));
+      $data['user'] = $this->ibm->get_ibu_by_id($this->session->userdata('user_id'));
+      $data['users'] = $this->im->get_all_imunisasi_by_ibu($this->session->userdata('user_id'));
       // $data['users'] = $this->pm->get_pa_by_id($this->session->userdata('user_id'));
       $this->load->view('templates/bunda/header', $data);
       $this->load->view('templates/bunda/topbar', $data);
@@ -69,10 +69,12 @@ class Bunda extends CI_Controller
 
    public function status_gizi()
    {
-      $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
       $data['title'] = 'Status Gizi';
       $data['no'] = 1;
-      $data['data'] = $this->am->get_all_anak_table('timbangan_anak', null, null, $this->session->userdata('user_id'));
+      $data['user'] = $this->ibm->get_ibu_by_id($this->session->userdata('user_id'));
+      $data['data'] = $this->am->get_all_anak_table_by_id_v2("timbangan_anak", null, $this->session->userdata('user_id'));
+      // $data['user'] = $this->am->get_anak_by_id($this->session->userdata('user_id'));
+      // $data['data'] = $this->am->get_all_anak_table('timbangan_anak', null, null, $this->session->userdata('user_id'));
       $this->load->view('templates/bunda/header', $data);
       $this->load->view('templates/bunda/topbar', $data);
       $this->load->view('user/status_gizi', $data);

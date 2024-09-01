@@ -31,6 +31,21 @@ class Imunisasi_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
+   public function get_all_imunisasi_by_ibu($ibu_id)
+   {
+      $this->db->select('i.*, u.name, u.email, u.is_active, t.n_imunisasi, a.nik, p.n_posyandu, ib.n_ibu');
+      $this->db->from('imunisasi i');
+      $this->db->join('users u', 'i.anak_id = u.id', 'left');
+      $this->db->join('tipe_imunisasi t', 'i.tipe_imunisasi_id = t.id', 'left');
+      $this->db->join('anak a', 'i.anak_id = a.user_id', 'left');
+      $this->db->join('posyandu p', 'a.posyandu_id = p.id', 'left');
+      $this->db->join('ibu ib', 'a.orang_tua_id = ib.id', 'left');
+      if ($ibu_id != null) {
+         $this->db->where('ib.id', $ibu_id);
+      }
+      return $this->db->get()->result_array();
+   }
+
    public function get_all_imunisasi_by_id($id)
    {
       $this->db->select('i.*, u.name, u.email, u.is_active, t.n_imunisasi, a.nik');

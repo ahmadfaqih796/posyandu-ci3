@@ -18,8 +18,8 @@ $total = $this->bm->get_count_bumil_id('notification', $this->session->userdata(
          <div class="dropdown-menu dropdown-menu-animation dropdown-md p-3 border-radius-lg mt-0 mt-lg-3 position-absolute" aria-labelledby="notification">
             <div class="d-block d-lg-none">
                <?php foreach ($table1 as $row) : ?>
-                  <a href="<?= base_url("bumil/detail_monitoring/" . $row['id']) ?>" class="dropdown-item border-radius-md">
-                     <div><?= "Jangan Lupa Datang Ya Bunda " . $row['kunjungan_berikutnya'] ?></div>
+                  <a href="<?= base_url("bumil/detail_monitoring/" . $row['id'] . "/" . $row['tanggal_periksa']) ?>" class="dropdown-item border-radius-md">
+                     <div><?= "Jangan Lupa Datang Ya Bunda " . $row['tanggal_periksa']  ?></div>
                   </a>
                <?php endforeach ?>
             </div>

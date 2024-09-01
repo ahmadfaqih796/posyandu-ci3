@@ -18,7 +18,7 @@
             </div>
             <div class="modal-footer">
                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-               <button type="submit" class="btn btn-primary">Simpan</button>
+               <button type="submit" class="btn btn-danger">Hapus</button>
             </div>
          </form>
       </div>

@@ -11,7 +11,7 @@
                         <th>No</th>
                         <!-- <th>Nama Ibu Hamil</th> -->
                         <th>Hamil ke</th>
-                        <th>Kunjugan</th>
+                        <th>Kunjungan</th>
                         <th>Sesi</th>
                         <th>Keluhan</th>
                         <th>Tanggal Periksa</th>

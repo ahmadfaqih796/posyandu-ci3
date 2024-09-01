@@ -27,11 +27,11 @@
                   <input type="text" class="form-control" name="nik" id="edit_nik" value="<?= set_value('nik'); ?>" required>
                   <?= form_error('nik', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
-               <div class="form-group">
+               <!-- <div class="form-group">
                   <label for="edit_password">Password</label>
                   <input type="text" class="form-control" name="password" id="edit_password" value="<?= set_value('password'); ?>" required>
                   <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
-               </div>
+               </div> -->
                <div class="form-group">
                   <label for="edit_n_suami">Nama Suami</label>
                   <input type="text" class="form-control" name="n_suami" id="edit_n_suami" value="<?= set_value('n_suami'); ?>" required>

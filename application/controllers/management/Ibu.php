@@ -119,6 +119,8 @@ class Ibu extends CI_Controller
       $alamat = htmlspecialchars($this->input->post('alamat', true));
       $golongan_darah = htmlspecialchars($this->input->post('golongan_darah', true));
       $telepon = htmlspecialchars($this->input->post('telepon', true));
+      $email = htmlspecialchars($this->input->post('email', true));
+      $password = password_hash("1234", PASSWORD_DEFAULT);
 
       $payload = [
          'posyandu_id' => $posyandu_id,
@@ -128,12 +130,15 @@ class Ibu extends CI_Controller
          'tanggal_lahir' => $tanggal_lahir,
          'alamat' => $alamat,
          'golongan_darah' => $golongan_darah,
+         'email' => $email,
          // 'telepon' => "08" . $telepon
       ];
+
       if ($type == "update") {
          $payload['telepon'] = $telepon;
       }
       if ($type == 'post') {
+         $payload['password'] = $password;
          $payload['telepon'] = "08" . $telepon;
       }
 

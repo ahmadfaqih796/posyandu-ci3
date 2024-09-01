@@ -47,6 +47,11 @@
                   <input type="text" class="form-control" name="telepon" id="telepon" value="<?= set_value('telepon'); ?>">
                   <?= form_error('telepon', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
+               <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" name="email" id="email" value="<?= set_value('email'); ?>">
+                  <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
             </div>
             <div class="modal-footer">
                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

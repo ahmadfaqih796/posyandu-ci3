@@ -49,7 +49,11 @@
                   <input type="text" class="form-control" name="telepon" id="edit_telepon" value="<?= set_value('telepon'); ?>">
                   <?= form_error('telepon', '<small class="text-danger pl-3">', '</small>'); ?>
                </div>
-
+               <div class="form-group">
+                  <label for="edit_email">Email</label>
+                  <input type="email" class="form-control" name="email" id="edit_email" value="<?= set_value('email'); ?>">
+                  <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+               </div>
             </div>
             <div class="modal-footer">
                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -70,5 +74,6 @@
       // document.getElementById('edit_golongan_darah').value = data['golongan_darah'];
       document.getElementById('edit_alamat').value = data['alamat'];
       document.getElementById('edit_telepon').value = data['telepon'];
+      document.getElementById('edit_email').value = data['email'];
    }
 </script>

@@ -17,12 +17,14 @@ class Perkembangan_Anak_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
-   public function get_pa_by_id($id)
+   public function get_pa_by_id($id = null)
    {
-      $this->db->select('p.*, u.name, u.email, u.is_active');
-      $this->db->from('perkembangan_anak p');
-      $this->db->join('users u', 'p.anak_id = u.id', 'left');
-      $this->db->where('u.id', $id);
+      $this->db->select('t.*, u.name, u.email, u.is_active');
+      $this->db->from('timbangan_anak t');
+      $this->db->join('users u', 't.anak_id = u.id', 'left');
+      if ($id != null) {
+         $this->db->where('u.id', $id);
+      }
       return $this->db->get()->result_array();
       // return $this->db->get_where('perkembangan_anak', ['id' => $id])->row_array();
    }

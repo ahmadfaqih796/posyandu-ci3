@@ -136,7 +136,12 @@ class Ibu_model extends CI_Model
 
    public function get_ibu_by_id($id)
    {
-      return $this->db->get_where('ibu', ['id' => $id])->row_array();
+      $this->db->select('i.*, p.n_posyandu');
+      $this->db->from('ibu i');
+      $this->db->join('posyandu p', 'p.id = i.posyandu_id', 'left');
+      $this->db->where('i.id', $id);
+      return $this->db->get()->row_array();
+      // return $this->db->get_where('ibu', ['id' => $id])->row_array();
    }
 
    public function add_ibu($data)

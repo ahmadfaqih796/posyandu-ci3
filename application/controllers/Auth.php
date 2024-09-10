@@ -36,6 +36,20 @@ class Auth extends CI_Controller
       }
    }
 
+   public function forgot_password_bumil()
+   {
+      $this->form_validation->set_rules('nik', 'NIK', 'required');
+
+      if ($this->form_validation->run() == false) {
+         $data['title'] = 'Forgot Password';
+         $this->load->view('templates/auth_header', $data);
+         $this->load->view('auth/forgot_password_nik');
+         $this->load->view('templates/auth_footer');
+      } else {
+         $this->_send_reset_link_bumil();
+      }
+   }
+
    public function reset_password($token = null)
    {
       if (!$token) {
@@ -56,6 +70,26 @@ class Auth extends CI_Controller
       }
    }
 
+   public function reset_password_bumil($token = null)
+   {
+      if (!$token) {
+         redirect('auth/forgot_password_bumil');
+      }
+
+      $data['token'] = $token;
+      $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|matches[password2]');
+      $this->form_validation->set_rules('password2', 'Password Confirmation', 'trim|required|matches[password]');
+
+      if ($this->form_validation->run() == false) {
+         $data['title'] = 'Reset Password';
+         $this->load->view('templates/auth_header', $data);
+         $this->load->view('auth/reset_password_bumil', $data);
+         $this->load->view('templates/auth_footer');
+      } else {
+         $this->_update_password_bumil($token);
+      }
+   }
+
    private function _update_password($token)
    {
       $new_password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
@@ -70,6 +104,23 @@ class Auth extends CI_Controller
       } else {
          $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Invalid or expired token. </div>');
          redirect('auth/forgot_password');
+      }
+   }
+
+   private function _update_password_bumil($token)
+   {
+      $new_password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+      $nik = $this->db->get_where('password_reset_bumil', ['token' => $token])->row_array()['nik'];
+
+      if ($nik) {
+         $this->db->update('ibu_hamil', ['password' => $new_password], ['nik' => $nik]);
+         $this->db->delete('password_reset', ['token' => $token]);
+
+         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Password has been updated. </div>');
+         redirect('auth/bumil');
+      } else {
+         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Invalid or expired token. </div>');
+         redirect('auth/forgot_password_bumil');
       }
    }
 
@@ -88,14 +139,14 @@ class Auth extends CI_Controller
 
          $config = array(
             'protocol' => 'smtp',
-            'smtp_host' => 'sandbox.smtp.mailtrap.io',
+            'smtp_host' => 'live.smtp.mailtrap.io',
             'smtp_port' => 587,
-            'smtp_user' => 'fd21d7cb26d0e9',
-            'smtp_pass' => '3feec0f2af0812',
-            'mailtype'  => 'html',
-            'charset'   => 'iso-8859-1',
-            'wordwrap'  => TRUE
+            'smtp_user' => 'api',
+            'smtp_pass' => 'd5d1d235c1996a58415d11c567d6dcac',
+            'crlf' => "\r\n",
+            'newline' => "\r\n"
          );
+
 
          $this->email->initialize($config);
 
@@ -104,7 +155,7 @@ class Auth extends CI_Controller
          $message = "Click this link to reset your password: " . $reset_link;
 
          // Use your email sending library
-         $this->email->from('no-reply@mailtrap.club', 'Your App');
+         $this->email->from('mailtrap@demomailtrap.com', 'Your App');
          $this->email->to($email);
          $this->email->subject('Password Reset Request');
          $this->email->message($message);
@@ -116,6 +167,52 @@ class Auth extends CI_Controller
       } else {
          $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Email not registered! </div>');
          redirect('auth/forgot_password');
+      }
+   }
+
+   private function _send_reset_link_bumil()
+   {
+      $nik = $this->input->post('nik');
+      $user = $this->db->get_where('ibu_hamil', ['nik' => $nik])->row_array();
+
+      if ($user) {
+         $token = bin2hex(random_bytes(50)); // Generate a random token
+         $this->db->insert('password_reset_bumil', [
+            'nik' => $nik,
+            'token' => $token,
+            'created_at' => time()
+         ]);
+
+         $config = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'live.smtp.mailtrap.io',
+            'smtp_port' => 587,
+            'smtp_user' => 'api',
+            'smtp_pass' => 'd5d1d235c1996a58415d11c567d6dcac',
+            'crlf' => "\r\n",
+            'newline' => "\r\n"
+         );
+
+
+         $this->email->initialize($config);
+
+         // Send email with reset link
+         $reset_link = base_url('auth/reset_password_bumil/' . $token);
+         $message = "Click this link to reset your password: " . $reset_link;
+
+         // Use your email sending library
+         $this->email->from('mailtrap@demomailtrap.com', 'Your App');
+         $this->email->to($nik);
+         $this->email->subject('Password Reset Request');
+         $this->email->message($message);
+         $this->email->send();
+
+         // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Check your email for a link to reset your password. </div>');
+         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Change Password. </div>');
+         redirect('auth/reset_password_bumil/' . $token);
+      } else {
+         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Nik not registered! </div>');
+         redirect('auth/forgot_password_bumil');
       }
    }
 

@@ -30,6 +30,9 @@
                            </button>
                         </form>
                         <hr>
+                        <div class="text-center">
+                           <a class="small" href="<?= base_url('auth/forgot_password_bumil'); ?>">Forgot Password?</a>
+                        </div>
                      </div>
                   </div>
                </div>

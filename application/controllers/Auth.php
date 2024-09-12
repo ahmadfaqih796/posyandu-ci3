@@ -50,6 +50,20 @@ class Auth extends CI_Controller
       }
    }
 
+   public function forgot_password_bunda()
+   {
+      $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+
+      if ($this->form_validation->run() == false) {
+         $data['title'] = 'Forgot Password Bunda';
+         $this->load->view('templates/auth_header', $data);
+         $this->load->view('auth/forgot_password_bunda');
+         $this->load->view('templates/auth_footer');
+      } else {
+         $this->_send_reset_link_bunda();
+      }
+   }
+
    public function reset_password($token = null)
    {
       if (!$token) {
@@ -67,6 +81,26 @@ class Auth extends CI_Controller
          $this->load->view('templates/auth_footer');
       } else {
          $this->_update_password($token);
+      }
+   }
+
+   public function reset_password_bunda($token = null)
+   {
+      if (!$token) {
+         redirect('auth/forgot_password_bunda');
+      }
+
+      $data['token'] = $token;
+      $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|matches[password2]');
+      $this->form_validation->set_rules('password2', 'Password Confirmation', 'trim|required|matches[password]');
+
+      if ($this->form_validation->run() == false) {
+         $data['title'] = 'Reset Password Bunda';
+         $this->load->view('templates/auth_header', $data);
+         $this->load->view('auth/reset_password_bunda', $data);
+         $this->load->view('templates/auth_footer');
+      } else {
+         $this->_update_password_bunda($token);
       }
    }
 
@@ -121,6 +155,23 @@ class Auth extends CI_Controller
       } else {
          $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Invalid or expired token. </div>');
          redirect('auth/forgot_password_bumil');
+      }
+   }
+
+   private function _update_password_bunda($token)
+   {
+      $new_password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+      $email = $this->db->get_where('password_reset', ['token' => $token])->row_array()['email'];
+
+      if ($email) {
+         $this->db->update('ibu', ['password' => $new_password], ['email' => $email]);
+         $this->db->delete('password_reset', ['token' => $token]);
+
+         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Password has been updated. </div>');
+         redirect('auth/bunda');
+      } else {
+         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Invalid or expired token. </div>');
+         redirect('auth/forgot_password_bunda');
       }
    }
 
@@ -213,6 +264,52 @@ class Auth extends CI_Controller
       } else {
          $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Nik not registered! </div>');
          redirect('auth/forgot_password_bumil');
+      }
+   }
+
+   private function _send_reset_link_bunda()
+   {
+      $email = $this->input->post('email');
+      $user = $this->db->get_where('ibu', ['email' => $email])->row_array();
+
+      if ($user) {
+         $token = bin2hex(random_bytes(50)); // Generate a random token
+         $this->db->insert('password_reset', [
+            'email' => $email,
+            'token' => $token,
+            'created_at' => time()
+         ]);
+
+         $config = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'live.smtp.mailtrap.io',
+            'smtp_port' => 587,
+            'smtp_user' => 'api',
+            'smtp_pass' => 'd5d1d235c1996a58415d11c567d6dcac',
+            'crlf' => "\r\n",
+            'newline' => "\r\n"
+         );
+
+
+         $this->email->initialize($config);
+
+         // Send email with reset link
+         $reset_link = base_url('auth/reset_password/' . $token);
+         $message = "Click this link to reset your password: " . $reset_link;
+
+         // Use your email sending library
+         $this->email->from('mailtrap@demomailtrap.com', 'Your App');
+         $this->email->to($email);
+         $this->email->subject('Password Reset Request');
+         $this->email->message($message);
+         $this->email->send();
+
+         // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Check your email for a link to reset your password. </div>');
+         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Change Password. </div>');
+         redirect('auth/reset_password_bunda/' . $token);
+      } else {
+         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Email not registered! </div>');
+         redirect('auth/forgot_password_bunda');
       }
    }
 
